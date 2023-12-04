@@ -4,7 +4,7 @@ const StockGraph = () => {
 
     return (
         <Container>
-            <div className="floatingDiv">
+            <div>
                 This will show an individual Stock's graph
             </div>
         </Container>

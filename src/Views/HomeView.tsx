@@ -1,9 +1,16 @@
 import AppNavbar from "../Components/AppNavbar";
 import StockGraph from "../Components/StockGraph";
+import FeaturedStock from '../Components/FeaturedStock';
+
+interface Stock {
+    name: string;
+    ticker: string;
+    price: number;
+}
 
 function HomeView () {
 
-    const stockData = [
+    const stockData: Stock[] = [
         { name: 'Apple', ticker: 'AAPL', price: 150.25 },
         { name: 'Google', ticker: 'GOOGL', price: 2700.50 },
         { name: 'Amazon', ticker: 'AMZN', price: 3550.75 },
@@ -25,11 +32,7 @@ function HomeView () {
                         <div className="featured-stocks-container">
                             <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto">
                                 {stockData.map((stock, index) => (
-                                    <div key={index} className="floatingDiv m-2" style={{ minWidth: '200px', width: '200px' }}>
-                                        <p>Name: {stock.name}</p>
-                                        <p>Ticker: {stock.ticker}</p>
-                                        <p>Price: ${stock.price.toFixed(2)}</p>
-                                    </div>
+                                    <FeaturedStock key={index} stock={stock} />
                                 ))}
                             </div>
                         </div>

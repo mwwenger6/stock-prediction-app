@@ -39,7 +39,7 @@ const AppNavbar = () => {
             <Container>
                 <Navbar.Brand>Stock Genie</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Form className="d-flex w-100" onSubmit={(event) => event.preventDefault()}>
+                <Form className="d-flex" onSubmit={(event) => event.preventDefault()}>
                     <Form.Control
                         type="search"
                         placeholder="Search"
@@ -55,9 +55,6 @@ const AppNavbar = () => {
                             <option key={index} value={suggestion.ticker}>{suggestion.name}</option>
                         ))}
                     </datalist>
-                    <button className="btn btn-outline-success" type="submit">
-                        Search
-                    </button>
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">

@@ -35,7 +35,7 @@ const AppNavbar = () => {
         }
     };
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary custom-navbar">
             <Container>
             <Navbar.Brand>
                 <span className="brand-name">stock</span>
@@ -61,9 +61,10 @@ const AppNavbar = () => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/News">News</Nav.Link>
-                        <Nav.Link href="">Log Out</Nav.Link>
+                    <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
+<Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
+<Nav.Link href="" className="nav-link-blue-bg">Log Out</Nav.Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

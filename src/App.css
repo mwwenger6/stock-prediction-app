@@ -27,9 +27,11 @@
 .App-link {
   color: #61dafb;
 }
-.brand-name {
+
+.brand-name { 
   color: rgb(41, 200, 41);
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

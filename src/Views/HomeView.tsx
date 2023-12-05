@@ -1,6 +1,7 @@
 import StockGraph from "../Components/StockGraph";
 import FeaturedStock from '../Components/FeaturedStock';
 import { useState, useEffect } from "react";
+import GetPrices from "../Services/PriceUpdate";
 
 interface Stock {
     name: string;
@@ -8,27 +9,42 @@ interface Stock {
     price: number;
 }
 
-function HomeView () {
+function HomeView() {
 
-    const stockData: Stock[] = [
-        { name: 'Apple', ticker: 'AAPL', price: 150.25 },
-        { name: 'Google', ticker: 'GOOGL', price: 2700.50 },
-        { name: 'Amazon', ticker: 'AMZN', price: 3550.75 },
-        { name: 'Microsoft', ticker: 'MSFT', price: 340.90 },
-        { name: 'Facebook', ticker: 'FB', price: 330.40 },
-        { name: 'Tesla', ticker: 'TSLA', price: 950.15 },
-        { name: 'Netflix', ticker: 'NFLX', price: 580.60 },
+    //Assuming a user's stocks and featured stocks will differ
+    const featuredStocks: Stock[] = [
+        {name: 'Apple', ticker: 'AAPL', price: 0},
+        {name: 'Google', ticker: 'GOOGL', price: 0},
+        {name: 'Amazon', ticker: 'AMZN', price: 0},
+        {name: 'Microsoft', ticker: 'MSFT', price: 0},
+        {name: 'Netflix', ticker: 'NFLX', price: 0},
     ];
+    const [personalStocks, setPersonalStocks] = useState<Stock []>([
+        {name: 'Thermo Fisher Sci Inc.', ticker: 'TMO', price: 0},
+        {name: 'Google', ticker: 'GOOGL', price: 0},
+        {name: 'Amazon', ticker: 'AMZN', price: 0},
+        {name: 'United Parcel Service Inc', ticker: 'UPS', price: 0},
+        {name: 'Walt Disney Co', ticker: 'DIS', price: 0},
+    ])
 
-    const [searchedStock, setSearchedStocks] = useState(null);
+    const [apiStockInfo, setApiStockInfo]: any[] = useState([])
 
     useEffect(() => {
-        //probably call api here
-        //finhub provides real time stock info that shows the latest price
-        //this would probably be a good api to use for specific stock searches
+        const fetchPrices = async () => {
+            try {
+                const res = await GetPrices(featuredStocks);
+                console.log('response retreived', res);
+                setApiStockInfo([...apiStockInfo, res]);
+                //I am getting the response info here but not setting correctly
+            } catch (error) {
+                console.error('Error fetching prices:', error);
+            }
+        };
+        fetchPrices();
     }, []);
 
-    return(
+
+    return (
         <div className="m-2">
             <div className="row p-2">
                 <div className="my-3 col-lg-4 col-sm-12">
@@ -37,8 +53,8 @@ function HomeView () {
                         <hr/>
                         <div className="featured-stocks-container">
                             <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto">
-                                {stockData.map((stock, index) => (
-                                    <FeaturedStock key={index} stock={stock} />
+                                {featuredStocks.map((stock, index) => (
+                                    <FeaturedStock key={index} stock={stock}/>
                                 ))}
                             </div>
                         </div>
@@ -48,17 +64,18 @@ function HomeView () {
                     <div className='floatingDiv'>
                         <h3>Your Stocks</h3>
                         <hr/>
-                        <StockGraph />
+                        <StockGraph/>
                     </div>
                 </div>
                 <div className="my-3 col-lg-2 col-sm-12">
                     <div className="floatingDiv" style={{maxHeight: '500px'}}>
                         <h3>Personal Stocks</h3>
                         <hr/>
-                        <div id="personal-stocks" className="overflow-auto" style={{ maxHeight: '400px' }}>
+                        <div id="personal-stocks" className="overflow-auto" style={{maxHeight: '400px'}}>
                             <div id="personal-stocks">
-                                {stockData.map((stock, index) => (
-                                    <div key={index} className="floatingDiv m-auto my-2" style={{ minWidth: '200px', width: '200px' }}>
+                                {personalStocks.map((stock, index) => (
+                                    <div key={index} className="floatingDiv m-auto my-2"
+                                         style={{minWidth: '200px', width: '200px'}}>
                                         <p>{stock.ticker}</p>
                                         <p>${stock.price.toFixed(2)}</p>
                                     </div>

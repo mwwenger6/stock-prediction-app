@@ -28,7 +28,10 @@
   color: #61dafb;
 }
 .brand-name {
-  color: rgb(41, 200, 41);
+  color: black !important;
+}
+.brand-name-secondary {
+  color: rgb(41, 200, 41) !important;
 }
 @keyframes App-logo-spin {
   from {

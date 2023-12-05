@@ -28,5 +28,5 @@ body, html {
 .scrolling-container {
     display: inline-block;
     animation: scroll-left 1000s linear infinite; /* scales with elements*/
-    /* this will hold the repeated stocks */
 }
+

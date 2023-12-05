@@ -1,8 +1,9 @@
+
 interface StockItem {
     ticker: string;
     price: number;
 }
-
+function ticker () {
 const stocks: StockItem[] = [
     {ticker: 'AAPL', price: 150.25 }, //stocks copied from mikes
     {ticker: 'GOOGL', price: 2700.50 },
@@ -33,5 +34,11 @@ if (ticker) {
         });
     }
 
-    ticker.appendChild(scrollingContainer);
+    ticker.appendChild(scrollingContainer); 
+
+    return(
+        <div></div>
+    )
 }
+}
+export default ticker;

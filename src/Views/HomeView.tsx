@@ -23,18 +23,18 @@ function HomeView () {
 
     const [searchedStock, setSearchedStocks] = useState(null);
 
-    useEffect(() => {
-        const Alpaca = require("@alpacahq/alpaca-trade-api");
-        const alpaca = new Alpaca({
-            keyId: 'PK4K7YJE7Z04K0FVFZOL',
-            secretKey: 'w6ByJtvSkqLOnNPcI42YaKbEZHXfEHsgbj1nOSl9',
-            paper: true,
-          })
-          console.log('hello')
-          alpaca.getAccount().then((account : any) => {
-            console.log('Current Account:', account)
-          })    
-    }, []);
+    // useEffect(() => {
+    //     const Alpaca = require("@alpacahq/alpaca-trade-api");
+    //     const alpaca = new Alpaca({
+    //         keyId: 'PK4K7YJE7Z04K0FVFZOL',
+    //         secretKey: 'w6ByJtvSkqLOnNPcI42YaKbEZHXfEHsgbj1nOSl9',
+    //         paper: true,
+    //       })
+    //       console.log('hello')
+    //       alpaca.getAccount().then((account : any) => {
+    //         console.log('Current Account:', account)
+    //       })    
+    // }, []);
 
     return(
         <div className="m-2">

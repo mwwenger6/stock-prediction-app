@@ -1,7 +1,16 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* prevents the body from scrolling */
+    width: 100%; /* ensures the body takes full width */
+}
+
 #stock-ticker {
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     white-space: nowrap;
+    background-color: #000;
+    color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
 

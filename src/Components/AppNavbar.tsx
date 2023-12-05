@@ -37,7 +37,7 @@ const AppNavbar = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand>Stock Price Prediction App</Navbar.Brand>
+                <Navbar.Brand>Stock Genie</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Form className="d-flex w-100" onSubmit={(event) => event.preventDefault()}>
                     <Form.Control

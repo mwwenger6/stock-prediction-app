@@ -1,4 +1,4 @@
-import React from 'react';
+import useEffect, { useState } from 'react';
 import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
@@ -6,7 +6,9 @@ import NewsView from './Views/NewsView';
 import StockGraphView from './Views/StockGraphView';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>

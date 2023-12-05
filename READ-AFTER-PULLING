@@ -1,8 +1,8 @@
 Michael:
 
 12/4/2023
-Added Routing. Need to install this package
-npm i react-router-dom
+Added Routing, temp views, and working search bar. Need to install this package:  npm i react-router-dom
+
 
 
 Jacob:

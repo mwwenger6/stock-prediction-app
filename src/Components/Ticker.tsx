@@ -6,6 +6,7 @@ interface StockItem {
     price: number;
     startingPrice: number;
 }
+
 function Ticker () {
 const stocks: StockItem[] = [
     {ticker: 'AAPL', price: 150.25, startingPrice:149.40 }, //stocks copied from mikes
@@ -30,6 +31,7 @@ function createStockElement(stock: StockItem): HTMLElement {
     element.textContent = `${stock.ticker}: $${stock.price}`;
     return element;
 }
+
 
 useEffect(() => {
     const ticker = document.getElementById('stock-ticker');

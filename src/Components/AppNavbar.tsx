@@ -1,16 +1,64 @@
-import {Container, Nav, Navbar} from "react-bootstrap";
+import {Container, Nav, Navbar, Form } from "react-bootstrap";
+import React, { useState, FormEvent  } from 'react';
+import Tickers from '../Data/tickers.json';
+import { useNavigate } from 'react-router-dom';
+interface Ticker {
+    cik_str: number;
+    ticker: string;
+    name: string;
+}
 
 const AppNavbar = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [suggestions, setSuggestions] = useState<Ticker[]>([]);
+    const navigate = useNavigate();
 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setSearchTerm(value);
+        if (value.length > 0) {
+            const filteredSuggestions = Tickers.filter(
+                ticker => ticker.ticker.toLowerCase().includes(value.toLowerCase()) ||
+                          ticker.name.toLowerCase().includes(value.toLowerCase())
+            ).slice(0, 5); // Limiting to 5 suggestions
+
+            setSuggestions(filteredSuggestions);
+        } else
+            setSuggestions([]);
+    };
+    const handleInputSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setSearchTerm(value); 
+        const selectedTicker = suggestions.find(suggestion => suggestion.ticker.toLowerCase() === value.toLowerCase());
+        if (selectedTicker) {
+            navigate(`/Stock/${selectedTicker.cik_str}`);
+        }
+    };
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand>Stock Price Prediction App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <div className="d-flex justify-content-center align-items-center">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </div>
+                <Form className="d-flex w-100" onSubmit={(event) => event.preventDefault()}>
+                    <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        value={searchTerm}
+                        onChange={handleInputChange}
+                        onInput={handleInputSelect} // Added to handle option selection
+                        list="tickers-list"
+                    />
+                    <datalist id="tickers-list">
+                        {suggestions.map((suggestion, index) => (
+                            <option key={index} value={suggestion.ticker}>{suggestion.name}</option>
+                        ))}
+                    </datalist>
+                    <button className="btn btn-outline-success" type="submit">
+                        Search
+                    </button>
+                </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link href="/">Home</Nav.Link>

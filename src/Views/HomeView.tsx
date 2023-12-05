@@ -1,4 +1,3 @@
-import AppNavbar from "../Components/AppNavbar";
 import StockGraph from "../Components/StockGraph";
 import FeaturedStock from '../Components/FeaturedStock';
 
@@ -22,7 +21,6 @@ function HomeView () {
 
     return(
         <div className="m-2">
-            <AppNavbar/>
             <h1 className="text-center m-2"> Stock Genie </h1>
             <div className="row p-2">
                 <div className="col-4">

@@ -1,5 +1,6 @@
 import StockGraph from "../Components/StockGraph";
 import FeaturedStock from '../Components/FeaturedStock';
+import StockAutoscroller from "../Components/StockAutoScroller";
 import { useState, useEffect } from "react";
 
 interface Stock {
@@ -23,15 +24,21 @@ function HomeView () {
     const [searchedStock, setSearchedStocks] = useState(null);
 
     useEffect(() => {
-        //probably call api here
-        //finhub provides real time stock info that shows the latest price
-        //this would probably be a good api to use for specific stock searches
+        const Alpaca = require("@alpacahq/alpaca-trade-api");
+        const alpaca = new Alpaca({
+            keyId: 'PK4K7YJE7Z04K0FVFZOL',
+            secretKey: 'w6ByJtvSkqLOnNPcI42YaKbEZHXfEHsgbj1nOSl9',
+            paper: true,
+          })
+          console.log('hello')
+          alpaca.getAccount().then((account : any) => {
+            console.log('Current Account:', account)
+          })    
     }, []);
 
     return(
         <div className="m-2">
             <div className="row p-2">
-                <div className="my-3 col-lg-4 col-sm-12">
                     <div className="floatingDiv">
                         <h3>Featured Stocks</h3>
                         <hr/>
@@ -68,7 +75,6 @@ function HomeView () {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

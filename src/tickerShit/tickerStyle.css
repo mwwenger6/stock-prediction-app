@@ -1,0 +1,23 @@
+#stock-ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.stock-item {
+    display: inline-block;
+    padding: 10px;
+    /* remove individuale animation from stock item */
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.scrolling-container {
+    display: inline-block;
+    animation: scroll-left 1000s linear infinite;
+    /* this will hold the repeated stocks */
+}

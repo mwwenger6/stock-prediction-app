@@ -6,7 +6,7 @@ body, html {
 }
 
 #stock-ticker {
-    width: 100vw;
+    width: 100vw; /* need to flow over the website edhges*/
     overflow: hidden;
     white-space: nowrap;
     background-color: #000;

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #333333; /* Light gray background */
 }
 
 .App-logo {
@@ -33,6 +34,7 @@
 .brand-name-secondary {
   color: rgb(41, 200, 41) !important;
 }
+
 
 @keyframes App-logo-spin {
   from {

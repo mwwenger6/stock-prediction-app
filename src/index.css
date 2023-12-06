@@ -31,7 +31,7 @@ code {
 .stock-item {
   display: inline-block;
   padding: 10px;
-  /* remove individuale animation from stock item */
+  /* remove individual animation from stock item */
 }
 
 @keyframes scroll-left {
@@ -42,4 +42,9 @@ code {
 .scrolling-container {
   display: inline-block;
   animation: scroll-left 1000s linear infinite; /* scales with elements*/
+}
+
+.arrow {
+  max-width: 10px;
+  width:100%;
 }

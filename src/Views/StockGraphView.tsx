@@ -6,6 +6,7 @@ const StockGraphView = () => {
     const params = useParams();
     const symbol = params.ticker;
 
+
     return (
         <Container>
             <StockGraph/>

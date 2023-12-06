@@ -1,14 +1,14 @@
 .App {
   text-align: center;
-  background-color: #333333; /* Light gray background */
+  background-color: #333333; /* light gray background */
 }
 
 .nav-link-blue-bg {
-  background-color: #234099 !important; /* Bootstrap's primary blue color, change as needed */
-  color: white !important; /* Optional: Change text color for better readability */
-  padding: 3px 10px !important; /* Optional: Adjust padding for better appearance */
-  border-radius: 6px !important; /* Optional: Rounded corners for a button-like appearance */
-  margin: 0 4px; /* Add horizontal margin */
+  background-color: #234099 !important; /* changed from pruple */
+  color: white !important; /* text color*/
+  padding: 3px 10px !important; /* padding for better appearance */
+  border-radius: 6px !important; /* rounded corners for a button-like appearance */
+  margin: 0 4px; /* added horizontal margin */
 }
 
 

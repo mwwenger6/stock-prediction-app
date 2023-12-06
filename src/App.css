@@ -1,6 +1,16 @@
 .App {
   text-align: center;
+  background-color: #333333; /* Light gray background */
 }
+
+.nav-link-blue-bg {
+  background-color: #9F00C8 !important; /* Bootstrap's primary blue color, change as needed */
+  color: white !important; /* Optional: Change text color for better readability */
+  padding: 3px 10px !important; /* Optional: Adjust padding for better appearance */
+  border-radius: 6px !important; /* Optional: Rounded corners for a button-like appearance */
+  margin: 0 4px; /* Add horizontal margin */
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -26,6 +36,20 @@
 
 .App-link {
   color: #61dafb;
+}
+.brand-name {
+  color: rgb(251, 251, 251) !important;
+}
+.brand-name-secondary {
+  color: #29c829 !important;
+}
+
+.navbar-custom-bg {
+  background-color: #29c829; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
+  
+}
+.featuredStockBg {
+  background-color: #726d76; /* dark gray background */
 }
 
 @keyframes App-logo-spin {

@@ -35,9 +35,12 @@ const AppNavbar = () => {
         }
     };
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary-custom-bg">
             <Container>
-                <Navbar.Brand>Stock Genie</Navbar.Brand>
+            <Navbar.Brand>
+                <span className="brand-name">stock</span>
+                <span className="brand-name-secondary">Genie</span>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Form className="d-flex" onSubmit={(event) => event.preventDefault()}>
                     <Form.Control
@@ -49,6 +52,7 @@ const AppNavbar = () => {
                         onChange={handleInputChange}
                         onInput={handleInputSelect} // Added to handle option selection
                         list="tickers-list"
+                        style={{ width: '400px' }} // adjust the width as needed
                     />
                     <datalist id="tickers-list">
                         {suggestions.map((suggestion, index) => (
@@ -58,9 +62,10 @@ const AppNavbar = () => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/News">News</Nav.Link>
-                        <Nav.Link href="">Log Out</Nav.Link>
+                    <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
+                    <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
+                    <Nav.Link href="" className="nav-link-blue-bg">Log Out</Nav.Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

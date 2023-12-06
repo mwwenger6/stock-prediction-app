@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #333333;
 }
 
 code {
@@ -19,7 +20,7 @@ code {
   background-color: white;
 }
 #stock-ticker {
-  width: 100vw; /* need to flow over the website edhges*/
+  width: 100%; /* need to flow over the website edhges*/
   overflow: hidden;
   white-space: nowrap;
   background-color: #000;

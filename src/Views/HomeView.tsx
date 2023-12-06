@@ -39,7 +39,7 @@ function HomeView () {
     return(
         <div className="m-2">
             <div className="row p-2">
-                    <div className="floatingDiv">
+                    <div className="floatingDiv"> 
                         <h3>Featured Stocks</h3>
                         <hr/>
                         <div className="featured-stocks-container">

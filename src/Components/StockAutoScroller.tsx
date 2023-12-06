@@ -7,7 +7,7 @@ const StockAutoScroller = () => {
     const cikStr = params.cik_str;
 
     return (
-        <Container className = "custom-navbar">
+        <Container>
             <h2>Stock Page for CIK: {cikStr}</h2>
             <div>
                 This will be Stock Page

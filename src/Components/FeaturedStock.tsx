@@ -9,7 +9,7 @@ interface Stock {
 
 const FeaturedStock: React.FC<{ stock: Stock }> = ({ stock }) => {
   return (
-    <Container>
+    <Container className = "navbar-custom-bg">
         <div className="floatingDiv my-1" style={{width: '200px'}}>
             <p>Name: {stock.name}</p>
             <p>Ticker: {stock.ticker}</p>

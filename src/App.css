@@ -38,13 +38,14 @@
   color: #61dafb;
 }
 .brand-name {
-  color: black !important;
+  color: rgb(251, 251, 251) !important;
 }
 .brand-name-secondary {
   color: rgb(41, 200, 41) !important;
 }
-.custom-navbar {
-  background-color: #333333 !important; /* dark gray background */
+
+.navbar-custom-bg {
+  background-color: #333333; /* dark gray background */
 }
 
 

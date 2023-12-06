@@ -3,7 +3,6 @@ import React, { useState, FormEvent  } from 'react';
 import Tickers from '../Data/tickers.json';
 import { useNavigate } from 'react-router-dom';
 interface Ticker {
-    cik_str: number;
     ticker: string;
     name: string;
 }
@@ -31,7 +30,7 @@ const AppNavbar = () => {
         setSearchTerm(value); 
         const selectedTicker = suggestions.find(suggestion => suggestion.ticker.toLowerCase() === value.toLowerCase());
         if (selectedTicker) {
-            navigate(`/Stock/${selectedTicker.cik_str}`);
+            navigate(`/Stock/${selectedTicker.ticker}`);
         }
     };
     return (

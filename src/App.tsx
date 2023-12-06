@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route index element = { <HomeView/>} />
           <Route path="News" element = { <NewsView/> } />
-          <Route path="Stock/:cik_str" element = { <StockGraphView/> } />
+          <Route path="Stock/:symbol" element = { <StockGraphView/> } />
         </Routes>
       </BrowserRouter>
     </div>

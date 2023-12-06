@@ -1,14 +1,28 @@
-import {Container} from "react-bootstrap";
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const StockGraph = () => {
+interface DataPoint {
+  name: string;
+  value: number;
+}
+
+interface LineGraphProps {
+  data: DataPoint[];
+}
+
+const StockGraph: React.FC<LineGraphProps> = ({ data : any }) => {
+    const symbol = data;
 
     return (
-        <Container>
-            <div>
-                This will show an individual Stock's graph
-            </div>
-        </Container>
+      <LineChart width={600} height={300} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
     );
-}
+  };
 
 export default StockGraph;

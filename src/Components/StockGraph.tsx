@@ -1,28 +1,65 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import React, { useState, useEffect } from 'react';
+import ReactECharts from 'echarts-for-react';
+import TempData from '../Data/tempStockData.json';
 
-interface DataPoint {
-  name: string;
-  value: number;
+interface TimeSeriesData {
+  "Meta Data": {},
+  "Time Series (5min)": {
+    [key: string]: {
+      "1. open": string;
+      "4. close": string;
+    }
+  }
 }
 
-interface LineGraphProps {
-  data: DataPoint[];
-}
+const StockGraph = () => {
+  const [options, setOptions] = useState({});
 
-const StockGraph: React.FC<LineGraphProps> = ({ data : any }) => {
-    const symbol = data;
+  useEffect(() => {
+    const timeSeries = TempData["Time Series (5min)"] as TimeSeriesData["Time Series (5min)"];
+    const categories = Object.keys(timeSeries).sort();
+    const openValues = categories.map(time => parseFloat(timeSeries[time]["1. open"]));
+    const closeValues = categories.map(time => parseFloat(timeSeries[time]["4. close"]));
 
-    return (
-      <LineChart width={600} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
-      </LineChart>
-    );
-  };
+    // Determine color based on the first and last close values
+    let color = 'grey';
+    if (closeValues[0] > closeValues[closeValues.length - 1]) {
+      color = 'red';
+    } else if (closeValues[0] < closeValues[closeValues.length - 1]) {
+      color = 'green';
+    }
+
+    // Calculate min and max for Y-axis
+    const allValues = openValues.concat(closeValues);
+    const minValue = Math.min(...allValues);
+    const maxValue = Math.max(...allValues);
+
+    const newOptions = {
+      title: {
+        text: 'MSFT Stock Prices',
+      },
+      xAxis: {
+        type: 'category',
+        data: categories
+      },
+      yAxis: {
+        type: 'value',
+        min: minValue,
+        max: maxValue
+      },
+      series: [
+        {
+          data: openValues,
+          type: 'line',
+          color: color,
+        }
+      ]
+    };
+
+    setOptions(newOptions);
+  }, []);
+
+  return <ReactECharts option={options} />;
+};
 
 export default StockGraph;

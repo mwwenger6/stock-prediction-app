@@ -4,14 +4,11 @@ import { useParams } from 'react-router-dom';
 
 const StockGraphView = () => {
     const params = useParams();
-    const cikStr = params.cik_str;
+    const symbol = params.ticker;
 
     return (
         <Container>
-            <h2>Stock Page for CIK: {cikStr}</h2>
-            <div>
-                This will be Stock Page
-            </div>
+            <StockGraph/>
         </Container>
     );
 }

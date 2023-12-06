@@ -52,6 +52,7 @@ const AppNavbar = () => {
                         onChange={handleInputChange}
                         onInput={handleInputSelect} // Added to handle option selection
                         list="tickers-list"
+                        style={{ width: '400px' }} // adjust the width as needed
                     />
                     <datalist id="tickers-list">
                         {suggestions.map((suggestion, index) => (
@@ -62,8 +63,8 @@ const AppNavbar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
-<Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
-<Nav.Link href="" className="nav-link-blue-bg">Log Out</Nav.Link>
+                    <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
+                    <Nav.Link href="" className="nav-link-blue-bg">Log Out</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

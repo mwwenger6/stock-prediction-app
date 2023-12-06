@@ -9,7 +9,8 @@ Jacob:
 
 12/6/2023
 Integrated API connection with Finnhub. 60 calls/min, and 30 calls/sec. Featured stocks now reflect true prices
-Added an up attribute to Stock object. Added spinner class to featured stock UI: may need to be refactored.
+Added an 'up' attribute to Stock object. Added spinner class to featured stock UI: may need to be refactored.
+Added up/down arrow to featured stocks, is set based on the stock's 'up' attribute.
 
 
 

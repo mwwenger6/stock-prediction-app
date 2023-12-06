@@ -6,6 +6,7 @@ const StockGraphView = () => {
     const params = useParams();
     const cikStr = params.cik_str;
 
+
     return (
         <Container>
             <h2>Stock Page for CIK: {cikStr}</h2>

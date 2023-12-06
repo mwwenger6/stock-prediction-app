@@ -9,7 +9,9 @@ const StockGraphView = () => {
 
     return (
         <Container>
-            <StockGraph/>
+            <div className="floatingDiv m-4">
+                <StockGraph/>
+            </div>
         </Container>
     );
 }

@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color: #333333; /* light gray background */
+  height: 100%;
+  width:100%;
 }
 
 .nav-link-blue-bg {

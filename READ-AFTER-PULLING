@@ -3,7 +3,8 @@ Michael:
 12/4/2023
 Added Routing, temp views, and working search bar. Need to install this package:  npm i react-router-dom
 
-
+12/6/2023
+Added Graphs. Need to install this package: npm i echarts-for-react
 
 Jacob:
 

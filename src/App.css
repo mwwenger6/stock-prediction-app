@@ -45,7 +45,7 @@
 }
 
 .navbar-custom-bg {
-  background-color: #29c829; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
+  background-color: #333333; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
   
 }
 .featuredStockBg {

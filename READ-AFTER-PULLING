@@ -7,6 +7,10 @@ Added Routing, temp views, and working search bar. Need to install this package:
 
 Jacob:
 
+12/6/2023
+Integrated API connection with Finnhub. 60 calls/min, and 30 calls/sec. Featured stocks now reflect true prices
+Added an up attribute to Stock object. Added spinner class to featured stock UI: may need to be refactored.
+
 
 
 Tom:

@@ -51,7 +51,7 @@ function HomeView () {
                         </div>
                     </div>
                 </div>
-                <div className="my-3 col-lg-6 col-sm-12">
+                <div className="my-3 col-lg-12 col-sm-12">
                     <div className='floatingDiv'>
                         <h3>Your Stocks</h3>
                         <hr/>

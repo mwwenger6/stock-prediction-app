@@ -41,13 +41,16 @@
   color: rgb(251, 251, 251) !important;
 }
 .brand-name-secondary {
-  color: rgb(41, 200, 41) !important;
+  color: #29c829 !important;
 }
 
 .navbar-custom-bg {
-  background-color: #333333; /* dark gray background */
+  background-color: #29c829; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
+  
 }
-
+.featuredStockBg {
+  background-color: #726d76; /* dark gray background */
+}
 
 @keyframes App-logo-spin {
   from {

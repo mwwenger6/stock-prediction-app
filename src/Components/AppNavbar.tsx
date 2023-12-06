@@ -34,7 +34,7 @@ const AppNavbar = () => {
         }
     };
     return (
-        <Navbar expand="lg" className="bg-body-tertiary-custom-bg" style={{backgroundColor : 'dimgray'}}>
+        <Navbar expand="lg" className="bg-body-tertiary-custom-bg" style={{backgroundColor : '#333333'}}>
             <Container>
             <Navbar.Brand>
                 <span className="brand-name">stock</span>

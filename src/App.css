@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #333333; /* light gray background */
+  background-color: #726d76; /* light gray background */
   height: 100%;
   width:100%;
 }
@@ -47,7 +47,7 @@
 }
 
 .navbar-custom-bg {
-  background-color: #333333; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
+  background-color: #726d76; /* dark gray background  for navbar and in HomeView, replaced className="floatingDiv"*/
   
 }
 .featuredStockBg {

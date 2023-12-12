@@ -20,7 +20,6 @@ const AppNavbar = () => {
                 ticker => ticker.ticker.toLowerCase().includes(value.toLowerCase()) ||
                           ticker.name.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 5); // Limiting to 5 suggestions
-
             setSuggestions(filteredSuggestions);
         } else
             setSuggestions([]);

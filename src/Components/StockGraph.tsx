@@ -20,10 +20,11 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
   const getData = GetTimeSeriesData;
   const [options, setOptions] = useState({});
   
-  //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month'
-  const [interval, setInterval] = useState('1day');
+  //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
+  const [interval, setInterval] = useState('5min');
 
   useEffect(() => {
+
     if(symbol === undefined) return 
     
     //Fetch price data on load
@@ -31,29 +32,45 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
         try {
             const timeSeriesData  = await getData(symbol, interval)
             const timeSeries =  timeSeriesData.values;
-            const openValues = timeSeries.map((item: TimeSeriesData) => parseFloat(item.open));
-            const closeValues = timeSeries.map((item: TimeSeriesData) => parseFloat(item.close));
+            const openValues = (timeSeries.map((item: TimeSeriesData) => parseFloat(item.open))).reverse();
+            const dates = (timeSeries.map((item: TimeSeriesData) => {
+                let date : Date = new Date(item.datetime)
+
+                let dateEndIndex = 5;
+                if(date.toLocaleDateString().at(4) === '/') dateEndIndex=4
+
+                let timeEndIndex = 5;
+                if(date.toLocaleTimeString().at(4) === ':') timeEndIndex=4
+
+                return date.toLocaleDateString().substring(0,dateEndIndex) + ' ' + date.toLocaleTimeString().substring(0,timeEndIndex);
+            })).reverse();
+
+            // Calculate min and max for Y-axis
+            const minValue = Math.floor(Math.min(...openValues));
+            const maxValue = Math.ceil(Math.max(...openValues));
 
             // Determine color based on the first and last close values
             let color = 'grey';
-            if (closeValues[0] > closeValues[closeValues.length - 1]) {
-              color = 'red';
-            } else if (closeValues[0] < closeValues[closeValues.length - 1]) {
+            if (openValues[0] < openValues[openValues.length - 1]) {
               color = 'green';
+            } else if (openValues[0] > openValues[openValues.length - 1]) {
+              color = 'red';
             }
 
-            // Calculate min and max for Y-axis
-            const allValues = openValues.concat(closeValues);
-            const minValue = Math.min(...allValues);
-            const maxValue = Math.max(...allValues);
+            //Determine interval label based on actual interval selected
+            let intervalLabel;
+            if(interval === '1day') intervalLabel = '1 Month'
+            else if(interval === '30min') intervalLabel = '1 Day'
+            else intervalLabel = '1 Hour'
 
+            console.log(dates)
             const newOptions = {
               title: {
-                text: `${symbol} Stock Prices (${interval})`,
+                text: `${symbol} Stock Prices (${intervalLabel})`,
               },
               xAxis: {
                 type: 'category',
-                data: '' //Need to show appropriate labels
+                  data: dates
               },
               yAxis: {
                 type: 'value',
@@ -83,12 +100,10 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
   return (
     <> 
       <ReactECharts option={options}/>
-      <div className='d-flex flex-row'> 
-        <div className='mx-3'> <h5> Intervals: </h5> </div>
-        <div className='justify-content-left mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1min' ? setInterval('1min') : ''}> 1 Minute </Button> </div>
-        <div className='justify-content-left mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1h' ? setInterval('1h') : ''}> 1 Hour </Button> </div>
-        <div className='justify-content-left mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1day' ? setInterval('1day') : ''}> 1 Day </Button> </div>
-        <div className='justify-content-left mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1month' ? setInterval('1month'): ''}> 1 Month </Button> </div>
+      <div className='d-flex flex-row justify-content-center'>
+        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '5min' ? setInterval('5min') : ''}> 1 Hour </Button> </div>
+        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '30min' ? setInterval('30min') : ''}> 1 Day </Button> </div>
+        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1d' ? setInterval('1day'): ''}> 1 Month </Button> </div>
       </div>
     </>
     )

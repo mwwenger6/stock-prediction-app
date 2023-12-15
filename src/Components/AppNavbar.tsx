@@ -62,7 +62,7 @@ const AppNavbar = () => {
                     <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
                     <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
-                    <Nav.Link href="" className="nav-link-blue-bg">Log In</Nav.Link>
+                    <Nav.Link href="/Login" className="nav-link-blue-bg">Log In</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

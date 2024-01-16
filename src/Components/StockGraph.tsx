@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
+import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 
 interface TimeSeriesData {
@@ -17,9 +18,12 @@ interface StockGraphProps {
 
 const StockGraph = ({ symbol } : StockGraphProps) => {
 
+  const interval1 = '5min'
+  const interval2 = '30min'
+  const interval3 = '1day'
   const getData = GetTimeSeriesData;
   const [options, setOptions] = useState({});
-  
+  const [timeSeriesData, setTimeSeriesData] = useState({}); //THIS IS A STATE HOOK SKETER, WE WILL STORE THE TIME SERIES DATA HERE
   //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
   const [interval, setInterval] = useState('5min');
 
@@ -86,6 +90,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
               ]
             };
 
+            setTimeSeriesData(timeSeries) //FOR SKETER TO SEE
             setOptions(newOptions);
         }
         catch (error) {         
@@ -101,9 +106,10 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     <> 
       <ReactECharts option={options}/>
       <div className='d-flex flex-row justify-content-center'>
-        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '5min' ? setInterval('5min') : ''}> 1 Hour </Button> </div>
-        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '30min' ? setInterval('30min') : ''}> 1 Day </Button> </div>
-        <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != '1d' ? setInterval('1day'): ''}> 1 Month </Button> </div>
+          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval1 ? setInterval(interval1) : ''}> 1 Hour </Button> </div>
+          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval2 ? setInterval(interval2) : ''}> 1 Day </Button> </div>
+          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval3 ? setInterval(interval3): ''}> 1 Month </Button> </div>
+          <div className='mx-3'> <CsvDownload className='btn btn-outline-secondary' data={timeSeriesData} filename="stock_data.csv"> Download CSV </CsvDownload> </div>
       </div>
     </>
     )

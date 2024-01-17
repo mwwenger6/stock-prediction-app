@@ -23,7 +23,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
   const interval3 = '1day'
   const getData = GetTimeSeriesData;
   const [options, setOptions] = useState({});
-  const [timeSeriesData, setTimeSeriesData] = useState({}); //THIS IS A STATE HOOK SKETER, WE WILL STORE THE TIME SERIES DATA HERE
+  const [timeSeriesData, setTimeSeriesData] = useState({});
   //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
   const [interval, setInterval] = useState('5min');
 
@@ -90,7 +90,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
               ]
             };
 
-            setTimeSeriesData(timeSeries) //FOR SKETER TO SEE
+            setTimeSeriesData(timeSeries)
             setOptions(newOptions);
         }
         catch (error) {         

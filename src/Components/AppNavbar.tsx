@@ -1,16 +1,23 @@
-import {Container, Nav, Navbar, Form } from "react-bootstrap";
+import {Container, Nav, Navbar, Form, Button } from "react-bootstrap";
 import React, { useState, FormEvent  } from 'react';
 import Tickers from '../Data/tickers.json';
 import { useNavigate } from 'react-router-dom';
+import LoginModal from "../Views/LoginModal";
+
 interface Ticker {
     ticker: string;
     name: string;
 }
 
 const AppNavbar = () => {
+    const [showModal , setShowModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<Ticker[]>([]);
     const navigate = useNavigate();
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
+      };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
@@ -62,10 +69,10 @@ const AppNavbar = () => {
                     <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
                     <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
-                    <Nav.Link href="/Login" className="nav-link-blue-bg">Log In</Nav.Link>
-
+                    <Nav.Link onClick={toggleModal} className="nav-link-blue-bg">Log In</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                <LoginModal showModal={showModal} toggleModal={toggleModal}/>
             </Container>
         </Navbar>
     );

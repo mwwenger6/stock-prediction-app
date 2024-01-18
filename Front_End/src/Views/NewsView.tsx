@@ -1,11 +1,12 @@
 import {Container} from "react-bootstrap";
+import News from "../Components/News";
 
 const NewsView = () => {
 
     return (
         <Container>
             <div>
-                This will be News Page
+                <News/>
             </div>
         </Container>
     );

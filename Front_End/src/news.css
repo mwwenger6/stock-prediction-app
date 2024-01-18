@@ -1,0 +1,54 @@
+/* Style the news section */
+#news-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  /* Style the article div */
+  .article {
+    width: 45%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px #ddd;
+  }
+  
+  /* Style the article title */
+  .article h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Style the article description */
+  .article p {
+    font-family: "Droid Serif", serif;
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  /* Style the article image */
+  .article img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+  
+  /* Style the article link */
+  .article a {
+    font-family: "Droid Serif", serif;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin: 10px 0;
+    display: inline-block;
+  }
+  

@@ -10,7 +10,7 @@ function LoginModal (props: any) {
 
     return (
         <div>
-            <Modal show={props.showModal} onHide={props.toggleModal} className="modal-lg">
+            <Modal show={props.showModal} onHide={props.toggleModal} className="modal-sm">
                 <Modal.Header closeButton>
                     <Modal.Title className="w-100 text-center"> Log In </Modal.Title>
                 </Modal.Header>
@@ -26,14 +26,19 @@ function LoginModal (props: any) {
                             {queryResponse === '' ? 'Placeholder' : (queryResponse === 'Account created' ? queryResponse : '*' + queryResponse)}
                         </div>
                     </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" onClick={props.toggleModal}>
-                        Close
-                    </Button>
+                <div className="justify-content-center d-flex">
                     <Button className="bg-success border-0 mx-2">
                          Submit 
                     </Button>
+                </div>
+                </Modal.Body>
+                <Modal.Footer className="justify-content-center d-flex">
+                    <div className="justify-content-center d-flex">
+                        <a href="/login">Sign Up</a>
+                    </div>
+                    <div className="justify-content-center d-flex">  
+                        <a href="/login">Forgot Password?</a>
+                    </div>
                 </Modal.Footer>
             </Modal>
         </div>

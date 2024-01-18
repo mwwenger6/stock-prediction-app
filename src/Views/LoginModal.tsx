@@ -33,12 +33,8 @@ function LoginModal (props: any) {
                 </div>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center d-flex">
-                    <div className="justify-content-center d-flex">
                         <a href="/login">Sign Up</a>
-                    </div>
-                    <div className="justify-content-center d-flex">  
                         <a href="/login">Forgot Password?</a>
-                    </div>
                 </Modal.Footer>
             </Modal>
         </div>

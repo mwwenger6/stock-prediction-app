@@ -25,7 +25,8 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
   const [options, setOptions] = useState({});
   const [timeSeriesData, setTimeSeriesData] = useState({});
   //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
-  const [interval, setInterval] = useState('5min');
+  const [interval, setInterval] = useState(interval2);
+  const [showError, setShowError] = useState(false)
 
   useEffect(() => {
 
@@ -35,6 +36,9 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     const fetchData = async () => {
         try {
             const timeSeriesData  = await getData(symbol, interval)
+            if (timeSeriesData.status == 'error')
+                throw "Unable to get data";
+            setShowError(false);
             const timeSeries =  timeSeriesData.values;
             const openValues = (timeSeries.map((item: TimeSeriesData) => parseFloat(item.open))).reverse();
             const dates = (timeSeries.map((item: TimeSeriesData) => {
@@ -67,7 +71,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
             else if(interval === '30min') intervalLabel = '1 Day'
             else intervalLabel = '1 Hour'
 
-            console.log(dates)
+
             const newOptions = {
               title: {
                 text: `${symbol} Stock Prices (${intervalLabel})`,
@@ -93,8 +97,9 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
             setTimeSeriesData(timeSeries)
             setOptions(newOptions);
         }
-        catch (error) {         
+        catch (error) {
             console.error('Error fetching prices:', error);
+            setShowError(true);
         }
       };
 
@@ -103,13 +108,43 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
 
   //limited to 8 api calls per minute
   return (
-    <> 
-      <ReactECharts option={options}/>
+    <>
+        {showError ?
+            <div style={{height: '300px'}} className='align-items-center d-flex'> <h3 className="m-auto"> Unable to get time series data at this time </h3> </div> :
+            <ReactECharts option={options}/> }
       <div className='d-flex flex-row justify-content-center'>
-          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval1 ? setInterval(interval1) : ''}> 1 Hour </Button> </div>
-          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval2 ? setInterval(interval2) : ''}> 1 Day </Button> </div>
-          <div className='mx-3'> <Button variant='outline-secondary' onClick={() => interval != interval3 ? setInterval(interval3): ''}> 1 Month </Button> </div>
-          <div className='mx-3'> <CsvDownload className='btn btn-outline-secondary' data={timeSeriesData} filename="stock_data.csv"> Download CSV </CsvDownload> </div>
+          <div className='mx-3'>
+              <Button
+              className={`btn ${interval === interval1 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+              variant=''
+              onClick={() => interval != interval1 ? setInterval(interval1) : ''}>
+              1 Hour
+              </Button>
+          </div>
+          <div className='mx-3'>
+              <Button
+                  className={`btn ${interval === interval2 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+                  variant=''
+                  onClick={() => interval != interval2 ? setInterval(interval2) : ''}>
+                  1 Day
+              </Button>
+          </div>
+          <div className='mx-3'>
+              <Button
+                  className={`btn ${interval === interval3 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+                  variant='outline-secondary'
+                  onClick={() => interval != interval3 ? setInterval(interval3): ''}>
+                  1 Month
+              </Button>
+          </div>
+          <div className='mx-3'>
+              <CsvDownload
+                  className={`btn btn-outline-secondary ${showError ? 'disabled' : ''}`}
+                  data={timeSeriesData}
+                  filename="stock_data.csv">
+                  Download CSV
+              </CsvDownload>
+          </div>
       </div>
     </>
     )

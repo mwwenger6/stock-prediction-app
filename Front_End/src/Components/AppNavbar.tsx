@@ -36,7 +36,7 @@ const AppNavbar = () => {
         setSearchTerm(value); 
         const selectedTicker = suggestions.find(suggestion => suggestion.ticker.toLowerCase() === value.toLowerCase());
         if (selectedTicker) {
-            navigate(`/Stock/${selectedTicker.ticker}`);
+            navigate(`/Stock/${selectedTicker.ticker}`, {replace: true})
         }
     };
     return (

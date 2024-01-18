@@ -28,6 +28,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
   const [interval, setInterval] = useState(interval2);
   const [showError, setShowError] = useState(false)
 
+
   useEffect(() => {
 
     if(symbol === undefined) return 
@@ -104,7 +105,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
       };
 
       fetchData();
-  }, [interval]);
+  }, [interval, symbol]);
 
   //limited to 8 api calls per minute
   return (

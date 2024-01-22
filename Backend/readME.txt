@@ -1,0 +1,1 @@
+Download this extension on vscode to compile sql: Oracle Developer Tools for VS Code (SQL and PLSQL)

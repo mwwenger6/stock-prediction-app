@@ -14,7 +14,7 @@ app.use(bodyParser.json()); // Parse JSON bodies
 
 // MySQL connection
 const connection = mysql.createConnection({
-  host: '71.113.172.111',
+  host: '192.168.1.156',
   user: 'appuser',
   password: 'secure_password',   
   database: 'stock_trading_app'

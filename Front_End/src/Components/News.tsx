@@ -40,7 +40,7 @@ const News = () => {
 
     return(
         <>
-            <h1>Featured Products</h1>
+            <h1>Featured News Artocles</h1>
             <div className="articles-container">
                 {products.map((article, index) => (
                     // Render each article as a component

@@ -15,16 +15,20 @@ app.use(bodyParser.json()); // Parse JSON bodies
 // MySQL connection
 const connection = mysql.createConnection({
   host: '71.113.172.111',
-  user: 'root',
-  password: 'DollarS1gn$',
+  user: 'appuser',
+  password: 'secure_password',   
   database: 'stock_trading_app'
 });
 
 
 connection.connect(error => {
-  if (error) throw error;
+  if (error) {
+    console.error('Failed to connect to the database:', error);
+    return;
+  }
   console.log('Successfully connected to the database.');
 });
+
 
 // GET request to fetch stocks
 app.get('/stocks', (req, res) => {

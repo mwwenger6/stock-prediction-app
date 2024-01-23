@@ -22,7 +22,6 @@ const News = () => {
     const fetchData = async () => {
 
         try {
-            
             const data = await getArticles();
             var articles = data.articles as Article[];
 
@@ -34,7 +33,9 @@ const News = () => {
             console.error('Error fetching articles:', error);
             setShowError(true);
         }
+
     }
+    fetchData();
     }, []);
 
     return(

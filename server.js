@@ -14,11 +14,12 @@ app.use(bodyParser.json()); // Parse JSON bodies
 
 // MySQL connection
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
+  host: '71.113.172.111',
   user: 'root',
   password: 'DollarS1gn$',
   database: 'stock_trading_app'
 });
+
 
 connection.connect(error => {
   if (error) throw error;

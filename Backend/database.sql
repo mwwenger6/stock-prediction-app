@@ -14,7 +14,7 @@ CREATE TABLE stocks (
 
 
 CREATE TABLE user_stocks (
-    user_stock_id INT AUTO_INCREMENT PsqlRIMARY KEY,
+    user_stock_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     stock_id INT NOT NULL,
     quantity DECIMAL(10, 2) NOT NULL DEFAULT 0.00, -- track quanitity of stocks

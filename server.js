@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
   password: 'DollarS1gn$',
-  database: 'stockSQL'
+  database: 'stock_trading_app'
 });
 
 connection.connect(error => {

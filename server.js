@@ -34,6 +34,7 @@ app.get('/stocks', (req, res) => {
     res.status(200).json(results);
   });
 });
+
 //Fetch All Users
 app.get('/users', (req, res) => {
     connection.query('SELECT * FROM users', (error, results) => {
@@ -43,6 +44,19 @@ app.get('/users', (req, res) => {
       res.status(200).json(results);
     });
   });
+
+  //Read (Single User)
+  app.get('/users/:userId', (req, res) => {
+    const { userId } = req.params;
+    const query = 'SELECT * FROM users WHERE user_id = ?';
+    connection.query(query, [userId], (error, results) => {
+        if (error) {
+            return res.status(500).send(error);
+        }
+        res.status(200).json(results[0]);
+    });
+});
+
 
   //Create a New User
   app.post('/users', (req, res) => {
@@ -55,6 +69,33 @@ app.get('/users', (req, res) => {
       res.status(201).json({ message: 'User created successfully', userId: results.insertId });
     });
   });
+
+//Update user
+app.put('/users/:userId', (req, res) => {
+  const { userId } = req.params;
+  const { email, newPassword } = req.body; // Assume password is hashed
+  const query = 'UPDATE users SET email = ?, password = ? WHERE user_id = ?';
+  connection.query(query, [email, newPassword, userId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'User updated successfully' });
+  });
+});
+
+
+//Delte user
+app.delete('/users/:userId', (req, res) => {
+  const { userId } = req.params;
+  const query = 'DELETE FROM users WHERE user_id = ?';
+  connection.query(query, [userId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'User deleted successfully' });
+  });
+});
+
 
   //User Authentication
   app.post('/login', (req, res) => {
@@ -91,6 +132,43 @@ app.get('/user/:userId/stocks', (req, res) => {
     });
   });
 
+//create stock
+app.post('/stocks', (req, res) => {
+  const { name, ticker } = req.body;
+  const query = 'INSERT INTO stocks (name, ticker) VALUES (?, ?)';
+  connection.query(query, [name, ticker], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(201).json({ message: 'Stock added successfully', stockId: results.insertId });
+  });
+});
+
+//update stock
+app.put('/stocks/:stockId', (req, res) => {
+  const { stockId } = req.params;
+  const { name, newTicker } = req.body;
+  const query = 'UPDATE stocks SET name = ?, ticker = ? WHERE stock_id = ?';
+  connection.query(query, [name, newTicker, stockId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'Stock updated successfully' });
+  });
+});
+
+//delete stock
+app.delete('/stocks/:stockId', (req, res) => {
+  const { stockId } = req.params;
+  const query = 'DELETE FROM stocks WHERE stock_id = ?';
+  connection.query(query, [stockId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'Stock deleted successfully' });
+  });
+});
+
   //Add a Stock to a User's Portfolio
 app.post('/user/:userId/stocks', (req, res) => {
   const { userId } = req.params;
@@ -101,6 +179,106 @@ app.post('/user/:userId/stocks', (req, res) => {
       return res.status(500).send(error);
     }
     res.status(201).json({ message: 'Stock added to portfolio', userStockId: results.insertId });
+  });
+});
+
+//Update user stock quantity
+app.put('/user/:userId/stocks/:stockId', (req, res) => {
+  const { userId, stockId } = req.params;
+  const { quantity } = req.body;
+  const query = 'UPDATE user_stocks SET quantity = ? WHERE user_id = ? AND stock_id = ?';
+  connection.query(query, [quantity, userId, stockId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'User stock quantity updated successfully' });
+  });
+});
+
+//delete a users stock
+app.delete('/user/:userId/stocks/:stockId', (req, res) => {
+  const { userId, stockId } = req.params;
+  const query = 'DELETE FROM user_stocks WHERE user_id = ? AND stock_id = ?';
+  connection.query(query, [userId, stockId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'User stock deleted successfully' });
+  });
+});
+
+//creaet stock price
+app.put('/stocks/:stockId/prices/:priceId', (req, res) => {
+  const { stockId, priceId } = req.params;
+  const { price } = req.body;
+  const query = 'UPDATE stock_prices SET price = ? WHERE stock_id = ? AND stock_price_id = ?';
+  connection.query(query, [price, stockId, priceId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'Stock price updated successfully' });
+  });
+});
+
+//update stock price
+app.put('/stocks/:stockId/prices/:priceId', (req, res) => {
+  const { stockId, priceId } = req.params;
+  const { price } = req.body;
+  const query = 'UPDATE stock_prices SET price = ? WHERE stock_id = ? AND stock_price_id = ?';
+  connection.query(query, [price, stockId, priceId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'Stock price updated successfully' });
+  });
+});
+
+//delete the stock price
+app.delete('/stocks/:stockId/prices/:priceId', (req, res) => {
+  const { stockId, priceId } = req.params;
+  const query = 'DELETE FROM stock_prices WHERE stock_id = ? AND stock_price_id = ?';
+  connection.query(query, [stockId, priceId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'Stock price deleted successfully' });
+  });
+});
+
+//create news article
+app.post('/news', (req, res) => {
+  const { title, content } = req.body;
+  const query = 'INSERT INTO news (title, content) VALUES (?, ?)';
+  connection.query(query, [title, content], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(201).json({ message: 'News article added successfully', newsId: results.insertId });
+  });
+});
+
+//update news articl
+app.put('/news/:newsId', (req, res) => {
+  const { newsId } = req.params;
+  const { title, content } = req.body;
+  const query = 'UPDATE news SET title = ?, content = ? WHERE news_id = ?';
+  connection.query(query, [title, content, newsId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'News article updated successfully' });
+  });
+});
+
+//delete news article
+app.delete('/news/:newsId', (req, res) => {
+  const { newsId } = req.params;
+  const query = 'DELETE FROM news WHERE news_id = ?';
+  connection.query(query, [newsId], (error, results) => {
+      if (error) {
+          return res.status(500).send(error);
+      }
+      res.status(200).json({ message: 'News article deleted successfully' });
   });
 });
 
@@ -133,7 +311,7 @@ app.listen(port, () => {
   console.log(`API server running on port ${port}`);
 });
 
-//simople tes
+/*simople testinf method
 app.get('/test-db', (req, res) => {
     connection.query('SELECT 1 + 1 AS solution', (error, results) => {
       if (error) {
@@ -142,4 +320,4 @@ app.get('/test-db', (req, res) => {
       res.status(200).send('Database connection successful. Answer: ' + results[0].solution);
     });
   });
-  
+  */

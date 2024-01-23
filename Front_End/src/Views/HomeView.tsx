@@ -1,7 +1,12 @@
+
+const API_BASE_URL = 'http://localhost:3002';
+
 import FeaturedStock from '../Components/FeaturedStock';
 import { useState, useEffect } from "react";
 import GetPriceUpdate from "../Services/GetPriceUpdate";
 import PersonalGraph from "../Components/PersonalGraph";
+
+
 
 interface Stock {
     name: string;
@@ -28,7 +33,7 @@ function HomeView () {
 
     useEffect(() => {
 
-        //Fetch price data on load
+        /*//Fetch price data on load
         const fetchData = async () => {
             try {
                 const updatedStockData  = await Promise.all(featuredStockData.map(async (stock) => {
@@ -44,7 +49,31 @@ function HomeView () {
         };
 
         fetchData();
-    }, []);
+    }, []);*/
+    
+        // Function to fetch stocks data from API
+        const fetchStocks = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/stocks`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                // Ensure that the object created in the map function matches the Stock interface
+                setFeaturedStockData(data.map((stock: any) => ({
+                    ...stock,
+                    // If API returns 'price' as a string, convert it to a number
+                    // price: parseFloat(stock.price),
+                    price: -1, // Placeholder for price
+                    up: undefined // Placeholder for stock up/down
+                })));
+            } catch (error) {
+                console.error('Error fetching stocks:', error);
+            }
+        };
+
+        fetchStocks();
+    }, []); // The empty dependency array [] means this effect will run once when the component mounts
 
     return(
         <div className="m-2">

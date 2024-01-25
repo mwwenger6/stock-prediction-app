@@ -2,7 +2,7 @@
 async function GetNewsArticles() {
 
     var url = 'https://newsapi.org/v2/everything?' +
-            'q=NFL&' +
+            'q=Stock&' +
             'from=2024-01-21&' +
             'sortBy=popularity&' +
             'apiKey=bfedcfd9c74e469db82924ab09cbba45';

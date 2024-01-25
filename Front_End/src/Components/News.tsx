@@ -18,44 +18,42 @@ const News = () => {
     const [products, setProducts] = useState<Article[]>([]);
 
     useEffect(() => {
-    // Fetch article data on load
-    const fetchData = async () => {
+        // Fetch article data on load
+        const fetchData = async () => {
 
-        try {
-            const data = await getArticles();
-            var articles = data.articles as Article[];
+            try {
+                const data = await getArticles();
+                var articles = data.articles as Article[];
+                console.log(articles)
+                // Update the products state variable with the articles array
+                setProducts(articles);
 
-            // Update the products state variable with the articles array
-            setProducts(articles);
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+                setShowError(true);
+            }
 
         }
-        catch (error) {
-            console.error('Error fetching articles:', error);
-            setShowError(true);
-        }
-
-    }
-    fetchData();
+        fetchData();
     }, []);
 
-    return(
+    return (
         <>
-            <h1>Featured News Artocles</h1>
-            <div className="articles-container">
+            <h1 className="my-3"> Featured News Articles </h1>
+            <hr/>
+            <div className="row">
                 {products.map((article, index) => (
-                    // Render each article as a component
-                    <div className="article" key={index}>
-                        <Image src={article.urlToImage} alt={article.title} />
-                        <h2>{article.title}</h2>
-                        <p>{article.description}</p>
-                        <a href={article.url}>Read more</a>
+                    <div className="col-lg-6 col-12">
+                        <div className="article bg-white m-3 d-flex flex-column justify-content-between" key={index} style={{ height: '600px', maxHeight: '600px' }} >
+                            <Image className="m-auto my-2 border border-black" src={article.urlToImage} alt={article.title} style={{ maxWidth: '500px', maxHeight: '350px'}} />
+                            <h2 className="title">{article.title}</h2>
+                            <p className="description"> {article.description?.length > 150 ? `${article.description.slice(0, 150)}...` : article.description}</p>
+                            <div> <a className="readMore" target="_blank" href={article.url}>Read more</a> </div>
+                        </div>
                     </div>
                 ))}
             </div>
         </>
     );
-
-
-};
-
+}
 export default News;

@@ -3,6 +3,8 @@ import upArrow from '../Resources/green_up_arrow.png'
 import downArrow from '../Resources/red_down_arrow.png'
 import { Container } from 'react-bootstrap';
 
+const API_BASE_URL = 'http://18.116.164.159:3002';
+
 interface Stock {
   name: string;
   ticker: string;

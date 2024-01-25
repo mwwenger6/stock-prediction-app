@@ -36,7 +36,7 @@ function HomeView () {
 
     useEffect(() => {
 
-        /*//Fetch price data on load
+        //Fetch price data on load
         const fetchData = async () => {
             try {
                 const updatedStockData  = await Promise.all(featuredStockData.map(async (stock) => {
@@ -52,9 +52,9 @@ function HomeView () {
         };
 
         fetchData();
-    }, []);*/
+    }, []);
     
-        // Function to fetch stocks data from API
+        /*// Function to fetch stocks data from API
         const fetchStocks = async () => {
             try {
                 const response = await fetch(`${API_BASE_URL}/stocks`);
@@ -76,7 +76,7 @@ function HomeView () {
         };
 
         fetchStocks();
-    }, []); // The empty dependency array [] means this effect will run once when the component mounts
+    }, []);*/ // The empty dependency array [] means this effect will run once when the component mounts
 
     return(
         <div className="m-2">

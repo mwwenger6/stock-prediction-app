@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 
-data = pd.read_csv('Machine_Learning/AMZN.csv')
+data = pd.read_csv('Machine_Learning/MSFT.csv')
 
 data = data[['Date', 'Close']]
 
@@ -159,7 +159,7 @@ def validate_one_epoch():
   print()
 
   
-learning_rate = 0.001
+learning_rate = 0.05
 num_epochs = 10
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)

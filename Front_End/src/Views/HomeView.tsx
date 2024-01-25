@@ -55,28 +55,27 @@ function HomeView () {
     }, []);
     
         /*// Function to fetch stocks data from API
-        const fetchStocks = async () => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/stocks`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                // Ensure that the object created in the map function matches the Stock interface
-                setFeaturedStockData(data.map((stock: any) => ({
-                    ...stock,
-                    // If API returns 'price' as a string, convert it to a number
-                    // price: parseFloat(stock.price),
-                    price: -1, // Placeholder for price
-                    up: undefined // Placeholder for stock up/down
-                })));
-            } catch (error) {
-                console.error('Error fetching stocks:', error);
+            const fetchStocks = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/stocks`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        };
+            const data = await response.json();
+            // Ensure that the object created in the map function matches the Stock interface
+            setFeaturedStockData(data.map((stock: any) => ({
+                ...stock,
+                // Make sure your API returns the price and up/down information or adjust this mapping
+                price: parseFloat(stock.price),
+                up: stock.up // Or calculate this based on your own logic
+            })));
+        } catch (error) {
+            console.error('Error fetching stocks:', error);
+        }
+    };
 
-        fetchStocks();
-    }, []);*/ // The empty dependency array [] means this effect will run once when the component mounts
+    fetchStocks();
+}, []);*/ // The empty dependency array [] means this effect will run once when the component mounts
 
     return(
         <div className="m-2">

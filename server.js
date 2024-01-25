@@ -12,6 +12,11 @@ const port = 3002;
 app.use(cors()); // Enable CORS for all requests
 app.use(bodyParser.json()); // Parse JSON bodies
 
+const corsOptions = {
+  origin: '*', // For development, you might use '*'. For production, specify the actual origin.
+  optionsSuccessStatus: 200
+};
+
 // MySQL connection
 const connection = mysql.createConnection({
   host: '71.113.172.111',

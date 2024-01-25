@@ -1,11 +1,14 @@
 
-const API_BASE_URL = 'http://localhost:3002';
-
+//const API_BASE_URL = 'http://localhost:3002';
+// First, import all required modules and components
 import FeaturedStock from '../Components/FeaturedStock';
 import { useState, useEffect } from "react";
 import GetPriceUpdate from "../Services/GetPriceUpdate";
 import PersonalGraph from "../Components/PersonalGraph";
 
+// Then, declare any constants or variables
+const API_BASE_URL = 'http://18.116.164.159:3002';
+// or const API_BASE_URL = 'http://localhost:3002'; for local development
 
 
 interface Stock {

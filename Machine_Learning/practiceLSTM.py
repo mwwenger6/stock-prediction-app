@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 
-data = pd.read_csv('AMZN.csv')
+data = pd.read_csv('Machine_Learning/AMZN.csv')
 
 data = data[['Date', 'Close']]
 
@@ -13,7 +13,7 @@ device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
 data['Date'] = pd.to_datetime(data['Date'])
 
-plt.plot(data['Date'], data['Close'])
+plt.plot(data['Date'].values, data['Close'].values)
 
 from copy import deepcopy as dc
 
@@ -140,7 +140,7 @@ def train_one_epoch():
 
   print()
 
-  def validate_one_epoch():
+def validate_one_epoch():
   model.train(False)
   running_loss = 0.0
 
@@ -158,7 +158,8 @@ def train_one_epoch():
   print('***************************************************')
   print()
 
-  learning_rate = 0.001
+  
+learning_rate = 0.001
 num_epochs = 10
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)

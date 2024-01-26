@@ -34,6 +34,31 @@ connection.connect(error => {
   console.log('Successfully connected to the database.');
 });
 
+//will run the SQL query to get the last 30 days of prices for a given stock_id. This function will interact with the MySQL database.
+try {
+  const [rows, fields] = await connection.execute(
+      'SELECT price FROM stock_history WHERE stock_id = ? ORDER BY price_date DESC LIMIT 30',
+      [stockId]
+  );
+  connection.end();
+  return rows;
+} catch (error) {
+  console.error('Error fetching stock history:', error);
+  throw error; // re-throw the error so it can be caught by the caller
+}
+
+
+// endpoint will be responsible for serving the historical stock price data needed by machine learning model
+app.get('/stocks/:stockId/history', async (req, res) => {
+  const { stockId } = req.params;
+  try {
+      const historyData = await getStockHistory(stockId);
+      res.json(historyData);
+  } catch (error) {
+      console.error('Error fetching stock history:', error);
+      res.status(500).send('Error fetching stock history');
+  }
+});
 
 // GET request to fetch stocks
 app.get('/stocks', (req, res) => {

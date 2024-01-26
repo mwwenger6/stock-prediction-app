@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 
-data = pd.read_csv('Machine_Learning/MSFT.csv')
+data = pd.read_csv('Machine_Learning/SAVEme.csv')
 
 data = data[['Date', 'Close']]
 

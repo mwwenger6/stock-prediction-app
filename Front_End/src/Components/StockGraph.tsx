@@ -20,13 +20,34 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
 
   const interval1 = '5min'
   const interval2 = '30min'
-  const interval3 = '1day'
+  const interval3 = '8h'
+  const interval4 = '1day'
+  const interval5 = '1month'
   const getData = GetTimeSeriesData;
   const [options, setOptions] = useState({});
   const [timeSeriesData, setTimeSeriesData] = useState({});
   //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
-  const [interval, setInterval] = useState(interval2);
+  const [interval, setInterval] = useState(interval3);
   const [showError, setShowError] = useState(false)
+  const [marketClosed, setMarketClosed] = useState(false)
+    function stockMarketClosed() {
+        // Get the current time in the specified time zone
+        const timeZone = 'America/New_York';
+        const now = new Date (new Date().toLocaleString('en-US', { timeZone }));
+
+        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+
+        // Check if it's a weekend (Saturday or Sunday)
+        if (dayOfWeek === 0 || dayOfWeek === 6) return true;
+
+        // Check if it's before 9:30 AM or after 4:00 PM ET
+        if (currentHour < 9 || (currentHour === 9 && currentMinute < 30) || currentHour >= 16) return true;
+
+        // The stock market is open
+        return false;
+    }
 
 
   useEffect(() => {
@@ -36,7 +57,9 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     //Fetch price data on load
     const fetchData = async () => {
         try {
-            const timeSeriesData  = await getData(symbol, interval)
+            setMarketClosed(stockMarketClosed())
+            const timeSeriesData  = await getData(symbol, interval, marketClosed)
+
             if (timeSeriesData.status == 'error')
                 throw "Unable to get data";
             setShowError(false);
@@ -68,8 +91,10 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
 
             //Determine interval label based on actual interval selected
             let intervalLabel;
-            if(interval === '1day') intervalLabel = '1 Month'
-            else if(interval === '30min') intervalLabel = '1 Day'
+            if(interval === interval5) intervalLabel = '1 Year'
+            else if(interval === interval4) intervalLabel = '1 Month'
+            else if(interval === interval3) intervalLabel = '1 Week'
+            else if(interval === interval2) intervalLabel = '1 Day'
             else intervalLabel = '1 Hour'
 
 
@@ -133,9 +158,25 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
           <div className='mx-3'>
               <Button
                   className={`btn ${interval === interval3 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+                  variant=''
+                  onClick={() => interval != interval3 ? setInterval(interval3) : ''}>
+                  1 Week
+              </Button>
+          </div>
+          <div className='mx-3'>
+              <Button
+                  className={`btn ${interval === interval4 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
                   variant='outline-secondary'
-                  onClick={() => interval != interval3 ? setInterval(interval3): ''}>
+                  onClick={() => interval != interval4 ? setInterval(interval4): ''}>
                   1 Month
+              </Button>
+          </div>
+          <div className='mx-3'>
+              <Button
+                  className={`btn ${interval === interval5 ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+                  variant='outline-secondary'
+                  onClick={() => interval != interval5 ? setInterval(interval5): ''}>
+                  1 Year
               </Button>
           </div>
           <div className='mx-3'>
@@ -147,6 +188,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
               </CsvDownload>
           </div>
       </div>
+        {marketClosed && (interval == interval1 || interval == interval2) ? <p className="text-danger mt-4"> * These prices reflect the last time the stock market was open </p> : <> </>}
     </>
     )
 };

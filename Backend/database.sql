@@ -37,3 +37,11 @@ CREATE TABLE news ( --not sure about storing articles, and what data specificall
     content TEXT NOT NULL,
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE stock_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_id INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    price_date DATE NOT NULL,
+    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id)
+);

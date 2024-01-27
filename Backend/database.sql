@@ -1,47 +1,58 @@
-CREATE TABLE users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE [dbo].[UserTypes] (
+    [UserTypeId] int IDENTITY(1,1) PRIMARY KEY,
+    [UserTypeName] nvarchar(255)
+)
+INSERT INTO dbo.UserTypes VALUES ('Admin'), ('Client');
+
+CREATE TABLE [dbo].[Users] (
+    [UserId] int IDENTITY(1,1) PRIMARY KEY,
+    [Email] nvarchar(63) NOT NULL UNIQUE,
+    [Password] nvarchar(63) NOT NULL,
+    [UserTypeId] int,  --FOREIGN KEY
+    [CreatedAt] TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+ALTER TABLE [dbo].[Users] ADD CONSTRAINT FK_Users_UserTypeId_UserTypes_UserTypeId FOREIGN KEY (UserTypeId) REFERENCES [dbo].[UserTypes] (UserTypeId)
+
+
+CREATE TABLE [dbo].[Stocks] (
+    [Ticker] nvarchar(10) PRIMARY KEY,
+    [Name] nvarchar(100) NOT NULL,
+    [OneDayPercentage] DECIMAL(10,2),
+    [CreatedAt] TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE stocks (
-    stock_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    ticker VARCHAR(10) NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE [dbo].[UserStocks] (
+    [UserId] INT,
+    [Ticker] nvarchar(10),
+    [Quantity] DECIMAL(10, 6) NOT NULL DEFAULT 0.00, -- track quanitity of stocks
+    [CreatedAt] TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT PK_StockPrice PRIMARY KEY CLUSTERED (Ticker, UserId)
 );
 
+ALTER TABLE [dbo].[UserStocks] ADD 
+    CONSTRAINT FK_UserStocks_UserId_Users_UserId FOREIGN KEY (UserId) REFERENCES [dbo].[Users] (UserId)
+    CONSTRAINT FK_UserStocks_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES [dbo].[Stocks] (Ticker)
 
-CREATE TABLE user_stocks (
-    user_stock_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    stock_id INT NOT NULL,
-    quantity DECIMAL(10, 2) NOT NULL DEFAULT 0.00, -- track quanitity of stocks
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id)
+CREATE TABLE [dbo].[News] ( --not sure about storing articles, and what data specifically, subject to change
+    [NewsId] INT IDENTITY(1,1) PRIMARY KEY,
+    [Title] nvarchar(255) NOT NULL,
+    [Content] TEXT NOT NULL,
+    [PublishedAt] datetime NOT NULL,
 );
 
-CREATE TABLE stock_prices (
-    stock_price_id INT AUTO_INCREMENT PRIMARY KEY,
-    stock_id INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    price_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id)
-);
+CREATE TABLE [dbo].[StockPrices] (
+    [Ticker] nvarchar(10) NOT NULL,
+    [Price] DECIMAL(8,6) NOT NULL,
+    [Time] datetime NOT NULL,
+    CONSTRAINT PK_StockPrice PRIMARY KEY CLUSTERED (Ticker, Time)
+)
 
-CREATE TABLE news ( --not sure about storing articles, and what data specifically, subject to change
-    news_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    content TEXT NOT NULL,
-    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+ALTER TABLE [dbo].[StockPrices] ADD 
+    CONSTRAINT FK_StockPrices_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES [dbo].[Stocks] (Ticker)
 
-CREATE TABLE stock_history (
-    history_id INT AUTO_INCREMENT PRIMARY KEY,
-    stock_id INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    price_date DATE NOT NULL,
-    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id)
-);
+INSERT INTO [dbo].[Users] VALUES ('mwwenger13@gmail.com', 'UIO*uio8', 1), ('infernothunder13@gmail.com', 'secure_password', 1), ('monkey12@gmail.com', 'password', 2)
+INSERT INTO [dbo].[Stocks] VALUES ('AAPL', 'Apple', -0.85)
+INSERT INTO [dbo].[UserStocks] VALUES (1, 'secure', 2)
+INSERT INTO [dbo].[News] VALUES ('Moneky Big', 'Monkey Is Big', GETDATE())
+INSERT INTO [dbo].[StockPrices] VALUES ('AAPL', 182.59, GETDATE())

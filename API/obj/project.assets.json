@@ -632,6 +632,15 @@
           }
         }
       },
+      "ServiceStack.Interfaces/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ServiceStack.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ServiceStack.Interfaces.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -2233,6 +2242,21 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
+    "ServiceStack.Interfaces/8.0.0": {
+      "sha512": "orzuwTZ4NIArN4ywzhUTfpMIyNdCvmsxPrgJ5dFV/ympQkUzQ+Ixz35R9doZXCvzfZRWEt7jDXcxiYMCdEVGDA==",
+      "type": "package",
+      "path": "servicestack.interfaces/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net472/ServiceStack.Interfaces.dll",
+        "lib/net6.0/ServiceStack.Interfaces.dll",
+        "lib/net8.0/ServiceStack.Interfaces.dll",
+        "lib/netstandard2.0/ServiceStack.Interfaces.dll",
+        "servicestack.interfaces.8.0.0.nupkg.sha512",
+        "servicestack.interfaces.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
       "type": "package",
@@ -3138,29 +3162,32 @@
       "Microsoft.EntityFrameworkCore >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0",
+      "ServiceStack.Interfaces >= 8.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
-    "/Users/thomsontoms/.nuget/packages/": {}
+    "C:\\Users\\mwwen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj",
+      "projectUniqueName": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
       "projectName": "Stock-Prediction-API",
-      "projectPath": "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj",
-      "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-      "outputPath": "/Users/thomsontoms/stock-prediction-app-2/API/obj/",
+      "projectPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+      "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.312/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3195,6 +3222,10 @@
             "target": "Package",
             "version": "[7.0.0, )"
           },
+          "ServiceStack.Interfaces": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
@@ -3219,7 +3250,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

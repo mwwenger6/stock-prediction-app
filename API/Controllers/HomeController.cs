@@ -6,16 +6,15 @@ namespace Stock_Prediction_API.Controllers
 {
     public class HomeController : ControllerHelper
     {
-        public HomeController(AppDBContext context, IConfiguration config) : base(context, config)
-        {
-        }
+        public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
         [HttpGet("/Home/GetUsers")]
         public IActionResult GetUsers()
         {
             try
             {
-                List<Users> user = _GetDataTools.GetUsers().ToList();
+                List<User> user = _GetDataTools.GetUsers().ToList();
+                int id = user.First().Id;
             }
             catch(Exception ex)
             {

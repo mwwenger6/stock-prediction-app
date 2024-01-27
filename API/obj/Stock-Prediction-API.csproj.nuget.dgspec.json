@@ -1,26 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj": {}
+    "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj": {}
   },
   "projects": {
-    "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj": {
+    "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj",
+        "projectUniqueName": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
         "projectName": "Stock-Prediction-API",
-        "projectPath": "/Users/thomsontoms/stock-prediction-app-2/API/Stock-Prediction-API.csproj",
-        "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-        "outputPath": "/Users/thomsontoms/stock-prediction-app-2/API/obj/",
+        "projectPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+        "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.312/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,6 +57,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "ServiceStack.Interfaces": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -79,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

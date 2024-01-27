@@ -2,15 +2,15 @@
 
 namespace Stock_Prediction_API.Entities
 {
-    [Table("users", Schema = "dbo")]
-    public class Users
+    [Table("Users", Schema = "dbo")]
+    public class User
     {
 #nullable disable
-        [Column("user_id")]
+        [Column("UserId")]
         public int Id { get; set; }
-        [Column("email")]
+        [Column("Email")]
         public string Email { get; set; }
-        [Column("password")]
+        [Column("Password")]
         public string Password { get; set; }
     }
 }

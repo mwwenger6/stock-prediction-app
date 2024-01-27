@@ -6,7 +6,9 @@ namespace Stock_Prediction_API.Services
     public class AppDBContext(DbContextOptions<AppDBContext> options) : DbContext(options)
     {
 
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+
         
     }
 }

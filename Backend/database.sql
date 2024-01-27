@@ -42,19 +42,14 @@ CREATE TABLE News (
 
 CREATE TABLE StockPrices (
     Ticker nvarchar(10) NOT NULL,
-    Price DECIMAL(8,6) NOT NULL,
+    Price DECIMAL(12,5) NOT NULL,
     Time datetime NOT NULL,
     CONSTRAINT PK_StockPrice PRIMARY KEY CLUSTERED (Ticker, Time)
 );
 
 ALTER TABLE StockPrices ADD CONSTRAINT FK_StockPrices_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker);
 
-INSERT INTO Users VALUES ('mwwenger13@gmail.com', 'UIO*uio8', 1), ('infernothunder13@gmail.com', 'secure_password', 1), ('monkey12@gmail.com', 'password', 2);
-INSERT INTO Stocks VALUES ('AAPL', 'Apple', -0.85);
-INSERT INTO UserStocks VALUES (1, 'secure', 2);
-INSERT INTO News VALUES ('Moneky Big', 'Monkey Is Big', CURDATE());
-INSERT INTO StockPrices VALUES ('AAPL', 182.59, CURDATE());
-
+-- Inserts for dummies
 INSERT INTO Users (email, password, CreatedAt) VALUES 
 ('mwwenger13@gmail.com', 'UIO*uio8', CURRENT_TIMESTAMP),
 ('infernothunder13@gmail.com', 'secure_password', CURRENT_TIMESTAMP),
@@ -72,5 +67,3 @@ INSERT INTO News (title, content, PublishedAt) VALUES
 INSERT INTO StockPrices (Ticker, Price, Time) VALUES 
 ('AAPL', 182.59, CURDATE());
 
-
-    ALTER TABLE StockPrices MODIFY Price DECIMAL(12,5) NOT NULL;

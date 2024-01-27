@@ -1,30 +1,35 @@
-//var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Stock_Prediction_API.Services;
 
-//// Add services to the container.
-//string activeConnectionString = builder.Configuration.GetValue<string>("ConnectionStrings:ActiveDBString");
 
-//string connectionString = builder.Configuration.GetConnectionString(activeConnectionString);
-////builder.Services.add;
-//builder.Services.AddDbContext<PortalDbContext>(options =>
-//    options.UseSqlServer(connectionString));
-//builder.Services.AddDistributedMemoryCache();
 
-//var app = builder.Build();
+var builder = WebApplication.CreateBuilder(args);
 
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
+// Add services to the container.
+string activeConnectionString = builder.Configuration.GetValue<string>("ConnectionStrings:ActiveDBString");
 
-//app.UseHttpsRedirection();
+string connectionString = builder.Configuration.GetConnectionString(activeConnectionString);
+//builder.Services.add;
+builder.Services.AddDbContext<PortalDbContext>(options =>
+    options.UseSqlServer(connectionString));
+builder.Services.AddDistributedMemoryCache();
 
-//app.UseAuthorization();
+var app = builder.Build();
 
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllers(); // This will map attribute routes
-//});
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-//app.Run();
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // This will map attribute routes
+});
+
+app.Run();

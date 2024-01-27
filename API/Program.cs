@@ -12,13 +12,7 @@ string connectionString = builder.Configuration.GetConnectionString(activeConnec
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("PredictionAPI"),
     new MySqlServerVersion(new Version(8, 3, 0))));
-    mySqlOptions => mySqlOptions.EnableRetryOnFailure(
-            // Maximum number of retry attempts
-            maxRetryCount: 5,
-            // Maximum delay between retries
-            maxRetryDelay: TimeSpan.FromSeconds(10),
-            // Specific MySQL error numbers to consider as transient
-            errorNumbersToAdd: null)));
+    
 
 builder.Services.AddDistributedMemoryCache();
 

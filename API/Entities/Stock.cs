@@ -1,4 +1,5 @@
 ﻿using ServiceStack.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stock_Prediction_API.Entities
@@ -7,7 +8,7 @@ namespace Stock_Prediction_API.Entities
     public class Stock
     {
 #nullable disable
-        [PrimaryKey]
+        [Key]
         [Column("Ticker")]
         public string Ticker { get; set; }
         [Column("Name")]

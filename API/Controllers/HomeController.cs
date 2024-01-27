@@ -22,5 +22,7 @@ namespace Stock_Prediction_API.Controllers
             }
             return View();
         }
+
+
     }
 }

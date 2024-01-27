@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Stock_Prediction_API.Entities
 {
-    [Table("Stocks", Schema = "dbo")]
-    public class Stock
+    [Table("UserStocks", Schema = "dbo")]
+    [PrimaryKey(nameof(UserId), nameof(Ticker))]
+    public class UserStock
     {
 #nullable disable
-        [Key]
+        [Column("UserId")]
+        public int UserId { get; set; }
         [Column("Ticker")]
         public string Ticker { get; set; }
-        [Column("Name")]
-        public string Name { get; set; }
-        [Column("OneDayPercentage")]
-        public float OneDayPercentage { get; set; }
+        [Column("Quantity")]
+        public float Quantity { get; set; }
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
     }

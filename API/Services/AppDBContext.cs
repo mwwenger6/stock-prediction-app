@@ -8,6 +8,8 @@ namespace Stock_Prediction_API.Services
 
         public DbSet<User> Users { get; set; }
         public DbSet<Stock> Stocks { get; set; }
+        public DbSet<UserStock> UserStocks { get; set; }
+        public DbSet<News> News { get; set; }
 
         
     }

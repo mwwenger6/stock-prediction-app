@@ -12,5 +12,7 @@ namespace Stock_Prediction_API.Entities
         public string Email { get; set; }
         [Column("Password")]
         public string Password { get; set; }
+        [Column("CreatedAt")]
+        public DateTime CreatedAt { get; set; }
     }
 }

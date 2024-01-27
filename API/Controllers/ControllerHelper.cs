@@ -11,7 +11,7 @@ namespace Stock_Prediction_API.Controllers
     {
 
         protected readonly AppDBContext _dbContext;
-        //protected DbContextOptions<AppDBContext> _dbContextOptions;
+        protected DbContextOptions<AppDBContext> _dbContextOptions;
         protected IConfiguration _configuration;
         protected dbTools _GetDataTools;
 
@@ -19,8 +19,8 @@ namespace Stock_Prediction_API.Controllers
         {
             _dbContext = context;
             string activeConnectionString = config.GetValue<string>("ConnectionStrings:ActiveDBString");
-            //_dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
-            //    .UseSqlServer(config.GetConnectionString(activeConnectionString)).Options;
+            _dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
+                .UseSqlServer(config.GetConnectionString(activeConnectionString)).Options;
             _configuration = config;
             _GetDataTools = new(context);
         }

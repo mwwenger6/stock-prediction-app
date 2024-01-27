@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5BmXJJxHLk51oU97WFDPGzyQo9bBa8KbjhsFcpgnxSWwUgx+X8LaPA0Cmjy8EURbPpUtZ7CF56l67/5jeySwKw==",
+  "dgSpecHash": "15B+Jdkzci7jUVFi2uwI2ItMblAMxa+AYhkjDfILEQW6BRpNUieQGGUaegJTFEkbD3wyiqymr2IGJHFrn15kow==",
   "success": true,
   "projectFilePath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,8 @@
     "C:\\Users\\mwwen\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\mwwen\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
+    "C:\\Users\\mwwen\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

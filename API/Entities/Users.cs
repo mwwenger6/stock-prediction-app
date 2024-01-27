@@ -7,7 +7,7 @@ namespace Stock_Prediction_API.Entities
     {
 #nullable disable
         [Column("user_id")]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         [Column("email")]
         public string Email { get; set; }
         [Column("password")]

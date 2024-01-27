@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.SqlServer;
 using Stock_Prediction_API.Services;
 
 
@@ -10,7 +11,7 @@ string activeConnectionString = builder.Configuration.GetValue<string>("Connecti
 
 string connectionString = builder.Configuration.GetConnectionString(activeConnectionString);
 //builder.Services.add;
-builder.Services.AddDbContext<PortalDbContext>(options =>
+builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDistributedMemoryCache();
 

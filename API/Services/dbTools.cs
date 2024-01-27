@@ -22,15 +22,9 @@ namespace Stock_Prediction_API.Services
         //Getters
         #region Getters
 
-        public IQueryable<User> GetUsers()
-        {
-            return dbContext.Users;
-        }
+        public IQueryable<User> GetUsers() => dbContext.Users;
 
-        public IQueryable<Stock> GetStocks()
-        {
-            return dbContext.Stocks;
-        }
+        public IQueryable<Stock> GetStocks() => dbContext.Stocks;
 
         public Stock GetStock(string ticker)
         {

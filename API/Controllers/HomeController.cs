@@ -24,6 +24,21 @@ namespace Stock_Prediction_API.Controllers
         }
 
 
+        [HttpGet("/Home/GetRecentStockPrice")]
+        public IActionResult GetRecentStockPrice(string ticker)
+        {
+
+        }
+
+
+        [HttpGet("/Home/GetStockPrices")]
+        public IActionResult GetStockPrices(string ticker, int interval)
+        {
+
+        }
+
+
+
 
 
 

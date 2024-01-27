@@ -27,15 +27,44 @@ namespace Stock_Prediction_API.Controllers
         [HttpGet("/Home/GetRecentStockPrice")]
         public IActionResult GetRecentStockPrice(string ticker)
         {
+            try
+            {
+                var recentPrice = _GetDataTools.GetRecentStockPrice(ticker);
+                if (recentPrice == null)
+                {
+                    return NotFound("Stock price not found.");
+                }
 
+                return View(recentPrice);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
         }
 
 
         [HttpGet("/Home/GetStockPrices")]
         public IActionResult GetStockPrices(string ticker, int interval)
         {
+            try
+            {
+                var stockPrices = _GetDataTools.GetStockPrices(ticker, interval).ToList();
+                if (stockPrices == null || !stockPrices.Any())
+                {
+                    return NotFound("Stock prices not found.");
+                }
 
+                return View(stockPrices);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
         }
+
 
 
 

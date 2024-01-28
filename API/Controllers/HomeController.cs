@@ -28,6 +28,8 @@ namespace Stock_Prediction_API.Controllers
         public IActionResult GetRecentStockPrice(string ticker)
         {
 
+
+            return View();
         }
 
 

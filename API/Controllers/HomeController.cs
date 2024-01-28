@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 
@@ -65,13 +66,46 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
-        public IActionResult AddStockPrices(string ticker)
+        // [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
+        // public IActionResult AddStockPrices(string ticker)
+        //{
+        // }
+
+        [HttpGet("/Home/AddStockPrices")]
+        public IActionResult AddStockPrices()
         {
-            
+            try
+            {
+                var quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
+                List<StockPrice> stockPrices = new List<StockPrice>();
+
+                foreach (var ticker in quickStockTickers)
+                {
+                    var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
+
+                    stockPrices.Add(new StockPrice
+                    {
+                        Ticker = ticker,
+                        Price = (float)price,
+                        Time = DateTime.UtcNow // Or the appropriate time
+                    });
+                }
+
+                _GetDataTools.AddStockPrices(stockPrices);
+                return Ok("Stock prices added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-
+        private decimal GetPriceForTicker(string ticker)
+        {
+            // Implement the logic to determine the price for a given ticker
+            throw new NotImplementedException();
+        }
 
 
 

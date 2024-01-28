@@ -46,8 +46,13 @@ CREATE TABLE StockPrices (
     Time datetime NOT NULL,
     CONSTRAINT PK_StockPrice PRIMARY KEY CLUSTERED (Ticker, Time)
 );
-
 ALTER TABLE StockPrices ADD CONSTRAINT FK_StockPrices_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker);
+
+CREATE TABLE QuickStocks (
+    Ticker nvarchar(10) PRIMARY KEY
+);
+ALTER TABLE QuickStocks ADD CONSTRAINT FK_QuickStocks_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker);
+
 
 -- Inserts for dummies
 INSERT INTO Users (email, password, CreatedAt) VALUES 
@@ -66,4 +71,7 @@ INSERT INTO News (title, content, PublishedAt) VALUES
 
 INSERT INTO StockPrices (Ticker, Price, Time) VALUES 
 ('AAPL', 182.59, CURDATE());
+
+INSERT INTO QuickStocks (Ticker) VALUES
+    ('AAPL'),('GOOG'),('MSFT;')
 

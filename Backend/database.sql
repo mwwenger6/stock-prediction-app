@@ -72,6 +72,11 @@ INSERT INTO News (title, content, PublishedAt) VALUES
 INSERT INTO StockPrices (Ticker, Price, Time) VALUES 
 ('AAPL', 182.59, CURDATE());
 
+
+INSERT INTO Stocks (Name, Ticker, CreatedAt) VALUES 
+('Google', 'GOOG', CURRENT_TIMESTAMP),
+('Microsoft', 'MSFT', CURRENT_TIMESTAMP);
+
 INSERT INTO QuickStocks (Ticker) VALUES
-    ('AAPL'),('GOOG'),('MSFT;')
+    ('AAPL'),('GOOG'),('MSFT');
 

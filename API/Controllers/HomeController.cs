@@ -101,6 +101,36 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+
+        [HttpGet("/Home/AddStockPrices")]
+        public IActionResult AddStockPricesV2()
+        {
+            try
+            {
+                List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
+                "stocks=AAPL,GOOGL,MSFT"
+                List<StockPrice> stockPrices = new List<StockPrice>();
+
+                foreach (string ticker in quickStockTickers)
+                {
+
+                    stockPrices.Add(new StockPrice
+                    {
+                        Ticker = ticker,
+                        Price = (float)price,
+                        Time = DateTime.UtcNow // Or the appropriate time
+                    });
+                }
+                List<StockPrice> stockPrices = GetPriceForTickers(string variable)
+                _GetDataTools.AddStockPrices(stockPrices);
+                return Ok("Stock prices added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
         private decimal GetPriceForTicker(string ticker)
         {
             // Implement the logic to determine the price for a given ticker

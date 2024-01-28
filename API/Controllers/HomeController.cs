@@ -76,10 +76,10 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                var quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
+                List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
                 List<StockPrice> stockPrices = new List<StockPrice>();
 
-                foreach (var ticker in quickStockTickers)
+                foreach (string ticker in quickStockTickers)
                 {
                     var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
 

@@ -82,13 +82,14 @@ namespace Stock_Prediction_API.Services
                     .ExecuteDelete();
         }
 
-        public void AddStockPrices(IEnumerable<StockPrice> stockPrices)
+        public void AddStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
-            foreach (var stockPrice in stockPrices)
-            {
-                tempContext.StockPrices.Add(stockPrice);
-            }
+            tempContext.StockPrices.AddRange(stockPrices);
+            //foreach (StockPrice stockPrice in stockPrices)
+            //{
+            //    tempContext.StockPrices.Add(stockPrice);
+            //}
             tempContext.SaveChanges();
         }
 

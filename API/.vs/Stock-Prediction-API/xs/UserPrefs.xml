@@ -1,26 +1,24 @@
 ﻿<Properties StartupConfiguration="{4FBFE40F-38ED-4BB4-9DE2-8742914C65A6}|https">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="readMe.txt">
     <Files>
-      <File FileName="readMe.txt" />
-      <File FileName="Services/dbTools.cs" Line="83" Column="19" />
-      <File FileName="Services/API_Tools/FinnhubAPITools.cs" Line="14" Column="1" />
-      <File FileName="Controllers/HomeController.cs" Line="59" Column="28" />
-      <File FileName="Services/AppDBContext.cs" Line="19" Column="1" />
-      <File FileName="Controllers/ControllerHelper.cs" Line="1" Column="1" />
+      <File FileName="readMe.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Prediction-API">
             <Node name="Stock-Prediction-API">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True">
+                  <Node name="Microsoft.AspNetCore.App" selected="True" />
+                </Node>
               </Node>
-              <Node name="Entities" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="API_Tools" expanded="True" />
               </Node>
+              <Node name="ViewModel" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>

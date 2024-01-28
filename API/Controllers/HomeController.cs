@@ -104,40 +104,35 @@ namespace Stock_Prediction_API.Controllers
         //{
         // }
 
-        [HttpGet("/Home/AddStockPrices")]
-        public IActionResult AddStockPrices()
-        {
-            try
-            {
-                List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
-                List<StockPrice> stockPrices = new List<StockPrice>();
+        //[HttpGet("/Home/AddStockPrices")]
+        //public IActionResult AddStockPrices()
+        //{
+        //    try
+        //    {
+        //        List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
+        //        List<StockPrice> stockPrices = new List<StockPrice>();
 
-                foreach (string ticker in quickStockTickers)
-                {
-                    var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
+        //        foreach (string ticker in quickStockTickers)
+        //        {
+        //            var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
 
-                    stockPrices.Add(new StockPrice
-                    {
-                        Ticker = ticker,
-                        Price = (float)price,
-                        Time = DateTime.UtcNow // Or the appropriate time
-                    });
-                }
+        //            stockPrices.Add(new StockPrice
+        //            {
+        //                Ticker = ticker,
+        //                Price = (float)price,
+        //                Time = DateTime.UtcNow // Or the appropriate time
+        //            });
+        //        }
 
-                _GetDataTools.AddStockPrices(stockPrices);
-                return Ok("Stock prices added successfully.");
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
-            }
-        }
-        private decimal GetPriceForTicker(string ticker)
-        {
-            // Implement the logic to determine the price for a given ticker
-            throw new NotImplementedException();
-        }
+        //        _GetDataTools.AddStockPrices(stockPrices);
+        //        return Ok("Stock prices added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
 
 
 
@@ -167,14 +162,51 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        private List<StockPrice> GetPriceForTickers(string tickers)
+        [HttpGet("/Home/AddFeaturedStock/{ticker}")]
+        public IActionResult AddFeaturedStock(string ticker, string name)
         {
-            // Implement the logic to make a batch request to Twelvedata
-            // and parse the response to create a list of StockPrice objects.
-            // This is a placeholder implementation.
-            throw new NotImplementedException();
+            try
+            {
+                _GetDataTools.AddStock(new Stock
+                {
+                    Ticker = ticker,
+                    Name = name,
+                    CreatedAt = DateTime.Now
+                });
+                return Ok("Stock added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
         }
 
+        [HttpGet("/Home/AddSeriesData/{ticker}")]
+        public async Task<IActionResult> AddSeriesData(string ticker)
+        {
+            try
+            {
+                string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
+                string interval = "5min";
+                string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
+                var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
+                List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
+                {
+                    Ticker = kv.Value.Symbol,
+                    Price = float.Parse(kv.Value.Close),
+                    Time = kv.Value.DateTime
+                }).ToList();
+
+                _GetDataTools.AddStockPrices(stockPriceList);
+                return Ok("Stock prices added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
 
     }

@@ -29,7 +29,7 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                var recentPrice = _GetDataTools.GetRecentStockPrice(ticker);
+                StockPrice recentPrice = _GetDataTools.GetRecentStockPrice(ticker);
                 if (recentPrice == null)
                 {
                     return NotFound("Stock price not found.");
@@ -50,7 +50,7 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                var stockPrices = _GetDataTools.GetStockPrices(ticker, interval).ToList();
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, interval).ToList();
                 if (stockPrices == null || !stockPrices.Any())
                 {
                     return NotFound("Stock prices not found.");
@@ -65,7 +65,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-
+        [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
+        public IActionResult AddStockPrices(string ticker)
+        {
+            
+        }
 
 
 

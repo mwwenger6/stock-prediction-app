@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql;
 using Stock_Prediction_API.Entities;
 
 namespace Stock_Prediction_API.Services
@@ -7,16 +9,17 @@ namespace Stock_Prediction_API.Services
     {
 
         private readonly AppDBContext dbContext;
+        private readonly DbContextOptions<AppDBContext> dbContextOptions;
 
-        public dbTools(AppDBContext context)
+        public dbTools(AppDBContext context, DbContextOptions<AppDBContext> options)
         {
             dbContext = context;
+            dbContextOptions = options;
         }
 
         private AppDBContext GetNewDBContext()
         {
-            return new(new DbContextOptionsBuilder<AppDBContext>()
-                .UseSqlServer(dbContext.Database.GetConnectionString()).Options);
+            return new AppDBContext(dbContextOptions);
         }
 
         //Getters
@@ -27,6 +30,8 @@ namespace Stock_Prediction_API.Services
         public IQueryable<Stock> GetStocks() => dbContext.Stocks;
 
         public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
+
+        public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
 
 
         public Stock GetStock(string ticker)
@@ -73,6 +78,13 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges();
         }
 
+        public void AddStocks(List<Stock> stocks)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.AddRange(stocks);
+            tempContext.SaveChanges();
+        }
+
         public void RemoveStock(Stock stock)
         {
             using var tempContext = GetNewDBContext();
@@ -85,11 +97,11 @@ namespace Stock_Prediction_API.Services
         public void AddStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
-            tempContext.StockPrices.AddRange(stockPrices);
-            //foreach (StockPrice stockPrice in stockPrices)
-            //{
-            //    tempContext.StockPrices.Add(stockPrice);
-            //}
+            //tempContext.StockPrices.AddRange(stockPrices);
+            foreach (StockPrice stockPrice in stockPrices)
+            {
+                tempContext.StockPrices.Add(stockPrice);
+            }
             tempContext.SaveChanges();
         }
 

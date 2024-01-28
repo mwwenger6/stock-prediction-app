@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
+using Stock_Prediction_API.ViewModel;
 
 namespace Stock_Prediction_API.Controllers
 {
@@ -9,21 +11,52 @@ namespace Stock_Prediction_API.Controllers
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
-        //[HttpGet("/Home/GetUsers")]
-        //public IActionResult GetUsers()
+        [HttpGet("/Home/GetData")]
+        public IActionResult GetData()
+        {
+            try
+            {
+                List<User> user = _GetDataTools.GetUsers().ToList();
+                List<QuickStock> quickStocks = _GetDataTools.GetQuickStocks().ToList();
+                List<Stock> stocks = _GetDataTools.GetStocks().ToList();
+                List<StockPrice> prices =  _GetDataTools.GetStockPrices().ToList();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View();
+        }
+
+        //[HttpGet("/Home/AddData")]
+        //public IActionResult AddData()
         //{
         //    try
         //    {
-        //        List<User> user = _GetDataTools.GetUsers().ToList();
-        //        int id = user.First().Id;
+        //        Stock stock = new()
+        //        {
+        //            Ticker = "GOOG",
+        //            CreatedAt = DateTime.Now,
+        //            Name = "Google"
+        //        };
+        //        Stock msft = new()
+        //        {
+        //            Ticker = "MSFT",
+        //            CreatedAt = DateTime.Now,
+        //            Name = "Microsoft"
+        //        };
+        //        List<Stock> stocks = new();
+        //        stocks.Add(stock);
+        //        stocks.Add(msft);
+        //        _GetDataTools.AddStocks(stocks);
+        //        return Ok("Stock prices added successfully.");
         //    }
-        //    catch(Exception ex)
+        //    catch (Exception ex)
         //    {
-
+        //        // Log the exception
+        //        return StatusCode(500, "Internal server error");
         //    }
-        //    return View();
         //}
-
 
         [HttpGet("/Home/GetRecentStockPrice/{ticker}")]
         public IActionResult GetRecentStockPrice(string ticker)
@@ -115,9 +148,16 @@ namespace Stock_Prediction_API.Controllers
             {
                 string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
                 string interval = "5min";
-                List<StockPrice> stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval);
+                string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
+                var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
+                List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
+                {
+                    Ticker = kv.Value.Symbol,
+                    Price = float.Parse(kv.Value.Close),
+                    Time = kv.Value.DateTime
+                }).ToList();
 
-                _GetDataTools.AddStockPrices(stockPrices);
+                _GetDataTools.AddStockPrices(stockPriceList);
                 return Ok("Stock prices added successfully.");
             }
             catch (Exception ex)

@@ -72,3 +72,4 @@ C:\Users\mwwen\stock-prediction-app\API\obj\Debug\net7.0\ref\Stock-Prediction-AP
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\MySqlConnector.dll
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\ServiceStack.Interfaces.dll
+C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Newtonsoft.Json.dll

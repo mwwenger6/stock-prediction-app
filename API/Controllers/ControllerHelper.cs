@@ -23,9 +23,10 @@ namespace Stock_Prediction_API.Controllers
             _dbContext = context;
             string activeConnectionString = config.GetValue<string>("ConnectionStrings:ActiveDBString");
             _dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
-                .UseSqlServer(config.GetConnectionString(activeConnectionString)).Options;
+                .UseMySql(config.GetConnectionString(activeConnectionString), new MySqlServerVersion(new Version(8, 3, 0)))
+                .Options;
             _configuration = config;
-            _GetDataTools = new(context);
+            _GetDataTools = new dbTools(context, _dbContextOptions);
             _FinnhubDataTools = new(config);
             _TwelveDataTools = new(config);
         }

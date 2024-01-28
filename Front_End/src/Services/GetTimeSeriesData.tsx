@@ -1,5 +1,3 @@
-import {start} from "repl";
-
 async function GetTimeSeriesData(stockSymbol : string , interval : string, marketClosed: boolean) {
 
     const apiKey = '446a11fe72f149bd881f0753ad465055';
@@ -24,12 +22,11 @@ async function GetTimeSeriesData(stockSymbol : string , interval : string, marke
     try{
         if(marketClosed)
             startDate = getLastOpenTradingDay();
-        console.log(marketClosed, startDate)
         if(interval === '5min')
             startDate.setHours(startDate.getHours() - 1);
         else if(interval === '30min')
             startDate.setHours(startDate.getHours() - 24);
-        else if(interval === '8h')
+        else if(interval === '4h')
             startDate.setHours(startDate.getHours() - 24*7);
         else if(interval === '1day')
             startDate.setMonth(startDate.getMonth() - 1);

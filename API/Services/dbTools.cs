@@ -32,6 +32,21 @@ namespace Stock_Prediction_API.Services
                 .Where(s => s.Ticker == ticker).Single();
         }
 
+        public StockPrice GetRecentStockPrice(string ticker)
+        {
+            return dbContext.StockPrices
+                .Where(sp => sp.Ticker == ticker)
+                .OrderByDescending(sp => sp.Time)
+                .FirstOrDefault();
+        }
+
+        public IQueryable<StockPrice> GetStockPrices(string ticker, int daysInterval)
+        {
+            var dateThreshold = DateTime.UtcNow.AddDays(-daysInterval);
+            return dbContext.StockPrices
+                .Where(sp => sp.Ticker == ticker && sp.Time >= dateThreshold)
+                .OrderByDescending(sp => sp.Time);
+        }
 
 
         #endregion

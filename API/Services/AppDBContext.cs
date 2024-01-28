@@ -12,6 +12,7 @@ namespace Stock_Prediction_API.Services
         public DbSet<News> News { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<StockPrice> StockPrices { get; set; }
+        public DbSet<QuickStock> QuickStocks { get; set; }
 
 
     }

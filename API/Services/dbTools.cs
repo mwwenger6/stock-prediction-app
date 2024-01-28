@@ -26,6 +26,9 @@ namespace Stock_Prediction_API.Services
 
         public IQueryable<Stock> GetStocks() => dbContext.Stocks;
 
+        public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
+
+
         public Stock GetStock(string ticker)
         {
             return dbContext.Stocks
@@ -78,6 +81,19 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == stock.Ticker)
                     .ExecuteDelete();
         }
+
+        public void AddStockPrices(IEnumerable<StockPrice> stockPrices)
+        {
+            using var tempContext = GetNewDBContext();
+            foreach (var stockPrice in stockPrices)
+            {
+                tempContext.StockPrices.Add(stockPrice);
+            }
+            tempContext.SaveChanges();
+        }
+
+
+
 
 
         #endregion

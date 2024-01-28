@@ -8,23 +8,23 @@ namespace Stock_Prediction_API.Controllers
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
-        [HttpGet("/Home/GetUsers")]
-        public IActionResult GetUsers()
-        {
-            try
-            {
-                List<User> user = _GetDataTools.GetUsers().ToList();
-                int id = user.First().Id;
-            }
-            catch(Exception ex)
-            {
+        //[HttpGet("/Home/GetUsers")]
+        //public IActionResult GetUsers()
+        //{
+        //    try
+        //    {
+        //        List<User> user = _GetDataTools.GetUsers().ToList();
+        //        int id = user.First().Id;
+        //    }
+        //    catch(Exception ex)
+        //    {
 
-            }
-            return View();
-        }
+        //    }
+        //    return View();
+        //}
 
 
-        [HttpGet("/Home/GetRecentStockPrice")]
+        [HttpGet("/Home/GetRecentStockPrice/{ticker}")]
         public IActionResult GetRecentStockPrice(string ticker)
         {
             try
@@ -35,7 +35,7 @@ namespace Stock_Prediction_API.Controllers
                     return NotFound("Stock price not found.");
                 }
 
-                return View(recentPrice);
+                return Json(recentPrice);
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace Stock_Prediction_API.Controllers
         }
 
 
-        [HttpGet("/Home/GetStockPrices")]
+        [HttpGet("/Home/GetStockPrices/{ticker}/{interval}")]
         public IActionResult GetStockPrices(string ticker, int interval)
         {
             try
@@ -56,7 +56,7 @@ namespace Stock_Prediction_API.Controllers
                     return NotFound("Stock prices not found.");
                 }
 
-                return View(stockPrices);
+                return Json(stockPrices);
             }
             catch (Exception ex)
             {

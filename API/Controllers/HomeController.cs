@@ -100,28 +100,24 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        private decimal GetPriceForTicker(string ticker)
+        {
+            // Implement the logic to determine the price for a given ticker
+            throw new NotImplementedException();
+        }
 
 
-        [HttpGet("/Home/AddStockPrices")]
-        public IActionResult AddStockPricesV2()
+
+        [HttpGet("/Home/AddStockPricesByBatch")]
+        public IActionResult AddStockPricesByBatch()
         {
             try
             {
-                List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
-                "stocks=AAPL,GOOGL,MSFT"
-                List<StockPrice> stockPrices = new List<StockPrice>();
+                List<string> quickStockTickers = _GetDataTools.GetQuickStocks()
+                                                              .Select(qs => qs.Ticker)
+                                                              .ToList();
+                List<StockPrice> stockPrices = GetPriceForTickers(quickStockTickers);
 
-                foreach (string ticker in quickStockTickers)
-                {
-
-                    stockPrices.Add(new StockPrice
-                    {
-                        Ticker = ticker,
-                        Price = (float)price,
-                        Time = DateTime.UtcNow // Or the appropriate time
-                    });
-                }
-                List<StockPrice> stockPrices = GetPriceForTickers(string variable)
                 _GetDataTools.AddStockPrices(stockPrices);
                 return Ok("Stock prices added successfully.");
             }
@@ -131,9 +127,12 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        private decimal GetPriceForTicker(string ticker)
+
+        private List<StockPrice> GetPriceForTickers(List<string> tickers)
         {
-            // Implement the logic to determine the price for a given ticker
+            // Implement the logic to make a batch request to Twelvedata
+            // and parse the response to create a list of StockPrice objects.
+            // This is a placeholder implementation.
             throw new NotImplementedException();
         }
 

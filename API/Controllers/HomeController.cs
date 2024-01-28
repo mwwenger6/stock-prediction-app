@@ -109,14 +109,13 @@ namespace Stock_Prediction_API.Controllers
 
 
         [HttpGet("/Home/AddStockPricesByBatch")]
-        public IActionResult AddStockPricesByBatch()
+        public async Task<IActionResult> AddStockPricesByBatch()
         {
             try
             {
-                List<string> quickStockTickers = _GetDataTools.GetQuickStocks()
-                                                              .Select(qs => qs.Ticker)
-                                                              .ToList();
-                List<StockPrice> stockPrices = GetPriceForTickers(quickStockTickers);
+                string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
+                string interval = "5min";
+                List<StockPrice> stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval);
 
                 _GetDataTools.AddStockPrices(stockPrices);
                 return Ok("Stock prices added successfully.");
@@ -128,7 +127,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        private List<StockPrice> GetPriceForTickers(List<string> tickers)
+        private List<StockPrice> GetPriceForTickers(string tickers)
         {
             // Implement the logic to make a batch request to Twelvedata
             // and parse the response to create a list of StockPrice objects.

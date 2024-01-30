@@ -3,7 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Stock_Prediction_API.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "wwwroot",
+    ContentRootPath = Environment.CurrentDirectory
+});
 
 // Add services to the container.
 string activeConnectionString = builder.Configuration.GetValue<string>("ConnectionStrings:ActiveDBString");
@@ -12,7 +17,6 @@ string connectionString = builder.Configuration.GetConnectionString(activeConnec
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("PredictionAPI"),
     new MySqlServerVersion(new Version(8, 3, 0))));
-    
 
 builder.Services.AddDistributedMemoryCache();
 
@@ -23,6 +27,12 @@ builder.Services.AddAuthorization();
 builder.Services.AddAuthentication();
 
 builder.Services.AddControllers();
+
+// Configure Kestrel server to listen on port 80
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(80); // Listen for HTTP traffic on port 80
+});
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

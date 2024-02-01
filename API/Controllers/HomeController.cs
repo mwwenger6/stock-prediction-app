@@ -88,8 +88,8 @@ namespace Stock_Prediction_API.Controllers
                 if (stockPrices == null || !stockPrices.Any())
                 {
                     return NotFound("Stock prices not found.");
-                }
-
+                }//loser
+                
                 return Json(stockPrices);
             }
             catch (Exception ex)

@@ -8,7 +8,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
-data = pd.read_csv('Machine_Learning/SAVEme.csv')
+data = pd.read_csv('Machine_Learning/AMZN.csv')
 
 data = data[['Date', 'Close']]
 
@@ -17,6 +17,7 @@ device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 data['Date'] = pd.to_datetime(data['Date'])
 
 plt.plot(data['Date'].values, data['Close'].values)
+plt.show()
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
@@ -156,7 +157,7 @@ def validate_one_epoch():
   print()
 
   
-learning_rate = 0.05
+learning_rate = 0.1
 num_epochs = 10
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
@@ -167,13 +168,6 @@ for epoch in range(num_epochs):
 
 with torch.no_grad():
   predicted = model(X_train.to(device)).to('cpu').numpy()
-
-plt.plot(y_train, label="Actual Close")
-plt.plot(predicted, label="Predicted Close")
-plt.xlabel('Day')
-plt.ylabel('Close')
-plt.legend()
-plt.show()
 
 # scale values back
 train_predictions = predicted.flatten()
@@ -190,6 +184,7 @@ dummies = scaler.inverse_transform(dummies)
 
 new_y_train = dc(dummies[:, 0])
 
+# prediction results on input it has seen
 plt.plot(new_y_train, label="Actual Close")
 plt.plot(train_predictions, label="Predicted Close")
 plt.xlabel('Day')
@@ -210,6 +205,7 @@ dummies = scaler.inverse_transform(dummies)
 
 new_y_test = dc(dummies[:, 0])
 
+# prediction results on input the model has not seen
 plt.plot(new_y_test, label="Actual Close")
 plt.plot(test_predictions, label="Predicted Close")
 plt.xlabel('Day')
@@ -217,3 +213,24 @@ plt.ylabel('Close')
 plt.legend()
 plt.show()
 
+# predicting closing prices for February
+import datetime as dt
+input_dates = []
+for i in range(1, 20):
+  input_dates.append(dt.datetime(2024, 2, i))
+input_dates = np.asarray(input_dates)
+input_dates = input_dates.reshape((-1, lookback, 1))
+input_dates = torch.tensor(input_dates).float()
+
+predictions = model(input_dates.to(device)).detach().cpu().numpy().flatten()
+
+dummies = np.zeros((input_dates.shape[0], lookback+1))
+dummies[:, 0] = predictions
+dummies = scaler.inverse_transform(dummies)
+predictions = dc(dummies[:, 0])
+
+plt.plot(predictions, label="Predicted Close")
+plt.xlabel('Day')
+plt.ylabel('Close')
+plt.legend()
+plt.show()

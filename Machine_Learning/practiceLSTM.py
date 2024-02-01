@@ -1,9 +1,12 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from copy import deepcopy as dc
 
 import torch
 import torch.nn as nn
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 
 data = pd.read_csv('Machine_Learning/SAVEme.csv')
 
@@ -14,8 +17,6 @@ device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 data['Date'] = pd.to_datetime(data['Date'])
 
 plt.plot(data['Date'].values, data['Close'].values)
-
-from copy import deepcopy as dc
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
@@ -68,8 +69,6 @@ y_train = torch.tensor(y_train).float()
 X_test = torch.tensor(X_test).float()
 y_test = torch.tensor(y_test).float()
 
-from torch.utils.data import Dataset
-
 class TimeSeriesDataset(Dataset):
   def __init__(self, X, y):
     self.X = X
@@ -83,8 +82,6 @@ class TimeSeriesDataset(Dataset):
 
 train_dataset = TimeSeriesDataset(X_train, y_train)
 test_dataset = TimeSeriesDataset(X_test, y_test)
-
-from torch.utils.data import DataLoader
 
 # this is what will be used to iterate over, get batches, and make updates to our model
 batch_size = 16

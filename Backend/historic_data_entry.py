@@ -49,11 +49,15 @@ def insert_stock_data(stock_id, stock_data, conn):
         date = entry['datetime']
         close_price = entry['close']
 
-        sql_query = "INSERT INTO StockData (StockID, StockDate, StockClosePrice) VALUES (?, ?, ?)"
-        data = (stock_id, date, close_price)
-
-        cursor.execute(sql_query, data)
-        conn.commit()
+        try:
+            sql_query = "INSERT INTO StockData (StockID, StockDate, StockClosePrice) VALUES (?, ?, ?)"
+            data = (stock_id, date, close_price)         
+            cursor.execute(sql_query, data)
+            conn.commit()
+            
+        except pyodbc.Error as ex:
+            print('error inserting data ', ex)
+            
 
 
 if __name__ == "__main__":
@@ -82,7 +86,7 @@ if __name__ == "__main__":
 
             if(stock_data != None):
                 insert_stock_data(stock_id, stock_data, conn)
-                print(stock_symbol, stock_id, ' data inserted')
+                print(stock_symbol, stock_id, 'data inserted')
                 
             time.sleep(8)
 

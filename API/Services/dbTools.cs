@@ -55,7 +55,11 @@ namespace Stock_Prediction_API.Services
                 .Where(sp => sp.Ticker == ticker && sp.Time >= dateThreshold)
                 .OrderByDescending(sp => sp.Time);
         }
-
+        public User GetUser(string email)
+        {
+            return dbContext.Users
+                .Where(u => u.Email == email).Single();
+        }
 
         #endregion
 
@@ -104,7 +108,12 @@ namespace Stock_Prediction_API.Services
             }
             tempContext.SaveChanges();
         }
-
+        public void AddUser(User user)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.Users.Add(user);
+            tempContext.SaveChanges();
+        }
 
 
 

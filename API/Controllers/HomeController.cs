@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Stock_Prediction_API.Entities;
@@ -88,9 +88,24 @@ namespace Stock_Prediction_API.Controllers
                 if (stockPrices == null || !stockPrices.Any())
                 {
                     return NotFound("Stock prices not found.");
-                }//loser
+                }
                 
                 return Json(stockPrices);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("/Home/GetUser/{email}")]
+        public IActionResult GetUser(string email)
+        {
+            try
+            {
+                User user = _GetDataTools.GetUser(email);
+                return Json(user);
             }
             catch (Exception ex)
             {
@@ -181,6 +196,28 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        //Add user by sending url /Home/AddUser/?email={email}&password={password}
+        [HttpGet("/Home/AddUser")]
+        public IActionResult AddUser(string email, string password)
+        {
+            try
+            {
+                _GetDataTools.AddUser(new User
+                {
+                    Email = email,
+                    Password = password,
+                    //UserTypeId = ?
+                    CreatedAt = DateTime.Now
+                });
+                return Ok("Stock added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
 
         [HttpGet("/Home/AddSeriesData/{ticker}")]
         public async Task<IActionResult> AddSeriesData(string ticker)

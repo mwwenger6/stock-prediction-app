@@ -2,7 +2,7 @@ import {Container, Nav, Navbar, Form, Button } from "react-bootstrap";
 import React, { useState, FormEvent  } from 'react';
 import Tickers from '../Data/tickers.json';
 import { useNavigate } from 'react-router-dom';
-import LoginModal from "../Views/LoginModal";
+import LoginModal from "../Views/Modals/LoginModal";
 
 interface Ticker {
     ticker: string;

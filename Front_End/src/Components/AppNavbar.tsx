@@ -3,6 +3,7 @@ import React, { useState, FormEvent  } from 'react';
 import Tickers from '../Data/tickers.json';
 import { useNavigate } from 'react-router-dom';
 import LoginModal from "../Views/Modals/LoginModal";
+import SignUpModal from "../Views/Modals/SignUpModal";
 
 interface Ticker {
     ticker: string;
@@ -10,13 +11,18 @@ interface Ticker {
 }
 
 const AppNavbar = () => {
-    const [showModal , setShowModal] = useState(false);
+    const [showLoginModal , setShowLoginModal] = useState(false);
+    const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<Ticker[]>([]);
     const navigate = useNavigate();
 
-    const toggleModal = () => {
-        setShowModal(!showModal);
+    const toggleLogInModal = () => {
+        setShowLoginModal(!showLoginModal);
+    };
+
+    const toggleSignUpModal = () => {
+        setShowSignUpModal(!showSignUpModal);
       };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,10 +75,17 @@ const AppNavbar = () => {
                     <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
                     <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
-                    <Nav.Link onClick={toggleModal} className="nav-link-blue-bg">Log In</Nav.Link>
+                    <Nav.Link onClick={toggleLogInModal} className="nav-link-blue-bg">Log In</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <LoginModal showModal={showModal} toggleModal={toggleModal}/>
+                <LoginModal showModal={showLoginModal} toggleModal={toggleLogInModal} showSignUpModal={() => {
+                    toggleSignUpModal();
+                    toggleLogInModal();
+                }}/>
+                <SignUpModal showModal={showSignUpModal} toggleModal={toggleSignUpModal} showLoginModal={() => {
+                    toggleSignUpModal();
+                    toggleLogInModal();
+                }}/>
             </Container>
         </Navbar>
     );

@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import React, {useEffect, useState} from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import EmailAndPWForm from "../../Components/EmailAndPWForm";
 
 interface User {
     email: string;
@@ -10,50 +10,68 @@ interface User {
     createdAt: string;
 }
 
-function LoginModal(props: any) {
+interface LoginModalProps {
+    showModal: boolean;
+    toggleModal: any;
+    showSignUpModal: any;
+}
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%])[A-Za-z\d!@#$%]{8,30}$/;
+const SUCCESS: string = "Log In Successful"
+const FAILURE: string = "Log In Failed"
+const INCORRECT_PASSWORD = "Incorrect Password"
+
+const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const [email, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(true)
     const [password, setPassword] = useState('');
-    const [queryResponse, setQueryResponse] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const SUCCESS: string = "Log In Successful"
-    const FAILURE: string = "Log In Failed"
-    const INCORRECT_PASSWORD = "Incorrect Password"
+    const [validPassword, setValidPassword] = useState(true)
+    const [response, setResponse] = useState('');
 
     useEffect(() => {
         if (!props.showModal) {
-            setEmail('');
-            setPassword('');
-            setQueryResponse('');
-            setShowPassword(false);
+            setEmail('')
+            setPassword('')
+            setResponse('')
+            setValidEmail(false)
+            setValidPassword(false)
         }
     }, [props.showModal]);
 
+    useEffect(() => {
+        setValidEmail(EMAIL_REGEX.test(email))
+    }, [email]);
+
+    useEffect(() => {
+        setValidPassword(PWD_REGEX.test(password))
+    }, [password]);
+
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-        console.log("Email:", email);
-        console.log("Password:", password);
-        try {
-            const response = await fetch(`http://localhost:80/Home/GetUser/${email}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
 
-            if (!response.ok) {
-                throw new Error('Failed to log in');
-            }
+        const response = await fetch(`http://localhost:80/Home/AuthenticateUser/${email}/${password}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-            //We can change the way accounts are validated so it is on the server side
-            const user: User = await response.json();
-            if(user.password == password)
-                setQueryResponse(SUCCESS);
-            else
-                setQueryResponse(INCORRECT_PASSWORD); // Assuming the server sends back a message
+        if (response.status == 401) {
+            setResponse(INCORRECT_PASSWORD);
+            console.error('Error logging in:', response.statusText);
         }
-        catch (error: any) {
-            console.error('Error logging in:', error);
-            setQueryResponse(FAILURE);
+        else if (response.status == 200) {
+            setResponse(SUCCESS);
+            const user: User = await response.json();
+            console.log('User logged in: ', user)
+            const timer = setTimeout(() => {
+                props.toggleModal()
+            }, 500);
+        }
+        else {
+            setResponse(FAILURE);
+            console.error('Error logging in:', response.statusText);
         }
     }
 
@@ -65,36 +83,25 @@ function LoginModal(props: any) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="w-100 text-center">
-                        <form className="login-form">
-                            <label className="form-label" htmlFor="email">Email:</label>
-                            <input type="email" id="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Please enter your email" className="form-control form-control-md w-75" />
-                            <label className="mt-3 form-label" htmlFor="password"> Password:</label>
-                            <div className="input-group w-75">
-                                <input type={showPassword ? "text" : "password"} id="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Please enter your password" className="form-control form-control-md" />
-                                <button className="btn btn-outline-secondary" type="button" onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </button>
+                        <EmailAndPWForm email={email} setEmail={setEmail} emailPlaceholder={"Enter your username"}
+                                        password={password} setPassword={setPassword} passwordPlaceholder={"Enter your password"}/>
+                        <div className="my-2">
+                            <div className={response === '' ? "text-white" : (response === SUCCESS ? "text-success fw-semibold" : "text-danger fw-semibold")}>
+                                {response === '' ? 'Placeholder' : (response === SUCCESS ? response : '*' + response)}
                             </div>
-                            <div className="my-2">
-                                <div className={queryResponse === '' ? "text-white" : (queryResponse === SUCCESS ? "text-success" : "text-danger fw-semibold")}>
-                                    {queryResponse === '' ? 'Placeholder' : (queryResponse === SUCCESS ? queryResponse : '*' + queryResponse)}
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div className="row">
-                        <div className="row justify-content-center d-flex">
-                            <p className="col-auto mb-1"> Don't have an account?</p>
-                            <a className="col-auto" href="/login">Sign Up</a>
-                        </div>
-                        <div className="row justify-content-center d-flex">
-                            <p className="col-auto"> Forgot Password?</p>
-                            <a className="col-auto" href="/login">Reset Password</a>
-                        </div>
+                    <div className="row justify-content-center d-flex">
+                        <p className="col-auto mb-1"> Don't have an account?</p>
+                        <Button className="col-auto btn-sm" onClick={props.showSignUpModal}>Sign Up</Button>
+                    </div>
+                    <div className="row justify-content-center d-flex mt-2">
+                        <p className="col-auto mb-1"> Forgot Password?</p>
+                        <Button className="col-auto btn btn-sm">Reset Password</Button>
                     </div>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center d-flex">
-                    <Button className="bg-success border-0 mx-2" onClick={handleSubmit}>
+                    <Button className="bg-success border-0 mx-2" onClick={handleSubmit} disabled={!(validEmail && validPassword)}>
                         Submit
                     </Button>
                 </Modal.Footer>

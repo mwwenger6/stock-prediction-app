@@ -2,14 +2,8 @@ import { Image } from 'react-bootstrap';
 import myImage from './thumbnail.webp';
 import React, { useState, useEffect } from 'react';
 import GetNewsArticles from '../Services/GetNewsArticles';
+import Article from "../Interfaces/Article";
 
-// Define an interface for the article data
-interface Article {
-    title: string;
-    url: string;
-    urlToImage: string;
-    description: string;
-}
 
 const News = () => {
 

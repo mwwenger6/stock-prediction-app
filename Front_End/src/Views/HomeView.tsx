@@ -1,59 +1,24 @@
-
-//const API_BASE_URL = 'http://localhost:3002';
-// First, import all required modules and components
 import FeaturedStock from '../Components/FeaturedStock';
-import { useState, useEffect } from "react";
-import GetPriceUpdate from "../Services/GetPriceUpdate";
 import PersonalGraph from "../Components/PersonalGraph";
+import User from "../Interfaces/User"
+import Stock from "../Interfaces/Stock";
+import {Dispatch, SetStateAction} from "react";
 
-// Then, declare any constants or variables
 const API_BASE_URL = 'http://18.116.164.159:3002';
 // or const API_BASE_URL = 'http://localhost:3002'; for local development
+//const API_BASE_URL = 'http://localhost:3002';
 
-
-interface Stock {
-    name: string;
-    ticker: string;
-    price: number;
-    up?: boolean;
+interface HomeViewProps {
+    user: User | null,
+    setUser: Dispatch<SetStateAction<User | null>>;
+    featuredStocks: Stock[]
 }
 
-const initialFeaturedStockData: Stock[] = [
-    { name: 'Apple', ticker: 'AAPL', price: -1, up: undefined},
-    { name: 'Google', ticker: 'GOOGL', price: -1, up: undefined},
-    { name: 'Amazon', ticker: 'AMZN', price: -1, up: undefined },
-    { name: 'Microsoft', ticker: 'MSFT', price: -1, up: undefined },
-    { name: 'Meta Platforms', ticker: 'META', price: -1, up: undefined },
-    { name: 'Tesla', ticker: 'TSLA', price: -1, up: undefined },
-    { name: 'Netflix', ticker: 'NFLX', price: -1, up: undefined },
-];
 
-function HomeView () {
+function HomeView (props : HomeViewProps) {
 
-    const getPrice = GetPriceUpdate;
+    const loggedIn = props.user != null;
 
-    const [featuredStockData, setFeaturedStockData] = useState(initialFeaturedStockData)
-
-    useEffect(() => {
-
-        //Fetch price data on load
-        const fetchData = async () => {
-            try {
-                const updatedStockData  = await Promise.all(featuredStockData.map(async (stock) => {
-                    const stockData = await getPrice(stock.ticker);
-                    return { ...stock, price: stockData.c, up: stockData.dp > 0 }
-                }));
-
-                setFeaturedStockData(updatedStockData)
-            }
-            catch (error) {
-                console.error('Error fetching prices:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-    
         /*// Function to fetch stocks data from API
             const fetchStocks = async () => {
         try {
@@ -86,7 +51,7 @@ function HomeView () {
                         <hr/>
                         <div className="featured-stocks-container">
                             <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto">
-                                {featuredStockData.map((stock, index) => (
+                                {props.featuredStocks.map((stock, index) => (
                                     <FeaturedStock key={index} stock={stock} />
                                 ))}
                             </div>
@@ -94,25 +59,33 @@ function HomeView () {
                     </div>
                 </div>
             </div>
-            <div className="row m-2"> {/* new row for Personal Stocks and Your Stocks */}
-                <div className="col-lg-2 col-sm-12"> {/* adjust the size if u want */}
-                    <div className="floatingDiv" style={{maxHeight: '500px'}}>
-                        <h3>Personal Stocks</h3>
-                        <hr/>
-                        <div id="personal-stocks" className="overflow-auto" style={{ maxHeight: '400px' }}>
-                            {featuredStockData.map((stock, index) => (
-                                <div key={index} className="floatingDiv m-auto my-2" style={{ minWidth: '200px', width: '200px' }}>
-                                    <p>{stock.ticker}</p>
-                                    <p>${stock.price.toFixed(2)}</p>
-                                </div>
-                            ))}
+            {loggedIn ?
+                <div className="row m-2"> {/* new row for Personal Stocks and Your Stocks */}
+                    <div className="col-lg-2 col-sm-12">
+                        <div className="floatingDiv" style={{maxHeight: '500px'}}>
+                            <h3>Personal Stocks</h3>
+                            <hr/>
+                            <div id="personal-stocks" className="overflow-auto" style={{ maxHeight: '400px' }}>
+                                {props.featuredStocks.map((stock, index) => (
+                                    <div key={index} className="floatingDiv m-auto my-2" style={{ minWidth: '200px', width: '200px' }}>
+                                        <p>{stock.ticker}</p>
+                                        <p>${stock?.price?.toFixed(2)}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
+                    <div className="col-lg-10 col-sm-12">
+                        <PersonalGraph/>
+                    </div>
                 </div>
-                <div className="col-lg-10 col-sm-12"> {/* adjust the size if u want */}
-                    <PersonalGraph/>
+                :
+                <div className="row m-4">
+                    <div className="floatingDiv">
+                        <h3 className="text-center m-3"> Log in/Sign up to access account features</h3>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     );
 }

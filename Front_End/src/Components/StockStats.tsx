@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {Container} from 'react-bootstrap';
 import GetPriceUpdate from "../Services/GetPriceUpdate";
+import DailyData from "../Interfaces/DailyData";
 
 interface StockGraphProps {
     symbol: string | undefined;
 }
-interface StockCandle {
-    "c": number, //current price
-    "h": number, //high price of day
-    "l": number, //low price of day
-    "o": number, //open price of day
-    "pc": number, //previous close price
-    "dp": number, //daily percentage change
-    "t": number //not sure lol
-}
 const StockStats = ({ symbol } : StockGraphProps) => {
     const getPrice = GetPriceUpdate;
-    const defaultStockCandle: StockCandle = {
+    const defaultData: DailyData = {
         "c": 0,
         "h": 0,
         "l": 0,
@@ -26,7 +18,7 @@ const StockStats = ({ symbol } : StockGraphProps) => {
         "t": 0
     };
 
-    const [stockCandle, setStockCandle] = useState(defaultStockCandle)
+    const [data, setData] = useState(defaultData)
 
     useEffect(() => {
 
@@ -37,8 +29,7 @@ const StockStats = ({ symbol } : StockGraphProps) => {
                     console.error('Invalid stock symbol')
                 else{
                     const stockData = await getPrice(symbol);
-                    console.log(stockData)
-                    setStockCandle(stockData)
+                    setData(stockData)
                 }
             }
             catch (error) {
@@ -58,29 +49,29 @@ const StockStats = ({ symbol } : StockGraphProps) => {
                 <div className={"col-lg-4 col-12"}>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Current Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.c}</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.c}</span>
                     </div>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> High Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.h}</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.h}</span>
                     </div>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Low Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.l}</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.l}</span>
                     </div>
                 </div>
                 <div className={"col-lg-4 col-12"}>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Prev. Close Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.pc}</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.pc}</span>
                     </div>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Open Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.c}</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.c}</span>
                     </div>
                     <div className={"d-flex justify-content-between"}>
                         <span className={"display-6"} style={{fontSize: 2 + 'em'}}> % Change Today: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {stockCandle.dp.toFixed(2)}%</span>
+                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.dp.toFixed(2)}%</span>
                     </div>
                 </div>
             </div>

@@ -4,14 +4,7 @@ import GetTimeSeriesData from "../Services/GetTimeSeriesData";
 import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
-
-interface TimeSeriesData {
-      datetime: string;
-      high: string;
-      open: string;
-      close: string;
-      volume: string;
-}
+import TimeSeriesData from "../Interfaces/TimeSeriesData";
 
 interface StockGraphProps {
   symbol: string | undefined;

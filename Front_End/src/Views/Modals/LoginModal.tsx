@@ -1,19 +1,15 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import React, { useEffect, useState } from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import EmailAndPWForm from "../../Components/EmailAndPWForm";
+import User from "../../Interfaces/User"
 
-interface User {
-    email: string;
-    password: string;
-    id: number;
-    createdAt: string;
-}
 
 interface LoginModalProps {
     showModal: boolean;
     toggleModal: any;
     showSignUpModal: any;
+    setUser: Dispatch<SetStateAction<User | null>>;
 }
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -65,6 +61,8 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
             setResponse(SUCCESS);
             const user: User = await response.json();
             console.log('User logged in: ', user)
+
+            props.setUser(user)
             const timer = setTimeout(() => {
                 props.toggleModal()
             }, 500);

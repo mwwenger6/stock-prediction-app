@@ -1,16 +1,23 @@
-import {Container, Nav, Navbar, Form, Button } from "react-bootstrap";
-import React, { useState, FormEvent  } from 'react';
+import {Container, Nav, Navbar, Form, Dropdown } from "react-bootstrap";
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import Tickers from '../Data/tickers.json';
 import { useNavigate } from 'react-router-dom';
 import LoginModal from "../Views/Modals/LoginModal";
 import SignUpModal from "../Views/Modals/SignUpModal";
+import Ticker from "../Interfaces/Ticker";
+import User from "../Interfaces/User";
+import HomeView from "../Views/HomeView";
+import App from "../App";
 
-interface Ticker {
-    ticker: string;
-    name: string;
+interface AppNavbarProps {
+    user: User | null
+    setUser: Dispatch<SetStateAction<User | null>>;
 }
 
-const AppNavbar = () => {
+const AppNavbar = (props: AppNavbarProps) => {
+    const loggedIn = props.user != null;
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [showLoginModal , setShowLoginModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -75,10 +82,25 @@ const AppNavbar = () => {
                     <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
                     <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
-                    <Nav.Link onClick={toggleLogInModal} className="nav-link-blue-bg">Log In</Nav.Link>
+                    {loggedIn ?
+                        <>
+
+                            <div className={"d-block"}>
+                            <Nav.Link onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)} className="nav-link-blue-bg">Account Info</Nav.Link>
+                            <Dropdown show={isDropdownOpen} onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item> <b> Email: </b> {props.user?.email} </Dropdown.Item>
+                                    <Dropdown.Item> <b> Account ID: </b> {props.user?.id}</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            </div>
+                            <Nav.Link onClick={() => props.setUser(null)} className="nav-link-blue-bg">Log Out</Nav.Link>
+                        </>
+                              : <Nav.Link onClick={toggleLogInModal} className="nav-link-blue-bg">Log In</Nav.Link>
+                    }
                     </Nav>
                 </Navbar.Collapse>
-                <LoginModal showModal={showLoginModal} toggleModal={toggleLogInModal} showSignUpModal={() => {
+                <LoginModal showModal={showLoginModal} toggleModal={toggleLogInModal} setUser={props.setUser} showSignUpModal={() => {
                     toggleSignUpModal();
                     toggleLogInModal();
                 }}/>

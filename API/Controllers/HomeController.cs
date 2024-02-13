@@ -99,45 +99,8 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        // [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
-        // public IActionResult AddStockPrices(string ticker)
-        //{
-        // }
-
-        //[HttpGet("/Home/AddStockPrices")]
-        //public IActionResult AddStockPrices()
-        //{
-        //    try
-        //    {
-        //        List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
-        //        List<StockPrice> stockPrices = new List<StockPrice>();
-
-        //        foreach (string ticker in quickStockTickers)
-        //        {
-        //            var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
-
-        //            stockPrices.Add(new StockPrice
-        //            {
-        //                Ticker = ticker,
-        //                Price = (float)price,
-        //                Time = DateTime.UtcNow // Or the appropriate time
-        //            });
-        //        }
-
-        //        _GetDataTools.AddStockPrices(stockPrices);
-        //        return Ok("Stock prices added successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
-
-
-
-        [HttpGet("/Home/AddStockPricesByBatch")]
-        public async Task<IActionResult> AddStockPricesByBatch()
+        [HttpGet("/Home/AddSeriesData/{ticker}")]
+        public async Task<IActionResult> AddSeriesData(string ticker)
         {
             try
             {
@@ -182,8 +145,9 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/Home/AddSeriesData/{ticker}")]
-        public async Task<IActionResult> AddSeriesData(string ticker)
+        //Powershell
+        [HttpGet("/Home/AddStockPricesByBatch")]
+        public async Task<IActionResult> AddStockPricesByBatch()
         {
             try
             {

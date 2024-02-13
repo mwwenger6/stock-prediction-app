@@ -34,6 +34,17 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
     serverOptions.ListenAnyIP(80); // Listen for HTTP traffic on port 80
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAnyOrigin",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
@@ -45,6 +56,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Use CORS
+app.UseCors("AllowAnyOrigin");
 
 // Middleware
 app.UseMiddleware<ApiKeyMiddleware>();

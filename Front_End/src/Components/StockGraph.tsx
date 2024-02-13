@@ -4,14 +4,7 @@ import GetTimeSeriesData from "../Services/GetTimeSeriesData";
 import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
-
-interface TimeSeriesData {
-      datetime: string;
-      high: string;
-      open: string;
-      close: string;
-      volume: string;
-}
+import TimeSeriesData from "../Interfaces/TimeSeriesData";
 
 interface StockGraphProps {
   symbol: string | undefined;
@@ -27,10 +20,13 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     const [timeSeriesData, setTimeSeriesData] = useState({});
     //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
     const [currInterval, setCurrInterval] = useState(intervals[2]);
-    const [currIntervalLabel, setCurrIntervalLabel] = useState(intervalLabels[2]);
     const [showError, setShowError] = useState(false)
     const [marketClosed, setMarketClosed] = useState(false)
     const [graphLoading , setGraphLoading] = useState(true)
+
+    const [percentChange, setPercentChange] = useState('')
+    const [ticker, setTicker] = useState('')
+    const [color, setColor] = useState('grey')
 
     function stockMarketClosed() {
         // Get the current time in the specified time zone
@@ -83,19 +79,21 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
             const minValue = Math.floor(Math.min(...openValues));
             const maxValue = Math.ceil(Math.max(...openValues));
 
-            let color : string = 'grey'
+            let lineColor = 'grey'
             if (openValues[0] < openValues[openValues.length - 1])
-              color = 'green'
+              lineColor = 'green'
             else if (openValues[0] > openValues[openValues.length - 1])
-              color = 'red'
+              lineColor = 'red'
+
 
             let change : string = (((timeSeries[0].open/timeSeries[timeSeries.length-1].open) * 100) - 100).toFixed(2)
+            if(change.substring(0,1) != '-') change = "+" + change
 
+            setPercentChange(change)
+            setTicker(symbol)
+            setColor(lineColor)
 
             const newOptions = {
-              title: {
-                text: `${symbol} (${change}%)`,
-              },
               xAxis: {
                 type: 'category',
                   data: dates
@@ -109,7 +107,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
                 {
                   data: openValues,
                   type: 'line',
-                  color: color,
+                  color: lineColor,
                 }
               ]
             };
@@ -136,8 +134,12 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
                 <div style={{ height: '300px' }} className='align-items-center d-flex'>
                     <h3 className="m-auto"> Unable to get time series data at this time </h3>
                 </div>
-            ) : (<ReactECharts option={options} /> )
+            ) : (<div>
+                 <span className={"float-start display-6 mb-2"}> {symbol}(<span className={color == 'red' ? "text-danger" : (color == 'green'? "text-success" : "text-gray")}>{percentChange}%</span>)</span>
+                 <ReactECharts option={options} />
+                 </div>)
         )}
+      <p className={marketClosed && (currInterval == intervals[0] || currInterval == intervals[1]) ? "text-danger" : "text-white"}> * Graph prices reflect the last time the stock market was open </p>
       <div className='d-flex row justify-content-center'>
           {intervals.map((interval, i) => (
               <div className='col-auto' key={i}>
@@ -145,10 +147,8 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
                       className={`btn ${currInterval === intervals[i] ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
                       variant=''
                       onClick={() => {
-                          if(currInterval != intervals[i]) {
+                          if(currInterval != intervals[i])
                               setCurrInterval(intervals[i])
-                              setCurrIntervalLabel(intervalLabels[i])
-                          }
                       }}>
                       {intervalLabels[i]}
                   </Button>
@@ -163,7 +163,6 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
               </CsvDownload>
           </div>
       </div>
-      <p className={marketClosed && (currInterval == intervals[0] || currInterval == intervals[1]) ? "text-danger mt-4" : "text-white mt-4"}> * These prices reflect the last time the stock market was open </p>
     </>
     )
 };

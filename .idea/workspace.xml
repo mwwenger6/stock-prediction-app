@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Workspace file change??">
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Article.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/DailyData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Stock.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Ticker.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/TimeSeriesData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockAutoScroller.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/Ticker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/Ticker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/index.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jacobbianco&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6484c880-7b5c-40b4-aa59-b4fe7f0c5da8" />
+        <option name="url" value="https://github.com/mwwenger6/stock-prediction-app" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2ZHZ6mLqIQ3rGtdmxmA3nAo3upg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Console&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jacob Bianco\\WebstormProjects\\stock-prediction-app\\Front_End\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jacob Bianco\WebstormProjects\stock-prediction-app\Front_End\src\Views\Modals" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="" />
+      <created>1702080791970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702080791970</updated>
+      <workItem from="1702080793171" duration="756000" />
+      <workItem from="1702481556048" duration="10493000" />
+      <workItem from="1705424338613" duration="2299000" />
+      <workItem from="1705538637719" duration="2697000" />
+      <workItem from="1706064517503" duration="4000" />
+      <workItem from="1706142004378" duration="64000" />
+      <workItem from="1706142076048" duration="4494000" />
+      <workItem from="1706377088169" duration="3191000" />
+      <workItem from="1706455430287" duration="7600000" />
+      <workItem from="1706576588029" duration="8132000" />
+      <workItem from="1706675309986" duration="386000" />
+      <workItem from="1706937900832" duration="2968000" />
+      <workItem from="1707065159284" duration="2007000" />
+      <workItem from="1707073702619" duration="834000" />
+      <workItem from="1707092165484" duration="2485000" />
+      <workItem from="1707436580878" duration="8969000" />
+      <workItem from="1707785602446" duration="23166000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
+      <option name="closed" value="true" />
+      <created>1702492162074</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702492162074</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added download csv button to stock graph screen">
+      <option name="closed" value="true" />
+      <created>1705426500022</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705426500022</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Made tweaks to graph view screen">
+      <option name="closed" value="true" />
+      <created>1705541324647</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705541324647</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added some styles to the news page">
+      <option name="closed" value="true" />
+      <created>1706146482419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706146482419</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added time frames to stock graph. Added some checks to see if the market is closed.">
+      <option name="closed" value="true" />
+      <created>1706396780326</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706396780326</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Cleaned up some stock graph code and fixed some interval stuff. Added a spinner component.">
+      <option name="closed" value="true" />
+      <created>1706462589553</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706462589553</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added current stock info to stock graph screen">
+      <option name="closed" value="true" />
+      <created>1706584879454</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706584879454</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80).">
+      <option name="closed" value="true" />
+      <created>1707696238084</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707696238084</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Login and sign up modals created. Functional when API is running locally.">
+      <option name="closed" value="true" />
+      <created>1707838026978</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707838026978</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Workspace file change??">
+      <option name="closed" value="true" />
+      <created>1707838179792</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707838179792</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call." />
+    <MESSAGE value="Added download csv button to stock graph screen" />
+    <MESSAGE value="Made tweaks to graph view screen" />
+    <MESSAGE value="Added some styles to the news page" />
+    <MESSAGE value="Added time frames to stock graph. Added some checks to see if the market is closed." />
+    <MESSAGE value="Cleaned up some stock graph code and fixed some interval stuff. Added a spinner component." />
+    <MESSAGE value="Added current stock info to stock graph screen" />
+    <MESSAGE value="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80)." />
+    <MESSAGE value="Login and sign up modals created. Functional when API is running locally." />
+    <MESSAGE value="Workspace file change??" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace file change??" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

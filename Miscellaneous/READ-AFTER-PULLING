@@ -11,6 +11,9 @@ Jacob:
 1/16/2024
 Added 'download csv' button to the graph screen (for skete): npm install @types/react-json-to-csv
 
+2/11/2024
+Added react icons: npm install react-icons
+
 
 Tom:
 

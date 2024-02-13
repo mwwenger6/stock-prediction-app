@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from copy import deepcopy as dc
 
 import torch
 import torch.nn as nn
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 
-data = pd.read_csv('Machine_Learning/SAVEme.csv')
+data = pd.read_csv('Machine_Learning/AMZN.csv')
 
 data = data[['Date', 'Close']]
 
@@ -14,8 +17,7 @@ device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 data['Date'] = pd.to_datetime(data['Date'])
 
 plt.plot(data['Date'].values, data['Close'].values)
-
-from copy import deepcopy as dc
+plt.show()
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
@@ -32,7 +34,6 @@ def prepare_dataframe_for_lstm(df, n_steps):
 
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
-
 shifted_df_as_np = shifted_df.to_numpy()
 
 from sklearn.preprocessing import MinMaxScaler
@@ -68,8 +69,6 @@ y_train = torch.tensor(y_train).float()
 X_test = torch.tensor(X_test).float()
 y_test = torch.tensor(y_test).float()
 
-from torch.utils.data import Dataset
-
 class TimeSeriesDataset(Dataset):
   def __init__(self, X, y):
     self.X = X
@@ -83,8 +82,6 @@ class TimeSeriesDataset(Dataset):
 
 train_dataset = TimeSeriesDataset(X_train, y_train)
 test_dataset = TimeSeriesDataset(X_test, y_test)
-
-from torch.utils.data import DataLoader
 
 # this is what will be used to iterate over, get batches, and make updates to our model
 batch_size = 16
@@ -159,7 +156,7 @@ def validate_one_epoch():
   print()
 
   
-learning_rate = 0.05
+learning_rate = 0.1
 num_epochs = 10
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
@@ -170,13 +167,6 @@ for epoch in range(num_epochs):
 
 with torch.no_grad():
   predicted = model(X_train.to(device)).to('cpu').numpy()
-
-plt.plot(y_train, label="Actual Close")
-plt.plot(predicted, label="Predicted Close")
-plt.xlabel('Day')
-plt.ylabel('Close')
-plt.legend()
-plt.show()
 
 # scale values back
 train_predictions = predicted.flatten()
@@ -193,6 +183,7 @@ dummies = scaler.inverse_transform(dummies)
 
 new_y_train = dc(dummies[:, 0])
 
+# prediction results on input it has seen
 plt.plot(new_y_train, label="Actual Close")
 plt.plot(train_predictions, label="Predicted Close")
 plt.xlabel('Day')
@@ -213,6 +204,7 @@ dummies = scaler.inverse_transform(dummies)
 
 new_y_test = dc(dummies[:, 0])
 
+# prediction results on input the model has not seen
 plt.plot(new_y_test, label="Actual Close")
 plt.plot(test_predictions, label="Predicted Close")
 plt.xlabel('Day')
@@ -220,3 +212,76 @@ plt.ylabel('Close')
 plt.legend()
 plt.show()
 
+# # predicting closing prices for February
+# def predict_next_month(model, recent_data, device, scaler):
+#     model.eval()
+#     predictions = []
+
+#     for _ in range(29):  # Predict next 29 days
+#         # Scale the data
+#         recent_data_scaled = scaler.transform(recent_data.reshape(-1, 1))
+        
+#         # Convert to PyTorch tensor and add batch dimension
+#         input_data = torch.tensor(recent_data_scaled, dtype=torch.float32).unsqueeze(0).to(device)
+        
+#         # Make a prediction
+#         with torch.no_grad():
+#             predicted_scaled = model(input_data)
+        
+#         # Inverse scale the prediction
+#         predicted = scaler.inverse_transform(predicted_scaled.cpu().numpy().reshape(-1, 1))
+        
+#         # Append the prediction to our list of predictions
+#         predictions.append(predicted.item())
+        
+#         # Append the predicted value to recent_data and remove the oldest value
+#         recent_data = np.append(recent_data[1:], predicted)
+
+#     return predictions
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import datetime as dt
+# import time as time
+# input_dates = []
+# for i in range(1, 30):
+#   if (i < 10):
+#     date_str = "2024-02-0" + str(i)
+#   else:
+#     date_str = "2024-02-" + str(i)
+#   # Convert the date string to a datetime object
+#   date_obj = dt.datetime.strptime(date_str, '%Y-%m-%d')
+#   # # Convert the datetime object to a Unix timestamp and append it to the list
+#   # input_dates.append(time.mktime(date_obj.timetuple()))
+#   input_dates.append(date_obj)
+
+# # scales data to all be in between -1 and 1
+# input_dates = np.array(input_dates)
+# input_dates = input_dates.reshape(-1, 1)
+# input_dates = scaler.fit_transform(input_dates)
+
+# input_dates = np.array([input_dates[i:i+lookback] for i in range(len(input_dates) - lookback + 1)])
+# input_dates = torch.tensor(input_dates).float()
+
+# predictions = model(input_dates.to(device)).detach().cpu().numpy().flatten()
+
+# dummies = np.zeros((input_dates.shape[0], lookback+1))
+# dummies[:, 0] = predictions
+# dummies = scaler.inverse_transform(dummies)
+# predictions = dc(dummies[:, 0])
+
+# plt.plot(predictions, label="Predicted Close")
+# plt.xlabel('Day')
+# plt.ylabel('Close')
+# plt.legend()
+# plt.show()

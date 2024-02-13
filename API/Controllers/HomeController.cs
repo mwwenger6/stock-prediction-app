@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using Newtonsoft.Json;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
+
 
 namespace Stock_Prediction_API.Controllers
 {
@@ -113,6 +115,27 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        [HttpGet("/Home/AuthenticateUser/{email}/{password}")]
+        public IActionResult AuthenticateUser(string email, string password)
+        {
+            try
+            {
+                User user = _GetDataTools.GetUser(email);
+                if (user.Password != password)
+                    throw new InvalidDataException("Could not authenticate");
+                return Json(user);
+            }
+            catch (InvalidDataException ex)
+            { 
+                //Log the exception
+                return StatusCode(401, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                //Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
         // [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
         // public IActionResult AddStockPrices(string ticker)
@@ -197,27 +220,35 @@ namespace Stock_Prediction_API.Controllers
             }
         }
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
-        [HttpGet("/Home/AddUser")]
-        public IActionResult AddUser(string email, string password)
+        [HttpPost("/Home/AddUser")]
+        public IActionResult AddUser([FromBody] User user)
         {
             try
             {
                 _GetDataTools.AddUser(new User
                 {
-                    Email = email,
-                    Password = password,
+                    Email = user.Email,
+                    Password = user.Password, 
                     //UserTypeId = ?
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.Now 
                 });
-                return Ok("Stock added successfully.");
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
-            }
+                    return Ok("User added successfully."); 
+            } 
+            catch (DbUpdateException ex) { 
+                // Check if it's a unique constraint violation
+                if (ex.InnerException is MySqlException sqlEx && sqlEx.Number == 1062) 
+                { 
+                    return Conflict($"Duplicate entry: This {user.Email} is already registered."); 
+                } 
+                else 
+                {
+                    return StatusCode(500, "Error in database"); 
+                } 
+            } catch (Exception ex) 
+            { // Log the exception
+              return StatusCode(500, "Internal server error");
+            } 
         }
-
 
         [HttpGet("/Home/AddSeriesData/{ticker}")]
         public async Task<IActionResult> AddSeriesData(string ticker)

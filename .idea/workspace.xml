@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80).">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Components/EmailAndPWForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Login and sign up modals created. Functional when API is running locally." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +100,7 @@
       <workItem from="1707073702619" duration="834000" />
       <workItem from="1707092165484" duration="2485000" />
       <workItem from="1707436580878" duration="8969000" />
-      <workItem from="1707785602446" duration="13449000" />
+      <workItem from="1707785602446" duration="13746000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -171,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707696238084</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Login and sign up modals created. Functional when API is running locally.">
+      <option name="closed" value="true" />
+      <created>1707838026978</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707838026978</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +200,7 @@
     <MESSAGE value="Cleaned up some stock graph code and fixed some interval stuff. Added a spinner component." />
     <MESSAGE value="Added current stock info to stock graph screen" />
     <MESSAGE value="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80)." />
+    <MESSAGE value="Login and sign up modals created. Functional when API is running locally." />
+    <option name="LAST_COMMIT_MESSAGE" value="Login and sign up modals created. Functional when API is running locally." />
   </component>
 </project>

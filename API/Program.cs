@@ -2,6 +2,7 @@ using CNSPortal_API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Stock_Prediction_API.Services;
+using Microsoft.OpenApi.Models; // Add this namespace for OpenApiInfo
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
@@ -28,37 +29,22 @@ builder.Services.AddAuthentication();
 
 builder.Services.AddControllers();
 
-// Configure Kestrel server to listen on port 80
-builder.WebHost.ConfigureKestrel(serverOptions =>
+// Register Swagger services
+builder.Services.AddSwaggerGen(c =>
 {
-    serverOptions.ListenAnyIP(80); // Listen for HTTP traffic on port 80
-});
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAnyOrigin",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
 });
 
 var app = builder.Build();
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
+
+app.UseSwagger();
+
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-// Use CORS
-app.UseCors("AllowAnyOrigin");
 
 // Middleware
 app.UseMiddleware<ApiKeyMiddleware>();

@@ -174,31 +174,31 @@ namespace Stock_Prediction_API.Controllers
 
 
 
-        [HttpGet("/Home/AddStockPricesByBatch")]
-        public async Task<IActionResult> AddStockPricesByBatch()
-        {
-            try
-            {
-                string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
-                string interval = "5min";
-                string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
-                var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
-                List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
-                {
-                    Ticker = kv.Value.Symbol,
-                    Price = float.Parse(kv.Value.Close),
-                    Time = kv.Value.DateTime
-                }).ToList();
+        //[HttpGet("/Home/AddStockPricesByBatch")]
+        //public async Task<IActionResult> AddStockPricesByBatch()
+        //{
+        //    try
+        //    {
+        //        string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
+        //        string interval = "5min";
+        //        string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
+        //        var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
+        //        List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
+        //        {
+        //            Ticker = kv.Value.Symbol,
+        //            Price = float.Parse(kv.Value.Close),
+        //            Time = kv.Value.DateTime
+        //        }).ToList();
 
-                _GetDataTools.AddStockPrices(stockPriceList);
-                return Ok("Stock prices added successfully.");
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
-            }
-        }
+        //        _GetDataTools.AddStockPrices(stockPriceList);
+        //        return Ok("Stock prices added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
 
         [HttpGet("/Home/AddFeaturedStock/{ticker}")]
         public IActionResult AddFeaturedStock(string ticker, string name)

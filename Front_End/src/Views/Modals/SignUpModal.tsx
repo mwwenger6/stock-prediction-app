@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import EmailAndPWForm from "../../Components/EmailAndPWForm";
 import Button from "react-bootstrap/Button";
+import endpoints from '../../config';
 
 interface SignUpModalProps {
     showModal: boolean;
@@ -66,7 +67,7 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
 
-        const response = await fetch('http://localhost:80/Home/AddUser', {
+        const response = await fetch(endpoints.addUser, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

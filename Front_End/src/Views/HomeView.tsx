@@ -4,9 +4,6 @@ import User from "../Interfaces/User"
 import Stock from "../Interfaces/Stock";
 import {Dispatch, SetStateAction} from "react";
 
-const API_BASE_URL = 'http://18.116.164.159:3002';
-// or const API_BASE_URL = 'http://localhost:3002'; for local development
-//const API_BASE_URL = 'http://localhost:3002';
 
 interface HomeViewProps {
     user: User | null,

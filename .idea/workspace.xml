@@ -4,27 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Workspace file change??">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Article.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/DailyData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Stock.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/Ticker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/TimeSeriesData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Interfaces/User.ts" afterDir="false" />
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
+      <change afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/News.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockAutoScroller.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/Ticker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/Ticker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/Ticker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/TickerScroller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +108,8 @@
       <workItem from="1707073702619" duration="834000" />
       <workItem from="1707092165484" duration="2485000" />
       <workItem from="1707436580878" duration="8969000" />
-      <workItem from="1707785602446" duration="23166000" />
+      <workItem from="1707785602446" duration="23402000" />
+      <workItem from="1707968281896" duration="2534000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -203,7 +191,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707838179792</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="User accounts integrated. Routing with a current user still needs work though. The ticker scroller now uses real stock data.">
+      <option name="closed" value="true" />
+      <created>1707847776565</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707847776565</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge remote-tracking branch 'origin/main'">
+      <option name="closed" value="true" />
+      <created>1707847801944</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1707847801944</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,17 +235,8 @@
     <MESSAGE value="Updated Login Modal UI, and enabled communication with API for user validation IF the API is running locally(on port 80)." />
     <MESSAGE value="Login and sign up modals created. Functional when API is running locally." />
     <MESSAGE value="Workspace file change??" />
-    <option name="LAST_COMMIT_MESSAGE" value="Workspace file change??" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="User accounts integrated. Routing with a current user still needs work though. The ticker scroller now uses real stock data." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
   </component>
 </project>

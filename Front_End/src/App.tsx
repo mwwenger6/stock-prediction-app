@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from "./Interfaces/User"
 import GetPriceUpdate from "./Services/GetPriceUpdate";
 import Stock from "./Interfaces/Stock";
-import TickerScroller from "./Components/Ticker";
+import TickerScroller from "./Components/TickerScroller";
 
 
 //set initial featured stocks list

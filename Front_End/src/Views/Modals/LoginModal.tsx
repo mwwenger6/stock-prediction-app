@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import EmailAndPWForm from "../../Components/EmailAndPWForm";
 import User from "../../Interfaces/User"
-
+import endpoints from '../../config';
 
 interface LoginModalProps {
     showModal: boolean;
@@ -46,7 +46,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
 
-        const response = await fetch(`http://localhost:80/Home/AuthenticateUser/${email}/${password}`, {
+        const response = await fetch(endpoints.authUser(email, password), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

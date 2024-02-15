@@ -212,34 +212,48 @@ plt.ylabel('Close')
 plt.legend()
 plt.show()
 
-# # predicting closing prices for February
-# def predict_next_month(model, recent_data, device, scaler):
-#     model.eval()
-#     predictions = []
+# predicting closing prices for February
+def predict_next_month(model, recent_data, device, scaler):
+    model.eval()
+    predictions = []
 
-#     for _ in range(29):  # Predict next 29 days
-#         # Scale the data
-#         recent_data_scaled = scaler.transform(recent_data.reshape(-1, 1))
+    for _ in range(29):  # Predict next 29 days
+        # Scale the data
+        recent_data_scaled = scaler.transform(recent_data.reshape(-1, 1))
         
-#         # Convert to PyTorch tensor and add batch dimension
-#         input_data = torch.tensor(recent_data_scaled, dtype=torch.float32).unsqueeze(0).to(device)
+        # Convert to PyTorch tensor and add batch dimension
+        input_data = torch.tensor(recent_data_scaled, dtype=torch.float32).unsqueeze(0).to(device)
         
-#         # Make a prediction
-#         with torch.no_grad():
-#             predicted_scaled = model(input_data)
+        # Make a prediction
+        with torch.no_grad():
+            predicted_scaled = model(input_data)
         
-#         # Inverse scale the prediction
-#         predicted = scaler.inverse_transform(predicted_scaled.cpu().numpy().reshape(-1, 1))
+        # Inverse scale the prediction
+        predicted = scaler.inverse_transform(predicted_scaled.cpu().numpy().reshape(-1, 1))
         
-#         # Append the prediction to our list of predictions
-#         predictions.append(predicted.item())
+        # Append the prediction to our list of predictions
+        predictions.append(predicted.item())
         
-#         # Append the predicted value to recent_data and remove the oldest value
-#         recent_data = np.append(recent_data[1:], predicted)
+        # Append the predicted value to recent_data and remove the oldest value
+        recent_data = np.append(recent_data[1:], predicted)
 
-#     return predictions
+    return predictions
 
+# get last week of closing prices
+recent_data = X_test[(len(X_test) - 8):]
 
+feb_predictions = predict_next_month(model, recent_data, device, scaler)
+
+dummies = np.zeros((recent_data.shape[0], lookback+1))
+dummies[:, 0] = predictions
+dummies = scaler.inverse_transform(dummies)
+predictions = dc(dummies[:, 0])
+
+plt.plot(predictions, label="Predicted Close")
+plt.xlabel('Day')
+plt.ylabel('Close')
+plt.legend()
+plt.show()
 
 
 

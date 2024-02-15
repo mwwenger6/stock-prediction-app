@@ -64,6 +64,8 @@ app.UseMiddleware<ApiKeyMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseCors("AllowAnyOrigin");
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers(); // This will map attribute routes

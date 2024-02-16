@@ -8,7 +8,8 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+import joblib
 
 data = pd.read_csv('Machine_Learning/AMZN.csv')
 
@@ -35,8 +36,9 @@ lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 shifted_df_as_np = shifted_df.to_numpy()
 
-scaler = MinMaxScaler(feature_range=(-1, 1))
+scaler = StandardScaler()
 shifted_df_as_np = scaler.fit_transform(shifted_df_as_np)
+joblib.dump(scaler, 'Machine_Learning/scaler.pkl')
 
 X_train = shifted_df_as_np[:, 1:]
 y_train = shifted_df_as_np[:, 0]
@@ -69,7 +71,6 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
 for _, batch in enumerate(train_loader):
   x_batch, y_batch = batch[0].to(device), batch[1].to(device)
-  print(x_batch.shape, y_batch.shape)
   break
 
 class LSTM(nn.Module):
@@ -111,7 +112,11 @@ def train_one_epoch():
       print('Batch {0}, Loss: {1:.3f}'.format(batch_index + 1, avg_loss_across_batches))
       running_loss = 0.0
 
+  print('***************************************************')
   print()
+
+model = LSTM(1, 4, 1)
+model.to(device)
 
 learning_rate = 0.1
 num_epochs = 10
@@ -120,3 +125,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 for epoch in range(num_epochs):
   train_one_epoch()
+
+# save the model parameters for future use with predicting
+PATH = "Machine_Learning/model.pth"
+torch.save(model.state_dict(), PATH)

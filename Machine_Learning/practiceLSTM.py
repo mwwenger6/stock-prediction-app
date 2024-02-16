@@ -219,11 +219,11 @@ def predict_next_month(model, recent_data, device, scaler):
 
     for _ in range(29):  # Predict next 29 days
         # Scale the data
-        recent_data_scaled = scaler.transform(recent_data.reshape(-1, 1))
-        
+        recent_data_scaled = scaler.transform(recent_data.reshape(-1, recent_data.shape[-1])).reshape(recent_data.shape)
+        print(recent_data_scaled.shape)
         # Convert to PyTorch tensor and add batch dimension
-        input_data = torch.tensor(recent_data_scaled, dtype=torch.float32).unsqueeze(0).to(device)
-        
+        input_data = torch.tensor(recent_data_scaled, dtype=torch.float32).to(device)
+        print(input_data.shape)
         # Make a prediction
         with torch.no_grad():
             predicted_scaled = model(input_data)
@@ -233,27 +233,46 @@ def predict_next_month(model, recent_data, device, scaler):
         
         # Append the prediction to our list of predictions
         predictions.append(predicted.item())
+
+        recent_features = recent_data[:, -1, 1:]
         
         # Append the predicted value to recent_data and remove the oldest value
-        recent_data = np.append(recent_data[1:], predicted)
+        recent_data = np.append(recent_data[:, 1:, :], np.hstack([predicted, recent_features]).reshape(1, 1, -1), axis=1)
 
     return predictions
 
-# get last week of closing prices
-recent_data = X_test[(len(X_test) - 8):]
+close_scaler = MinMaxScaler(feature_range=(-1, 1))
+close_scaler.fit(shifted_df[['Close']])
 
+# get last week of closing prices
+# Get the last 'lookback' days of data with all features
+recent_data = shifted_df.tail(lookback).values
+
+# Reshape 'recent_data' to be 3D (add batch size dimension)
+recent_data = recent_data.reshape(1, lookback, -1)
+
+# Generate predictions for February
 feb_predictions = predict_next_month(model, recent_data, device, scaler)
 
-dummies = np.zeros((recent_data.shape[0], lookback+1))
-dummies[:, 0] = predictions
-dummies = scaler.inverse_transform(dummies)
-predictions = dc(dummies[:, 0])
+# Create 'dummies' with the same number of rows as 'feb_predictions'
+dummies = np.zeros((len(feb_predictions), lookback+1))
 
-plt.plot(predictions, label="Predicted Close")
+# Assign 'feb_predictions' to the first column of 'dummies'
+dummies[:, 0] = feb_predictions
+
+# Apply the inverse transformation of the 'MinMaxScaler' to 'dummies'
+dummies = scaler.inverse_transform(dummies)
+
+# Extract the first column of 'dummies' (which contains the inverse transformed predictions)
+feb_predictions = dc(dummies[:, 0])
+
+# Plot the predictions
+plt.plot(feb_predictions, label="Predicted Close")
 plt.xlabel('Day')
 plt.ylabel('Close')
 plt.legend()
 plt.show()
+
 
 
 

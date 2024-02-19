@@ -9,7 +9,9 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
 from sklearn.preprocessing import StandardScaler
+
 import joblib
+import json
 
 # our model's class
 class LSTM(nn.Module):
@@ -31,7 +33,7 @@ class LSTM(nn.Module):
     return out
 
 
-device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+device = 'cpu'
 
 # load model for predictions
 PATH = "Machine_Learning/model.pth"
@@ -42,9 +44,12 @@ model.load_state_dict(torch.load(PATH))
 scaler = joblib.load('Machine_Learning/scaler.pkl')
 
 # get input data needed to make a prediction for the next month (month of feb with 29 days)
-data = pd.read_csv('Machine_Learning/AMZN.csv')
-data = data[['Date', 'Close']]
-data['Date'] = pd.to_datetime(data['Date'])
+with open('Machine_Learning/AAPL.json') as f:
+    data = json.load(f)
+data = pd.json_normalize(data)
+data = data[['time', 'price']]
+data['time'] = pd.to_datetime(data['time'])
+data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
 
@@ -60,7 +65,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-input_data = shifted_df.tail(29)
+input_data = shifted_df[:30]
 input_data = np.array(input_data)
 input_data = scaler.transform(input_data)
 

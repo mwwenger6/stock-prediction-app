@@ -5,12 +5,19 @@ using System.Text.Json.Serialization;
 
 namespace Stock_Prediction_API.Services.API_Tools
 {
-    public class TwelveDataTools(IConfiguration config)
+    public class TwelveDataTools
     {
         private readonly HttpClient _httpClient = new();
-        private readonly string _apiKey = config.GetValue<string>("APIConfigs:12Data:Key");
-        private readonly string _quoteURL = config.GetValue<string>("APIConfigs:12Data:Quote");
-        private readonly string _seriesURL = $"https://api.twelvedata.com/time_series?symbol={{symbol}}&interval={{interval}}&apikey=446a11fe72f149bd881f0753ad465055&source=docs&outputsize={{outputSize}}";
+        private readonly string _apiKey;
+        private readonly string _quoteURL;
+        private readonly string _seriesURL;
+
+        public TwelveDataTools(IConfiguration config)
+        {
+            _apiKey = config.GetValue<string>("APIConfigs:12Data:Key");
+            _quoteURL = config.GetValue<string>("APIConfigs:12Data:Quote");
+            _seriesURL = $"https://api.twelvedata.com/time_series?symbol={{symbol}}&interval={{interval}}&apikey={_apiKey}&source=docs&outputsize={{outputSize}}";
+        }
         public class StockValue
         {
             [JsonPropertyName("datetime")]

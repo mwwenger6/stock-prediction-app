@@ -2,10 +2,18 @@
 
 namespace Stock_Prediction_API.Services.API_Tools
 {
-    public class FinnhubAPITools(IConfiguration config)
+    public class FinnhubAPITools
     {
         private readonly HttpClient _httpClient = new();
-        private readonly string _quoteURL = $"https://finnhub.io/api/v1/quote?symbol={{symbol}}&token=cln73dhr01qkjffmt80gcln73dhr01qkjffmt810";
+        private readonly string _apiKey;
+        private readonly string _quoteURL;
+
+        public FinnhubAPITools(IConfiguration config)
+        {
+            _apiKey = config.GetValue<string>("APIConfigs:Finnhub:Key");
+            _quoteURL = $"https://finnhub.io/api/v1/quote?symbol={{symbol}}&token={_apiKey}";
+        }
+
 
 
         public async Task<float> GetRecentPrice(string symbol)

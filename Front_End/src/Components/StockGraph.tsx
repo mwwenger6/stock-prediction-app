@@ -125,6 +125,8 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
       fetchData();
     }, [currInterval, symbol]);
 
+    
+
   //limited to 8 api calls per minute
   return (
     <>

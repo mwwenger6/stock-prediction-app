@@ -74,3 +74,6 @@ C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Pomelo.EntityFrameworkC
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\ServiceStack.Interfaces.dll
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Stock-Prediction-API.staticwebassets.runtime.json
+C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Python.Deployment.dll
+C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Python.Included.dll
+C:\Users\mwwen\stock-prediction-app\API\bin\Debug\net7.0\Python.Runtime.dll

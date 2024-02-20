@@ -7,6 +7,7 @@ using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
 using System;
+using System.Diagnostics;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 
@@ -248,6 +249,30 @@ namespace Stock_Prediction_API.Controllers
             {
                 // Log the exception
                 return StatusCode(500, "Internal server error");
+            }
+        }
+
+
+        [HttpGet("/Home/TestPythonScript")]
+        public IActionResult TestPythonScript()
+        {
+            string pythonScriptPath = Path.Combine("PythonScripts", "samplePython.py");
+            ProcessStartInfo start = new ProcessStartInfo
+            {
+                FileName = "python",  // Ensure that python is in your PATH or provide the full path to the python executable
+                Arguments = $"\"{pythonScriptPath}\"",
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    process.WaitForExit();
+                    return Content(result);
+                }
             }
         }
 

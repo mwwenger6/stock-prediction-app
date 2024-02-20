@@ -48,11 +48,11 @@ namespace Stock_Prediction_API.Services
                 .FirstOrDefault();
         }
 
-        public IQueryable<StockPrice> GetStockPrices(string ticker, int daysInterval)
+        public IQueryable<StockPrice> GetStockPrices(string ticker)
         {
-            var dateThreshold = DateTime.UtcNow.AddDays(-daysInterval);
+            //var dateThreshold = DateTime.UtcNow.AddDays(-daysInterval);
             return dbContext.StockPrices
-                .Where(sp => sp.Ticker == ticker && sp.Time >= dateThreshold)
+                .Where(sp => sp.Ticker == ticker) //&& sp.Time >= dateThreshold)
                 .OrderByDescending(sp => sp.Time);
         }
         public User GetUser(string email)
@@ -74,12 +74,27 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == stock.Ticker)
                     .ExecuteUpdate(i => i
                         .SetProperty(t => t.Name, stock.Name)
-                        .SetProperty(t => t.OneDayPercentage, stock.OneDayPercentage)
+                        .SetProperty(t => t.CurrentPrice, stock.CurrentPrice)
                     );
                 return;
             }
             tempContext.Stocks.Add(stock);
             tempContext.SaveChanges();
+        }
+        public void UpdateStockPrice(Stock stock)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.Stocks.Any(s => s.Ticker == stock.Ticker))
+            {
+                tempContext.Stocks
+                    .Where(s => s.Ticker == stock.Ticker)
+                    .ExecuteUpdate(i => i
+                        .SetProperty(t => t.CurrentPrice, stock.CurrentPrice)
+                    );
+                return;
+            }
+            else
+                throw new Exception("Stock does not exist");
         }
 
         public void AddStocks(List<Stock> stocks)
@@ -89,24 +104,28 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges();
         }
 
-        public void RemoveStock(Stock stock)
+        public void RemoveStock(string ticker)
         {
             using var tempContext = GetNewDBContext();
-            if (tempContext.Stocks.Any(s => s.Ticker == stock.Ticker))
+            if (tempContext.Stocks.Any(s => s.Ticker == ticker))
                 tempContext.Stocks
-                    .Where(s => s.Ticker == stock.Ticker)
+                    .Where(s => s.Ticker == ticker)
                     .ExecuteDelete();
         }
 
         public void AddStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
-            //tempContext.StockPrices.AddRange(stockPrices);
             foreach (StockPrice stockPrice in stockPrices)
             {
                 tempContext.StockPrices.Add(stockPrice);
             }
             tempContext.SaveChanges();
+        }
+        public void DeleteStockPrices (string ticker)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.StockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
         }
         public void AddUser(User user)
         {
@@ -114,7 +133,6 @@ namespace Stock_Prediction_API.Services
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
         }
-
 
 
 

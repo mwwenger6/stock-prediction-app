@@ -9,15 +9,19 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
 from sklearn.preprocessing import StandardScaler
+
 import joblib
-
-data = pd.read_csv('Machine_Learning/AMZN.csv')
-
-data = data[['Date', 'Close']]
+import json
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-data['Date'] = pd.to_datetime(data['Date'])
+# read data in from json
+with open('Machine_Learning/AAPL.json') as f:
+    data = json.load(f)
+data = pd.json_normalize(data)
+data = data[['time', 'price']]
+data['time'] = pd.to_datetime(data['time'])
+data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy

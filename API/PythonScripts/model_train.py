@@ -26,10 +26,10 @@ def process_json_file(json_file_path):
   return data
 
 parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('json_file', type=str, help='Path to the JSON file')
+parser.add_argument('jsonData', type=str, help='Path to the JSON file')
 parser.add_argument('ticker', type=str, help='ticker name')
 args = parser.parse_args()
-json_file_path = args.json_file
+json_file_path = args.jsonData
 data = process_json_file(json_file_path)
 
 ticker = args.ticker

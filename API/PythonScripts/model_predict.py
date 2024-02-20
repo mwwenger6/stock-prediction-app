@@ -45,11 +45,11 @@ def process_json_file(json_file_path):
   return data
 
 parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('json_file', type=str, help='Path to the JSON file')
+parser.add_argument('jsonData', type=str, help='Path to the JSON file')
 parser.add_argument('ticker', type=str, help='ticker name')
-parser.add_argument('pred_range', type=str, help='number of predicted days into the future')
+parser.add_argument('range', type=str, help='number of predicted days into the future')
 args = parser.parse_args()
-json_file_path = args.json_file
+json_file_path = args.jsonData
 data = process_json_file(json_file_path)
 
 ticker = args.ticker
@@ -78,7 +78,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-pred_range = int(args.pred_range)
+pred_range = int(args.range)
 
 input_data = shifted_df[:pred_range]
 input_data = np.array(input_data)

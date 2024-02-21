@@ -74,3 +74,13 @@ C:\Users\mwwen\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.
 C:\Users\mwwen\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.genruntimeconfig.cache
 C:\Users\mwwen\stock-prediction-app\API\obj\Release\net7.0\ref\Stock-Prediction-API.dll
 C:\Users\mwwen\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.staticwebassets.runtime.json
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.csproj.AssemblyReference.cache
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.AssemblyInfoInputs.cache
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.AssemblyInfo.cs
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.csproj.CoreCompileInputs.cache
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.dll
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\refint\Stock-Prediction-API.dll
+C:\Users\mwwen\Source\Repos\stock-prediction-app\API\obj\Release\net7.0\Stock-Prediction-API.pdb

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8ZzFPCovIUIk7xOEsVrxjUiyDS/9bcuJPEJJ+Ea4G1YghPjAErrtHrnV45nUb/ZePuBcwY6/3eIL+l+GTT2Wsg==",
+  "dgSpecHash": "UIdo+IAWCGeT+4jr8YxqEhAaf5bGgzrS0zXaX+lwT3GihQJavJrLEXGYw55vCTQ/C1PVFH3+KZDBBlPlKmQWPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+  "projectFilePath": "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mwwen\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\mwwen\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

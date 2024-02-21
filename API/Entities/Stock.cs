@@ -19,8 +19,8 @@ namespace Stock_Prediction_API.Entities
         [Column("Name")]
         public string Name { get; set; }
 #nullable enable
-        [Column("OneDayPercentage")]
-        public float? OneDayPercentage { get; set; }
+        [Column("CurrentPrice")]
+        public float? CurrentPrice { get; set; }
 #nullable disable
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }

@@ -1,5 +1,3 @@
-node_modules
-
 # User-specific files
 *.suo
 *.user
@@ -84,8 +82,3 @@ $RECYCLE.BIN/
 
 # Ignore Visual Studio index files
 [Ff]ile[Cc]ontent[Ii]ndex/
-/API/.vs/Stock-Prediction-API/v17/.suo
-/API/bin/Debug/net7.0/Stock-Prediction-API.dll
-/API/bin/Debug/net7.0/Stock-Prediction-API.pdb
-/API/obj/Debug/net7.0/Stock-Prediction-API.dll
-/API/obj/Debug/net7.0/Stock-Prediction-API.pdb

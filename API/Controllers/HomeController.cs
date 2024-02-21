@@ -1,10 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Primitives;
 using MySqlConnector;
 using Newtonsoft.Json;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
+using System;
+using System.Diagnostics;
+using System.Text.Json;
+using Python.Runtime;
+using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 
 namespace Stock_Prediction_API.Controllers
@@ -13,65 +19,48 @@ namespace Stock_Prediction_API.Controllers
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
-        [HttpGet("/Home/GetData")]
-        public IActionResult GetData()
+        [HttpGet("/Home/GetData/{type}")]
+        public IActionResult GetData(string type)
         {
             try
             {
-                List<User> user = _GetDataTools.GetUsers().ToList();
-                List<QuickStock> quickStocks = _GetDataTools.GetQuickStocks().ToList();
-                List<Stock> stocks = _GetDataTools.GetStocks().ToList();
-                List<StockPrice> prices =  _GetDataTools.GetStockPrices().ToList();
+                switch (type.ToLower())
+                {
+                    case "users":
+                        List<User> users = _GetDataTools.GetUsers().ToList();
+                        return Json(users);
+                    case "quickstocks":
+                        List<QuickStock> quickStocks = _GetDataTools.GetQuickStocks().ToList();
+                        return Json(quickStocks);
+                    case "stocks":
+                        List<Stock> stocks = _GetDataTools.GetStocks().ToList();
+                        return Json(stocks);
+                    case "stockprices":
+                        List<StockPrice> prices = _GetDataTools.GetStockPrices().ToList();
+                        return Json(prices);
+                    default:
+                        // Handle invalid type
+                        return BadRequest("Invalid type parameter.");
+                }
             }
             catch (Exception ex)
             {
-
+                return StatusCode(500, $"Error getting {type} data.");
             }
-            return View();
         }
 
-        //[HttpGet("/Home/AddData")]
-        //public IActionResult AddData()
-        //{
-        //    try
-        //    {
-        //        Stock stock = new()
-        //        {
-        //            Ticker = "GOOG",
-        //            CreatedAt = DateTime.Now,
-        //            Name = "Google"
-        //        };
-        //        Stock msft = new()
-        //        {
-        //            Ticker = "MSFT",
-        //            CreatedAt = DateTime.Now,
-        //            Name = "Microsoft"
-        //        };
-        //        List<Stock> stocks = new();
-        //        stocks.Add(stock);
-        //        stocks.Add(msft);
-        //        _GetDataTools.AddStocks(stocks);
-        //        return Ok("Stock prices added successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
-
-        [HttpGet("/Home/GetRecentStockPrice/{ticker}")]
-        public IActionResult GetRecentStockPrice(string ticker)
+        [HttpGet("/Home/GetStock/{ticker}")]
+        public IActionResult GetStock(string ticker)
         {
             try
             {
-                StockPrice recentPrice = _GetDataTools.GetRecentStockPrice(ticker);
-                if (recentPrice == null)
+                Stock stock = _GetDataTools.GetStock(ticker);
+                if (stock == null)
                 {
                     return NotFound("Stock price not found.");
                 }
 
-                return Json(recentPrice);
+                return Json(stock);
             }
             catch (Exception ex)
             {
@@ -81,15 +70,15 @@ namespace Stock_Prediction_API.Controllers
         }
 
 
-        [HttpGet("/Home/GetStockPrices/{ticker}/{interval}")]
-        public IActionResult GetStockPrices(string ticker, int interval)
+        [HttpGet("/Home/GetHistoricalStockData/{ticker}")]
+        public IActionResult GetHistoricalStockData(string ticker)
         {
             try
             {
-                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, interval).ToList();
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker).ToList();
                 if (stockPrices == null || !stockPrices.Any())
                 {
-                    return NotFound("Stock prices not found.");
+                    return NotFound("Stock prices not found");
                 }
                 
                 return Json(stockPrices);
@@ -137,71 +126,9 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        // [HttpGet("/Home/AddStockPrices/{ticker}/{interval}")]
-        // public IActionResult AddStockPrices(string ticker)
-        //{
-        // }
 
-        //[HttpGet("/Home/AddStockPrices")]
-        //public IActionResult AddStockPrices()
-        //{
-        //    try
-        //    {
-        //        List<string> quickStockTickers = _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker).ToList();
-        //        List<StockPrice> stockPrices = new List<StockPrice>();
-
-        //        foreach (string ticker in quickStockTickers)
-        //        {
-        //            var price = GetPriceForTicker(ticker); // Assume this is a method to get the price
-
-        //            stockPrices.Add(new StockPrice
-        //            {
-        //                Ticker = ticker,
-        //                Price = (float)price,
-        //                Time = DateTime.UtcNow // Or the appropriate time
-        //            });
-        //        }
-
-        //        _GetDataTools.AddStockPrices(stockPrices);
-        //        return Ok("Stock prices added successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
-
-
-
-        //[HttpGet("/Home/AddStockPricesByBatch")]
-        //public async Task<IActionResult> AddStockPricesByBatch()
-        //{
-        //    try
-        //    {
-        //        string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
-        //        string interval = "5min";
-        //        string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
-        //        var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
-        //        List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
-        //        {
-        //            Ticker = kv.Value.Symbol,
-        //            Price = float.Parse(kv.Value.Close),
-        //            Time = kv.Value.DateTime
-        //        }).ToList();
-
-        //        _GetDataTools.AddStockPrices(stockPriceList);
-        //        return Ok("Stock prices added successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
-
-        [HttpGet("/Home/AddFeaturedStock/{ticker}")]
-        public IActionResult AddFeaturedStock(string ticker, string name)
+        [HttpPost("/Home/AddStock/{ticker}/{name}")]
+        public IActionResult AddStock(string ticker, string name)
         {
             try
             {
@@ -219,6 +146,21 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        [HttpPost("/Home/RemoveStock/{ticker}")]
+        public IActionResult RemoveStock(string ticker)
+        {
+            try
+            {
+                _GetDataTools.RemoveStock(ticker);
+                return Ok("Stock removed successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
         [HttpPost("/Home/AddUser")]
         public IActionResult AddUser([FromBody] User user)
@@ -250,24 +192,42 @@ namespace Stock_Prediction_API.Controllers
             } 
         }
 
-        //Powershell
-        [HttpGet("/Home/AddStockPricesByBatch")]
-        public async Task<IActionResult> AddStockPricesByBatch()
+        //Called by the background service every 5 mins
+        [HttpPost("/Home/AddRecentStockPrices")]
+        public async Task<IActionResult> AddRecentStockPrices()
         {
             try
             {
-                string quickStockTickers = string.Join(",", _GetDataTools.GetQuickStocks().Select(qs => qs.Ticker));
-                string interval = "5min";
-                string stockPrices = await _TwelveDataTools.GetPriceForTickers(quickStockTickers, interval) ?? throw new Exception("Data is Null");
-                var vmDict = JsonConvert.DeserializeObject<Dictionary<string, TwelveDataViewModel>>(stockPrices);
-                List<StockPrice> stockPriceList = vmDict.Select(kv => new StockPrice
-                {
-                    Ticker = kv.Value.Symbol,
-                    Price = float.Parse(kv.Value.Close),
-                    Time = kv.Value.DateTime
-                }).ToList();
+                DateTime dateTime = DateTime.Now;
+                if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
+                   dateTime.Hour >= 9 && dateTime.Hour < 16 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                    return Ok("Market closed, no prices updated");
 
-                _GetDataTools.AddStockPrices(stockPriceList);
+                List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
+                List<StockPrice> stockList = new();
+                foreach (string ticker in tickers)
+                {
+                    float price = await _FinnhubDataTools.GetRecentPrice(ticker);
+                    if(price != -1)
+                    {
+                        Console.WriteLine(ticker + ": " + price);
+                        stockList.Add(new StockPrice
+                        {
+                            Ticker = ticker,
+                            Price = price,
+                            Time = DateTime.Now
+                        });
+                        _GetDataTools.UpdateStockPrice(new()
+                        {
+                            Ticker = ticker,
+                            CurrentPrice = price
+                        });
+                    }
+                }
+                //Add closing price to table if market is about to close
+                if(dateTime.Hour == 15 && dateTime.Minute >= 55)
+                    _GetDataTools.AddStockPrices(stockList);
+
                 return Ok("Stock prices added successfully.");
             }
             catch (Exception ex)
@@ -276,7 +236,200 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        [HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
+        public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
+        {
+            try
+            {
+                List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
+                _GetDataTools.AddStockPrices(stockPrices);
 
+                return Ok("Stock prices added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
+                
+
+        //[HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
+        //public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
+        //{
+        //    try
+        //    {
+        //        List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
+        //        _GetDataTools.AddStockPrices(stockPrices);
+
+        //        return Ok("Stock prices added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
+
+        [HttpGet("/Home/TestPythonScript")]
+        public IActionResult TestPythonScript()
+        {
+            string pythonScriptPath = Path.Combine("PythonScripts", "samplePython.py");
+            ProcessStartInfo start = new ProcessStartInfo
+            {
+                FileName = "python",  // Ensure that python is in your PATH or provide the full path to the python executable
+                Arguments = $"\"{pythonScriptPath}\"",
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    process.WaitForExit();
+                    return Content(result);
+                }
+            }
+        }
+
+        [HttpGet("/Home/TrainsModel/{ticker}")]
+        public IActionResult TrainsModel(string ticker)
+        {
+            try
+            {
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+                //ProcessStartInfo ProcessInfo = new("python3")
+                //{
+                //    UseShellExecute = false,
+                //    RedirectStandardOutput = true,
+                //    Arguments = Path.Combine("PythonScripts", "model_train.py")
+                //};
+                //Process process = new()
+                //{
+                //    StartInfo = ProcessInfo
+                //};
+                //process.Start();
+                //StreamReader reader = process.StandardOutput;
+                //String line = reader.ReadLine();
+                //process.WaitForExit();
+                //process.Close();
+
+                //ProcessStartInfo start = new ProcessStartInfo
+                //{
+                //    FileName = "python",
+                //    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
+                //    RedirectStandardOutput = true,
+                //    UseShellExecute = false,
+                //    CreateNoWindow = true
+                //};
+
+                //using (Process process = Process.Start(start))
+                //{
+                //    using (StreamReader reader = process.StandardOutput)
+                //    {
+                //        string result = reader.ReadToEnd();
+                //        process.WaitForExit();
+                //        return Content(result);
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+            return StatusCode(500, "");
+        }
+
+        [HttpGet("/Home/TrainModel/{ticker}")]
+        public IActionResult TrainModel(string ticker)
+        {
+            string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
+            try
+            {
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+
+                // Write the JSON data to a temporary file
+                System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
+
+                string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = Process.Start(start))
+                {
+                    using (StreamReader reader = process.StandardOutput)
+                    {
+                        string result = reader.ReadToEnd();
+                        process.WaitForExit();
+
+                        // Optionally delete the temp file if it's no longer needed
+                        System.IO.File.Delete(tempFilePath);
+
+                        return Content(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally delete the temp file in case of an exception
+                System.IO.File.Delete(tempFilePath);
+
+                // Log the exception
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
+        public IActionResult Predict(string ticker, int prediction_range)
+        {
+            try
+            {
+                // Call the GetHistoricalStockData endpoint to get JSON data
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+
+                // Pass the JSON data to the Python script
+                string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = $"\"{pythonScriptPath}\" --jsonData \"{historicalDataJson}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = Process.Start(start))
+                {
+                    using (StreamReader reader = process.StandardOutput)
+                    {
+                        string result = reader.ReadToEnd();
+                        process.WaitForExit();
+                        return Content(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
     }
 }

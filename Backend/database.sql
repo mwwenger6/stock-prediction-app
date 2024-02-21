@@ -80,3 +80,4 @@ INSERT INTO Stocks (Name, Ticker, CreatedAt) VALUES
 INSERT INTO QuickStocks (Ticker) VALUES
     ('AAPL'),('GOOG'),('MSFT');
 
+ALTER TABLE Stocks CHANGE COLUMN OneDayPercentage CurrentPrice DECIMAL(10,2);

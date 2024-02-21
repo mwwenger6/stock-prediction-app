@@ -22,8 +22,14 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="Python.Included" Version="3.11.6" />
+    <PackageReference Include="pythonnet" Version="3.0.3" />
+    <PackageReference Include="QuantConnect.pythonnet" Version="2.0.26" />
     <PackageReference Include="ServiceStack.Interfaces" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PythonScripts\" />
   </ItemGroup>
 
 </Project>

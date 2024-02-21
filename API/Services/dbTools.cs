@@ -32,6 +32,7 @@ namespace Stock_Prediction_API.Services
         public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
 
         public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
+        public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
 
 
         public Stock GetStock(string ticker)
@@ -133,7 +134,12 @@ namespace Stock_Prediction_API.Services
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
         }
-
+        public void LogError(ErrorLog error)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.ErrorLogs.Add(error);
+            tempContext.SaveChanges();
+        }
 
 
         #endregion

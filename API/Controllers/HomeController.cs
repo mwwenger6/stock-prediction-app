@@ -45,6 +45,11 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
                 return StatusCode(500, $"Error getting {type} data.");
             }
         }
@@ -64,8 +69,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
@@ -85,8 +94,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
@@ -100,8 +113,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
         [HttpGet("/Home/AuthenticateUser/{email}/{password}")]
@@ -115,14 +132,22 @@ namespace Stock_Prediction_API.Controllers
                 return Json(user);
             }
             catch (InvalidDataException ex)
-            { 
-                //Log the exception
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
                 return StatusCode(401, ex.Message);
             }
             catch (Exception ex)
             {
-                //Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
@@ -142,8 +167,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
         [HttpPost("/Home/RemoveStock/{ticker}")]
@@ -156,8 +185,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
@@ -184,11 +217,21 @@ namespace Stock_Prediction_API.Controllers
                 } 
                 else 
                 {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = ex.Message,
+                        CreatedAt = DateTime.Now,
+                    });
                     return StatusCode(500, "Error in database"); 
                 } 
             } catch (Exception ex) 
-            { // Log the exception
-              return StatusCode(500, "Internal server error");
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             } 
         }
 
@@ -232,8 +275,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
         [HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
@@ -248,8 +295,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
                 
@@ -339,8 +390,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error: " + ex.Message);
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
             return StatusCode(500, "");
         }
@@ -386,9 +441,12 @@ namespace Stock_Prediction_API.Controllers
             {
                 // Optionally delete the temp file in case of an exception
                 System.IO.File.Delete(tempFilePath);
-
-                // Log the exception
-                return StatusCode(500, "Internal server error: " + ex.Message);
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
@@ -426,8 +484,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 

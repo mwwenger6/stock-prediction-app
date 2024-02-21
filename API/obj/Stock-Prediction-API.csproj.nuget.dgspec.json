@@ -65,6 +65,10 @@
               "target": "Package",
               "version": "[3.11.6, )"
             },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.26, )"
+            },
             "ServiceStack.Interfaces": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -72,6 +76,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "pythonnet": {
+              "target": "Package",
+              "version": "[3.0.3, )"
             }
           },
           "imports": [

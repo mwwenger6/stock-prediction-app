@@ -26,12 +26,14 @@ def process_json_file(json_file_path):
   return data
 
 parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('jsonData', type=str, help='Path to the JSON file')
+parser.add_argument('--jsonFile', type=str, help='Path to the JSON file')
 parser.add_argument('ticker', type=str, help='ticker name')
 args = parser.parse_args()
 json_file_path = args.jsonData
-data = process_json_file(json_file_path)
-
+json_file_path = args.jsonFile
+with open(json_file_path, 'r') as file:
+    json_data = json.load(file)
+data = pd.json_normalize(json_data)
 ticker = args.ticker
 
 def prepare_dataframe_for_lstm(df, n_steps):

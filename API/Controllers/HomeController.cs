@@ -8,6 +8,8 @@ using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
 using System;
 using System.Diagnostics;
+using System.Text.Json;
+using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 
@@ -228,27 +230,12 @@ namespace Stock_Prediction_API.Controllers
 
                 return Ok("Stock prices added successfully.");
             }
-            catch (Exception ex)[HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
-        public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
-        {
-            try
-            {
-                List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
-                _GetDataTools.AddStockPrices(stockPrices);
-
-                return Ok("Stock prices added successfully.");
-            }
             catch (Exception ex)
             {
                 // Log the exception
                 return StatusCode(500, "Internal server error");
             }
         }
-                // Log the exception
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
         [HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
         public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
         {
@@ -265,6 +252,24 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+                
+
+        //[HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
+        //public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
+        //{
+        //    try
+        //    {
+        //        List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
+        //        _GetDataTools.AddStockPrices(stockPrices);
+
+        //        return Ok("Stock prices added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
 
         [HttpGet("/Home/TestPythonScript")]
         public IActionResult TestPythonScript()
@@ -289,21 +294,76 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/Home/TrainModel/{ticker}")]
-        public IActionResult TrainModel(string ticker)
+        [HttpGet("/Home/TrainsModel/{ticker}")]
+        public IActionResult TrainsModel(string ticker)
         {
             try
             {
-                // Call the GetHistoricalStockData endpoint to get JSON data
-                var historicalDataResponse = GetHistoricalStockData(ticker);
-                var historicalDataJson = historicalDataResponse.Value.ToString();
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+                ProcessStartInfo ProcessInfo = new("python3")
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    Arguments = Path.Combine("PythonScripts", "model_train.py")
+            };
+                Process process = new()
+                {
+                    StartInfo = ProcessInfo
+                };
+                process.Start();
+                StreamReader reader = process.StandardOutput;
+                string line = reader.ReadLine();
+                process.WaitForExit();
+                process.Close();
 
-                // Pass the JSON data to the Python script
+                //string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
+                //ProcessStartInfo start = new ProcessStartInfo
+                //{
+                //    FileName = "python",
+                //    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
+                //    RedirectStandardOutput = true,
+                //    UseShellExecute = false,
+                //    CreateNoWindow = true
+                //};
+
+                //using (Process process = Process.Start(start))
+                //{
+                //    using (StreamReader reader = process.StandardOutput)
+                //    {
+                //        string result = reader.ReadToEnd();
+                //        process.WaitForExit();
+                //        return Content(result);
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+            return StatusCode(500, "");
+        }
+
+        [HttpGet("/Home/TrainModel/{ticker}")]
+        public IActionResult TrainModel(string ticker)
+        {
+            string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
+            try
+            {
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+
+                // Write the JSON data to a temporary file
+                System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
+
                 string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = $"\"{pythonScriptPath}\" --jsonData \"{historicalDataJson}\" --ticker \"{ticker}\"",
+                    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
@@ -315,32 +375,41 @@ namespace Stock_Prediction_API.Controllers
                     {
                         string result = reader.ReadToEnd();
                         process.WaitForExit();
+
+                        // Optionally delete the temp file if it's no longer needed
+                        System.IO.File.Delete(tempFilePath);
+
                         return Content(result);
                     }
                 }
             }
             catch (Exception ex)
             {
+                // Optionally delete the temp file in case of an exception
+                System.IO.File.Delete(tempFilePath);
+
                 // Log the exception
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
 
-         [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
+
+        [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
         public IActionResult Predict(string ticker, int prediction_range)
         {
             try
             {
                 // Call the GetHistoricalStockData endpoint to get JSON data
-                var historicalDataResponse = GetHistoricalStockData(ticker);
-                var historicalDataJson = historicalDataResponse.Value.ToString();
+                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
 
                 // Pass the JSON data to the Python script
                 string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = $"\"{pythonScriptPath}\" --jsonData \"{historicalDataJson}\" --ticker \"{ticker}\" --range \"{prediction_range}"",
+                    Arguments = $"\"{pythonScriptPath}\" --jsonData \"{historicalDataJson}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true

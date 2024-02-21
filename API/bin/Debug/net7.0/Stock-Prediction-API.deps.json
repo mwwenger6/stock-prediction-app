@@ -14,8 +14,10 @@
           "Newtonsoft.Json": "13.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0",
           "Python.Included": "3.11.6",
+          "QuantConnect.pythonnet": "2.0.26",
           "ServiceStack.Interfaces": "8.0.0",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "pythonnet": "3.0.3"
         },
         "runtime": {
           "Stock-Prediction-API.dll": {}
@@ -52,6 +54,18 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.7.0.0",
             "fileVersion": "1.700.22.46903"
+          }
+        }
+      },
+      "fasterflect/3.0.0": {
+        "dependencies": {
+          "System.Reflection.Emit.ILGeneration": "4.7.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard20/Fasterflect.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         }
       },
@@ -391,7 +405,7 @@
       "Python.Included/3.11.6": {
         "dependencies": {
           "Python.Deployment": "2.0.5",
-          "pythonnet": "3.0.1"
+          "pythonnet": "3.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Python.Included.dll": {
@@ -400,16 +414,21 @@
           }
         }
       },
-      "pythonnet/3.0.1": {
+      "pythonnet/3.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "System.Reflection.Emit": "4.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/Python.Runtime.dll": {
-            "assemblyVersion": "3.0.1.0",
-            "fileVersion": "3.0.1.0"
+            "assemblyVersion": "3.0.3.0",
+            "fileVersion": "3.0.3.0"
           }
+        }
+      },
+      "QuantConnect.pythonnet/2.0.26": {
+        "dependencies": {
+          "fasterflect": "3.0.0"
         }
       },
       "ServiceStack.Interfaces/8.0.0": {
@@ -549,18 +568,13 @@
         "dependencies": {
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.7.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.Emit.ILGeneration/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
+      "System.Reflection.Emit.ILGeneration/4.7.0": {},
+      "System.Reflection.Emit.Lightweight/4.7.0": {},
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -695,6 +709,13 @@
       "sha512": "sha512-eHEiCO/8+MfNc9nH5dVew/+FvxdaGrkRL4OMNwIz0W79+wtJyEoeRlXJ3SrXhoy9XR58geBYKmzMR83VO7bcAw==",
       "path": "azure.identity/1.7.0",
       "hashPath": "azure.identity.1.7.0.nupkg.sha512"
+    },
+    "fasterflect/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nXucxx84mYH+fS9U92a4Ak/MfWP0H204c8D2I64zsOQynnihhavO6HOCUcpp8HfKZMn3aNn01iv1bINnxH7Kow==",
+      "path": "fasterflect/3.0.0",
+      "hashPath": "fasterflect.3.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.5": {
       "type": "package",
@@ -962,12 +983,19 @@
       "path": "python.included/3.11.6",
       "hashPath": "python.included.3.11.6.nupkg.sha512"
     },
-    "pythonnet/3.0.1": {
+    "pythonnet/3.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FYgnTnIUDE/9CC1m/046UvevJW9RYLtvyc98pycc+76lFG+MdTlwkKoG63RkvPKgbqlJJSMqu8zxeiqHS8vR9Q==",
-      "path": "pythonnet/3.0.1",
-      "hashPath": "pythonnet.3.0.1.nupkg.sha512"
+      "sha512": "sha512-Go6pLzJ0msUVISUDf4n49GFja/7PbrjfQ9Nxpz+KV0r39YB8x5lPz7sItX38a0KGLoQIsSMxkUNDRjGRvplLHw==",
+      "path": "pythonnet/3.0.3",
+      "hashPath": "pythonnet.3.0.3.nupkg.sha512"
+    },
+    "QuantConnect.pythonnet/2.0.26": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0yoL5Bg+LebiuAoE0/DlAiTPQn15M8TvEn1Nh9NThhSJaT8WY2tnVDJjGk79ndZ5u3duh89k/liMzf3LlBGKWA==",
+      "path": "quantconnect.pythonnet/2.0.26",
+      "hashPath": "quantconnect.pythonnet.2.0.26.nupkg.sha512"
     },
     "ServiceStack.Interfaces/8.0.0": {
       "type": "package",
@@ -1081,12 +1109,19 @@
       "path": "system.reflection.emit/4.3.0",
       "hashPath": "system.reflection.emit.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.Emit.ILGeneration/4.3.0": {
+    "System.Reflection.Emit.ILGeneration/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-59tBslAk9733NXLrUJrwNZEzbMAcu8k344OYo+wfSVygcgZ9lgBdGIzH/nrg3LYhXceynyvTc8t5/GD4Ri0/ng==",
-      "path": "system.reflection.emit.ilgeneration/4.3.0",
-      "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
+      "sha512": "sha512-AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
+      "path": "system.reflection.emit.ilgeneration/4.7.0",
+      "hashPath": "system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.Lightweight/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
     },
     "System.Reflection.Primitives/4.3.0": {
       "type": "package",

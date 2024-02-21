@@ -35,22 +35,20 @@ class LSTM(nn.Module):
 
 device = 'cpu'
 
-def process_json_file(json_file_path):
-  with open(json_file_path, 'r') as file:
-    data = json.load(file)
-  data = pd.json_normalize(data)
-  data = data[['time', 'price']]
-  data['time'] = pd.to_datetime(data['time'])
-  data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
-  return data
+def process_json_data(json_data):
+    data = json.loads(json_data)
+    data = pd.json_normalize(data)
+    data = data[['time', 'price']]
+    data['time'] = pd.to_datetime(data['time'])
+    data = data.rename(columns={'time': 'Date', 'price': 'Close'})
+    return data
 
 parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('jsonData', type=str, help='Path to the JSON file')
+parser.add_argument('jsonData', type=str, help='JSON data as a string')
 parser.add_argument('ticker', type=str, help='ticker name')
-parser.add_argument('range', type=str, help='number of predicted days into the future')
+parser.add_argument('pred_range', type=int, help='number of predicted days into the future')
 args = parser.parse_args()
-json_file_path = args.jsonData
-data = process_json_file(json_file_path)
+data = process_json_data(args.jsonData)
 
 ticker = args.ticker
 
@@ -78,7 +76,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-pred_range = int(args.range)
+pred_range = int(args.pred_range)
 
 input_data = shifted_df[:pred_range]
 input_data = np.array(input_data)

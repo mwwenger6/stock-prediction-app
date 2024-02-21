@@ -302,21 +302,21 @@ namespace Stock_Prediction_API.Controllers
                 List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
-                ProcessStartInfo ProcessInfo = new("python3")
-                {
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    Arguments = Path.Combine("PythonScripts", "model_train.py")
-                };
-                Process process = new()
-                {
-                    StartInfo = ProcessInfo
-                };
-                process.Start();
-                StreamReader reader = process.StandardOutput;
-                String line = reader.ReadLine();
-                process.WaitForExit();
-                process.Close();
+                //ProcessStartInfo ProcessInfo = new("python3")
+                //{
+                //    UseShellExecute = false,
+                //    RedirectStandardOutput = true,
+                //    Arguments = Path.Combine("PythonScripts", "model_train.py")
+                //};
+                //Process process = new()
+                //{
+                //    StartInfo = ProcessInfo
+                //};
+                //process.Start();
+                //StreamReader reader = process.StandardOutput;
+                //String line = reader.ReadLine();
+                //process.WaitForExit();
+                //process.Close();
 
                 //ProcessStartInfo start = new ProcessStartInfo
                 //{

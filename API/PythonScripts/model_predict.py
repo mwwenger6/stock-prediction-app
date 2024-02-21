@@ -13,6 +13,7 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 import json
 import argparse
+import requests
 
 # our model's class
 class LSTM(nn.Module):
@@ -36,21 +37,24 @@ class LSTM(nn.Module):
 device = 'cpu'
 
 def process_json_data(json_data):
-    data = json.loads(json_data)
     data = pd.json_normalize(data)
     data = data[['time', 'price']]
     data['time'] = pd.to_datetime(data['time'])
     data = data.rename(columns={'time': 'Date', 'price': 'Close'})
     return data
 
-parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('jsonData', type=str, help='JSON data as a string')
+parser = argparse.ArgumentParser(description='Ticker and pred range')
 parser.add_argument('ticker', type=str, help='ticker name')
 parser.add_argument('pred_range', type=int, help='number of predicted days into the future')
 args = parser.parse_args()
-data = process_json_data(args.jsonData)
-
 ticker = args.ticker
+
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_file(json_data)
+
 
 # load model for predictions
 PATH = "Models/" + ticker + "model.pth"

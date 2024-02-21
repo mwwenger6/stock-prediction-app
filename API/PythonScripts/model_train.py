@@ -53,7 +53,7 @@ shifted_df_as_np = shifted_df.to_numpy()
 
 scaler = StandardScaler()
 shifted_df_as_np = scaler.fit_transform(shifted_df_as_np)
-joblib.dump(scaler, 'Models/' + ticker + 'scaler.pkl')
+joblib.dump(scaler, 'Scalers/' + ticker + 'scaler.pkl')
 
 X_train = shifted_df_as_np[:, 1:]
 y_train = shifted_df_as_np[:, 0]

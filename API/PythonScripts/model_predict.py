@@ -55,12 +55,12 @@ data = process_json_file(json_file_path)
 ticker = args.ticker
 
 # load model for predictions
-PATH = "Model/" + ticker + "model.pth"
+PATH = "Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH))
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load('Model/' + ticker + 'scaler.pkl')
+scaler = joblib.load('Scalers/' + ticker + 'scaler.pkl')
 
 # prepare input data
 def prepare_dataframe_for_lstm(df, n_steps):

@@ -5,6 +5,7 @@ import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
 import TimeSeriesData from "../Interfaces/TimeSeriesData";
+import endpoints from '../config';
 
 interface StockGraphProps {
   symbol: string | undefined;
@@ -45,6 +46,10 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
 
         // The stock market is open
         return false;
+    }
+
+    function getPredictions() {
+
     }
 
     useEffect(() => {
@@ -120,11 +125,26 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
             setShowError(true);
         }
       };
+      
+    // tests predicitons from our API. Simply logs the json response
+    // to the console  
+    const fetchPredictions = async () => {
 
+        try {
+          const response = await fetch(endpoints.predict(symbol, 30));
+          const jsonData = await response.json();
+          console.log(jsonData);
+        }
+        catch (error) {
+          console.error('Error fetching predictions:', error);
+          setShowError(true);
+        }
+
+      };
+
+      fetchPredictions();
       fetchData();
     }, [currInterval, symbol]);
-
-
 
   //limited to 8 api calls per minute
   return (

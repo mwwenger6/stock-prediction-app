@@ -307,18 +307,17 @@ namespace Stock_Prediction_API.Controllers
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     Arguments = Path.Combine("PythonScripts", "model_train.py")
-            };
+                };
                 Process process = new()
                 {
                     StartInfo = ProcessInfo
                 };
                 process.Start();
                 StreamReader reader = process.StandardOutput;
-                string line = reader.ReadLine();
+                String line = reader.ReadLine();
                 process.WaitForExit();
                 process.Close();
 
-                //string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
                 //ProcessStartInfo start = new ProcessStartInfo
                 //{
                 //    FileName = "python",

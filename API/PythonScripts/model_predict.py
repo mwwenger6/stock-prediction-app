@@ -9,7 +9,11 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
 from sklearn.preprocessing import StandardScaler
+
 import joblib
+import json
+import argparse
+import requests
 
 # our model's class
 class LSTM(nn.Module):
@@ -30,21 +34,37 @@ class LSTM(nn.Module):
     out = self.fc(out[:, -1, :])
     return out
 
+device = 'cpu'
 
-device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+def process_json_data(json_data):
+    data = pd.json_normalize(data)
+    data = data[['time', 'price']]
+    data['time'] = pd.to_datetime(data['time'])
+    data = data.rename(columns={'time': 'Date', 'price': 'Close'})
+    return data
+
+parser = argparse.ArgumentParser(description='Ticker and pred range')
+parser.add_argument('ticker', type=str, help='ticker name')
+parser.add_argument('pred_range', type=int, help='number of predicted days into the future')
+args = parser.parse_args()
+ticker = args.ticker
+
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_file(json_data)
+
 
 # load model for predictions
-PATH = "Machine_Learning/model.pth"
+PATH = "Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH))
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load('Machine_Learning/scaler.pkl')
+scaler = joblib.load('Scalers/' + ticker + 'scaler.pkl')
 
-# get input data needed to make a prediction for the next month (month of feb with 29 days)
-data = pd.read_csv('Machine_Learning/AMZN.csv')
-data = data[['Date', 'Close']]
-data['Date'] = pd.to_datetime(data['Date'])
+# prepare input data
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
 
@@ -60,7 +80,9 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-input_data = shifted_df.tail(29)
+pred_range = int(args.pred_range)
+
+input_data = shifted_df[:pred_range]
 input_data = np.array(input_data)
 input_data = scaler.transform(input_data)
 
@@ -104,8 +126,7 @@ dummies = scaler.inverse_transform(dummies)
 predictions = dc(dummies[:, 0])
 
 # prediction results 
-plt.plot(predictions, label="Predicted Close")
-plt.xlabel('Day')
-plt.ylabel('Close')
-plt.legend()
-plt.show()
+predictions = predictions.tolist()
+json_results = json.dumps(predictions)
+
+return json_results

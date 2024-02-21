@@ -1,26 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj": {}
+    "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj": {}
   },
   "projects": {
-    "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj": {
+    "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+        "projectUniqueName": "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
         "projectName": "Stock-Prediction-API",
-        "projectPath": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
-        "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-        "outputPath": "/Users/thomsontoms/stock-prediction-app/API/obj/",
+        "projectPath": "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+        "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mwwen\\Source\\Repos\\stock-prediction-app\\API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.312/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,6 +65,17 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+<<<<<<< HEAD
+=======
+            "Python.Included": {
+              "target": "Package",
+              "version": "[3.11.6, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.26, )"
+            },
+>>>>>>> 30d404f12f2027b7130b9b85bf26ea1c046af202
             "ServiceStack.Interfaces": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -66,6 +83,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "pythonnet": {
+              "target": "Package",
+              "version": "[3.0.3, )"
             }
           },
           "imports": [
@@ -87,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

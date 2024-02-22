@@ -13,24 +13,27 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 import json
 import argparse
+import requests
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
 def process_json_data(json_data):
-  data = json.loads(json_data)
   data = pd.json_normalize(data)
   data = data[['time', 'price']]
   data['time'] = pd.to_datetime(data['time'])
   data = data.rename(columns={'time': 'Date', 'price': 'Close'})
   return data
 
-parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('jsonData', type=str, help='JSON data as string')
+parser = argparse.ArgumentParser(description='Ticker name')
 parser.add_argument('ticker', type=str, help='ticker name')
 args = parser.parse_args()
-data = process_json_file(args.jsonData)
-
 ticker = args.ticker
+
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_file(json_data)
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy

@@ -41,7 +41,7 @@ namespace Stock_Prediction_API.Services
             {
                 // Check if the time is between 9:30 AM and 4:00 PM (Eastern Time) on weekdays
                 return dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday
-                    && dateTime.Hour >= 9 && dateTime.Hour < 16 && (dateTime.Hour != 9 || dateTime.Minute >= 30);
+                    && dateTime.Hour >= 9 && dateTime.Hour <24 && (dateTime.Hour != 9 || dateTime.Minute >= 30);
             }
         }
     }

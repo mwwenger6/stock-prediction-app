@@ -19,29 +19,13 @@ namespace Stock_Prediction_API.Controllers
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
-        [HttpGet("/Home/GetData/{type}")]
-        public IActionResult GetData(string type)
+        [HttpGet("/Home/GetUsers")]
+        public IActionResult GetUsers()
         {
             try
             {
-                switch (type.ToLower())
-                {
-                    case "users":
-                        List<User> users = _GetDataTools.GetUsers().ToList();
-                        return Json(users);
-                    case "quickstocks":
-                        List<QuickStock> quickStocks = _GetDataTools.GetQuickStocks().ToList();
-                        return Json(quickStocks);
-                    case "stocks":
-                        List<Stock> stocks = _GetDataTools.GetStocks().ToList();
-                        return Json(stocks);
-                    case "stockprices":
-                        List<StockPrice> prices = _GetDataTools.GetStockPrices().ToList();
-                        return Json(prices);
-                    default:
-                        // Handle invalid type
-                        return BadRequest("Invalid type parameter.");
-                }
+                List<User> users = _GetDataTools.GetUsers().ToList();
+                return Json(users);
             }
             catch (Exception ex)
             {
@@ -50,7 +34,43 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = DateTime.Now,
                 });
-                return StatusCode(500, $"Error getting {type} data.");
+                return StatusCode(500, $"Error getting users.");
+            }
+        }
+        [HttpGet("/Home/GetStocks")]
+        public IActionResult GetStocks()
+        {
+            try
+            {
+                List<Stock> stocks = _GetDataTools.GetStocks().ToList();
+                return Json(stocks);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new ()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Error getting stocks.");
+            }                  
+        }
+        [HttpGet("/Home/GetErrorLogs")]
+        public IActionResult GetErrorLogs()
+        {
+            try
+            {
+                List<ErrorLog> errors = _GetDataTools.GetErrorLogs().ToList();
+                return Json(errors);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.Now,
+                });
+                return StatusCode(500, $"Error getting error logs.");
             }
         }
 
@@ -161,7 +181,8 @@ namespace Stock_Prediction_API.Controllers
                 {
                     Ticker = ticker,
                     Name = name,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 });
                 return Ok("Stock added successfully.");
             }
@@ -243,27 +264,30 @@ namespace Stock_Prediction_API.Controllers
             {
                 DateTime dateTime = DateTime.Now;
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour < 16 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                   dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
                 List<StockPrice> stockList = new();
                 foreach (string ticker in tickers)
                 {
-                    float price = await _FinnhubDataTools.GetRecentPrice(ticker);
-                    if(price != -1)
+                    Stock stock = await _FinnhubDataTools.GetRecentPrice(ticker);
+                    if(stock != null)
                     {
-                        Console.WriteLine(ticker + ": " + price);
+                        Console.WriteLine(ticker + ": " + stock.CurrentPrice + ", " + stock.DailyChange);
                         stockList.Add(new StockPrice
                         {
                             Ticker = ticker,
-                            Price = price,
-                            Time = DateTime.Now
+                            Price = (float)stock.CurrentPrice,
+                            Time = DateTime.Now,
+
                         });
                         _GetDataTools.UpdateStockPrice(new()
                         {
                             Ticker = ticker,
-                            CurrentPrice = price
+                            CurrentPrice = stock.CurrentPrice,
+                            UpdatedAt = DateTime.Now,
+                            DailyChange = stock.DailyChange
                         });
                     }
                 }

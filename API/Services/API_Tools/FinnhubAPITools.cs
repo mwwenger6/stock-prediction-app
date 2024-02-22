@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Stock_Prediction_API.Entities;
 
 namespace Stock_Prediction_API.Services.API_Tools
 {
@@ -16,20 +17,23 @@ namespace Stock_Prediction_API.Services.API_Tools
 
 
 
-        public async Task<float> GetRecentPrice(string symbol)
+        public async Task<Stock> GetRecentPrice(string symbol)
         {
             string requestUrl = _quoteURL.Replace("{symbol}", symbol);
             string jsonData = await GetJSONData(requestUrl);
             var data = JsonSerializer.Deserialize<Dictionary<string, float>>(jsonData);
 
-            if (data.ContainsKey("c"))
+            Stock stock = new Stock();
+            if (data.ContainsKey("c") && data.ContainsKey("dp"))
             {
-                float cValue = data["c"];
-                return cValue;
+                 stock.CurrentPrice = data["c"];
+
+                 stock.DailyChange = data["dp"];
+                return stock;
             }
             else
             {
-                return -1;
+                return null;
             }
         }
 

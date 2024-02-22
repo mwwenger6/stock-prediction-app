@@ -91,6 +91,8 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == stock.Ticker)
                     .ExecuteUpdate(i => i
                         .SetProperty(t => t.CurrentPrice, stock.CurrentPrice)
+                        .SetProperty(t => t.UpdatedAt, stock.UpdatedAt)
+                        .SetProperty(t => t.DailyChange, stock.DailyChange)
                     );
                 return;
             }

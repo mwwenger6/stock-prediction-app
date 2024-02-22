@@ -24,6 +24,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(true)
     const [response, setResponse] = useState('');
+    const [pendingRequest, setPendingRequest] = useState(false)
 
     useEffect(() => {
         if (!props.showModal) {
@@ -45,7 +46,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-
+        setPendingRequest(true)
         const response = await fetch(endpoints.authUser(email, password), {
             method: 'GET',
             headers: {
@@ -71,6 +72,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
             setResponse(FAILURE);
             console.error('Error logging in:', response.statusText);
         }
+        setPendingRequest(false)
     }
 
     return (
@@ -99,7 +101,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center d-flex">
-                    <Button className="bg-success border-0 mx-2" onClick={handleSubmit} disabled={!(validEmail && validPassword)}>
+                    <Button className="btn bg-success border-0 mx-2 " onClick={handleSubmit} disabled={!(validEmail && validPassword) || pendingRequest}>
                         Submit
                     </Button>
                 </Modal.Footer>

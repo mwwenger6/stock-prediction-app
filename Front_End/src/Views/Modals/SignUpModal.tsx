@@ -23,6 +23,7 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(true)
     const [response, setResponse] = useState('');
+    const [pendingRequest, setPendingRequest] = useState(false)
 
     const [passwordReqs, setPasswordReqs] = useState({
         hasUppercase: false,
@@ -66,7 +67,7 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-
+        setPendingRequest(true)
         const response = await fetch(endpoints.addUser, {
             method: 'POST',
             headers: {
@@ -94,6 +95,7 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
             setResponse(FAILURE);
             console.error('Error logging in:', response.statusText);
         }
+        setPendingRequest(false)
     }
 
     return(
@@ -137,7 +139,7 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
                 </div>
             </Modal.Body>
             <Modal.Footer className="justify-content-center d-flex">
-                <Button className="bg-success border-0 mx-2" onClick={handleSubmit} disabled={!(validEmail && validPassword)}>
+                <Button className="bg-success border-0 mx-2" onClick={handleSubmit} disabled={!(validEmail && validPassword) || pendingRequest}>
                     Submit
                 </Button>
             </Modal.Footer>

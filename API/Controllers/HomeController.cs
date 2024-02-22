@@ -456,17 +456,12 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                // Call the GetHistoricalStockData endpoint to get JSON data
-                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
-
                 // Pass the JSON data to the Python script
-                string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
+                string pythonScriptPath = Path.Combine("PythonScripts", "model_predict.py");
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = $"\"{pythonScriptPath}\" --jsonData \"{historicalDataJson}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
+                    Arguments = $"\"{pythonScriptPath}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true

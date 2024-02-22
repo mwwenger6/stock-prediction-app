@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "vVgEdEuH48sybfxveFSwabNORePxQBUy2Upzx6tRuss=",
+  "Hash": "YHi9rYI5K2BBXYHjwxLnk4APsICcSLOH5XKPGARggtU=",
   "Source": "Stock-Prediction-API",
   "BasePath": "_content/Stock-Prediction-API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Stock-Prediction-API\\wwwroot",
+      "Source": "Stock-Prediction-API",
+      "ContentRoot": "C:\\Users\\mwwen\\stock-prediction-app\\API\\wwwroot\\",
+      "BasePath": "_content/Stock-Prediction-API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

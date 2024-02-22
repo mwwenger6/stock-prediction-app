@@ -3948,19 +3948,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pcdiz\\.nuget\\packages\\": {}
+    "C:\\Users\\mwwen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pcdiz\\OneDrive\\Documents\\Capstone API Testing Folder\\stockGenie\\API\\Stock-Prediction-API.csproj",
+      "projectUniqueName": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
       "projectName": "Stock-Prediction-API",
-      "projectPath": "C:\\Users\\pcdiz\\OneDrive\\Documents\\Capstone API Testing Folder\\stockGenie\\API\\Stock-Prediction-API.csproj",
-      "packagesPath": "C:\\Users\\pcdiz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pcdiz\\OneDrive\\Documents\\Capstone API Testing Folder\\stockGenie\\API\\obj\\",
+      "projectPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+      "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mwwen\\stock-prediction-app\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pcdiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3968,7 +3968,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4047,7 +4047,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

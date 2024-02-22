@@ -17,8 +17,8 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<HomeController>();
-builder.Services.AddHostedService<MyBackgroundService>();
+//builder.Services.AddScoped<HomeController>();
+//builder.Services.AddHostedService<MyBackgroundService>();
 
 builder.Services.AddDistributedMemoryCache();
 

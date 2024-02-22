@@ -500,7 +500,7 @@ namespace Stock_Prediction_API.Controllers
                         string errors = process.StandardError.ReadToEnd();
                         if (!string.IsNullOrEmpty(errors))
                         {
-                            // Log or handle errors
+                            return StatusCode(500, $"Empty or null big daddy");
                         }
                         string result = reader.ReadToEnd();
                         process.WaitForExit();

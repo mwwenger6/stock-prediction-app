@@ -13,6 +13,7 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 import json
 import argparse
+import requests
 
 # our model's class
 class LSTM(nn.Module):
@@ -35,32 +36,33 @@ class LSTM(nn.Module):
 
 device = 'cpu'
 
-def process_json_file(json_file_path):
-  with open(json_file_path, 'r') as file:
-    data = json.load(file)
-  data = pd.json_normalize(data)
-  data = data[['time', 'price']]
-  data['time'] = pd.to_datetime(data['time'])
-  data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
-  return data
+def process_json_data(json_data):
+    data = pd.json_normalize(data)
+    data = data[['time', 'price']]
+    data['time'] = pd.to_datetime(data['time'])
+    data = data.rename(columns={'time': 'Date', 'price': 'Close'})
+    return data
 
-parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('json_file', type=str, help='Path to the JSON file')
+parser = argparse.ArgumentParser(description='Ticker and pred range')
 parser.add_argument('ticker', type=str, help='ticker name')
-parser.add_argument('pred_range', type=str, help='number of predicted days into the future')
+parser.add_argument('pred_range', type=int, help='number of predicted days into the future')
 args = parser.parse_args()
-json_file_path = args.json_file
-data = process_json_file(json_file_path)
-
 ticker = args.ticker
 
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_file(json_data)
+
+
 # load model for predictions
-PATH = "Model/" + ticker + "model.pth"
+PATH = "Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH))
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load('Model/' + ticker + 'scaler.pkl')
+scaler = joblib.load('Scalers/' + ticker + 'scaler.pkl')
 
 # prepare input data
 def prepare_dataframe_for_lstm(df, n_steps):

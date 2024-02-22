@@ -13,26 +13,27 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 import json
 import argparse
+import requests
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-def process_json_file(json_file_path):
-  with open(json_file_path, 'r') as file:
-    data = json.load(file)
+def process_json_data(json_data):
   data = pd.json_normalize(data)
   data = data[['time', 'price']]
   data['time'] = pd.to_datetime(data['time'])
-  data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
+  data = data.rename(columns={'time': 'Date', 'price': 'Close'})
   return data
 
-parser = argparse.ArgumentParser(description='Process a JSON file.')
-parser.add_argument('json_file', type=str, help='Path to the JSON file')
+parser = argparse.ArgumentParser(description='Ticker name')
 parser.add_argument('ticker', type=str, help='ticker name')
 args = parser.parse_args()
-json_file_path = args.json_file
-data = process_json_file(json_file_path)
-
 ticker = args.ticker
+
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_file(json_data)
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy
@@ -53,7 +54,7 @@ shifted_df_as_np = shifted_df.to_numpy()
 
 scaler = StandardScaler()
 shifted_df_as_np = scaler.fit_transform(shifted_df_as_np)
-joblib.dump(scaler, 'Models/' + ticker + 'scaler.pkl')
+joblib.dump(scaler, 'Scalers/' + ticker + 'scaler.pkl')
 
 X_train = shifted_df_as_np[:, 1:]
 y_train = shifted_df_as_np[:, 0]

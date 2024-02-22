@@ -13,7 +13,7 @@ namespace Stock_Prediction_API.Services
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<StockPrice> StockPrices { get; set; }
         public DbSet<QuickStock> QuickStocks { get; set; }
-
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
 
     }
 }

@@ -24,5 +24,10 @@ namespace Stock_Prediction_API.Entities
 #nullable disable
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
+#nullable disable
+        [Column("updatedAt")]
+        public DateTime UpdatedAt { get; set; }
+        [Column("dailyChange")]
+        public float? DailyChange { get; set; }
     }
 }

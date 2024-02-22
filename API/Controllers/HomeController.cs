@@ -38,6 +38,9 @@ namespace Stock_Prediction_API.Controllers
                     case "stockprices":
                         List<StockPrice> prices = _GetDataTools.GetStockPrices().ToList();
                         return Json(prices);
+                    case "errorlog":
+                        List<ErrorLog> errors = _GetDataTools.GetErrorLogs().ToList();
+                        return Json(errors);
                     default:
                         // Handle invalid type
                         return BadRequest("Invalid type parameter.");
@@ -161,7 +164,8 @@ namespace Stock_Prediction_API.Controllers
                 {
                     Ticker = ticker,
                     Name = name,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 });
                 return Ok("Stock added successfully.");
             }
@@ -243,27 +247,30 @@ namespace Stock_Prediction_API.Controllers
             {
                 DateTime dateTime = DateTime.Now;
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour < 16 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                   dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
                 List<StockPrice> stockList = new();
                 foreach (string ticker in tickers)
                 {
-                    float price = await _FinnhubDataTools.GetRecentPrice(ticker);
-                    if(price != -1)
+                    Stock stock = await _FinnhubDataTools.GetRecentPrice(ticker);
+                    if(stock != null)
                     {
-                        Console.WriteLine(ticker + ": " + price);
+                        Console.WriteLine(ticker + ": " + stock.CurrentPrice);
                         stockList.Add(new StockPrice
                         {
                             Ticker = ticker,
-                            Price = price,
-                            Time = DateTime.Now
+                            Price = (float)stock.CurrentPrice,
+                            Time = DateTime.Now,
+
                         });
                         _GetDataTools.UpdateStockPrice(new()
                         {
                             Ticker = ticker,
-                            CurrentPrice = price
+                            CurrentPrice = stock.CurrentPrice,
+                            UpdatedAt = DateTime.Now,
+                            DailyChange = stock.DailyChange
                         });
                     }
                 }

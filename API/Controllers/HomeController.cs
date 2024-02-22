@@ -490,11 +490,18 @@ namespace Stock_Prediction_API.Controllers
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
+                start.RedirectStandardError = true;
+                
 
                 using (Process process = Process.Start(start))
                 {
                     using (StreamReader reader = process.StandardOutput)
                     {
+                        string errors = process.StandardError.ReadToEnd();
+                        if (!string.IsNullOrEmpty(errors))
+                        {
+                            // Log or handle errors
+                        }
                         string result = reader.ReadToEnd();
                         process.WaitForExit();
                         return Content(result);

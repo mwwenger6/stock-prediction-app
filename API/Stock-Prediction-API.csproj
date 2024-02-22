@@ -16,13 +16,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'WebAPI' " />
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="python" Version="3.12.2" />
     <PackageReference Include="Python.Included" Version="3.11.6" />
     <PackageReference Include="pythonnet" Version="3.0.3" />
     <PackageReference Include="QuantConnect.pythonnet" Version="2.0.26" />

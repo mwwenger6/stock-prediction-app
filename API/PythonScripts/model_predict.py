@@ -129,4 +129,4 @@ predictions = dc(dummies[:, 0])
 predictions = predictions.tolist()
 json_results = json.dumps(predictions)
 
-return json_results
+print(json_results)

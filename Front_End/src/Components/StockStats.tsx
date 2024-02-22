@@ -8,7 +8,7 @@ interface StockGraphProps {
 }
 const StockStats = ({ symbol } : StockGraphProps) => {
     const getPrice = GetPriceUpdate;
-    const defaultData: DailyData = {
+    const defaultData : DailyData = {
         "c": 0,
         "h": 0,
         "l": 0,

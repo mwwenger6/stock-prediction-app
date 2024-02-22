@@ -33,13 +33,17 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
         isValidLength: false
     });
 
+    const clearState = () => {
+        setEmail('')
+        setPassword('')
+        setResponse('')
+        setValidEmail(false)
+        setValidPassword(false)
+    }
+
     useEffect(() => {
         if (!props.showModal) {
-            setEmail('')
-            setPassword('')
-            setResponse('')
-            setValidEmail(false)
-            setValidPassword(false)
+            clearState()
         }
     }, [props.showModal]);
 
@@ -79,17 +83,17 @@ const SignUpModal: React.FC<SignUpModalProps> = (props: SignUpModalProps) => {
             })
         });
 
-        console.log(response)
         if (response.status == 409) {
             setResponse(DUPLICATE_EMAIL);
             console.error('Error signing up:', response.statusText);
         }
         else if (response.status == 200) {
             setResponse(SUCCESS);
+            setEmail('')
+            setPassword('')
             const timer = setTimeout(() => {
                 props.showLoginModal()
             }, 500);
-            console.log('Account created with email: ', email)
         }
         else {
             setResponse(FAILURE);

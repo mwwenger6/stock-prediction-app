@@ -116,7 +116,7 @@
 
 .scrolling-container {
   display: inline-block;
-  animation: scroll-left 1000s linear infinite; /* scales with elements*/
+  animation: scroll-left 25000s linear infinite; /* scales with elements*/
 }
 
 .arrow {

@@ -1,7 +1,7 @@
 import {Container, Nav, Navbar, Form, Dropdown } from "react-bootstrap";
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import Tickers from '../Data/tickers.json';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import LoginModal from "../Views/Modals/LoginModal";
 import SignUpModal from "../Views/Modals/SignUpModal";
 import Ticker from "../Interfaces/Ticker";
@@ -80,8 +80,8 @@ const AppNavbar = (props: AppNavbarProps) => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                    <Nav.Link href="/" className="nav-link-blue-bg">Home</Nav.Link>
-                    <Nav.Link href="/News" className="nav-link-blue-bg">News</Nav.Link>
+                    <Link to="/" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>Home</Link>
+                    <Link to="/News" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>News</Link>
                     {loggedIn ?
                         <>
 

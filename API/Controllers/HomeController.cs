@@ -262,7 +262,9 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                DateTime dateTime = DateTime.Now;
+                DateTime currentTime = DateTime.UtcNow;
+                DateTime dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Utc.Id, "Eastern Standard Time");
+
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
                    dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");

@@ -524,3 +524,4 @@ C:\Users\pcdiz\OneDrive\Documents\Capstone API Testing Folder\stockGenie\API\obj
 C:\Users\pcdiz\OneDrive\Documents\Capstone API Testing Folder\stockGenie\API\obj\Debug\net7.0\Stock-Prediction-API.genruntimeconfig.cache
 C:\Users\pcdiz\OneDrive\Documents\Capstone API Testing Folder\stockGenie\API\obj\Debug\net7.0\ref\Stock-Prediction-API.dll
 C:\Users\pcdiz\OneDrive\Documents\Capstone API Testing Folder\stockGenie\API\bin\Debug\net7.0\Stock-Prediction-API.staticwebassets.runtime.json
+C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Debug\net7.0\Stock-Prediction-API.staticwebassets.runtime.json

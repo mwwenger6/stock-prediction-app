@@ -19,6 +19,12 @@ namespace Stock_Prediction_API.Controllers
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
 
+        public DateTime GetEasternTime()
+        {
+            DateTime currentTime = DateTime.UtcNow;
+            return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Utc.Id, "Eastern Standard Time");
+        }
+
         [HttpGet("/Home/GetUsers")]
         public IActionResult GetUsers()
         {
@@ -32,7 +38,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting users.");
             }
@@ -50,7 +56,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new ()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting stocks.");
             }                  
@@ -68,7 +74,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting error logs.");
             }
@@ -92,7 +98,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -117,7 +123,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -136,7 +142,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -156,7 +162,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(401, ex.Message);
             }
@@ -165,7 +171,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -175,14 +181,15 @@ namespace Stock_Prediction_API.Controllers
         [HttpPost("/Home/AddStock/{ticker}/{name}")]
         public IActionResult AddStock(string ticker, string name)
         {
+            DateTime dateTime = GetEasternTime();
             try
             {
                 _GetDataTools.AddStock(new Stock
                 {
                     Ticker = ticker,
                     Name = name,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
+                    CreatedAt = dateTime,
+                    UpdatedAt = dateTime
                 });
                 return Ok("Stock added successfully.");
             }
@@ -191,7 +198,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = dateTime,
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -209,7 +216,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -226,7 +233,7 @@ namespace Stock_Prediction_API.Controllers
                     Email = user.Email,
                     Password = user.Password, 
                     //UserTypeId = ?
-                    CreatedAt = DateTime.Now 
+                    CreatedAt = GetEasternTime()
                 });
                     return Ok("User added successfully."); 
             } 
@@ -241,7 +248,7 @@ namespace Stock_Prediction_API.Controllers
                     _GetDataTools.LogError(new()
                     {
                         Message = ex.Message,
-                        CreatedAt = DateTime.Now,
+                        CreatedAt = GetEasternTime(),
                     });
                     return StatusCode(500, "Error in database"); 
                 } 
@@ -250,7 +257,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             } 
@@ -262,9 +269,7 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                DateTime currentTime = DateTime.UtcNow;
-                DateTime dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Utc.Id, "Eastern Standard Time");
-
+                DateTime dateTime = GetEasternTime();
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
                    dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");
@@ -281,14 +286,14 @@ namespace Stock_Prediction_API.Controllers
                         {
                             Ticker = ticker,
                             Price = (float)stock.CurrentPrice,
-                            Time = DateTime.Now,
+                            Time = dateTime,
 
                         });
                         _GetDataTools.UpdateStockPrice(new()
                         {
                             Ticker = ticker,
                             CurrentPrice = stock.CurrentPrice,
-                            UpdatedAt = DateTime.Now,
+                            UpdatedAt = dateTime,
                             DailyChange = stock.DailyChange
                         });
                     }
@@ -304,7 +309,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -324,7 +329,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -419,7 +424,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -470,7 +475,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -510,7 +515,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }

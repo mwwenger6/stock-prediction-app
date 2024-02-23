@@ -30,7 +30,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PythonScripts\" />
+    <None Include="wwwroot\Models\AAPLmodel.pth" />
+    <None Include="wwwroot\PythonScripts\model_predict.py" />
+    <None Include="wwwroot\PythonScripts\model_train.py" />
+    <None Include="wwwroot\PythonScripts\requirements.txt" />
+    <None Include="wwwroot\PythonScripts\samplePython.py" />
+    <None Include="wwwroot\PythonScripts\tempJsonFile.txt" />
+    <None Include="wwwroot\Scalers\AAPLscaler.pkl" />
   </ItemGroup>
 
 </Project>

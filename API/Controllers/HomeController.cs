@@ -481,32 +481,27 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 // Pass the JSON data to the Python script
-                string pythonScriptPath = Path.Combine("PythonScripts", "model_predict.py");
-                ProcessStartInfo start = new ProcessStartInfo
+                string pythonScriptPath = "wwwroot\\PythonScripts\\model_predict.py";
+                ProcessStartInfo start = new()
                 {
                     FileName = "python",
                     Arguments = $"\"{pythonScriptPath}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    RedirectStandardError = true
                 };
-                start.RedirectStandardError = true;
-                
-
-                using (Process process = Process.Start(start))
+#nullable disable
+                using Process process = Process.Start(start);
+                using StreamReader reader = process.StandardOutput;
+                string errors = process.StandardError.ReadToEnd();
+                if (!string.IsNullOrEmpty(errors))
                 {
-                    using (StreamReader reader = process.StandardOutput)
-                    {
-                        string errors = process.StandardError.ReadToEnd();
-                        if (!string.IsNullOrEmpty(errors))
-                        {
-                            return StatusCode(500, $"Empty or null big daddy");
-                        }
-                        string result = reader.ReadToEnd();
-                        process.WaitForExit();
-                        return Content(result);
-                    }
+                    return StatusCode(500, errors);
                 }
+                string result = reader.ReadToEnd();
+                process.WaitForExit();
+                return Content(result);
             }
             catch (Exception ex)
             {

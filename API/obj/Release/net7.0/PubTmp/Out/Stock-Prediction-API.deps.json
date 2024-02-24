@@ -17,6 +17,7 @@
           "QuantConnect.pythonnet": "2.0.26",
           "ServiceStack.Interfaces": "8.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
+          "python": "3.12.2",
           "pythonnet": "3.0.3"
         },
         "runtime": {
@@ -394,6 +395,7 @@
           }
         }
       },
+      "python/3.12.2": {},
       "Python.Deployment/2.0.5": {
         "runtime": {
           "lib/netstandard2.0/Python.Deployment.dll": {
@@ -968,6 +970,13 @@
       "sha512": "sha512-Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "path": "pomelo.entityframeworkcore.mysql/7.0.0",
       "hashPath": "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512"
+    },
+    "python/3.12.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SyCPiqeCQWvNYm6aEEOw+NaxRd4l/JNKidXRuDLv0DeYKWIjVvQx4IWiU1rlOmFo2FCw12oMX3vRCkE13jQM8g==",
+      "path": "python/3.12.2",
+      "hashPath": "python.3.12.2.nupkg.sha512"
     },
     "Python.Deployment/2.0.5": {
       "type": "package",

@@ -26,13 +26,17 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const [response, setResponse] = useState('');
     const [pendingRequest, setPendingRequest] = useState(false)
 
+    const clearState = () => {
+        setEmail('')
+        setPassword('')
+        setResponse('')
+        setValidEmail(false)
+        setValidPassword(false)
+    }
+
     useEffect(() => {
         if (!props.showModal) {
-            setEmail('')
-            setPassword('')
-            setResponse('')
-            setValidEmail(false)
-            setValidPassword(false)
+            clearState()
         }
     }, [props.showModal]);
 
@@ -64,6 +68,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
             console.log('User logged in: ', user)
 
             props.setUser(user)
+            clearState()
             const timer = setTimeout(() => {
                 props.toggleModal()
             }, 500);

@@ -7,9 +7,10 @@ import LoginView from './Views/LoginView';
 import StockGraphView from './Views/StockGraphView';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from "./Interfaces/User"
-import GetPriceUpdate from "./Services/GetPriceUpdate";
 import Stock from "./Interfaces/Stock";
 import TickerScroller from "./Components/TickerScroller";
+import GetFeaturedStocks from "./Services/GetFeaturedStocks";
+
 
 
 //set initial featured stocks list
@@ -23,7 +24,6 @@ const initFeaturedStocks: Stock[] = [
   { name: 'Netflix', ticker: 'NFLX', price: -1, up: undefined },
   { name: 'Alphabet', ticker: 'GOOG', price: -1, up: undefined },
   { name: 'Visa', ticker: 'V', price: -1, up: undefined },
-  { name: 'Walmart', ticker: 'WMT', price: -1, up: undefined },
   { name: 'Procter & Gamble', ticker: 'PG', price: -1, up: undefined },
   { name: 'Cisco Systems', ticker: 'CSCO', price: -1, up: undefined },
   { name: 'JPMorgan Chase', ticker: 'JPM', price: -1, up: undefined },
@@ -35,15 +35,8 @@ const initFeaturedStocks: Stock[] = [
 
 function App() {
 
-  const getPrice = GetPriceUpdate;
+  const getFeaturedStocks = GetFeaturedStocks;
 
-  //If you arent running the api locally then uncomment this out
-  // const [user, setUser] = useState<User | null>({
-  //   email: "example@gmail.com",
-  //   password: "Password1!",
-  //   id: -1,
-  //   createdAt: "Now",
-  // });
   const [user, setUser] = useState<User | null>(null);
   const [featuredStocks, setFeaturedStocks] = useState(initFeaturedStocks)
 
@@ -51,16 +44,11 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const updatedStockData  = await Promise.all(featuredStocks.map(async (stock) => {
-          const stockData = await getPrice(stock.ticker);
-          if(!stockData.hasOwnProperty('error'))
-            return { ...stock, price: stockData.c, up: stockData.dp > 0 }
-          else
-            return { ...stock, price: -1, up: false}
-        }));
-        setFeaturedStocks(updatedStockData)
-      }
-      catch (error) {
+        const stocks: Stock[] | null = await getFeaturedStocks();
+        if (stocks !== null) {
+          setFeaturedStocks(stocks);
+        }
+      } catch (error) {
         console.error('Error fetching prices:', error);
       }
     };
@@ -69,14 +57,14 @@ function App() {
 
   return (
     <div className="App">
+      <TickerScroller featuredStocks={featuredStocks}/>
       <BrowserRouter>
-        <TickerScroller featuredStocks={featuredStocks}/>
         <AppNavbar user={user} setUser={setUser}/>
         <Routes>
-          <Route index element={<HomeView user={user} setUser={setUser} featuredStocks={featuredStocks}/>} />
-          <Route path="News" element = { <NewsView/> } />
+          <Route index element={<HomeView user={user} featuredStocks={featuredStocks}/>} />
+          <Route path="News" element = { <NewsView /> } />
           <Route path="Login" element = { <LoginView/> } />
-          <Route path="Stock/:symbol" element = { <StockGraphView/> } />
+          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} /> } />
         </Routes>
       </BrowserRouter>
     </div>

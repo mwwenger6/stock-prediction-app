@@ -37,15 +37,15 @@ class LSTM(nn.Module):
 device = 'cpu'
 
 def process_json_data(json_data):
-    data = pd.json_normalize(data)
+    data = pd.json_normalize(json_data)
     data = data[['time', 'price']]
     data['time'] = pd.to_datetime(data['time'])
     data = data.rename(columns={'time': 'Date', 'price': 'Close'})
     return data
 
 parser = argparse.ArgumentParser(description='Ticker and pred range')
-parser.add_argument('ticker', type=str, help='ticker name')
-parser.add_argument('pred_range', type=int, help='number of predicted days into the future')
+parser.add_argument('--ticker', type=str, help='ticker name')
+parser.add_argument('--range', type=int, help='number of predicted days into the future')
 args = parser.parse_args()
 ticker = args.ticker
 
@@ -53,16 +53,16 @@ api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockD
 
 response = requests.get(api_endpoint)
 json_data = response.json()
-data = process_json_file(json_data)
+data = process_json_data(json_data)
 
 
 # load model for predictions
-PATH = "Models/" + ticker + "model.pth"
+PATH = "wwwroot/Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
-model.load_state_dict(torch.load(PATH))
+model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load('Scalers/' + ticker + 'scaler.pkl')
+scaler = joblib.load('wwwroot/Scalers/' + ticker + 'scaler.pkl')
 
 # prepare input data
 def prepare_dataframe_for_lstm(df, n_steps):
@@ -72,7 +72,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 
   # applies the shifting of the dataframe
   for i in range(1, n_steps + 1):
-    df[f'Close(t-{i})'] = df['Close'].shift(i)
+    df['Close(t-' + str(i) + ')'] = df['Close'].shift(i)
   
   df.dropna(inplace=True)
 
@@ -80,7 +80,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-pred_range = int(args.pred_range)
+pred_range = int(args.range)
 
 input_data = shifted_df[:pred_range]
 input_data = np.array(input_data)

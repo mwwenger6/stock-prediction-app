@@ -1,6 +1,7 @@
 import {Container} from "react-bootstrap";
 import News from "../Components/News";
 
+
 const NewsView = () => {
 
     return (

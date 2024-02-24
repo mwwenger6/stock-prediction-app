@@ -6,12 +6,15 @@ import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
 import TimeSeriesData from "../Interfaces/TimeSeriesData";
 import endpoints from '../config';
+import User from "../Interfaces/User";
 
 interface StockGraphProps {
-  symbol: string | undefined;
+  symbol: string;
+  isFeatured: boolean;
+  user: User | null,
 }
 
-const StockGraph = ({ symbol } : StockGraphProps) => {
+const StockGraph = (props : StockGraphProps) => {
 
     const getData = GetTimeSeriesData;
     const intervals =      ['5min',   '30min', '4h',     '1day',    '1month']
@@ -24,9 +27,8 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     const [showError, setShowError] = useState(false)
     const [marketClosed, setMarketClosed] = useState(false)
     const [graphLoading , setGraphLoading] = useState(true)
-
-    const [percentChange, setPercentChange] = useState('')
     const [ticker, setTicker] = useState('')
+    const [percentChange, setPercentChange] = useState('')
     const [color, setColor] = useState('grey')
 
     function stockMarketClosed() {
@@ -54,16 +56,17 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
 
     useEffect(() => {
 
-    if(symbol === undefined) return
+    if(props.symbol === undefined) return
 
     //Fetch price data on load
     const fetchData = async () => {
         try {
             setMarketClosed(stockMarketClosed())
-            const timeSeriesData  = await getData(symbol, currInterval, marketClosed)
+            setGraphLoading(true)
+            const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed)
             if (timeSeriesData.status == 'error')
                 throw "Unable to get data";
-            console.log(timeSeriesData)
+
             setShowError(false);
             const timeSeries =  timeSeriesData.values;
             const openValues = (timeSeries.map((item: TimeSeriesData) => parseFloat(item.open))).reverse();
@@ -94,7 +97,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
             if(change.substring(0,1) != '-') change = "+" + change
 
             setPercentChange(change)
-            setTicker(symbol)
+            setTicker(props.symbol)
             setColor(lineColor)
 
             const newOptions = {
@@ -131,7 +134,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
     const fetchPredictions = async () => {
 
         try {
-          const response = await fetch(endpoints.predict(symbol, 30));
+          const response = await fetch(endpoints.predict(props.symbol, 30));
           const jsonData = await response.json();
           console.log(jsonData);
         }
@@ -141,10 +144,10 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
         }
 
       };
-
-      fetchPredictions();
+      if(props.isFeatured)
+          fetchPredictions();
       fetchData();
-    }, [currInterval, symbol]);
+    }, [currInterval, props.symbol]);
 
   //limited to 8 api calls per minute
   return (
@@ -156,7 +159,7 @@ const StockGraph = ({ symbol } : StockGraphProps) => {
                     <h3 className="m-auto"> Unable to get time series data at this time </h3>
                 </div>
             ) : (<div>
-                 <span className={"float-start display-6 mb-2"}> {symbol}(<span className={color == 'red' ? "text-danger" : (color == 'green'? "text-success" : "text-gray")}>{percentChange}%</span>)</span>
+                 <span className={"float-start display-6 mb-2"}> {props.symbol}(<span className={color == 'red' ? "text-danger" : (color == 'green'? "text-success" : "text-gray")}>{percentChange}%</span>)</span>
                  <ReactECharts option={options} />
                  </div>)
         )}

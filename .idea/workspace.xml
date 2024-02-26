@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Disabled login/signup buttons on request">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Services/GetFeaturedStocks.tsx" afterDir="false" />
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/TickerScroller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/TickerScroller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/NewsView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/NewsView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +23,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -119,7 +108,8 @@
       <workItem from="1707968281896" duration="2694000" />
       <workItem from="1708275935896" duration="7170000" />
       <workItem from="1708450695026" duration="4075000" />
-      <workItem from="1708569972321" duration="6222000" />
+      <workItem from="1708569972321" duration="6741000" />
+      <workItem from="1708919584204" duration="8746000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -233,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708560441077</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view.">
+      <option name="closed" value="true" />
+      <created>1708576798980</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708576798980</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +263,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Changed API call URLs. API needs CORS enabled for it to work" />
     <MESSAGE value="Disabled login/signup buttons on request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disabled login/signup buttons on request" />
+    <MESSAGE value="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view." />
   </component>
 </project>

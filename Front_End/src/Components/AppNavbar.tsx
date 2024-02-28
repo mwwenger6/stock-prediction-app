@@ -91,6 +91,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                                 <Dropdown.Menu>
                                     <Dropdown.Item> <b> Email: </b> {props.user?.email} </Dropdown.Item>
                                     <Dropdown.Item> <b> Account ID: </b> {props.user?.id}</Dropdown.Item>
+                                    <Dropdown.Item> <b> Account Type: </b> {props.user?.typeName}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             </div>

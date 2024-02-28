@@ -61,14 +61,17 @@ const StockGraph = (props : StockGraphProps) => {
     }
 
     function getFormattedDate(datetime: string | Date){
+        let year : any = 'numeric';
         let hour : any = undefined;
         let minute : any = undefined;
-        if(currInterval == '5min' || currInterval == '30min')
+        if(currInterval == '5min' || currInterval == '30min'){
             hour = minute = '2-digit'
+            year = undefined
+        }
         return new Intl.DateTimeFormat('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
+            year: year,
+            month: 'short',
+            day: 'numeric',
             hour: hour,
             minute: minute
         }).format(new Date(datetime))
@@ -229,7 +232,7 @@ const StockGraph = (props : StockGraphProps) => {
                  </div>)
         )}
       <p className={marketClosed && (currInterval == intervals[0] || currInterval == intervals[1]) ? "text-danger" : "text-white"}> * Graph prices reflect the last time the stock market was open </p>
-      <div className='d-flex row justify-content-center'>
+        <div className='d-flex row justify-content-center'>
           {intervals.map((interval, i) => (
               <div className='col-auto' key={i}>
                   <Button
@@ -255,14 +258,22 @@ const StockGraph = (props : StockGraphProps) => {
                   {showPrediction ? "Hide" : "Show"} Prediction
               </Button>
           </div>
-          <div className='col-auto'>
-              <CsvDownload
-                  className={`btn btn-outline-secondary ${showError ? 'disabled' : ''}`}
-                  data={timeSeriesData}
-                  filename="stock_data.csv">
-                  Download CSV
-              </CsvDownload>
-          </div>
+      </div>
+      <div className='row mt-3 justify-content-center'>
+        <div className='col-auto'>
+            <CsvDownload
+                className={`btn btn-outline-success ${showError ? 'disabled' : ''}`}
+                data={timeSeriesData}
+                filename="stock_data.csv">
+                Download CSV
+            </CsvDownload>
+        </div>
+        <div className='col-auto'>
+            <Button className={"btn btn-outline-success"}
+                    variant=''>
+                Add To Watchlist
+            </Button>
+        </div>
       </div>
     </>
     )

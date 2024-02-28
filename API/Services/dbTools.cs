@@ -33,7 +33,7 @@ namespace Stock_Prediction_API.Services
 
         public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
-
+        public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
 
         public Stock GetStock(string ticker)
         {
@@ -129,6 +129,12 @@ namespace Stock_Prediction_API.Services
         {
             using var tempContext = GetNewDBContext();
             tempContext.StockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
+        }
+        public void UpdateUserPrivileges(string email, int newUserTypeId)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.Users.Where(u => u.Email == email)
+                    .ExecuteUpdate(i => i.SetProperty(u => u.TypeId, newUserTypeId));
         }
         public void AddUser(User user)
         {

@@ -135,6 +135,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 User user = _GetDataTools.GetUser(email);
+                user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
                 return Json(user);
             }
             catch (Exception ex)
@@ -222,17 +223,48 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpPost("/Home/ChangeUserType/{email}/{userTypeName}")]
+        public IActionResult ChangeUserType(string email, string userTypeName)
+        {
+            try
+            {
+                //Check that user type name is in db, get id of that type
+                List <UserType> userTypes = _GetDataTools.GetUserTypes().ToList();
+                int newTypeId = userTypes.Single(t => t.UserTypeName.ToLower() == userTypeName.ToLower()).Id;
+
+                //Update the user's type id
+                _GetDataTools.UpdateUserPrivileges(email, newTypeId);
+
+                return Ok($"User type changed to {userTypeName}"); 
+            }
+            catch (InvalidOperationException)
+            {
+                return BadRequest("Invalid user type name");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
         [HttpPost("/Home/AddUser")]
         public IActionResult AddUser([FromBody] User user)
         {
             try
             {
+                int clientId = _GetDataTools.GetUserTypes().Single(t => t.UserTypeName == UserType.CLIENT).Id;
                 _GetDataTools.AddUser(new User
                 {
                     Email = user.Email,
                     Password = user.Password, 
-                    //UserTypeId = ?
+                    TypeId = clientId,
                     CreatedAt = GetEasternTime()
                 });
                     return Ok("User added successfully."); 
@@ -271,7 +303,7 @@ namespace Stock_Prediction_API.Controllers
             {
                 DateTime dateTime = GetEasternTime();
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();

@@ -154,6 +154,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 User user = _GetDataTools.GetUser(email);
+                user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
                 if (user.Password != password)
                     throw new InvalidDataException("Could not authenticate");
                 return Json(user);

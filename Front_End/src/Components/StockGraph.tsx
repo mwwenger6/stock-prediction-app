@@ -89,7 +89,6 @@ const StockGraph = (props : StockGraphProps) => {
         const fetchData = async () => {
             try {
                 setMarketClosed(stockMarketClosed())
-                setGraphLoading(true)
 
                 const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed)
                 if (timeSeriesData.status == 'error')

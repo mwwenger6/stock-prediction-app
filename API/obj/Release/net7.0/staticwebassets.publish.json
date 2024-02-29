@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "19MEgOi4mnjKuSF/gZxTNICAIsEPXp594b9Hqz2Ld7M=",
+  "Hash": "ix2vqlQiBMcAyCFLkfmb0BQum3015/bXM5Vlr80oZog=",
   "Source": "Stock-Prediction-API",
   "BasePath": "_content/Stock-Prediction-API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Stock-Prediction-API\\wwwroot",
       "Source": "Stock-Prediction-API",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\Models\\AAPLmodel.pth",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\Models\\AAPLmodel.pth",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "Models/AAPLmodel.pth",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Models\\AAPLmodel.pth"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\PythonScripts\\model_predict.py",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\PythonScripts\\model_predict.py",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "PythonScripts/model_predict.py",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\PythonScripts\\model_predict.py"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\PythonScripts\\model_train.py",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\PythonScripts\\model_train.py",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "PythonScripts/model_train.py",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\PythonScripts\\model_train.py"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\PythonScripts\\requirements.txt",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\PythonScripts\\requirements.txt",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "PythonScripts/requirements.txt",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\PythonScripts\\requirements.txt"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\PythonScripts\\samplePython.py",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\PythonScripts\\samplePython.py",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "PythonScripts/samplePython.py",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\PythonScripts\\samplePython.py"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\PythonScripts\\tempJsonFile.txt",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\PythonScripts\\tempJsonFile.txt",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "PythonScripts/tempJsonFile.txt",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\PythonScripts\\tempJsonFile.txt"
     },
     {
-      "Identity": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\Scalers\\AAPLscaler.pkl",
+      "Identity": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\Scalers\\AAPLscaler.pkl",
       "SourceId": "Stock-Prediction-API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\wwwroot\\",
       "BasePath": "_content/Stock-Prediction-API",
       "RelativePath": "Scalers/AAPLscaler.pkl",
       "AssetKind": "All",

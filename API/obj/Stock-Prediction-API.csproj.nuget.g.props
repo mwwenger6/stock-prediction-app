@@ -7,99 +7,10 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\pcdiz\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.6.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.8.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\pcdiz\.nuget\packages\" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\clr.py" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\clr.py')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>clr.py</TargetPath>
-      <Private>True</Private>
-      <Link>clr.py</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\__init__.py" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\__init__.py')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\__init__.py</TargetPath>
-      <DestinationSubDirectory>pythonnet\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\__init__.py</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__init__.py" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__init__.py')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\find_libpython\__init__.py</TargetPath>
-      <DestinationSubDirectory>pythonnet\find_libpython\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\find_libpython\__init__.py</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__main__.py" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__main__.py')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\find_libpython\__main__.py</TargetPath>
-      <DestinationSubDirectory>pythonnet\find_libpython\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\find_libpython\__main__.py</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.deps.json" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.deps.json')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\runtime\Python.Runtime.deps.json</TargetPath>
-      <DestinationSubDirectory>pythonnet\runtime\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\runtime\Python.Runtime.deps.json</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.dll" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.dll')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\runtime\Python.Runtime.dll</TargetPath>
-      <DestinationSubDirectory>pythonnet\runtime\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\runtime\Python.Runtime.dll</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.pdb" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\runtime\Python.Runtime.pdb')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\runtime\Python.Runtime.pdb</TargetPath>
-      <DestinationSubDirectory>pythonnet\runtime\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\runtime\Python.Runtime.pdb</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\util\__init__.py" Condition="Exists('$(NuGetPackageRoot)quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\util\__init__.py')">
-      <NuGetPackageId>QuantConnect.pythonnet</NuGetPackageId>
-      <NuGetPackageVersion>2.0.26</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>pythonnet\util\__init__.py</TargetPath>
-      <DestinationSubDirectory>pythonnet\util\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>pythonnet\util\__init__.py</Link>
-    </None>
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server\6.0.5\build\Microsoft.Extensions.ApiDescription.Server.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server\6.0.5\build\Microsoft.Extensions.ApiDescription.Server.props')" />
@@ -108,6 +19,5 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\pcdiz\.nuget\packages\microsoft.extensions.apidescription.server\6.0.5</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <Pkgpython Condition=" '$(Pkgpython)' == '' ">C:\Users\pcdiz\.nuget\packages\python\3.12.2</Pkgpython>
   </PropertyGroup>
 </Project>

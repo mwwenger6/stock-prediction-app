@@ -9,7 +9,7 @@ using Stock_Prediction_API.ViewModel;
 using System;
 using System.Diagnostics;
 using System.Text.Json;
-using Python.Runtime;
+//using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 
@@ -18,6 +18,12 @@ namespace Stock_Prediction_API.Controllers
     public class HomeController : ControllerHelper
     {
         public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
+
+        public DateTime GetEasternTime()
+        {
+            DateTime currentTime = DateTime.UtcNow;
+            return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Utc.Id, "Eastern Standard Time");
+        }
 
         [HttpGet("/Home/GetUsers")]
         public IActionResult GetUsers()
@@ -32,7 +38,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting users.");
             }
@@ -50,7 +56,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new ()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting stocks.");
             }                  
@@ -68,7 +74,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Error getting error logs.");
             }
@@ -92,7 +98,33 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Home/GetUserWatchlistStocks/{userId}")]
+        public IActionResult GetUserWatchlistStocks(int userId)
+        {
+            try
+            {
+                List<UserWatchlistStocks> watchlistStocks = _GetDataTools.GetUserWatchlistStocks(userId);
+                List<StockPrice> stocks = new List<StockPrice>();
+
+                foreach(UserWatchlistStocks userStock in watchlistStocks)
+                {
+                    stocks.Add(_GetDataTools.GetRecentStockPrice(userStock.Ticker));
+                }
+
+                return Json(stocks);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -117,7 +149,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -129,6 +161,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 User user = _GetDataTools.GetUser(email);
+                user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
                 return Json(user);
             }
             catch (Exception ex)
@@ -136,7 +169,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -147,6 +180,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 User user = _GetDataTools.GetUser(email);
+                user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
                 if (user.Password != password)
                     throw new InvalidDataException("Could not authenticate");
                 return Json(user);
@@ -156,7 +190,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(401, ex.Message);
             }
@@ -165,7 +199,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -175,14 +209,15 @@ namespace Stock_Prediction_API.Controllers
         [HttpPost("/Home/AddStock/{ticker}/{name}")]
         public IActionResult AddStock(string ticker, string name)
         {
+            DateTime dateTime = GetEasternTime();
             try
             {
                 _GetDataTools.AddStock(new Stock
                 {
                     Ticker = ticker,
                     Name = name,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
+                    CreatedAt = dateTime,
+                    UpdatedAt = dateTime
                 });
                 return Ok("Stock added successfully.");
             }
@@ -191,7 +226,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = dateTime,
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -209,11 +244,41 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
+
+        [HttpPost("/Home/ChangeUserType/{email}/{userTypeName}")]
+        public IActionResult ChangeUserType(string email, string userTypeName)
+        {
+            try
+            {
+                //Check that user type name is in db, get id of that type
+                List <UserType> userTypes = _GetDataTools.GetUserTypes().ToList();
+                int newTypeId = userTypes.Single(t => t.UserTypeName.ToLower() == userTypeName.ToLower()).Id;
+
+                //Update the user's type id
+                _GetDataTools.UpdateUserPrivileges(email, newTypeId);
+
+                return Ok($"User type changed to {userTypeName}"); 
+            }
+            catch (InvalidOperationException)
+            {
+                return BadRequest("Invalid user type name");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
 
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
         [HttpPost("/Home/AddUser")]
@@ -221,12 +286,13 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
+                int clientId = _GetDataTools.GetUserTypes().Single(t => t.UserTypeName == UserType.CLIENT).Id;
                 _GetDataTools.AddUser(new User
                 {
                     Email = user.Email,
                     Password = user.Password, 
-                    //UserTypeId = ?
-                    CreatedAt = DateTime.Now 
+                    TypeId = clientId,
+                    CreatedAt = GetEasternTime()
                 });
                     return Ok("User added successfully."); 
             } 
@@ -241,7 +307,7 @@ namespace Stock_Prediction_API.Controllers
                     _GetDataTools.LogError(new()
                     {
                         Message = ex.Message,
-                        CreatedAt = DateTime.Now,
+                        CreatedAt = GetEasternTime(),
                     });
                     return StatusCode(500, "Error in database"); 
                 } 
@@ -250,10 +316,58 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             } 
+        }
+
+        [HttpPost("/Home/AddUserWatchlistStock/{userId}/{ticker}")]
+        public IActionResult AddUserWatchlistStock(int userId, string ticker)
+        {
+            try
+            {
+                //check that stock is in our db
+                _GetDataTools.GetStock(ticker);
+
+                //add stock
+                _GetDataTools.AddUserWatchlistStock(new UserWatchlistStocks
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                });
+
+                return Ok("User watchlist stock added successfully.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+        [HttpPost("/Home/RemoveUserWatchlistStock/{userId}/{ticker}")]
+        public IActionResult RemoveUserWatchlistStock(int userId, string ticker)
+        {
+            try
+            {
+                _GetDataTools.RemoveUserWatchlistStock(userId, ticker);
+
+                return Ok("User removed watchlist stock successfully.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
         }
 
         //Called by the background service every 5 mins
@@ -262,9 +376,9 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                DateTime dateTime = DateTime.Now;
+                DateTime dateTime = GetEasternTime();
                 if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour < 24 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                     return Ok("Market closed, no prices updated");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
@@ -279,14 +393,14 @@ namespace Stock_Prediction_API.Controllers
                         {
                             Ticker = ticker,
                             Price = (float)stock.CurrentPrice,
-                            Time = DateTime.Now,
+                            Time = dateTime,
 
                         });
                         _GetDataTools.UpdateStockPrice(new()
                         {
                             Ticker = ticker,
                             CurrentPrice = stock.CurrentPrice,
-                            UpdatedAt = DateTime.Now,
+                            UpdatedAt = dateTime,
                             DailyChange = stock.DailyChange
                         });
                     }
@@ -302,7 +416,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -322,7 +436,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -417,7 +531,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -427,21 +541,21 @@ namespace Stock_Prediction_API.Controllers
         [HttpGet("/Home/TrainModel/{ticker}")]
         public IActionResult TrainModel(string ticker)
         {
-            string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
+            //string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
             try
             {
-                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+                //List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                //var options = new JsonSerializerOptions { WriteIndented = true };
+                //var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
 
-                // Write the JSON data to a temporary file
-                System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
+                //// Write the JSON data to a temporary file
+                //System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
 
                 string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
+                    Arguments = $"\"{pythonScriptPath}\" --ticker \"{ticker}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
@@ -454,8 +568,8 @@ namespace Stock_Prediction_API.Controllers
                         string result = reader.ReadToEnd();
                         process.WaitForExit();
 
-                        // Optionally delete the temp file if it's no longer needed
-                        System.IO.File.Delete(tempFilePath);
+                        //// Optionally delete the temp file if it's no longer needed
+                        //System.IO.File.Delete(tempFilePath);
 
                         return Content(result);
                     }
@@ -463,12 +577,12 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Optionally delete the temp file in case of an exception
-                System.IO.File.Delete(tempFilePath);
+                //// Optionally delete the temp file in case of an exception
+                //System.IO.File.Delete(tempFilePath);
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
@@ -481,39 +595,34 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 // Pass the JSON data to the Python script
-                string pythonScriptPath = Path.Combine("PythonScripts", "model_predict.py");
-                ProcessStartInfo start = new ProcessStartInfo
+                string pythonScriptPath = "wwwroot\\PythonScripts\\model_predict.py";
+                ProcessStartInfo start = new()
                 {
                     FileName = "python",
                     Arguments = $"\"{pythonScriptPath}\" --ticker \"{ticker}\" --range \"{prediction_range}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    RedirectStandardError = true
                 };
-                start.RedirectStandardError = true;
-                
-
-                using (Process process = Process.Start(start))
+#nullable disable
+                using Process process = Process.Start(start);
+                using StreamReader reader = process.StandardOutput;
+                string errors = process.StandardError.ReadToEnd();
+                if (!string.IsNullOrEmpty(errors))
                 {
-                    using (StreamReader reader = process.StandardOutput)
-                    {
-                        string errors = process.StandardError.ReadToEnd();
-                        if (!string.IsNullOrEmpty(errors))
-                        {
-                            return StatusCode(500, $"Empty or null big daddy");
-                        }
-                        string result = reader.ReadToEnd();
-                        process.WaitForExit();
-                        return Content(result);
-                    }
+                    return StatusCode(500, errors);
                 }
+                string result = reader.ReadToEnd();
+                process.WaitForExit();
+                return Ok(result);
             }
             catch (Exception ex)
             {
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }

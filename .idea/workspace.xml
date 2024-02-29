@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Disabled login/signup buttons on request">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Services/GetFeaturedStocks.tsx" afterDir="false" />
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Started some work for admin/client accounts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/TickerScroller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/TickerScroller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/LoginModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/Modals/SignUpModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/NewsView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/NewsView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +23,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -74,6 +63,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -81,7 +71,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Console&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jacob Bianco\\WebstormProjects\\stock-prediction-app\\Front_End\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -119,7 +109,12 @@
       <workItem from="1707968281896" duration="2694000" />
       <workItem from="1708275935896" duration="7170000" />
       <workItem from="1708450695026" duration="4075000" />
-      <workItem from="1708569972321" duration="6222000" />
+      <workItem from="1708569972321" duration="6741000" />
+      <workItem from="1708919584204" duration="9057000" />
+      <workItem from="1709090862987" duration="172000" />
+      <workItem from="1709091044739" duration="1035000" />
+      <workItem from="1709092109037" duration="6628000" />
+      <workItem from="1709170273874" duration="1393000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -233,7 +228,31 @@
       <option name="project" value="LOCAL" />
       <updated>1708560441077</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view.">
+      <option name="closed" value="true" />
+      <created>1708576798980</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708576798980</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Showing predictions in the stock graph page is implemented. Will need tweaked for real data">
+      <option name="closed" value="true" />
+      <created>1708928748398</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708928748398</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Started some work for admin/client accounts">
+      <option name="closed" value="true" />
+      <created>1709100545627</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1709100545627</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +284,9 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Changed API call URLs. API needs CORS enabled for it to work" />
     <MESSAGE value="Disabled login/signup buttons on request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disabled login/signup buttons on request" />
+    <MESSAGE value="Quality of life improvements and bug fixes: Featured stocks info is pulled from our API,Routing now works properly(keeping users logged in while navigating), logic for if stock is featured stock in stock graph view." />
+    <MESSAGE value="Showing predictions in the stock graph page is implemented. Will need tweaked for real data" />
+    <MESSAGE value="Started some work for admin/client accounts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started some work for admin/client accounts" />
   </component>
 </project>

@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from copy import deepcopy as dc
 
 import torch
@@ -43,9 +42,9 @@ def process_json_data(json_data):
     data = data.rename(columns={'time': 'Date', 'price': 'Close'})
     return data
 
-parser = argparse.ArgumentParser(description='Ticker and pred range')
+parser = argparse.ArgumentParser(description='Ticker and new data range')
 parser.add_argument('--ticker', type=str, help='ticker name')
-parser.add_argument('--range', type=int, help='number of predicted days into the future')
+parser.add_argument('--range', type=int, help='number of new data days')
 args = parser.parse_args()
 ticker = args.ticker
 
@@ -55,14 +54,13 @@ response = requests.get(api_endpoint)
 json_data = response.json()
 data = process_json_data(json_data)
 
-
-# load model for predictions
-PATH = "Models/" + ticker + "model.pth"
+# load model for updates
+PATH = "wwwroot/Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 
-# load the scaler we used when training (to scale the data back)
-scaler = joblib.load('Scalers/' + ticker + 'scaler.pkl')
+# load the scaler we used when training to scale the data going in
+scaler = joblib.load('wwwroot/Scalers/' + ticker + 'scaler.pkl')
 
 # prepare input data
 def prepare_dataframe_for_lstm(df, n_steps):
@@ -72,7 +70,7 @@ def prepare_dataframe_for_lstm(df, n_steps):
 
   # applies the shifting of the dataframe
   for i in range(1, n_steps + 1):
-    df[f'Close(t-{i})'] = df['Close'].shift(i)
+    df['Close(t-' + str(i) + ')'] = df['Close'].shift(i)
   
   df.dropna(inplace=True)
 
@@ -80,53 +78,48 @@ def prepare_dataframe_for_lstm(df, n_steps):
 lookback = 7
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-pred_range = int(args.range)
+new_data_range = int(args.range)
 
-input_data = shifted_df[:pred_range]
-input_data = np.array(input_data)
-input_data = scaler.transform(input_data)
+X_new = input_data[:, 1:]
+y_new = input_data[:, 0]
 
-X_pred = input_data[:, 1:]
-y_pred = input_data[:, 0]
+X_new = dc(np.flip(X_new, axis=1))
 
-X_pred = dc(np.flip(X_pred, axis=1))
-
-X_pred = X_pred.reshape((-1, lookback, 1))
-y_pred = y_pred.reshape((-1, 1))
+X_new = X_new.reshape((-1, lookback, 1))
+y_new = y_new.reshape((-1, 1))
 
 # makes sets into tensors
-X_pred = torch.tensor(X_pred).float()
-y_pred = torch.tensor(y_pred).float()
+X_new = torch.tensor(X_new).float()
+y_new = torch.tensor(y_new).float()
 
 class TimeSeriesDataset(Dataset):
-  def __init__(self, X, y):
-    self.X = X
-    self.y = y
-  
-  def __len__(self):
-    return len(self.X)
-  
-  def __getitem__(self, i):
-    return self.X[i], self.y[i]
+    def __init__(self, X, y):
+        self.X = X
+        self.y = y
+    
+    def __len__(self):
+        return len(self.X)
+    
+    def __getitem__(self, i):
+        return self.X[i], self.y[i]
 
-pred_dataset = TimeSeriesDataset(X_pred, y_pred)
+new_dataset = TimeSeriesDataset(X_new, y_new)
 batch_size = 16
-pred_loader = DataLoader(pred_dataset, batch_size=batch_size, shuffle=False)
+new_loader = DataLoader(new_dataset, batch_size=batch_size, shuffle=False)
 
-with torch.no_grad():
-  predicted = model(X_pred.to(device)).to('cpu').numpy()
+# make updates to our model
+for inputs, targets in new_loader:
+    inputs = inputs.to(device)
+    targets = targets.to(device)
 
-# scale values back
-predictions = predicted.flatten()
+    # Forward pass
+    outputs = model(inputs)
 
-dummies = np.zeros((X_pred.shape[0], lookback+1))
-dummies[:, 0] = predictions
-dummies = scaler.inverse_transform(dummies)
+    # Compute loss
+    loss = criterion(outputs, targets)
 
-predictions = dc(dummies[:, 0])
+    # Backward and optimize
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
 
-# prediction results 
-predictions = predictions.tolist()
-json_results = json.dumps(predictions)
-
-print(json_results)

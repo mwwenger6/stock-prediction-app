@@ -9,6 +9,7 @@ using Stock_Prediction_API.ViewModel;
 using System;
 using System.Diagnostics;
 using System.Text.Json;
+using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 
@@ -91,6 +92,32 @@ namespace Stock_Prediction_API.Controllers
                 }
 
                 return Json(stock);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Home/GetUserWatchlistStocks/{userId}")]
+        public IActionResult GetUserWatchlistStocks(int userId)
+        {
+            try
+            {
+                List<UserWatchlistStocks> watchlistStocks = _GetDataTools.GetUserWatchlistStocks(userId);
+                List<StockPrice> stocks = new List<StockPrice>();
+
+                foreach(UserWatchlistStocks userStock in watchlistStocks)
+                {
+                    stocks.Add(_GetDataTools.GetRecentStockPrice(userStock.Ticker));
+                }
+
+                return Json(stocks);
             }
             catch (Exception ex)
             {
@@ -293,6 +320,54 @@ namespace Stock_Prediction_API.Controllers
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             } 
+        }
+
+        [HttpPost("/Home/AddUserWatchlistStock/{userId}/{ticker}")]
+        public IActionResult AddUserWatchlistStock(int userId, string ticker)
+        {
+            try
+            {
+                //check that stock is in our db
+                _GetDataTools.GetStock(ticker);
+
+                //add stock
+                _GetDataTools.AddUserWatchlistStock(new UserWatchlistStocks
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                });
+
+                return Ok("User watchlist stock added successfully.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+        [HttpPost("/Home/RemoveUserWatchlistStock/{userId}/{ticker}")]
+        public IActionResult RemoveUserWatchlistStock(int userId, string ticker)
+        {
+            try
+            {
+                _GetDataTools.RemoveUserWatchlistStock(userId, ticker);
+
+                return Ok("User removed watchlist stock successfully.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
         }
 
         //Called by the background service every 5 mins
@@ -540,7 +615,7 @@ namespace Stock_Prediction_API.Controllers
                 }
                 string result = reader.ReadToEnd();
                 process.WaitForExit();
-                return Content(result);
+                return Ok(result);
             }
             catch (Exception ex)
             {

@@ -541,21 +541,21 @@ namespace Stock_Prediction_API.Controllers
         [HttpGet("/Home/TrainModel/{ticker}")]
         public IActionResult TrainModel(string ticker)
         {
-            string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
+            //string tempFilePath = Path.Combine("PythonScripts", "tempJsonFile.txt");
             try
             {
-                List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
+                //List<StockPrice> historicalData = _GetDataTools.GetStockPrices(ticker).ToList();
+                //var options = new JsonSerializerOptions { WriteIndented = true };
+                //var historicalDataJson = System.Text.Json.JsonSerializer.Serialize(historicalData, options);
 
-                // Write the JSON data to a temporary file
-                System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
+                //// Write the JSON data to a temporary file
+                //System.IO.File.WriteAllText(tempFilePath, historicalDataJson);
 
                 string pythonScriptPath = Path.Combine("PythonScripts", "model_train.py");
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = $"\"{pythonScriptPath}\" --jsonFile \"{tempFilePath}\" --ticker \"{ticker}\"",
+                    Arguments = $"\"{pythonScriptPath}\" --ticker \"{ticker}\"",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
@@ -568,8 +568,8 @@ namespace Stock_Prediction_API.Controllers
                         string result = reader.ReadToEnd();
                         process.WaitForExit();
 
-                        // Optionally delete the temp file if it's no longer needed
-                        System.IO.File.Delete(tempFilePath);
+                        //// Optionally delete the temp file if it's no longer needed
+                        //System.IO.File.Delete(tempFilePath);
 
                         return Content(result);
                     }
@@ -577,8 +577,8 @@ namespace Stock_Prediction_API.Controllers
             }
             catch (Exception ex)
             {
-                // Optionally delete the temp file in case of an exception
-                System.IO.File.Delete(tempFilePath);
+                //// Optionally delete the temp file in case of an exception
+                //System.IO.File.Delete(tempFilePath);
                 _GetDataTools.LogError(new()
                 {
                     Message = ex.Message,

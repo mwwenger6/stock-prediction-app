@@ -8,15 +8,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlJRIRqhSP0uzyNAimD3TfQAAAAACAAAAAAAQZgAAAAEAACAAAAAMPo2o9SasJU6c29p5HKEH/2zIulZR6L0RIrdcLuOa4gAAAAAOgAAAAAIAACAAAACztkU1NfxJBXnkgclp3ClE706kMw162N4qEL2La/zmp6AAAADNvn7omI1YPJZN+Zcz1aEW9YhO5aMmaNMj+a1UHX6F7ZTaplJfHjxgsICzaWizIbNG00j9gP43Mo45+o9AgtRTR7nyUxInq5G/+KjsUSupx/Wc8rCks6TpcQ8k6Ni4E/zoq0IfrZbib0kDsolNAK+TXMhn/8Ldm0K00MU1mhmet2IDuAXhtz+XZcHmbAKkSvaMiaT6hwz4qa023BtoViOYQAAAAI8ZkksOyrX8XjX9s0zkXrN9+N3bsrQJ7FND9MDRpwLgUp8nR0qQnPmnjjEt2xwnL4dddPdxoyZUemZHV1KIrqU=</EncryptedPassword>
     <_PublishTargetUrl>ftps://waws-prod-blu-355.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
-    <History>True|2024-02-22T02:51:44.7866401Z;False|2024-02-21T21:51:05.7635298-05:00;True|2024-02-21T20:24:05.3117957-05:00;False|2024-02-21T20:23:21.4593527-05:00;False|2024-02-21T20:22:24.4137159-05:00;False|2024-02-21T20:22:03.7428723-05:00;True|2024-02-21T19:30:57.9590439-05:00;False|2024-02-21T17:31:14.4428341-05:00;</History>
+    <History>False|2024-02-29T03:00:51.6978080Z;True|2024-02-21T21:51:44.7866401-05:00;False|2024-02-21T21:51:05.7635298-05:00;True|2024-02-21T20:24:05.3117957-05:00;False|2024-02-21T20:23:21.4593527-05:00;False|2024-02-21T20:22:24.4137159-05:00;False|2024-02-21T20:22:03.7428723-05:00;True|2024-02-21T19:30:57.9590439-05:00;False|2024-02-21T17:31:14.4428341-05:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>01/17/2024 22:06:55</publishTime>
+      <publishTime>02/28/2024 21:36:41</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>01/28/2024 16:30:17</publishTime>
+      <publishTime>02/28/2024 21:36:41</publishTime>
     </File>
     <File Include="Azure.Core.dll">
       <publishTime>06/30/2022 15:28:36</publishTime>
@@ -163,19 +163,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2023 20:31:10</publishTime>
     </File>
     <File Include="Stock-Prediction-API.deps.json">
-      <publishTime>02/21/2024 21:51:30</publishTime>
+      <publishTime>02/28/2024 22:00:26</publishTime>
     </File>
     <File Include="Stock-Prediction-API.dll">
       <publishTime>02/21/2024 21:51:30</publishTime>
     </File>
     <File Include="Stock-Prediction-API.exe">
-      <publishTime>02/21/2024 21:51:30</publishTime>
+      <publishTime>02/28/2024 22:00:25</publishTime>
     </File>
     <File Include="Stock-Prediction-API.pdb">
-      <publishTime>02/21/2024 21:51:30</publishTime>
+      <publishTime>02/28/2024 22:00:25</publishTime>
     </File>
     <File Include="Stock-Prediction-API.runtimeconfig.json">
-      <publishTime>02/21/2024 21:50:52</publishTime>
+      <publishTime>02/28/2024 22:00:26</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
       <publishTime>07/19/2022 11:21:22</publishTime>
@@ -211,7 +211,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2021 19:49:44</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>02/21/2024 21:51:32</publishTime>
+      <publishTime>02/28/2024 22:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/Models/AAPLmodel.pth">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/PythonScripts/model_predict.py">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/PythonScripts/model_train.py">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/PythonScripts/requirements.txt">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/PythonScripts/samplePython.py">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/PythonScripts/tempJsonFile.txt">
+      <publishTime>02/28/2024 21:36:41</publishTime>
+    </File>
+    <File Include="wwwroot/Scalers/AAPLscaler.pkl">
+      <publishTime>02/28/2024 21:36:41</publishTime>
     </File>
   </ItemGroup>
 </Project>

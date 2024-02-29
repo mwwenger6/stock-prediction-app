@@ -9,7 +9,6 @@ using Stock_Prediction_API.ViewModel;
 using System;
 using System.Diagnostics;
 using System.Text.Json;
-using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 
 

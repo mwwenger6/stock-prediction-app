@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.Primitives;
 using Pomelo.EntityFrameworkCore.MySql;
 using Stock_Prediction_API.Entities;
 
@@ -47,6 +48,12 @@ namespace Stock_Prediction_API.Services
                 .Where(sp => sp.Ticker == ticker)
                 .OrderByDescending(sp => sp.Time)
                 .FirstOrDefault();
+        }
+
+        public List<UserWatchlistStocks> GetUserWatchlistStocks(int userId)
+        {
+            return dbContext.UserWatchlistStocks
+                .Where(s => s.UserId == userId).ToList();
         }
 
         public IQueryable<StockPrice> GetStockPrices(string ticker)
@@ -141,6 +148,17 @@ namespace Stock_Prediction_API.Services
             using var tempContext = GetNewDBContext();
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
+        }
+        public void AddUserWatchlistStock(UserWatchlistStocks stock)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.UserWatchlistStocks.Add(stock);
+            tempContext.SaveChanges();
+        }
+        public void RemoveUserWatchlistStock(int userId, string ticker)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.UserWatchlistStocks.Where(s => s.UserId == userId && s.Ticker == ticker).ExecuteDelete();
         }
         public void LogError(ErrorLog error)
         {

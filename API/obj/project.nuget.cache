@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GuCO4wKoq43cHkhlzJowZGow+Sk/rbE8bUoqpDBejz4sIin/wzFKNAuJL/3jtzv9IsPiyCH9CE+5ocwM8KBK1Q==",
+  "dgSpecHash": "e3QueyMso2MXAJJagNYXeZ/mARy5j1wc3swprH5fxENhIDAReqa8QOTgEcKyv+SiFCi/4joBYKfnXeB3MKuL4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
+  "projectFilePath": "C:\\Users\\pcdiz\\stock-prediction-app\\API\\Stock-Prediction-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pcdiz\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\pcdiz\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -68,7 +68,11 @@
     "C:\\Users\\pcdiz\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\pcdiz\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\pcdiz\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\pcdiz\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\pcdiz\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\pcdiz\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\pcdiz\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\pcdiz\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\pcdiz\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.15\\microsoft.netcore.app.host.win-x64.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }

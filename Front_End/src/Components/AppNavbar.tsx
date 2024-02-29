@@ -9,6 +9,7 @@ import User from "../Interfaces/User";
 import HomeView from "../Views/HomeView";
 import App from "../App";
 
+
 interface AppNavbarProps {
     user: User | null
     setUser: Dispatch<SetStateAction<User | null>>;
@@ -54,7 +55,7 @@ const AppNavbar = (props: AppNavbarProps) => {
     };
     return (
         <Navbar expand="lg" className="bg-body-tertiary-custom-bg" style={{backgroundColor : '#333333'}}>
-            <Container>
+            <Container> 
             <Navbar.Brand>
                 <span className="brand-name">stock</span>
                 <span className="brand-name-secondary">Genie</span>
@@ -80,6 +81,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
+                    <Link to="/Admin/ErrorLogs" className="nav-link-blue-bg" style={{textDecoration: "none"}}>Error Logs</Link>
                     <Link to="/" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>Home</Link>
                     <Link to="/News" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>News</Link>
                     {loggedIn ?

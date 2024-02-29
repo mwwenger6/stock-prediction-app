@@ -10,7 +10,7 @@ import User from "./Interfaces/User"
 import Stock from "./Interfaces/Stock";
 import TickerScroller from "./Components/TickerScroller";
 import GetFeaturedStocks from "./Services/GetFeaturedStocks";
-
+import ErrorLogsView from './Views/ErrorLogsView';
 
 
 //set initial featured stocks list
@@ -64,6 +64,7 @@ function App() {
           <Route index element={<HomeView user={user} featuredStocks={featuredStocks}/>} />
           <Route path="News" element = { <NewsView /> } />
           <Route path="Login" element = { <LoginView/> } />
+          <Route path="Admin/ErrorLogs" element={<ErrorLogsView />} />
           <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} /> } />
         </Routes>
       </BrowserRouter>

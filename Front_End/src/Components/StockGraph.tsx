@@ -32,6 +32,7 @@ const StockGraph = (props : StockGraphProps) => {
     const [percentChange, setPercentChange] = useState('')
     const [color, setColor] = useState('grey')
     const [showPrediction, setShowPrediction] = useState(false)
+    const [predictions, setPredictions] = useState([]);
 
     function stockMarketClosed() {
         // Get the current time in the specified time zone
@@ -77,9 +78,32 @@ const StockGraph = (props : StockGraphProps) => {
         }).format(new Date(datetime))
     }
 
-    function getPredictions() {
+    useEffect(() => {
+        if(props.symbol === undefined) return
 
-    }
+        // tests predictions from our API. Simply logs the json response
+        // to the console  
+        const fetchPredictions = async () => {
+        
+            try {
+                const response = await fetch(endpoints.predict(props.symbol, 30));
+                const jsonData = await response.json();
+                setPredictions(jsonData);
+                console.log(jsonData);
+
+            }
+            catch (error) {
+                console.error('Error fetching predictions:', error);
+                setShowError(true);
+            }
+        };
+
+
+        if(props.isFeatured){
+            console.log("Fetching predictions for " + props.symbol);
+            fetchPredictions();
+        }
+    },[])
 
     useEffect(() => {
 
@@ -89,6 +113,10 @@ const StockGraph = (props : StockGraphProps) => {
         const fetchData = async () => {
             try {
                 setMarketClosed(stockMarketClosed())
+
+                if (showPrediction) {
+                    setCurrInterval(intervals[3]);
+                }
 
                 const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed)
                 if (timeSeriesData.status == 'error')
@@ -103,22 +131,29 @@ const StockGraph = (props : StockGraphProps) => {
                 })).reverse();
 
                 // Calculate min and max for Y-axis
-                const prices = values.map((item: { value: number, date: any}) => item.value);
-                const minValue = Math.floor(Math.min(...prices));
-                const maxValue = Math.ceil(Math.max(...prices));
+                var prices = values.map((item: { value: number, date: any}) => item.value);
+                var minValue = Math.floor(Math.min(...prices));
+                var maxValue = Math.ceil(Math.max(...prices));
 
-                //Generate fake new prices and dates... for now
-                const newPrices = [...shuffle(prices.slice(1, prices.length - 1)), prices[prices.length-1]].reverse();
-                let lastDate = new Date(values[values.length-1].date)
+                // If showing a prediction, add the new values to the graph
+                // and set the interval to the last month
                 const newValues = [];
-                for (let i = 0; i < newPrices.length; i++) {
-                    const date = new Date();
-                    date.setDate(lastDate.getDate() + i);
-                    const newValue = {
-                        date: getFormattedDate(date),
-                        value: newPrices[i]
-                    };
-                    newValues.push(newValue);
+                if (showPrediction) {
+                    let lastDate = new Date(values[values.length-1].date)
+                    const newPrices = [187.21963297489884, 188.58384940643663, 187.93998478984298, 189.11436896160262, 188.84965260994042, 187.36609984619832, 185.77344074321073, 186.98540281739267, 184.24540856785242, 188.29042658050895, 191.04728061924155, 181.56758224364995, 192.50320017491174, 191.0724684106699, 192.97252997139736, 193.0672898663342, 193.69445772151175, 192.57864127836467, 190.71306009231097, 188.21145320857093, 182.39096761317484, 184.29850128031308, 186.16351186914994, 185.53661572693278, 186.27703354400185, 185.10228255974567, 185.7324936000796, 180.93893355283825, 182.59532293068588, 184.68495862387908];
+                    for (let i = 0; i < newPrices.length; i++) {
+                        const date = new Date();
+                        date.setDate(lastDate.getDate() + i);
+                        const newValue = {
+                            date: getFormattedDate(date),
+                            value: newPrices[i]
+                        };
+                        newValues.push(newValue);
+                    }
+                    // calculate min and max for Y-axis
+                    prices = [...prices, ...newPrices];
+                    minValue = Math.floor(Math.min(...prices));
+                    maxValue = Math.ceil(Math.max(...prices));
                 }
 
 
@@ -143,12 +178,17 @@ const StockGraph = (props : StockGraphProps) => {
                 let graphData;
                 let xAxisData;
                 if(showPrediction){
+                    // Add the last price point from values to the beginning of newValues
+                    newValues.unshift({
+                        date: values[values.length - 1].date,
+                        value: values[values.length - 1].value
+                    });
+
                     let placeholders = []
-                    for (let i = 0; i < values.length && i < newValues.length; i++) {
-                        placeholders.push('-')
-                        if (values[i].date === newValues[i].date)
-                            break;
+                    for (let i = 0; i < values.length - 1; i++) {
+                        placeholders.push('-');
                     }
+
                     graphData =
                     [{
                         data: values.map((item: { date: Date; value: any; }) => item.value),
@@ -196,23 +236,6 @@ const StockGraph = (props : StockGraphProps) => {
             }
           };
       
-    // tests predictions from our API. Simply logs the json response
-    // to the console  
-    // const fetchPredictions = async () => {
-    //
-    //     try {
-    //       const response = await fetch(endpoints.predict(props.symbol, 30));
-    //       const jsonData = await response.json();
-    //       console.log(jsonData);
-    //     }
-    //     catch (error) {
-    //       console.error('Error fetching predictions:', error);
-    //       setShowError(true);
-    //     }
-    //
-    //   };
-    //   if(props.isFeatured)
-    //       fetchPredictions();
       fetchData();
     }, [currInterval, props.symbol, showPrediction]);
 
@@ -233,19 +256,21 @@ const StockGraph = (props : StockGraphProps) => {
       <p className={marketClosed && (currInterval == intervals[0] || currInterval == intervals[1]) ? "text-danger" : "text-white"}> * Graph prices reflect the last time the stock market was open </p>
         <div className='d-flex row justify-content-center'>
           {intervals.map((interval, i) => (
-              <div className='col-auto' key={i}>
-                  <Button
-                      className={`btn ${currInterval === intervals[i] ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
-                      variant=''
-                      onClick={() => {
-                          if(currInterval != intervals[i]) {
-                              setShowPrediction(false)
-                              setCurrInterval(intervals[i])
-                          }
-                      }}>
-                      {intervalLabels[i]}
-                  </Button>
-              </div>
+            <div className='col-auto' key={i}>
+                <Button
+                    className={`btn ${currInterval === intervals[i] ? 'btn-secondary text-light' : 'btn-outline-secondary'} ${showPrediction ? 'disabled' : ''}`}
+                    variant=''
+                    onClick={() => {
+                        if (!showPrediction && currInterval !== intervals[i]) {
+                            setShowPrediction(false);
+                            setCurrInterval(intervals[i]);
+                        }
+                    }}
+                    disabled={showPrediction}
+                >
+                    {intervalLabels[i]}
+                </Button>
+            </div>
           ))}
           <div className='col-auto'>
               <Button

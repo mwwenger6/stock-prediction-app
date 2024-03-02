@@ -131,3 +131,11 @@
 .text-green{
   color: #29c829 !important;
 }
+
+.hoverable{
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.hoverable:hover{
+  background-color: lightgray;
+}

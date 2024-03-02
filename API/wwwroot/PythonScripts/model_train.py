@@ -140,3 +140,5 @@ for epoch in range(num_epochs):
 # save the model parameters for future use with predicting
 PATH = "Models/" + ticker + "model.pth"
 torch.save(model.state_dict(), PATH)
+
+print("success")

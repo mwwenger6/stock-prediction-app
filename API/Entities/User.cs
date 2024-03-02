@@ -14,5 +14,9 @@ namespace Stock_Prediction_API.Entities
         public string Password { get; set; }
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
+        [Column("UserTypeId")]
+        public int TypeId { get; set; }
+        [NotMapped]
+        public string TypeName { get; set; }
     }
 }

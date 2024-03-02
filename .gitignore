@@ -93,3 +93,14 @@ $RECYCLE.BIN/
 /API/Properties/PublishProfiles/stockgenieapi - Web Deploy5.pubxml
 /API/Properties/PublishProfiles/stockgenieapi - Zip Deploy5.pubxml
 /API/Services
+/API/obj/Debug/net7.0/Stock-Prediction-API.AssemblyInfo.cs
+/API/obj/Debug/net7.0/Stock-Prediction-API.assets.cache
+/API/obj/Debug/net7.0/Stock-Prediction-API.AssemblyInfoInputs.cache
+/API/obj/Debug/net7.0/Stock-Prediction-API.csproj.AssemblyReference.cache
+/API/obj/Debug/net7.0/Stock-Prediction-API.GeneratedMSBuildEditorConfig.editorconfig
+/API/obj/project.assets.json
+/API/obj/project.nuget.cache
+/API/obj/Stock-Prediction-API.csproj.nuget.dgspec.json
+/API/obj/Stock-Prediction-API.csproj.nuget.g.props
+/API/obj/Debug/net7.0/apphost.exe
+/API/obj/Debug/net7.0/Stock-Prediction-API.csproj.CoreCompileInputs.cache

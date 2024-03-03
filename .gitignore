@@ -104,3 +104,4 @@ $RECYCLE.BIN/
 /API/obj/Stock-Prediction-API.csproj.nuget.g.props
 /API/obj/Debug/net7.0/apphost.exe
 /API/obj/Debug/net7.0/Stock-Prediction-API.csproj.CoreCompileInputs.cache
+/API/.vs/Stock-Prediction-API/DesignTimeBuild/.dtbcache.v2

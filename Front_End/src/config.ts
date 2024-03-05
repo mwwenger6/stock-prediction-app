@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://stockgenieapi.azurewebsites.net';
+const API_BASE_URL = 'https://stockrequests.azurewebsites.net';
 
 const endpoints = {
     authUser: (email : string , password : string) => `${API_BASE_URL}/Home/AuthenticateUser/${email}/${password}`,

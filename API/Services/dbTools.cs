@@ -128,7 +128,13 @@ namespace Stock_Prediction_API.Services
             using var tempContext = GetNewDBContext();
             foreach (StockPrice stockPrice in stockPrices)
             {
-                tempContext.StockPrices.Add(stockPrice);
+                var existingStockPrice = tempContext.StockPrices
+                    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker 
+                                          && sp.Time == stockPrice.Time);
+                if (existingStockPrice == null)
+                {
+                    tempContext.StockPrices.Add(stockPrice);
+                }
             }
             tempContext.SaveChanges();
         }

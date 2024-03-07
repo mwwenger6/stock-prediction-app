@@ -15,8 +15,11 @@ import json
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
+# ticker name
+ticker = 'AAPL'
+
 # read data in from json
-with open('Machine_Learning/AAPL.json') as f:
+with open('Machine_Learning/Training_Data/' + ticker + '.json') as f:
     data = json.load(f)
 data = pd.json_normalize(data)
 data = data[['time', 'price']]
@@ -42,7 +45,7 @@ shifted_df_as_np = shifted_df.to_numpy()
 
 scaler = StandardScaler()
 shifted_df_as_np = scaler.fit_transform(shifted_df_as_np)
-joblib.dump(scaler, 'Machine_Learning/scaler.pkl')
+joblib.dump(scaler, 'Machine_Learning/Scalers/' + ticker + 'scaler.pkl')
 
 X_train = shifted_df_as_np[:, 1:]
 y_train = shifted_df_as_np[:, 0]
@@ -131,5 +134,5 @@ for epoch in range(num_epochs):
   train_one_epoch()
 
 # save the model parameters for future use with predicting
-PATH = "Machine_Learning/model.pth"
+PATH = "Machine_Learning/Models/" + ticker + "model.pth"
 torch.save(model.state_dict(), PATH)

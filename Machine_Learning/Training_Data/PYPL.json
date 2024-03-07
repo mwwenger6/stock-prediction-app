@@ -1,0 +1,10882 @@
+[
+  {
+    "ticker": "PYPL",
+    "price": 58.195,
+    "time": "2024-03-06T15:55:03"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.225,
+    "time": "2024-03-05T15:55:03"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.9925,
+    "time": "2024-03-04T15:55:03"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.325,
+    "time": "2024-02-29T15:56:07"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.455,
+    "time": "2024-02-21T15:58:04"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.14,
+    "time": "2024-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.7,
+    "time": "2024-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.87,
+    "time": "2024-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.26,
+    "time": "2024-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.09,
+    "time": "2024-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.91,
+    "time": "2024-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.13,
+    "time": "2024-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.24,
+    "time": "2024-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.71,
+    "time": "2024-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.54,
+    "time": "2024-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.42,
+    "time": "2024-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.02,
+    "time": "2024-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.35,
+    "time": "2024-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.68,
+    "time": "2024-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.76,
+    "time": "2024-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.78,
+    "time": "2024-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.71,
+    "time": "2024-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.02,
+    "time": "2024-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.78,
+    "time": "2024-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.74,
+    "time": "2024-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.82,
+    "time": "2024-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.09,
+    "time": "2024-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.89,
+    "time": "2024-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.45,
+    "time": "2024-01-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61,
+    "time": "2024-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.35,
+    "time": "2024-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.96,
+    "time": "2024-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.05,
+    "time": "2024-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.74,
+    "time": "2024-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.12,
+    "time": "2024-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.45,
+    "time": "2024-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.63,
+    "time": "2024-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.46,
+    "time": "2024-01-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.41,
+    "time": "2023-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.08,
+    "time": "2023-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.68,
+    "time": "2023-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.56,
+    "time": "2023-12-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.84,
+    "time": "2023-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.06,
+    "time": "2023-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.74,
+    "time": "2023-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.01,
+    "time": "2023-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.47,
+    "time": "2023-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.26,
+    "time": "2023-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.87,
+    "time": "2023-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.73,
+    "time": "2023-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.89,
+    "time": "2023-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.04,
+    "time": "2023-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.94,
+    "time": "2023-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.48,
+    "time": "2023-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.53,
+    "time": "2023-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.92,
+    "time": "2023-12-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.85,
+    "time": "2023-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.65,
+    "time": "2023-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.61,
+    "time": "2023-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.97,
+    "time": "2023-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.47,
+    "time": "2023-11-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.39,
+    "time": "2023-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.76,
+    "time": "2023-11-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.34,
+    "time": "2023-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.4,
+    "time": "2023-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.99,
+    "time": "2023-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.54,
+    "time": "2023-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.82,
+    "time": "2023-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.25,
+    "time": "2023-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.68,
+    "time": "2023-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.39,
+    "time": "2023-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.77,
+    "time": "2023-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.28,
+    "time": "2023-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.08,
+    "time": "2023-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.63,
+    "time": "2023-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.62,
+    "time": "2023-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.1,
+    "time": "2023-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.06,
+    "time": "2023-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.66,
+    "time": "2023-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.8,
+    "time": "2023-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.05,
+    "time": "2023-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 50.39,
+    "time": "2023-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.75,
+    "time": "2023-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.49,
+    "time": "2023-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.24,
+    "time": "2023-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.45,
+    "time": "2023-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.39,
+    "time": "2023-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.81,
+    "time": "2023-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.8,
+    "time": "2023-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.16,
+    "time": "2023-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57,
+    "time": "2023-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 55.75,
+    "time": "2023-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.355,
+    "time": "2023-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.07,
+    "time": "2023-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.72,
+    "time": "2023-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.96,
+    "time": "2023-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.77,
+    "time": "2023-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.48,
+    "time": "2023-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.57,
+    "time": "2023-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.3,
+    "time": "2023-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.56,
+    "time": "2023-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.46,
+    "time": "2023-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.18,
+    "time": "2023-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.34,
+    "time": "2023-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.93,
+    "time": "2023-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.86,
+    "time": "2023-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.88,
+    "time": "2023-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.62,
+    "time": "2023-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.86,
+    "time": "2023-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.19,
+    "time": "2023-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.94,
+    "time": "2023-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.21,
+    "time": "2023-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.44,
+    "time": "2023-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.84,
+    "time": "2023-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.81,
+    "time": "2023-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.93,
+    "time": "2023-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.98,
+    "time": "2023-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.65,
+    "time": "2023-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.8,
+    "time": "2023-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.74,
+    "time": "2023-09-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.57,
+    "time": "2023-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.51,
+    "time": "2023-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.42,
+    "time": "2023-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.5,
+    "time": "2023-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.67,
+    "time": "2023-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.19,
+    "time": "2023-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.71,
+    "time": "2023-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.76,
+    "time": "2023-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.98,
+    "time": "2023-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.51,
+    "time": "2023-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.42,
+    "time": "2023-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.6,
+    "time": "2023-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.68,
+    "time": "2023-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.47,
+    "time": "2023-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.27,
+    "time": "2023-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.54,
+    "time": "2023-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.79,
+    "time": "2023-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.02,
+    "time": "2023-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.19,
+    "time": "2023-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.42,
+    "time": "2023-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.75,
+    "time": "2023-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.18,
+    "time": "2023-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.2,
+    "time": "2023-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.53,
+    "time": "2023-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.82,
+    "time": "2023-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.98,
+    "time": "2023-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.03,
+    "time": "2023-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.43,
+    "time": "2023-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.96,
+    "time": "2023-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.69,
+    "time": "2023-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.99,
+    "time": "2023-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.02,
+    "time": "2023-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.22,
+    "time": "2023-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.37,
+    "time": "2023-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.49,
+    "time": "2023-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.1,
+    "time": "2023-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.39,
+    "time": "2023-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.59,
+    "time": "2023-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.62,
+    "time": "2023-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.28,
+    "time": "2023-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.79,
+    "time": "2023-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.14,
+    "time": "2023-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.85,
+    "time": "2023-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.1,
+    "time": "2023-07-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.73,
+    "time": "2023-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.86,
+    "time": "2023-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.03,
+    "time": "2023-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.23,
+    "time": "2023-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.44,
+    "time": "2023-06-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.94,
+    "time": "2023-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.57,
+    "time": "2023-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.19,
+    "time": "2023-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.89,
+    "time": "2023-06-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.43,
+    "time": "2023-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.85,
+    "time": "2023-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.6,
+    "time": "2023-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.56,
+    "time": "2023-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.73,
+    "time": "2023-06-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.49,
+    "time": "2023-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.24,
+    "time": "2023-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.04,
+    "time": "2023-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.02,
+    "time": "2023-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.51,
+    "time": "2023-06-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.96,
+    "time": "2023-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.05,
+    "time": "2023-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.99,
+    "time": "2023-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.05,
+    "time": "2023-05-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.22,
+    "time": "2023-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.37,
+    "time": "2023-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.8,
+    "time": "2023-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62,
+    "time": "2023-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.03,
+    "time": "2023-05-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.92,
+    "time": "2023-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.27,
+    "time": "2023-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.46,
+    "time": "2023-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.8,
+    "time": "2023-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.25,
+    "time": "2023-05-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.69,
+    "time": "2023-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.18,
+    "time": "2023-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.38,
+    "time": "2023-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.905,
+    "time": "2023-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.52,
+    "time": "2023-05-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.97,
+    "time": "2023-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.81,
+    "time": "2023-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.43,
+    "time": "2023-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.28,
+    "time": "2023-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.11,
+    "time": "2023-05-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76,
+    "time": "2023-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.27,
+    "time": "2023-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.06,
+    "time": "2023-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.78,
+    "time": "2023-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.29,
+    "time": "2023-04-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.18,
+    "time": "2023-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.58,
+    "time": "2023-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.32,
+    "time": "2023-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.42,
+    "time": "2023-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.33,
+    "time": "2023-04-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.53,
+    "time": "2023-04-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.52,
+    "time": "2023-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.5,
+    "time": "2023-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.58,
+    "time": "2023-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.52,
+    "time": "2023-04-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.96,
+    "time": "2023-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.61,
+    "time": "2023-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.26,
+    "time": "2023-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.29,
+    "time": "2023-04-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.94,
+    "time": "2023-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.39,
+    "time": "2023-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.18,
+    "time": "2023-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.7,
+    "time": "2023-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.3,
+    "time": "2023-03-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.88,
+    "time": "2023-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.56,
+    "time": "2023-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.34,
+    "time": "2023-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.72,
+    "time": "2023-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.21,
+    "time": "2023-03-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.99,
+    "time": "2023-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.35,
+    "time": "2023-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.91,
+    "time": "2023-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.24,
+    "time": "2023-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.61,
+    "time": "2023-03-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.43,
+    "time": "2023-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.93,
+    "time": "2023-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.84,
+    "time": "2023-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.91,
+    "time": "2023-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.78,
+    "time": "2023-03-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.29,
+    "time": "2023-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.1,
+    "time": "2023-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.82,
+    "time": "2023-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.6,
+    "time": "2023-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.77,
+    "time": "2023-02-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.55,
+    "time": "2023-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.19,
+    "time": "2023-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.48,
+    "time": "2023-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.24,
+    "time": "2023-02-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.66,
+    "time": "2023-02-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.73,
+    "time": "2023-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.91,
+    "time": "2023-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.26,
+    "time": "2023-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.45,
+    "time": "2023-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.8,
+    "time": "2023-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.42,
+    "time": "2023-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.72,
+    "time": "2023-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.23,
+    "time": "2023-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.33,
+    "time": "2023-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.52,
+    "time": "2023-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.96,
+    "time": "2023-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.91,
+    "time": "2023-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.49,
+    "time": "2023-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.64,
+    "time": "2023-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.83,
+    "time": "2023-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.81,
+    "time": "2023-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.1,
+    "time": "2023-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.58,
+    "time": "2023-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.5,
+    "time": "2023-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.09,
+    "time": "2023-01-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.75,
+    "time": "2023-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.31,
+    "time": "2023-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.18,
+    "time": "2023-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.48,
+    "time": "2023-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.78,
+    "time": "2023-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.54,
+    "time": "2023-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.92,
+    "time": "2023-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.08,
+    "time": "2023-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.48,
+    "time": "2023-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.27,
+    "time": "2023-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.69,
+    "time": "2023-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.58,
+    "time": "2023-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.22,
+    "time": "2022-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.56,
+    "time": "2022-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 67.55,
+    "time": "2022-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.33,
+    "time": "2022-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.03,
+    "time": "2022-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.57,
+    "time": "2022-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.21,
+    "time": "2022-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.76,
+    "time": "2022-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.95,
+    "time": "2022-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.26,
+    "time": "2022-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.77,
+    "time": "2022-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.63,
+    "time": "2022-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.7,
+    "time": "2022-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.8,
+    "time": "2022-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.57,
+    "time": "2022-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.22,
+    "time": "2022-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.42,
+    "time": "2022-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.23,
+    "time": "2022-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.62,
+    "time": "2022-12-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.66,
+    "time": "2022-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.53,
+    "time": "2022-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.41,
+    "time": "2022-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.64,
+    "time": "2022-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.93,
+    "time": "2022-11-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.08,
+    "time": "2022-11-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.75,
+    "time": "2022-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.91,
+    "time": "2022-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.63,
+    "time": "2022-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.92,
+    "time": "2022-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.64,
+    "time": "2022-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.04,
+    "time": "2022-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.86,
+    "time": "2022-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.51,
+    "time": "2022-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.03,
+    "time": "2022-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.8,
+    "time": "2022-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.68,
+    "time": "2022-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.13,
+    "time": "2022-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.66,
+    "time": "2022-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.18,
+    "time": "2022-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.55,
+    "time": "2022-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.45,
+    "time": "2022-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.11,
+    "time": "2022-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.58,
+    "time": "2022-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.25,
+    "time": "2022-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.35,
+    "time": "2022-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.55,
+    "time": "2022-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.24,
+    "time": "2022-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.32,
+    "time": "2022-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.94,
+    "time": "2022-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.78,
+    "time": "2022-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.47,
+    "time": "2022-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.29,
+    "time": "2022-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.66,
+    "time": "2022-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.47,
+    "time": "2022-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.04,
+    "time": "2022-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.81,
+    "time": "2022-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.09,
+    "time": "2022-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.52,
+    "time": "2022-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.17,
+    "time": "2022-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.42,
+    "time": "2022-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.83,
+    "time": "2022-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.79,
+    "time": "2022-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.18,
+    "time": "2022-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.07,
+    "time": "2022-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.7,
+    "time": "2022-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.12,
+    "time": "2022-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.75,
+    "time": "2022-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.26,
+    "time": "2022-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.97,
+    "time": "2022-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.66,
+    "time": "2022-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.18,
+    "time": "2022-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.63,
+    "time": "2022-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.03,
+    "time": "2022-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94,
+    "time": "2022-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.4,
+    "time": "2022-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.66,
+    "time": "2022-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.01,
+    "time": "2022-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.65,
+    "time": "2022-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.23,
+    "time": "2022-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.17,
+    "time": "2022-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.97,
+    "time": "2022-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.615,
+    "time": "2022-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.13,
+    "time": "2022-09-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.66,
+    "time": "2022-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.44,
+    "time": "2022-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.8,
+    "time": "2022-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.66,
+    "time": "2022-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.7,
+    "time": "2022-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.72,
+    "time": "2022-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.76,
+    "time": "2022-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.2,
+    "time": "2022-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.58,
+    "time": "2022-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.56,
+    "time": "2022-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.86,
+    "time": "2022-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.42,
+    "time": "2022-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.08,
+    "time": "2022-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.51,
+    "time": "2022-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.1,
+    "time": "2022-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.11,
+    "time": "2022-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 98.91,
+    "time": "2022-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.48,
+    "time": "2022-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.26,
+    "time": "2022-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.32,
+    "time": "2022-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.98,
+    "time": "2022-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.92,
+    "time": "2022-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.63,
+    "time": "2022-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.565,
+    "time": "2022-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.53,
+    "time": "2022-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.86,
+    "time": "2022-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.42,
+    "time": "2022-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.04,
+    "time": "2022-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.65,
+    "time": "2022-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.05,
+    "time": "2022-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.75,
+    "time": "2022-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.24,
+    "time": "2022-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.74,
+    "time": "2022-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.13,
+    "time": "2022-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.91,
+    "time": "2022-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.55,
+    "time": "2022-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.36,
+    "time": "2022-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.43,
+    "time": "2022-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.47,
+    "time": "2022-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.43,
+    "time": "2022-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.04,
+    "time": "2022-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.24,
+    "time": "2022-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.4,
+    "time": "2022-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.4,
+    "time": "2022-07-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.84,
+    "time": "2022-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.47,
+    "time": "2022-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.82,
+    "time": "2022-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.94,
+    "time": "2022-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.68,
+    "time": "2022-06-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.81,
+    "time": "2022-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.97,
+    "time": "2022-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.37,
+    "time": "2022-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.9,
+    "time": "2022-06-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.23,
+    "time": "2022-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.83,
+    "time": "2022-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.46,
+    "time": "2022-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.72,
+    "time": "2022-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.3,
+    "time": "2022-06-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.11,
+    "time": "2022-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.51,
+    "time": "2022-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.59,
+    "time": "2022-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.81,
+    "time": "2022-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.53,
+    "time": "2022-06-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.32,
+    "time": "2022-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.48,
+    "time": "2022-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.21,
+    "time": "2022-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.21,
+    "time": "2022-05-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.42,
+    "time": "2022-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.12,
+    "time": "2022-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.65,
+    "time": "2022-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.18,
+    "time": "2022-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.54,
+    "time": "2022-05-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.28,
+    "time": "2022-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.18,
+    "time": "2022-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.75,
+    "time": "2022-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.65,
+    "time": "2022-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.83,
+    "time": "2022-05-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.29,
+    "time": "2022-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.17,
+    "time": "2022-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.75,
+    "time": "2022-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.53,
+    "time": "2022-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.68,
+    "time": "2022-05-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.43,
+    "time": "2022-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.72,
+    "time": "2022-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.71,
+    "time": "2022-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.53,
+    "time": "2022-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.93,
+    "time": "2022-04-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.09,
+    "time": "2022-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.61,
+    "time": "2022-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.7,
+    "time": "2022-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.78,
+    "time": "2022-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.03,
+    "time": "2022-04-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.4,
+    "time": "2022-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.9,
+    "time": "2022-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.66,
+    "time": "2022-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.58,
+    "time": "2022-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.31,
+    "time": "2022-04-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.17,
+    "time": "2022-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.25,
+    "time": "2022-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.81,
+    "time": "2022-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.21,
+    "time": "2022-04-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 113.04,
+    "time": "2022-04-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.49,
+    "time": "2022-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.65,
+    "time": "2022-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 121.86,
+    "time": "2022-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.67,
+    "time": "2022-04-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.65,
+    "time": "2022-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.49,
+    "time": "2022-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 121.18,
+    "time": "2022-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.17,
+    "time": "2022-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 113.76,
+    "time": "2022-03-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.05,
+    "time": "2022-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.65,
+    "time": "2022-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.87,
+    "time": "2022-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.65,
+    "time": "2022-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.77,
+    "time": "2022-03-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.16,
+    "time": "2022-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.92,
+    "time": "2022-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.46,
+    "time": "2022-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.87,
+    "time": "2022-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.57,
+    "time": "2022-03-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 98.55,
+    "time": "2022-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.22,
+    "time": "2022-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.9,
+    "time": "2022-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.61,
+    "time": "2022-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.91,
+    "time": "2022-03-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.34,
+    "time": "2022-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.61,
+    "time": "2022-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.51,
+    "time": "2022-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.93,
+    "time": "2022-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.94,
+    "time": "2022-02-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.02,
+    "time": "2022-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.72,
+    "time": "2022-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.17,
+    "time": "2022-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.65,
+    "time": "2022-02-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.2,
+    "time": "2022-02-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.54,
+    "time": "2022-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.46,
+    "time": "2022-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.12,
+    "time": "2022-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.29,
+    "time": "2022-02-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.02,
+    "time": "2022-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 122.94,
+    "time": "2022-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.26,
+    "time": "2022-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 121.41,
+    "time": "2022-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 126.08,
+    "time": "2022-02-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 124.3,
+    "time": "2022-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 132.57,
+    "time": "2022-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 175.8,
+    "time": "2022-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 171.94,
+    "time": "2022-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 163.52,
+    "time": "2022-01-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 158.11,
+    "time": "2022-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 156.98,
+    "time": "2022-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 158.2,
+    "time": "2022-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 162.17,
+    "time": "2022-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 163.54,
+    "time": "2022-01-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 173.28,
+    "time": "2022-01-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 173.55,
+    "time": "2022-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 174.46,
+    "time": "2022-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 178.42,
+    "time": "2022-01-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 181.01,
+    "time": "2022-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.2,
+    "time": "2022-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.52,
+    "time": "2022-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 182.95,
+    "time": "2022-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.6,
+    "time": "2022-01-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.27,
+    "time": "2022-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.16,
+    "time": "2022-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.14,
+    "time": "2022-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.94,
+    "time": "2022-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.58,
+    "time": "2021-12-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.88,
+    "time": "2021-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 189.97,
+    "time": "2021-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 190.1,
+    "time": "2021-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.01,
+    "time": "2021-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.01,
+    "time": "2021-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.68,
+    "time": "2021-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 189.14,
+    "time": "2021-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 182.68,
+    "time": "2021-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.2,
+    "time": "2021-12-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.75,
+    "time": "2021-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 190.66,
+    "time": "2021-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.8,
+    "time": "2021-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.38,
+    "time": "2021-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.51,
+    "time": "2021-12-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.75,
+    "time": "2021-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.35,
+    "time": "2021-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.02,
+    "time": "2021-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 184.86,
+    "time": "2021-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 183.93,
+    "time": "2021-12-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.15,
+    "time": "2021-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 179.32,
+    "time": "2021-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 184.89,
+    "time": "2021-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.24,
+    "time": "2021-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.79,
+    "time": "2021-11-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.71,
+    "time": "2021-11-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.05,
+    "time": "2021-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 189.48,
+    "time": "2021-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 193.61,
+    "time": "2021-11-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 200.5,
+    "time": "2021-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 206.27,
+    "time": "2021-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 215.67,
+    "time": "2021-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 212.54,
+    "time": "2021-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 208.3,
+    "time": "2021-11-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 202.03,
+    "time": "2021-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.64,
+    "time": "2021-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 205.42,
+    "time": "2021-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 229.42,
+    "time": "2021-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 225.78,
+    "time": "2021-11-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 228.22,
+    "time": "2021-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 230.38,
+    "time": "2021-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 229.46,
+    "time": "2021-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 231.28,
+    "time": "2021-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 232.59,
+    "time": "2021-10-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 236.83,
+    "time": "2021-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.94,
+    "time": "2021-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243,
+    "time": "2021-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 246.88,
+    "time": "2021-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 240.4,
+    "time": "2021-10-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243.21,
+    "time": "2021-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 258.36,
+    "time": "2021-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.7,
+    "time": "2021-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 270.33,
+    "time": "2021-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 268.35,
+    "time": "2021-10-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 266.45,
+    "time": "2021-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 256.36,
+    "time": "2021-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 255.85,
+    "time": "2021-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 255.05,
+    "time": "2021-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 260.06,
+    "time": "2021-10-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 263.54,
+    "time": "2021-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 264.06,
+    "time": "2021-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 260.15,
+    "time": "2021-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 255.01,
+    "time": "2021-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 264.65,
+    "time": "2021-10-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 260.21,
+    "time": "2021-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 259,
+    "time": "2021-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 262.19,
+    "time": "2021-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 273.39,
+    "time": "2021-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 278.11,
+    "time": "2021-09-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 279.1,
+    "time": "2021-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 272.34,
+    "time": "2021-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.49,
+    "time": "2021-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.91,
+    "time": "2021-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 276.34,
+    "time": "2021-09-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 282.97,
+    "time": "2021-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 282.43,
+    "time": "2021-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 282.24,
+    "time": "2021-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 280.49,
+    "time": "2021-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 284.32,
+    "time": "2021-09-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 286.88,
+    "time": "2021-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 285.23,
+    "time": "2021-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 293.26,
+    "time": "2021-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 289.13,
+    "time": "2021-09-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 285.53,
+    "time": "2021-09-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 286.75,
+    "time": "2021-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 288.66,
+    "time": "2021-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 288.47,
+    "time": "2021-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 278.33,
+    "time": "2021-08-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 273.62,
+    "time": "2021-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 277.69,
+    "time": "2021-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 279.51,
+    "time": "2021-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 276.98,
+    "time": "2021-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 272.96,
+    "time": "2021-08-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 270.58,
+    "time": "2021-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 268.84,
+    "time": "2021-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.1,
+    "time": "2021-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 278.28,
+    "time": "2021-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 274.91,
+    "time": "2021-08-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 274.59,
+    "time": "2021-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 276.41,
+    "time": "2021-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 274.37,
+    "time": "2021-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 278.15,
+    "time": "2021-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 279.54,
+    "time": "2021-08-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 280.67,
+    "time": "2021-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 275.5,
+    "time": "2021-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 273.5,
+    "time": "2021-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 270.99,
+    "time": "2021-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 275.53,
+    "time": "2021-07-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 283.17,
+    "time": "2021-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 301.98,
+    "time": "2021-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 300.48,
+    "time": "2021-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 306.8,
+    "time": "2021-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 308.53,
+    "time": "2021-07-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 303.69,
+    "time": "2021-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 301.77,
+    "time": "2021-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 298.07,
+    "time": "2021-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 294.85,
+    "time": "2021-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 294.63,
+    "time": "2021-07-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 296.51,
+    "time": "2021-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 300.75,
+    "time": "2021-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 301.19,
+    "time": "2021-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 302.97,
+    "time": "2021-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 300.21,
+    "time": "2021-07-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 295.05,
+    "time": "2021-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 297.13,
+    "time": "2021-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 292.64,
+    "time": "2021-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 290.24,
+    "time": "2021-07-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 289,
+    "time": "2021-07-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 291.48,
+    "time": "2021-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 292.76,
+    "time": "2021-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 293.65,
+    "time": "2021-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 289.6,
+    "time": "2021-06-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 293.21,
+    "time": "2021-06-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 288.12,
+    "time": "2021-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 286.75,
+    "time": "2021-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 283.1,
+    "time": "2021-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 283.38,
+    "time": "2021-06-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 278.11,
+    "time": "2021-06-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 268.82,
+    "time": "2021-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.89,
+    "time": "2021-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 274.93,
+    "time": "2021-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.45,
+    "time": "2021-06-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.47,
+    "time": "2021-06-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 263.6,
+    "time": "2021-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 263.15,
+    "time": "2021-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 260.6,
+    "time": "2021-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 263.04,
+    "time": "2021-06-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 257.79,
+    "time": "2021-06-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 262.17,
+    "time": "2021-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 259.27,
+    "time": "2021-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 260.02,
+    "time": "2021-05-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 259.47,
+    "time": "2021-05-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 261.37,
+    "time": "2021-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 258.65,
+    "time": "2021-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 257.17,
+    "time": "2021-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 250.69,
+    "time": "2021-05-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 251.54,
+    "time": "2021-05-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 244.63,
+    "time": "2021-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243.21,
+    "time": "2021-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 244.36,
+    "time": "2021-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 246.29,
+    "time": "2021-05-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 240.8,
+    "time": "2021-05-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 239.91,
+    "time": "2021-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 248.6,
+    "time": "2021-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243.63,
+    "time": "2021-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 253.36,
+    "time": "2021-05-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 252.02,
+    "time": "2021-05-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 247.4,
+    "time": "2021-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 250.16,
+    "time": "2021-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 259.09,
+    "time": "2021-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 262.29,
+    "time": "2021-04-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 267.85,
+    "time": "2021-04-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.09,
+    "time": "2021-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 268.82,
+    "time": "2021-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 271.72,
+    "time": "2021-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 266.03,
+    "time": "2021-04-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 262.27,
+    "time": "2021-04-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 264.89,
+    "time": "2021-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 264.43,
+    "time": "2021-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 267.91,
+    "time": "2021-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.87,
+    "time": "2021-04-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 274,
+    "time": "2021-04-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 267.21,
+    "time": "2021-04-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 275.43,
+    "time": "2021-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.03,
+    "time": "2021-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 266.77,
+    "time": "2021-04-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 264.5,
+    "time": "2021-04-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 255.6,
+    "time": "2021-04-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 253.19,
+    "time": "2021-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 251.02,
+    "time": "2021-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 247.54,
+    "time": "2021-04-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 242.84,
+    "time": "2021-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 236.54,
+    "time": "2021-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 235.67,
+    "time": "2021-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 241.03,
+    "time": "2021-03-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.24,
+    "time": "2021-03-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.27,
+    "time": "2021-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243.77,
+    "time": "2021-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 244.385,
+    "time": "2021-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 241.28,
+    "time": "2021-03-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 238.41,
+    "time": "2021-03-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 251.47,
+    "time": "2021-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 249.31,
+    "time": "2021-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 249.98,
+    "time": "2021-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 250.35,
+    "time": "2021-03-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 253.83,
+    "time": "2021-03-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 242.07,
+    "time": "2021-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 241.76,
+    "time": "2021-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 226.09,
+    "time": "2021-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 239.05,
+    "time": "2021-03-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 239.07,
+    "time": "2021-03-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 255.06,
+    "time": "2021-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.19,
+    "time": "2021-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 273.63,
+    "time": "2021-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 259.85,
+    "time": "2021-02-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 253.94,
+    "time": "2021-02-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 266.07,
+    "time": "2021-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 265,
+    "time": "2021-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 273.85,
+    "time": "2021-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 286.92,
+    "time": "2021-02-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 290.81,
+    "time": "2021-02-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 297.2,
+    "time": "2021-02-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 304.79,
+    "time": "2021-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 298.37,
+    "time": "2021-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 285.03,
+    "time": "2021-02-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 283.18,
+    "time": "2021-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 284.2,
+    "time": "2021-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 282.17,
+    "time": "2021-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 269.44,
+    "time": "2021-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 270.43,
+    "time": "2021-02-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 251.9,
+    "time": "2021-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 249.1,
+    "time": "2021-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 241.85,
+    "time": "2021-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.31,
+    "time": "2021-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 237.79,
+    "time": "2021-01-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 229.94,
+    "time": "2021-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 241,
+    "time": "2021-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 247.75,
+    "time": "2021-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 252,
+    "time": "2021-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 248.64,
+    "time": "2021-01-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 244.26,
+    "time": "2021-01-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 247.25,
+    "time": "2021-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 239.79,
+    "time": "2021-01-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 242.06,
+    "time": "2021-01-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 244.9,
+    "time": "2021-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 237.64,
+    "time": "2021-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 237.5,
+    "time": "2021-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 242.46,
+    "time": "2021-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 235.04,
+    "time": "2021-01-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 226.83,
+    "time": "2021-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.91,
+    "time": "2021-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 231.92,
+    "time": "2021-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 234.2,
+    "time": "2020-12-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 231.51,
+    "time": "2020-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 231.03,
+    "time": "2020-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 235.73,
+    "time": "2020-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 238.64,
+    "time": "2020-12-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 239.44,
+    "time": "2020-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 243.49,
+    "time": "2020-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 237.72,
+    "time": "2020-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 236.45,
+    "time": "2020-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 235.51,
+    "time": "2020-12-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 230.2,
+    "time": "2020-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 221.6,
+    "time": "2020-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 220.79,
+    "time": "2020-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 214.06,
+    "time": "2020-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 215.34,
+    "time": "2020-12-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 210.8,
+    "time": "2020-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 216.94,
+    "time": "2020-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 217.93,
+    "time": "2020-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 217.77,
+    "time": "2020-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 214.54,
+    "time": "2020-12-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 212.56,
+    "time": "2020-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 216.54,
+    "time": "2020-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 214.12,
+    "time": "2020-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 211.39,
+    "time": "2020-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 214.46,
+    "time": "2020-11-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 206,
+    "time": "2020-11-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 200.82,
+    "time": "2020-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.67,
+    "time": "2020-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 190.9,
+    "time": "2020-11-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 190.12,
+    "time": "2020-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.3,
+    "time": "2020-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.94,
+    "time": "2020-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 188.62,
+    "time": "2020-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 189.1,
+    "time": "2020-11-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.34,
+    "time": "2020-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 183.36,
+    "time": "2020-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 184.72,
+    "time": "2020-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 202.73,
+    "time": "2020-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.56,
+    "time": "2020-11-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.29,
+    "time": "2020-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 179.81,
+    "time": "2020-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.76,
+    "time": "2020-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.13,
+    "time": "2020-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 195.04,
+    "time": "2020-10-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.31,
+    "time": "2020-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 200.43,
+    "time": "2020-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.22,
+    "time": "2020-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 203.04,
+    "time": "2020-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 203.93,
+    "time": "2020-10-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 213.07,
+    "time": "2020-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 201.96,
+    "time": "2020-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 200.06,
+    "time": "2020-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.45,
+    "time": "2020-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 203.14,
+    "time": "2020-10-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 203.6,
+    "time": "2020-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 207.74,
+    "time": "2020-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 201.51,
+    "time": "2020-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.27,
+    "time": "2020-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 193.06,
+    "time": "2020-10-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.61,
+    "time": "2020-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.66,
+    "time": "2020-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 196.85,
+    "time": "2020-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.91,
+    "time": "2020-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 196.94,
+    "time": "2020-10-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.03,
+    "time": "2020-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.5,
+    "time": "2020-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.02,
+    "time": "2020-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.25,
+    "time": "2020-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 182.19,
+    "time": "2020-09-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 181.61,
+    "time": "2020-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 187.78,
+    "time": "2020-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 183.21,
+    "time": "2020-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 176.07,
+    "time": "2020-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 175.79,
+    "time": "2020-09-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 180.91,
+    "time": "2020-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.02,
+    "time": "2020-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 186.96,
+    "time": "2020-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 184,
+    "time": "2020-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 190.09,
+    "time": "2020-09-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.6,
+    "time": "2020-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 185.95,
+    "time": "2020-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.84,
+    "time": "2020-09-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.99,
+    "time": "2020-09-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 210.82,
+    "time": "2020-09-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 208.93,
+    "time": "2020-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.14,
+    "time": "2020-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.48,
+    "time": "2020-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.34,
+    "time": "2020-08-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 203.48,
+    "time": "2020-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 201.67,
+    "time": "2020-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 198.88,
+    "time": "2020-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 196.79,
+    "time": "2020-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 198.18,
+    "time": "2020-08-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.44,
+    "time": "2020-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 194.57,
+    "time": "2020-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 196.29,
+    "time": "2020-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.46,
+    "time": "2020-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 193.07,
+    "time": "2020-08-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 191.32,
+    "time": "2020-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 189.03,
+    "time": "2020-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 193.32,
+    "time": "2020-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 198.63,
+    "time": "2020-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 204.09,
+    "time": "2020-08-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 202.91,
+    "time": "2020-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.33,
+    "time": "2020-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 197.07,
+    "time": "2020-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 196.07,
+    "time": "2020-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 192.51,
+    "time": "2020-07-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 184.6,
+    "time": "2020-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 176.27,
+    "time": "2020-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 177.98,
+    "time": "2020-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 172.56,
+    "time": "2020-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 173.86,
+    "time": "2020-07-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 178.42,
+    "time": "2020-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 175.58,
+    "time": "2020-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 178.82,
+    "time": "2020-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 173.92,
+    "time": "2020-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 169.81,
+    "time": "2020-07-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 172.06,
+    "time": "2020-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 172.3,
+    "time": "2020-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 171.51,
+    "time": "2020-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 178.4,
+    "time": "2020-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 183.23,
+    "time": "2020-07-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 181.57,
+    "time": "2020-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 177.28,
+    "time": "2020-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 176.18,
+    "time": "2020-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 177.21,
+    "time": "2020-07-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 177.43,
+    "time": "2020-07-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 174.23,
+    "time": "2020-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 168.35,
+    "time": "2020-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 170.87,
+    "time": "2020-06-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 172.5,
+    "time": "2020-06-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 168,
+    "time": "2020-06-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 172.79,
+    "time": "2020-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 170.26,
+    "time": "2020-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 164.36,
+    "time": "2020-06-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 168.05,
+    "time": "2020-06-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 163.83,
+    "time": "2020-06-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 161.22,
+    "time": "2020-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 157.55,
+    "time": "2020-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 155.26,
+    "time": "2020-06-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 153.04,
+    "time": "2020-06-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 159.91,
+    "time": "2020-06-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 156.86,
+    "time": "2020-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 156.09,
+    "time": "2020-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 156,
+    "time": "2020-06-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 154.6,
+    "time": "2020-06-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 156.78,
+    "time": "2020-06-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 157.49,
+    "time": "2020-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 154.53,
+    "time": "2020-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 155.01,
+    "time": "2020-05-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 148.79,
+    "time": "2020-05-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 145.96,
+    "time": "2020-05-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 147,
+    "time": "2020-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 150.86,
+    "time": "2020-05-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 148.22,
+    "time": "2020-05-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 150.94,
+    "time": "2020-05-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 145.39,
+    "time": "2020-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 146.24,
+    "time": "2020-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 145.51,
+    "time": "2020-05-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 144.41,
+    "time": "2020-05-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 143.73,
+    "time": "2020-05-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 141.03,
+    "time": "2020-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 143.96,
+    "time": "2020-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 144.96,
+    "time": "2020-05-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 146.29,
+    "time": "2020-05-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 128.31,
+    "time": "2020-05-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 125.43,
+    "time": "2020-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 123.66,
+    "time": "2020-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.61,
+    "time": "2020-05-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 123,
+    "time": "2020-04-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 123.58,
+    "time": "2020-04-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.14,
+    "time": "2020-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.53,
+    "time": "2020-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.18,
+    "time": "2020-04-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.24,
+    "time": "2020-04-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.19,
+    "time": "2020-04-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.54,
+    "time": "2020-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.17,
+    "time": "2020-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.85,
+    "time": "2020-04-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.31,
+    "time": "2020-04-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.95,
+    "time": "2020-04-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.785,
+    "time": "2020-04-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.98,
+    "time": "2020-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.84,
+    "time": "2020-04-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.06,
+    "time": "2020-04-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.28,
+    "time": "2020-04-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.67,
+    "time": "2020-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.39,
+    "time": "2020-04-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.52,
+    "time": "2020-04-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.38,
+    "time": "2020-04-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.74,
+    "time": "2020-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.03,
+    "time": "2020-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.48,
+    "time": "2020-03-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.63,
+    "time": "2020-03-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.71,
+    "time": "2020-03-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.29,
+    "time": "2020-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.26,
+    "time": "2020-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.68,
+    "time": "2020-03-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.69,
+    "time": "2020-03-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.46,
+    "time": "2020-03-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.87,
+    "time": "2020-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.72,
+    "time": "2020-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.15,
+    "time": "2020-03-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.96,
+    "time": "2020-03-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.9,
+    "time": "2020-03-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.74,
+    "time": "2020-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.63,
+    "time": "2020-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.89,
+    "time": "2020-03-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.18,
+    "time": "2020-03-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.3,
+    "time": "2020-03-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.76,
+    "time": "2020-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.86,
+    "time": "2020-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.99,
+    "time": "2020-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.84,
+    "time": "2020-02-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.11,
+    "time": "2020-02-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.66,
+    "time": "2020-02-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.44,
+    "time": "2020-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.49,
+    "time": "2020-02-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 122.43,
+    "time": "2020-02-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 123.91,
+    "time": "2020-02-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 122.27,
+    "time": "2020-02-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 122.99,
+    "time": "2020-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.51,
+    "time": "2020-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.56,
+    "time": "2020-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.84,
+    "time": "2020-02-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.06,
+    "time": "2020-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.88,
+    "time": "2020-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.89,
+    "time": "2020-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.72,
+    "time": "2020-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.08,
+    "time": "2020-02-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.51,
+    "time": "2020-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 113.89,
+    "time": "2020-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.12,
+    "time": "2020-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.66,
+    "time": "2020-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.52,
+    "time": "2020-01-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.24,
+    "time": "2020-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.98,
+    "time": "2020-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.89,
+    "time": "2020-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.5,
+    "time": "2020-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.15,
+    "time": "2020-01-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.04,
+    "time": "2020-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.4,
+    "time": "2020-01-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.85,
+    "time": "2020-01-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.64,
+    "time": "2020-01-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.28,
+    "time": "2020-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.93,
+    "time": "2020-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.57,
+    "time": "2020-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.82,
+    "time": "2020-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.67,
+    "time": "2020-01-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.17,
+    "time": "2020-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.76,
+    "time": "2020-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.75,
+    "time": "2020-01-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.17,
+    "time": "2019-12-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.97,
+    "time": "2019-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.4,
+    "time": "2019-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.75,
+    "time": "2019-12-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.69,
+    "time": "2019-12-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.61,
+    "time": "2019-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.75,
+    "time": "2019-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.88,
+    "time": "2019-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.83,
+    "time": "2019-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.46,
+    "time": "2019-12-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.57,
+    "time": "2019-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.65,
+    "time": "2019-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.67,
+    "time": "2019-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.51,
+    "time": "2019-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.62,
+    "time": "2019-12-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.78,
+    "time": "2019-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.34,
+    "time": "2019-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.59,
+    "time": "2019-12-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105,
+    "time": "2019-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.59,
+    "time": "2019-12-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.21,
+    "time": "2019-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.01,
+    "time": "2019-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.75,
+    "time": "2019-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.2,
+    "time": "2019-11-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.45,
+    "time": "2019-11-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.77,
+    "time": "2019-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.55,
+    "time": "2019-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.09,
+    "time": "2019-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.95,
+    "time": "2019-11-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.66,
+    "time": "2019-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.2,
+    "time": "2019-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.73,
+    "time": "2019-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.12,
+    "time": "2019-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.03,
+    "time": "2019-11-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.67,
+    "time": "2019-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.42,
+    "time": "2019-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.47,
+    "time": "2019-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.63,
+    "time": "2019-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.99,
+    "time": "2019-11-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.81,
+    "time": "2019-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.98,
+    "time": "2019-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.1,
+    "time": "2019-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.5,
+    "time": "2019-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105,
+    "time": "2019-10-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.6,
+    "time": "2019-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.19,
+    "time": "2019-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.91,
+    "time": "2019-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.64,
+    "time": "2019-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.36,
+    "time": "2019-10-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.44,
+    "time": "2019-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.22,
+    "time": "2019-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.63,
+    "time": "2019-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.09,
+    "time": "2019-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.59,
+    "time": "2019-10-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.75,
+    "time": "2019-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.58,
+    "time": "2019-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.54,
+    "time": "2019-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.89,
+    "time": "2019-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.33,
+    "time": "2019-10-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.62,
+    "time": "2019-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.79,
+    "time": "2019-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.03,
+    "time": "2019-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.73,
+    "time": "2019-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.53,
+    "time": "2019-10-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.59,
+    "time": "2019-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.2,
+    "time": "2019-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.55,
+    "time": "2019-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.14,
+    "time": "2019-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.69,
+    "time": "2019-09-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.11,
+    "time": "2019-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.64,
+    "time": "2019-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.12,
+    "time": "2019-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.6,
+    "time": "2019-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.5,
+    "time": "2019-09-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.52,
+    "time": "2019-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107,
+    "time": "2019-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.1,
+    "time": "2019-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.02,
+    "time": "2019-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.05,
+    "time": "2019-09-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.43,
+    "time": "2019-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.05,
+    "time": "2019-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.46,
+    "time": "2019-09-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.73,
+    "time": "2019-09-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.75,
+    "time": "2019-09-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.05,
+    "time": "2019-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.21,
+    "time": "2019-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.47,
+    "time": "2019-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.45,
+    "time": "2019-08-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.66,
+    "time": "2019-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.04,
+    "time": "2019-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.77,
+    "time": "2019-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.82,
+    "time": "2019-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.37,
+    "time": "2019-08-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.67,
+    "time": "2019-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.16,
+    "time": "2019-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.95,
+    "time": "2019-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.27,
+    "time": "2019-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.04,
+    "time": "2019-08-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.72,
+    "time": "2019-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.82,
+    "time": "2019-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.79,
+    "time": "2019-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.63,
+    "time": "2019-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.03,
+    "time": "2019-08-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.6,
+    "time": "2019-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.09,
+    "time": "2019-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.8,
+    "time": "2019-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.4,
+    "time": "2019-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.04,
+    "time": "2019-07-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.45,
+    "time": "2019-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.49,
+    "time": "2019-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.12,
+    "time": "2019-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 121.3,
+    "time": "2019-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.22,
+    "time": "2019-07-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.69,
+    "time": "2019-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.63,
+    "time": "2019-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.87,
+    "time": "2019-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.81,
+    "time": "2019-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.71,
+    "time": "2019-07-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.9,
+    "time": "2019-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.12,
+    "time": "2019-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 120.65,
+    "time": "2019-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 119.64,
+    "time": "2019-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.37,
+    "time": "2019-07-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.95,
+    "time": "2019-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.16,
+    "time": "2019-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.68,
+    "time": "2019-07-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.17,
+    "time": "2019-07-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.03,
+    "time": "2019-07-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.46,
+    "time": "2019-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 113.67,
+    "time": "2019-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.15,
+    "time": "2019-06-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.44,
+    "time": "2019-06-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.5,
+    "time": "2019-06-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.21,
+    "time": "2019-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 118.79,
+    "time": "2019-06-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.14,
+    "time": "2019-06-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.98,
+    "time": "2019-06-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 117.16,
+    "time": "2019-06-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 116.17,
+    "time": "2019-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.72,
+    "time": "2019-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.5,
+    "time": "2019-06-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.6,
+    "time": "2019-06-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 115.62,
+    "time": "2019-06-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 114.02,
+    "time": "2019-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.78,
+    "time": "2019-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.77,
+    "time": "2019-06-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.73,
+    "time": "2019-06-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.52,
+    "time": "2019-06-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.75,
+    "time": "2019-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.41,
+    "time": "2019-05-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.08,
+    "time": "2019-05-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.79,
+    "time": "2019-05-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.85,
+    "time": "2019-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.9,
+    "time": "2019-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.47,
+    "time": "2019-05-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.43,
+    "time": "2019-05-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.15,
+    "time": "2019-05-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.8,
+    "time": "2019-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 113.87,
+    "time": "2019-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.5,
+    "time": "2019-05-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.09,
+    "time": "2019-05-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.83,
+    "time": "2019-05-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.41,
+    "time": "2019-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.73,
+    "time": "2019-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.07,
+    "time": "2019-05-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.95,
+    "time": "2019-05-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.85,
+    "time": "2019-05-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 111.96,
+    "time": "2019-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 109.7,
+    "time": "2019-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.94,
+    "time": "2019-05-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.77,
+    "time": "2019-04-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 112.44,
+    "time": "2019-04-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.56,
+    "time": "2019-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 110.22,
+    "time": "2019-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.22,
+    "time": "2019-04-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.9,
+    "time": "2019-04-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.81,
+    "time": "2019-04-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.36,
+    "time": "2019-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.81,
+    "time": "2019-04-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.2,
+    "time": "2019-04-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.14,
+    "time": "2019-04-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 108.48,
+    "time": "2019-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.46,
+    "time": "2019-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 107.51,
+    "time": "2019-04-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.93,
+    "time": "2019-04-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 106.57,
+    "time": "2019-04-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.73,
+    "time": "2019-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.46,
+    "time": "2019-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.69,
+    "time": "2019-04-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.23,
+    "time": "2019-04-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 105.55,
+    "time": "2019-04-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.84,
+    "time": "2019-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.86,
+    "time": "2019-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.07,
+    "time": "2019-03-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 103.15,
+    "time": "2019-03-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.55,
+    "time": "2019-03-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.27,
+    "time": "2019-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 104.15,
+    "time": "2019-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 102.31,
+    "time": "2019-03-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 101.54,
+    "time": "2019-03-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.27,
+    "time": "2019-03-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 100.73,
+    "time": "2019-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.03,
+    "time": "2019-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 99.31,
+    "time": "2019-03-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.5,
+    "time": "2019-03-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.45,
+    "time": "2019-03-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.69,
+    "time": "2019-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.21,
+    "time": "2019-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.46,
+    "time": "2019-03-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.53,
+    "time": "2019-03-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.57,
+    "time": "2019-03-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 98.8,
+    "time": "2019-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 98.07,
+    "time": "2019-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 97.86,
+    "time": "2019-02-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.59,
+    "time": "2019-02-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 96.7,
+    "time": "2019-02-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.98,
+    "time": "2019-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.96,
+    "time": "2019-02-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.73,
+    "time": "2019-02-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 95.02,
+    "time": "2019-02-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.91,
+    "time": "2019-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.42,
+    "time": "2019-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.01,
+    "time": "2019-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.38,
+    "time": "2019-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.69,
+    "time": "2019-02-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.87,
+    "time": "2019-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.85,
+    "time": "2019-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.25,
+    "time": "2019-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.27,
+    "time": "2019-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.66,
+    "time": "2019-02-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.01,
+    "time": "2019-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.76,
+    "time": "2019-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.42,
+    "time": "2019-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.12,
+    "time": "2019-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.3,
+    "time": "2019-01-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 94.28,
+    "time": "2019-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.2,
+    "time": "2019-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.5,
+    "time": "2019-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.94,
+    "time": "2019-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.12,
+    "time": "2019-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.4,
+    "time": "2019-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.55,
+    "time": "2019-01-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.6,
+    "time": "2019-01-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.43,
+    "time": "2019-01-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.65,
+    "time": "2019-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.7,
+    "time": "2019-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.55,
+    "time": "2019-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.7,
+    "time": "2019-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.93,
+    "time": "2019-01-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.27,
+    "time": "2019-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.09,
+    "time": "2019-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.75,
+    "time": "2019-01-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.09,
+    "time": "2018-12-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.26,
+    "time": "2018-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.31,
+    "time": "2018-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.8,
+    "time": "2018-12-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.06,
+    "time": "2018-12-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.14,
+    "time": "2018-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.44,
+    "time": "2018-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.03,
+    "time": "2018-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.51,
+    "time": "2018-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.1,
+    "time": "2018-12-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.92,
+    "time": "2018-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.56,
+    "time": "2018-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.5,
+    "time": "2018-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.51,
+    "time": "2018-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.93,
+    "time": "2018-12-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.77,
+    "time": "2018-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.82,
+    "time": "2018-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.19,
+    "time": "2018-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.98,
+    "time": "2018-12-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.81,
+    "time": "2018-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.26,
+    "time": "2018-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.98,
+    "time": "2018-11-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.97,
+    "time": "2018-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.86,
+    "time": "2018-11-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.95,
+    "time": "2018-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.12,
+    "time": "2018-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.76,
+    "time": "2018-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.13,
+    "time": "2018-11-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.06,
+    "time": "2018-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.74,
+    "time": "2018-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.05,
+    "time": "2018-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.78,
+    "time": "2018-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.78,
+    "time": "2018-11-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.76,
+    "time": "2018-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.04,
+    "time": "2018-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.23,
+    "time": "2018-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.69,
+    "time": "2018-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.05,
+    "time": "2018-11-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.51,
+    "time": "2018-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.04,
+    "time": "2018-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.19,
+    "time": "2018-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.9,
+    "time": "2018-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.15,
+    "time": "2018-10-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.37,
+    "time": "2018-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.96,
+    "time": "2018-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.09,
+    "time": "2018-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.57,
+    "time": "2018-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.43,
+    "time": "2018-10-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.78,
+    "time": "2018-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.48,
+    "time": "2018-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.09,
+    "time": "2018-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.61,
+    "time": "2018-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.23,
+    "time": "2018-10-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.03,
+    "time": "2018-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.9,
+    "time": "2018-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.45,
+    "time": "2018-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.03,
+    "time": "2018-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.55,
+    "time": "2018-10-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.18,
+    "time": "2018-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.34,
+    "time": "2018-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.15,
+    "time": "2018-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.68,
+    "time": "2018-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.55,
+    "time": "2018-10-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.84,
+    "time": "2018-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.99,
+    "time": "2018-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.85,
+    "time": "2018-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.04,
+    "time": "2018-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.62,
+    "time": "2018-09-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.62,
+    "time": "2018-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.6,
+    "time": "2018-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.31,
+    "time": "2018-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.72,
+    "time": "2018-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.68,
+    "time": "2018-09-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.78,
+    "time": "2018-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.19,
+    "time": "2018-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.4,
+    "time": "2018-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.43,
+    "time": "2018-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.8,
+    "time": "2018-09-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.82,
+    "time": "2018-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89,
+    "time": "2018-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.05,
+    "time": "2018-09-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 93.07,
+    "time": "2018-09-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.33,
+    "time": "2018-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.09,
+    "time": "2018-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 92.62,
+    "time": "2018-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.61,
+    "time": "2018-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.97,
+    "time": "2018-08-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 90.1,
+    "time": "2018-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.38,
+    "time": "2018-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.95,
+    "time": "2018-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.22,
+    "time": "2018-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.75,
+    "time": "2018-08-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.45,
+    "time": "2018-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.32,
+    "time": "2018-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.19,
+    "time": "2018-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.73,
+    "time": "2018-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.01,
+    "time": "2018-08-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.01,
+    "time": "2018-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.17,
+    "time": "2018-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.74,
+    "time": "2018-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.3,
+    "time": "2018-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.77,
+    "time": "2018-08-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.19,
+    "time": "2018-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.53,
+    "time": "2018-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.46,
+    "time": "2018-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.14,
+    "time": "2018-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.39,
+    "time": "2018-07-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.46,
+    "time": "2018-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.14,
+    "time": "2018-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.37,
+    "time": "2018-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 91.41,
+    "time": "2018-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.24,
+    "time": "2018-07-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.47,
+    "time": "2018-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.38,
+    "time": "2018-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.22,
+    "time": "2018-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 88.58,
+    "time": "2018-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.77,
+    "time": "2018-07-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 87.99,
+    "time": "2018-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 89.13,
+    "time": "2018-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.25,
+    "time": "2018-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.17,
+    "time": "2018-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 86.23,
+    "time": "2018-07-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.94,
+    "time": "2018-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.59,
+    "time": "2018-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.27,
+    "time": "2018-07-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.89,
+    "time": "2018-07-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.27,
+    "time": "2018-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.48,
+    "time": "2018-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.67,
+    "time": "2018-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.32,
+    "time": "2018-06-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.19,
+    "time": "2018-06-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.12,
+    "time": "2018-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.97,
+    "time": "2018-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.95,
+    "time": "2018-06-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.52,
+    "time": "2018-06-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.85,
+    "time": "2018-06-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.31,
+    "time": "2018-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.61,
+    "time": "2018-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.27,
+    "time": "2018-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.02,
+    "time": "2018-06-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.89,
+    "time": "2018-06-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.34,
+    "time": "2018-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.27,
+    "time": "2018-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.21,
+    "time": "2018-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.05,
+    "time": "2018-06-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.57,
+    "time": "2018-06-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.25,
+    "time": "2018-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.07,
+    "time": "2018-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.6,
+    "time": "2018-05-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.73,
+    "time": "2018-05-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.96,
+    "time": "2018-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.55,
+    "time": "2018-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.08,
+    "time": "2018-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.62,
+    "time": "2018-05-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.25,
+    "time": "2018-05-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.79,
+    "time": "2018-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.19,
+    "time": "2018-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.82,
+    "time": "2018-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.79,
+    "time": "2018-05-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.81,
+    "time": "2018-05-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.2,
+    "time": "2018-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.19,
+    "time": "2018-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.01,
+    "time": "2018-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.72,
+    "time": "2018-05-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.67,
+    "time": "2018-05-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.99,
+    "time": "2018-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.45,
+    "time": "2018-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.73,
+    "time": "2018-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.81,
+    "time": "2018-05-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.61,
+    "time": "2018-04-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.13,
+    "time": "2018-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.03,
+    "time": "2018-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74,
+    "time": "2018-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.28,
+    "time": "2018-04-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.21,
+    "time": "2018-04-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.73,
+    "time": "2018-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.68,
+    "time": "2018-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.34,
+    "time": "2018-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.03,
+    "time": "2018-04-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.8,
+    "time": "2018-04-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.27,
+    "time": "2018-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.46,
+    "time": "2018-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.5,
+    "time": "2018-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.79,
+    "time": "2018-04-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.19,
+    "time": "2018-04-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.86,
+    "time": "2018-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.95,
+    "time": "2018-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.78,
+    "time": "2018-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.56,
+    "time": "2018-04-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75,
+    "time": "2018-04-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.87,
+    "time": "2018-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.06,
+    "time": "2018-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.31,
+    "time": "2018-03-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.95,
+    "time": "2018-03-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.44,
+    "time": "2018-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.56,
+    "time": "2018-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 81.04,
+    "time": "2018-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.86,
+    "time": "2018-03-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.3,
+    "time": "2018-03-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.16,
+    "time": "2018-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.57,
+    "time": "2018-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.31,
+    "time": "2018-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.2,
+    "time": "2018-03-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.6,
+    "time": "2018-03-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.71,
+    "time": "2018-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.87,
+    "time": "2018-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.52,
+    "time": "2018-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.23,
+    "time": "2018-03-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.07,
+    "time": "2018-03-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.87,
+    "time": "2018-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.64,
+    "time": "2018-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.41,
+    "time": "2018-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.46,
+    "time": "2018-02-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.35,
+    "time": "2018-02-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.69,
+    "time": "2018-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.7,
+    "time": "2018-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.51,
+    "time": "2018-02-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.06,
+    "time": "2018-02-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.37,
+    "time": "2018-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.295,
+    "time": "2018-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.27,
+    "time": "2018-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.97,
+    "time": "2018-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.28,
+    "time": "2018-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.75,
+    "time": "2018-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.32,
+    "time": "2018-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.59,
+    "time": "2018-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.68,
+    "time": "2018-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.705,
+    "time": "2018-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.57,
+    "time": "2018-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.4,
+    "time": "2018-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.32,
+    "time": "2018-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.78,
+    "time": "2018-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.31,
+    "time": "2018-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 85.45,
+    "time": "2018-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.34,
+    "time": "2018-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.71,
+    "time": "2018-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 84.21,
+    "time": "2018-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.98,
+    "time": "2018-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 83.84,
+    "time": "2018-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.94,
+    "time": "2018-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 82.47,
+    "time": "2018-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.42,
+    "time": "2018-01-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 80.54,
+    "time": "2018-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.75,
+    "time": "2018-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.37,
+    "time": "2018-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.19,
+    "time": "2018-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 79.05,
+    "time": "2018-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.7,
+    "time": "2018-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.73,
+    "time": "2018-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.75,
+    "time": "2018-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.84,
+    "time": "2018-01-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.62,
+    "time": "2017-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.17,
+    "time": "2017-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.59,
+    "time": "2017-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.27,
+    "time": "2017-12-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.89,
+    "time": "2017-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.02,
+    "time": "2017-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74,
+    "time": "2017-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.5,
+    "time": "2017-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.32,
+    "time": "2017-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.65,
+    "time": "2017-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.26,
+    "time": "2017-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.09,
+    "time": "2017-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.62,
+    "time": "2017-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.29,
+    "time": "2017-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.91,
+    "time": "2017-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.69,
+    "time": "2017-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.14,
+    "time": "2017-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.2,
+    "time": "2017-12-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.97,
+    "time": "2017-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.3,
+    "time": "2017-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 75.73,
+    "time": "2017-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.25,
+    "time": "2017-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.79,
+    "time": "2017-11-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.84,
+    "time": "2017-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 78.57,
+    "time": "2017-11-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.57,
+    "time": "2017-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.77,
+    "time": "2017-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.01,
+    "time": "2017-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 76.38,
+    "time": "2017-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 77.7,
+    "time": "2017-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.43,
+    "time": "2017-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.49,
+    "time": "2017-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.03,
+    "time": "2017-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.99,
+    "time": "2017-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.1,
+    "time": "2017-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.77,
+    "time": "2017-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.41,
+    "time": "2017-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 74.74,
+    "time": "2017-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 73.39,
+    "time": "2017-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.25,
+    "time": "2017-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.38,
+    "time": "2017-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 72.56,
+    "time": "2017-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.15,
+    "time": "2017-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.06,
+    "time": "2017-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.34,
+    "time": "2017-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 71.02,
+    "time": "2017-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.21,
+    "time": "2017-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 69.8,
+    "time": "2017-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 70.97,
+    "time": "2017-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 67.25,
+    "time": "2017-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 67.26,
+    "time": "2017-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.67,
+    "time": "2017-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 67.31,
+    "time": "2017-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.66,
+    "time": "2017-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 68.86,
+    "time": "2017-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 67.78,
+    "time": "2017-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.04,
+    "time": "2017-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.23,
+    "time": "2017-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 66.05,
+    "time": "2017-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.82,
+    "time": "2017-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.01,
+    "time": "2017-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.22,
+    "time": "2017-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.18,
+    "time": "2017-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.03,
+    "time": "2017-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.93,
+    "time": "2017-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.33,
+    "time": "2017-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.94,
+    "time": "2017-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.5,
+    "time": "2017-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 65.08,
+    "time": "2017-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.63,
+    "time": "2017-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 64.74,
+    "time": "2017-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 63.83,
+    "time": "2017-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.92,
+    "time": "2017-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.5,
+    "time": "2017-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.24,
+    "time": "2017-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.04,
+    "time": "2017-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.56,
+    "time": "2017-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62.64,
+    "time": "2017-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.13,
+    "time": "2017-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 62,
+    "time": "2017-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.24,
+    "time": "2017-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.27,
+    "time": "2017-09-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.46,
+    "time": "2017-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.68,
+    "time": "2017-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.77,
+    "time": "2017-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 61.01,
+    "time": "2017-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.53,
+    "time": "2017-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.97,
+    "time": "2017-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60,
+    "time": "2017-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.05,
+    "time": "2017-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.84,
+    "time": "2017-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.4,
+    "time": "2017-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.44,
+    "time": "2017-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.29,
+    "time": "2017-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.29,
+    "time": "2017-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.69,
+    "time": "2017-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.06,
+    "time": "2017-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.04,
+    "time": "2017-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.02,
+    "time": "2017-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.67,
+    "time": "2017-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.48,
+    "time": "2017-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.62,
+    "time": "2017-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.86,
+    "time": "2017-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.42,
+    "time": "2017-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.12,
+    "time": "2017-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.34,
+    "time": "2017-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.55,
+    "time": "2017-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.2,
+    "time": "2017-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 60.15,
+    "time": "2017-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.79,
+    "time": "2017-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.26,
+    "time": "2017-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.58,
+    "time": "2017-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.67,
+    "time": "2017-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 59.09,
+    "time": "2017-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.35,
+    "time": "2017-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 58.96,
+    "time": "2017-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.58,
+    "time": "2017-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.16,
+    "time": "2017-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 57.9,
+    "time": "2017-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 56.55,
+    "time": "2017-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.76,
+    "time": "2017-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.94,
+    "time": "2017-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.97,
+    "time": "2017-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.47,
+    "time": "2017-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.61,
+    "time": "2017-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.87,
+    "time": "2017-07-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.67,
+    "time": "2017-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.42,
+    "time": "2017-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.39,
+    "time": "2017-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.73,
+    "time": "2017-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.74,
+    "time": "2017-06-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.33,
+    "time": "2017-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.87,
+    "time": "2017-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.54,
+    "time": "2017-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.52,
+    "time": "2017-06-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.93,
+    "time": "2017-06-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.84,
+    "time": "2017-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.29,
+    "time": "2017-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.9,
+    "time": "2017-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.06,
+    "time": "2017-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.16,
+    "time": "2017-06-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.4,
+    "time": "2017-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 54.39,
+    "time": "2017-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.85,
+    "time": "2017-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.4,
+    "time": "2017-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.8,
+    "time": "2017-06-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.52,
+    "time": "2017-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 53.16,
+    "time": "2017-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 52.21,
+    "time": "2017-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.06,
+    "time": "2017-05-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.19,
+    "time": "2017-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 50.93,
+    "time": "2017-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 51.05,
+    "time": "2017-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 50.13,
+    "time": "2017-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.77,
+    "time": "2017-05-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.39,
+    "time": "2017-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.11,
+    "time": "2017-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.05,
+    "time": "2017-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 50.34,
+    "time": "2017-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.77,
+    "time": "2017-05-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.37,
+    "time": "2017-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.7,
+    "time": "2017-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.79,
+    "time": "2017-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.22,
+    "time": "2017-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.17,
+    "time": "2017-05-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.3,
+    "time": "2017-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 48.91,
+    "time": "2017-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.02,
+    "time": "2017-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 49.05,
+    "time": "2017-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 47.54,
+    "time": "2017-05-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 47.72,
+    "time": "2017-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 47.15,
+    "time": "2017-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 44.41,
+    "time": "2017-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 44.71,
+    "time": "2017-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 44.27,
+    "time": "2017-04-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.81,
+    "time": "2017-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.69,
+    "time": "2017-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.3,
+    "time": "2017-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.09,
+    "time": "2017-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.1,
+    "time": "2017-04-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.55,
+    "time": "2017-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.49,
+    "time": "2017-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.69,
+    "time": "2017-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.05,
+    "time": "2017-04-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.04,
+    "time": "2017-04-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.9,
+    "time": "2017-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.89,
+    "time": "2017-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.72,
+    "time": "2017-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.63,
+    "time": "2017-04-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.02,
+    "time": "2017-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.54,
+    "time": "2017-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.24,
+    "time": "2017-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.15,
+    "time": "2017-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.08,
+    "time": "2017-03-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.13,
+    "time": "2017-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.14,
+    "time": "2017-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.19,
+    "time": "2017-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.64,
+    "time": "2017-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.16,
+    "time": "2017-03-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.08,
+    "time": "2017-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.4,
+    "time": "2017-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.39,
+    "time": "2017-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.1,
+    "time": "2017-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.59,
+    "time": "2017-03-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.99,
+    "time": "2017-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.92,
+    "time": "2017-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.79,
+    "time": "2017-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.89,
+    "time": "2017-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.87,
+    "time": "2017-03-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.03,
+    "time": "2017-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.77,
+    "time": "2017-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.43,
+    "time": "2017-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42,
+    "time": "2017-02-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.64,
+    "time": "2017-02-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.07,
+    "time": "2017-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.53,
+    "time": "2017-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.42,
+    "time": "2017-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.43,
+    "time": "2017-02-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.96,
+    "time": "2017-02-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.15,
+    "time": "2017-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.87,
+    "time": "2017-02-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.62,
+    "time": "2017-02-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.17,
+    "time": "2017-02-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.58,
+    "time": "2017-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.83,
+    "time": "2017-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.88,
+    "time": "2017-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.02,
+    "time": "2017-02-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.74,
+    "time": "2017-02-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.59,
+    "time": "2017-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.58,
+    "time": "2017-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.31,
+    "time": "2017-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.78,
+    "time": "2017-01-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.86,
+    "time": "2017-01-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.27,
+    "time": "2017-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.5,
+    "time": "2017-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.71,
+    "time": "2017-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.96,
+    "time": "2017-01-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.62,
+    "time": "2017-01-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.69,
+    "time": "2017-01-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.27,
+    "time": "2017-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.35,
+    "time": "2017-01-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.27,
+    "time": "2017-01-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.6,
+    "time": "2017-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.56,
+    "time": "2017-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.28,
+    "time": "2017-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.08,
+    "time": "2017-01-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.4,
+    "time": "2017-01-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.45,
+    "time": "2017-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.06,
+    "time": "2017-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41,
+    "time": "2017-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.25,
+    "time": "2017-01-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.47,
+    "time": "2016-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.96,
+    "time": "2016-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.57,
+    "time": "2016-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.72,
+    "time": "2016-12-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.58,
+    "time": "2016-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.68,
+    "time": "2016-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.09,
+    "time": "2016-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.74,
+    "time": "2016-12-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.44,
+    "time": "2016-12-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.32,
+    "time": "2016-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.54,
+    "time": "2016-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.55,
+    "time": "2016-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.43,
+    "time": "2016-12-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.43,
+    "time": "2016-12-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.65,
+    "time": "2016-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.61,
+    "time": "2016-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.45,
+    "time": "2016-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.98,
+    "time": "2016-12-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.99,
+    "time": "2016-12-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.62,
+    "time": "2016-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.34,
+    "time": "2016-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.28,
+    "time": "2016-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.89,
+    "time": "2016-11-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.96,
+    "time": "2016-11-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.26,
+    "time": "2016-11-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.05,
+    "time": "2016-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.33,
+    "time": "2016-11-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.63,
+    "time": "2016-11-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.08,
+    "time": "2016-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.88,
+    "time": "2016-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.07,
+    "time": "2016-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.94,
+    "time": "2016-11-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.81,
+    "time": "2016-11-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.08,
+    "time": "2016-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.45,
+    "time": "2016-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.26,
+    "time": "2016-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.58,
+    "time": "2016-11-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.28,
+    "time": "2016-11-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.9,
+    "time": "2016-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.19,
+    "time": "2016-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.35,
+    "time": "2016-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.54,
+    "time": "2016-11-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.66,
+    "time": "2016-10-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.76,
+    "time": "2016-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.69,
+    "time": "2016-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 42.33,
+    "time": "2016-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.31,
+    "time": "2016-10-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 43.87,
+    "time": "2016-10-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 44.15,
+    "time": "2016-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.09,
+    "time": "2016-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.24,
+    "time": "2016-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.83,
+    "time": "2016-10-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.48,
+    "time": "2016-10-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.24,
+    "time": "2016-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.2,
+    "time": "2016-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.53,
+    "time": "2016-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.19,
+    "time": "2016-10-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.86,
+    "time": "2016-10-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.88,
+    "time": "2016-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.18,
+    "time": "2016-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.44,
+    "time": "2016-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.78,
+    "time": "2016-10-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.59,
+    "time": "2016-10-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.97,
+    "time": "2016-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.39,
+    "time": "2016-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.97,
+    "time": "2016-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.06,
+    "time": "2016-09-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.34,
+    "time": "2016-09-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.07,
+    "time": "2016-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.49,
+    "time": "2016-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.29,
+    "time": "2016-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.69,
+    "time": "2016-09-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.01,
+    "time": "2016-09-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.7,
+    "time": "2016-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.83,
+    "time": "2016-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.96,
+    "time": "2016-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.86,
+    "time": "2016-09-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.77,
+    "time": "2016-09-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.01,
+    "time": "2016-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.27,
+    "time": "2016-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.56,
+    "time": "2016-09-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.18,
+    "time": "2016-09-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.07,
+    "time": "2016-09-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.83,
+    "time": "2016-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.15,
+    "time": "2016-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37,
+    "time": "2016-08-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.29,
+    "time": "2016-08-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.65,
+    "time": "2016-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.51,
+    "time": "2016-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.52,
+    "time": "2016-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.86,
+    "time": "2016-08-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.11,
+    "time": "2016-08-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.09,
+    "time": "2016-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.22,
+    "time": "2016-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.14,
+    "time": "2016-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.38,
+    "time": "2016-08-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.46,
+    "time": "2016-08-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.51,
+    "time": "2016-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.46,
+    "time": "2016-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.07,
+    "time": "2016-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.1,
+    "time": "2016-08-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.91,
+    "time": "2016-08-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.1,
+    "time": "2016-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.3,
+    "time": "2016-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.58,
+    "time": "2016-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.54,
+    "time": "2016-08-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.06,
+    "time": "2016-08-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.24,
+    "time": "2016-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.22,
+    "time": "2016-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.22,
+    "time": "2016-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.69,
+    "time": "2016-07-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.78,
+    "time": "2016-07-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.42,
+    "time": "2016-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.13,
+    "time": "2016-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.05,
+    "time": "2016-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.37,
+    "time": "2016-07-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.92,
+    "time": "2016-07-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.09,
+    "time": "2016-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.96,
+    "time": "2016-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.28,
+    "time": "2016-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.79,
+    "time": "2016-07-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.15,
+    "time": "2016-07-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.36,
+    "time": "2016-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.32,
+    "time": "2016-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.93,
+    "time": "2016-07-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.12,
+    "time": "2016-07-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.35,
+    "time": "2016-07-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.51,
+    "time": "2016-06-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.77,
+    "time": "2016-06-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.24,
+    "time": "2016-06-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.2,
+    "time": "2016-06-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.08,
+    "time": "2016-06-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.66,
+    "time": "2016-06-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36,
+    "time": "2016-06-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.16,
+    "time": "2016-06-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.86,
+    "time": "2016-06-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.97,
+    "time": "2016-06-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.97,
+    "time": "2016-06-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.84,
+    "time": "2016-06-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.16,
+    "time": "2016-06-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.54,
+    "time": "2016-06-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.77,
+    "time": "2016-06-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.13,
+    "time": "2016-06-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.55,
+    "time": "2016-06-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.57,
+    "time": "2016-06-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.1,
+    "time": "2016-06-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.33,
+    "time": "2016-06-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.56,
+    "time": "2016-06-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.31,
+    "time": "2016-06-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.79,
+    "time": "2016-05-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.09,
+    "time": "2016-05-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.07,
+    "time": "2016-05-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.76,
+    "time": "2016-05-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.92,
+    "time": "2016-05-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.07,
+    "time": "2016-05-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.53,
+    "time": "2016-05-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.65,
+    "time": "2016-05-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.98,
+    "time": "2016-05-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.065,
+    "time": "2016-05-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.3,
+    "time": "2016-05-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.48,
+    "time": "2016-05-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.51,
+    "time": "2016-05-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.71,
+    "time": "2016-05-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.11,
+    "time": "2016-05-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.62,
+    "time": "2016-05-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.48,
+    "time": "2016-05-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.95,
+    "time": "2016-05-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.31,
+    "time": "2016-05-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.36,
+    "time": "2016-05-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.02,
+    "time": "2016-05-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.18,
+    "time": "2016-04-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.07,
+    "time": "2016-04-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.01,
+    "time": "2016-04-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.73,
+    "time": "2016-04-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.82,
+    "time": "2016-04-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.31,
+    "time": "2016-04-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.1,
+    "time": "2016-04-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.08,
+    "time": "2016-04-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.24,
+    "time": "2016-04-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.64,
+    "time": "2016-04-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.58,
+    "time": "2016-04-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.64,
+    "time": "2016-04-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.79,
+    "time": "2016-04-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.8,
+    "time": "2016-04-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.06,
+    "time": "2016-04-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.41,
+    "time": "2016-04-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.28,
+    "time": "2016-04-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.16,
+    "time": "2016-04-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.55,
+    "time": "2016-04-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.79,
+    "time": "2016-04-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.4,
+    "time": "2016-04-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.6,
+    "time": "2016-03-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.04,
+    "time": "2016-03-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.53,
+    "time": "2016-03-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.74,
+    "time": "2016-03-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.92,
+    "time": "2016-03-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.52,
+    "time": "2016-03-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.32,
+    "time": "2016-03-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 41.14,
+    "time": "2016-03-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.41,
+    "time": "2016-03-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.93,
+    "time": "2016-03-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.84,
+    "time": "2016-03-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.27,
+    "time": "2016-03-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.38,
+    "time": "2016-03-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.49,
+    "time": "2016-03-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.49,
+    "time": "2016-03-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.57,
+    "time": "2016-03-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.16,
+    "time": "2016-03-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.98,
+    "time": "2016-03-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.04,
+    "time": "2016-03-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.02,
+    "time": "2016-03-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.16,
+    "time": "2016-03-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.25,
+    "time": "2016-03-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.14,
+    "time": "2016-02-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.49,
+    "time": "2016-02-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.74,
+    "time": "2016-02-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.47,
+    "time": "2016-02-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.48,
+    "time": "2016-02-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36,
+    "time": "2016-02-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.76,
+    "time": "2016-02-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.31,
+    "time": "2016-02-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.36,
+    "time": "2016-02-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.46,
+    "time": "2016-02-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.3,
+    "time": "2016-02-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.52,
+    "time": "2016-02-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.9,
+    "time": "2016-02-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.7,
+    "time": "2016-02-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.61,
+    "time": "2016-02-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.07,
+    "time": "2016-02-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.17,
+    "time": "2016-02-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.01,
+    "time": "2016-02-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.83,
+    "time": "2016-02-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.08,
+    "time": "2016-02-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.14,
+    "time": "2016-01-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.24,
+    "time": "2016-01-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.59,
+    "time": "2016-01-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.97,
+    "time": "2016-01-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.47,
+    "time": "2016-01-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.69,
+    "time": "2016-01-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.2,
+    "time": "2016-01-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.2,
+    "time": "2016-01-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.2,
+    "time": "2016-01-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.31,
+    "time": "2016-01-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.87,
+    "time": "2016-01-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.12,
+    "time": "2016-01-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.08,
+    "time": "2016-01-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.04,
+    "time": "2016-01-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.69,
+    "time": "2016-01-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.13,
+    "time": "2016-01-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.98,
+    "time": "2016-01-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.31,
+    "time": "2016-01-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.75,
+    "time": "2016-01-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.2,
+    "time": "2015-12-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.48,
+    "time": "2015-12-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.08,
+    "time": "2015-12-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.61,
+    "time": "2015-12-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.07,
+    "time": "2015-12-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.11,
+    "time": "2015-12-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.805,
+    "time": "2015-12-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.08,
+    "time": "2015-12-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.98,
+    "time": "2015-12-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.54,
+    "time": "2015-12-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.98,
+    "time": "2015-12-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.32,
+    "time": "2015-12-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.01,
+    "time": "2015-12-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.69,
+    "time": "2015-12-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.49,
+    "time": "2015-12-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.07,
+    "time": "2015-12-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.6,
+    "time": "2015-12-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.16,
+    "time": "2015-12-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.62,
+    "time": "2015-12-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.23,
+    "time": "2015-12-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.15,
+    "time": "2015-12-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.17,
+    "time": "2015-12-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.26,
+    "time": "2015-11-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.18,
+    "time": "2015-11-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.36,
+    "time": "2015-11-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.12,
+    "time": "2015-11-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.56,
+    "time": "2015-11-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.36,
+    "time": "2015-11-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.19,
+    "time": "2015-11-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.22,
+    "time": "2015-11-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.21,
+    "time": "2015-11-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.61,
+    "time": "2015-11-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.53,
+    "time": "2015-11-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.57,
+    "time": "2015-11-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.33,
+    "time": "2015-11-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37,
+    "time": "2015-11-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.6,
+    "time": "2015-11-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.24,
+    "time": "2015-11-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.71,
+    "time": "2015-11-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.6,
+    "time": "2015-11-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.9,
+    "time": "2015-11-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.99,
+    "time": "2015-11-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.01,
+    "time": "2015-10-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.91,
+    "time": "2015-10-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.52,
+    "time": "2015-10-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.94,
+    "time": "2015-10-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.44,
+    "time": "2015-10-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.99,
+    "time": "2015-10-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.79,
+    "time": "2015-10-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.83,
+    "time": "2015-10-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.87,
+    "time": "2015-10-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.84,
+    "time": "2015-10-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.29,
+    "time": "2015-10-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.62,
+    "time": "2015-10-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.05,
+    "time": "2015-10-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.22,
+    "time": "2015-10-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.63,
+    "time": "2015-10-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.06,
+    "time": "2015-10-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.67,
+    "time": "2015-10-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.38,
+    "time": "2015-10-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.86,
+    "time": "2015-10-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.67,
+    "time": "2015-10-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.83,
+    "time": "2015-10-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.48,
+    "time": "2015-10-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 31.04,
+    "time": "2015-09-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 30.63,
+    "time": "2015-09-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.25,
+    "time": "2015-09-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.77,
+    "time": "2015-09-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.91,
+    "time": "2015-09-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.16,
+    "time": "2015-09-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.35,
+    "time": "2015-09-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.25,
+    "time": "2015-09-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.92,
+    "time": "2015-09-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.32,
+    "time": "2015-09-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.77,
+    "time": "2015-09-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.8,
+    "time": "2015-09-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.77,
+    "time": "2015-09-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.55,
+    "time": "2015-09-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.46,
+    "time": "2015-09-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.37,
+    "time": "2015-09-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.7,
+    "time": "2015-09-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.29,
+    "time": "2015-09-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.31,
+    "time": "2015-09-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.07,
+    "time": "2015-09-02T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.77,
+    "time": "2015-09-01T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35,
+    "time": "2015-08-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.04,
+    "time": "2015-08-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.62,
+    "time": "2015-08-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.17,
+    "time": "2015-08-26T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 32.7,
+    "time": "2015-08-25T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 33.75,
+    "time": "2015-08-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.25,
+    "time": "2015-08-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 35.98,
+    "time": "2015-08-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.19,
+    "time": "2015-08-19T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.99,
+    "time": "2015-08-18T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.73,
+    "time": "2015-08-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.14,
+    "time": "2015-08-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.62,
+    "time": "2015-08-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.19,
+    "time": "2015-08-12T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.85,
+    "time": "2015-08-11T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.05,
+    "time": "2015-08-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.13,
+    "time": "2015-08-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.85,
+    "time": "2015-08-06T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.27,
+    "time": "2015-08-05T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.95,
+    "time": "2015-08-04T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.39,
+    "time": "2015-08-03T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.7,
+    "time": "2015-07-31T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.45,
+    "time": "2015-07-30T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.95,
+    "time": "2015-07-29T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.6,
+    "time": "2015-07-28T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.39,
+    "time": "2015-07-27T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37,
+    "time": "2015-07-24T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.01,
+    "time": "2015-07-23T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.39,
+    "time": "2015-07-22T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 39.35,
+    "time": "2015-07-21T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 40.47,
+    "time": "2015-07-20T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.39,
+    "time": "2015-07-17T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 38.63,
+    "time": "2015-07-16T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 37.51,
+    "time": "2015-07-15T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.93,
+    "time": "2015-07-14T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.78,
+    "time": "2015-07-13T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.69,
+    "time": "2015-07-10T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.5,
+    "time": "2015-07-09T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 34.7,
+    "time": "2015-07-08T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.62,
+    "time": "2015-07-07T00:00:00"
+  },
+  {
+    "ticker": "PYPL",
+    "price": 36.71,
+    "time": "2015-07-06T00:00:00"
+  }
+]

@@ -117,6 +117,6 @@ const AppNavbar = (props: AppNavbarProps) => {
             </Container>
         </Navbar>
     );
-}
+}   
 
 export default AppNavbar;

@@ -126,6 +126,6 @@ predictions = dc(dummies[:, 0])
 
 # prediction results 
 predictions = predictions.tolist()
-json_results = json.dumps(predictions)
 
-print(json_results)
+for prediction in predictions:
+    print(prediction + " ", end="")

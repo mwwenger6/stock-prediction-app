@@ -9,6 +9,7 @@ const endpoints = {
     getHistStockData: (ticker : string) => `${API_BASE_URL}/Home/GetHistoricalStockData/${ticker}`,
     trainModel: (ticker: string) => `${API_BASE_URL}/Home/TrainModel/${ticker}`,
     predict: (ticker : string, range : number) => `${API_BASE_URL}/Home/Predict/${ticker}/${range}`,
+    getUsers: `${API_BASE_URL}/Home/GetUsers`, // Added endpoint for fetching users
     // Add more endpoints as needed
 };
 

@@ -606,7 +606,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/Home/GetPredictions")]
+        [HttpGet("/Home/GetPredictions/{ticker}/{date}")]
         public IActionResult GetPredictions(string ticker, DateTime date)
         {
             try

@@ -606,6 +606,25 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpGet("/Home/GetPredictions")]
+        public IActionResult GetPredictions(string ticker, DateTime date)
+        {
+            try
+            {
+                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker, date).ToList();
+                return Json(predictions);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Error getting stocks.");
+            }
+        }
+
         #endregion
     }
 }

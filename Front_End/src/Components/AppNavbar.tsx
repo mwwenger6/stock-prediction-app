@@ -16,6 +16,7 @@ interface AppNavbarProps {
 }
 
 const AppNavbar = (props: AppNavbarProps) => {
+    console.log(props.user); // to debug the user state
     const loggedIn = props.user != null;
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -80,14 +81,15 @@ const AppNavbar = (props: AppNavbarProps) => {
                     </datalist>
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
-                    <Link to="/Admin/ErrorLogs" className="nav-link-blue-bg" style={{textDecoration: "none"}}>Error Logs</Link>
+                <Nav className="ms-auto">
+                    {props.user && props.user.typeId === 1 && (
+                    <Link to="/Admin/ErrorLogs" className="nav-link-blue-bg" style={{textDecoration: "none"}}>Admin Control</Link>
+                    )}
                     <Link to="/" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>Home</Link>
                     <Link to="/News" className="nav-link-blue-bg" style={{textDecoration: "none"}} onClick={() => setSearchTerm('')}>News</Link>
                     {loggedIn ?
-                        <>
-
-                            <div className={"d-block"}>
+                    <>
+                        <div className={"d-block"}>
                             <Nav.Link onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)} className="nav-link-blue-bg">Account Info</Nav.Link>
                             <Dropdown show={isDropdownOpen} onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
                                 <Dropdown.Menu>
@@ -96,12 +98,13 @@ const AppNavbar = (props: AppNavbarProps) => {
                                     <Dropdown.Item> <b> Account Type: </b> {props.user?.typeName}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            </div>
-                            <Nav.Link onClick={() => props.setUser(null)} className="nav-link-blue-bg">Log Out</Nav.Link>
-                        </>
-                              : <Nav.Link onClick={toggleLogInModal} className="nav-link-blue-bg">Log In</Nav.Link>
+                        </div>
+                        <Nav.Link onClick={() => props.setUser(null)} className="nav-link-blue-bg">Log Out</Nav.Link>
+                    </>
+                    : <Nav.Link onClick={toggleLogInModal} className="nav-link-blue-bg">Log In</Nav.Link>
                     }
                     </Nav>
+
                 </Navbar.Collapse>
                 <LoginModal showModal={showLoginModal} toggleModal={toggleLogInModal} setUser={props.setUser} showSignUpModal={() => {
                     toggleSignUpModal();

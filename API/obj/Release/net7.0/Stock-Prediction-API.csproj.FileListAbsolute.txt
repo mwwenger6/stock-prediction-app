@@ -177,14 +177,6 @@ C:\Users\mwwen\stock-prediction-app\API\bin\Release\net7.0\Python.Runtime.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\appsettings.Development.json
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\appsettings.json
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.staticwebassets.runtime.json
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\clr.py
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\__init__.py
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\find_libpython\__init__.py
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\find_libpython\__main__.py
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\runtime\Python.Runtime.deps.json
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\runtime\Python.Runtime.dll
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\runtime\Python.Runtime.pdb
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\pythonnet\util\__init__.py
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.exe
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.deps.json
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.runtimeconfig.json
@@ -192,7 +184,6 @@ C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\S
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Stock-Prediction-API.pdb
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Azure.Core.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Azure.Identity.dll
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Fasterflect.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Microsoft.Data.SqlClient.dll
@@ -214,9 +205,6 @@ C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\M
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\MySqlConnector.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Newtonsoft.Json.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Python.Deployment.dll
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Python.Included.dll
-C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Python.Runtime.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\ServiceStack.Interfaces.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\bin\Release\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll

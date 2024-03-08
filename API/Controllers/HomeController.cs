@@ -152,7 +152,31 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker).ToList();
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, true).ToList();
+                if (stockPrices == null || !stockPrices.Any())
+                {
+                    return NotFound("Stock prices not found");
+                }
+
+                return Json(stockPrices);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Home/Get5MinStockData/{ticker}")]
+        public IActionResult Get5MinStockData(string ticker)
+        {
+            try
+            {
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, false).ToList();
                 if (stockPrices == null || !stockPrices.Any())
                 {
                     return NotFound("Stock prices not found");
@@ -178,6 +202,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 DateTime dateTime = GetEasternTime();
+                //Check if market is open
                 bool? isOpen = _FinnhubDataTools.GetIsMarketOpen().Result;
                 if (isOpen == null)
                     throw new Exception("Unable to retrieve market status");
@@ -191,14 +216,15 @@ namespace Stock_Prediction_API.Controllers
                     Stock stock = await _FinnhubDataTools.GetRecentPrice(ticker);
                     if (stock != null)
                     {
-                        Console.WriteLine(ticker + ": " + stock.CurrentPrice + ", " + stock.DailyChange);
-                        stockList.Add(new StockPrice
+                        //Add to the list of stock prices
+                        stockList.Add(new()
                         {
                             Ticker = ticker,
                             Price = (float)stock.CurrentPrice,
                             Time = dateTime,
 
                         });
+                        //Update in stock table
                         _GetDataTools.UpdateStockPrice(new()
                         {
                             Ticker = ticker,
@@ -208,9 +234,11 @@ namespace Stock_Prediction_API.Controllers
                         });
                     }
                 }
+                //Update in 5 min interval table
+                _GetDataTools.AddFMStockPrices(stockList);
                 //Add closing price to table if market is about to close
                 if (dateTime.Hour == 15 && dateTime.Minute >= 55)
-                    _GetDataTools.AddStockPrices(stockList);
+                    _GetDataTools.AddEODStockPrices(stockList);
 
                 return Ok("Stock prices added successfully.");
             }
@@ -229,10 +257,33 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
-                _GetDataTools.AddStockPrices(stockPrices);
+                interval = interval.ToLower();
+                int outputSizeNum = int.Parse(outputSize);
+                //Check paramaters
+                if (outputSizeNum > 5000 || outputSizeNum < 0)
+                    throw new Exception("Output size is limited to 5000");
+                if (interval != "5min" && interval != "1day")
+                    throw new Exception("Supported intervals are '5min' and '1day'");
+                try
+                {
+                    _GetDataTools.GetStock(ticker);
+                }
+                catch(InvalidOperationException ex)
+                {
+                    throw new Exception("Stock not found in database. Requested stock must be a StockGenie featured stock");
+                }
 
-                return Ok("Stock prices added successfully.");
+                List<Stock> list = _GetDataTools.GetStocks().ToList();
+
+                List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
+
+                if(interval == "1day")
+                    _GetDataTools.AddEODStockPrices(stockPrices);
+                else
+                    _GetDataTools.AddFMStockPrices(stockPrices);
+
+                
+                return Ok($"{outputSize} {ticker} stock prices added successfully for at {interval} intervals.");
             }
             catch (Exception ex)
             {
@@ -416,11 +467,11 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 List<UserWatchlistStocks> watchlistStocks = _GetDataTools.GetUserWatchlistStocks(userId);
-                List<StockPrice> stocks = new List<StockPrice>();
+                List<Stock> stocks = new List<Stock>();
 
                 foreach (UserWatchlistStocks userStock in watchlistStocks)
                 {
-                    stocks.Add(_GetDataTools.GetRecentStockPrice(userStock.Ticker));
+                    stocks.Add(_GetDataTools.GetStock(userStock.Ticker));
                 }
 
                 return Json(stocks);

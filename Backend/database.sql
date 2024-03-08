@@ -91,3 +91,22 @@ CREATE TABLE ErrorLogs (
 ALTER TABLE Stocks 
 ADD COLUMN updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 ADD COLUMN dailyChange FLOAT;
+
+ Update Users Set UserTypeId = 1 Where UserTypeId IS NULL;
+
+ CREATE TABLE UserWatchlistStocks (
+    WatchlistId INT AUTO_INCREMENT PRIMARY KEY,
+    UserId INT,
+    Ticker NVARCHAR(10),
+    CONSTRAINT FK_UserWatchlistStocks_UserId FOREIGN KEY (UserId) REFERENCES Users (UserId),
+    CONSTRAINT FK_UserWatchlistStocks_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
+);
+
+CREATE TABLE StockPredictions (
+    Ticker NVARCHAR(10) NOT NULL,
+    PredictedPrice DECIMAL(12,2) NOT NULL,
+    PredictionOrder INT NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT PK_StockPredictions PRIMARY KEY (Ticker, PredictedPrice, PredictionOrder),
+    CONSTRAINT FK_StockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
+);

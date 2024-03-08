@@ -35,6 +35,7 @@ namespace Stock_Prediction_API.Services
         public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
         public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
+        public IQueryable<StockPrediction> GetStockPredictions() => dbContext.StockPredictions;
 
         public Stock GetStock(string ticker)
         {
@@ -67,6 +68,13 @@ namespace Stock_Prediction_API.Services
         {
             return dbContext.Users
                 .Where(u => u.Email == email).Single();
+        }
+
+        public IQueryable<StockPrediction> GetStockPredictions(string ticker, DateTime date)
+        {
+            return dbContext.StockPredictions
+                .Where(spred => spred.Ticker == ticker && spred.CreatedAt == date)
+                .OrderByDescending(spred => spred.PredictedOrder);
         }
 
         #endregion
@@ -128,7 +136,13 @@ namespace Stock_Prediction_API.Services
             using var tempContext = GetNewDBContext();
             foreach (StockPrice stockPrice in stockPrices)
             {
-                tempContext.StockPrices.Add(stockPrice);
+                var existingStockPrice = tempContext.StockPrices
+                    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker 
+                                          && sp.Time == stockPrice.Time);
+                if (existingStockPrice == null)
+                {
+                    tempContext.StockPrices.Add(stockPrice);
+                }
             }
             tempContext.SaveChanges();
         }
@@ -167,6 +181,15 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges();
         }
 
+        public void AddPredictions(List<StockPrediction> predictions)
+        {
+            using var tempContext = GetNewDBContext();
+            foreach (StockPrediction prediction in predictions)
+            {
+                tempContext.StockPredictions.Add(prediction);
+            }
+            tempContext.SaveChanges();
+        }
 
         #endregion
     }

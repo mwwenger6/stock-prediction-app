@@ -15,5 +15,6 @@ namespace Stock_Prediction_API.Services
         public DbSet<QuickStock> QuickStocks { get; set; }
         public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<UserWatchlistStocks> UserWatchlistStocks { get; set; }
+        public DbSet<StockPrediction> StockPredictions { get; set; }
     }
 }

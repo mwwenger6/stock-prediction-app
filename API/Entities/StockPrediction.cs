@@ -14,7 +14,5 @@ namespace Stock_Prediction_API.Entities
         public float PredictedPrice { get; set; }
         [Column("PredictionOrder")]
         public int PredictionOrder {  get; set; }
-        [Column("CreatedAt")]
-        public DateTime CreatedAt { get; set; }
     }
 }

@@ -185,10 +185,11 @@ namespace Stock_Prediction_API.Services
         public void AddPredictions(List<StockPrediction> predictions)
         {
             using var tempContext = GetNewDBContext();
-            foreach (StockPrediction prediction in predictions)
-            {
-                tempContext.StockPredictions.Add(prediction);
-            }
+            //foreach (StockPrediction prediction in predictions)
+            //{
+            //    tempContext.StockPredictions.Add(prediction);
+            //}
+            tempContext.AddRange(predictions);
             tempContext.SaveChanges();
         }
 

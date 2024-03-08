@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using MySqlConnector;
 using Newtonsoft.Json;
+using ServiceStack;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
@@ -518,7 +519,7 @@ namespace Stock_Prediction_API.Controllers
 
 
         [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
-        public IActionResult Predict(string ticker, int prediction_range)
+        public float[] Predict(string ticker, int prediction_range)
         {
             try
             {
@@ -539,11 +540,60 @@ namespace Stock_Prediction_API.Controllers
                 string errors = process.StandardError.ReadToEnd();
                 if (!string.IsNullOrEmpty(errors))
                 {
-                    return StatusCode(500, errors);
+                    return null;
                 }
                 string result = reader.ReadToEnd();
                 process.WaitForExit();
-                return Ok(result);
+                string[] parts = result.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                float[] predictions = Array.ConvertAll(parts, float.Parse);
+                return predictions;
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return null;
+            }
+        }
+
+        [HttpPost("/Home/AddPredictions")]
+        public IActionResult AddPredictions()
+        {
+            try
+            {
+                DateTime dateTime = GetEasternTime();
+                if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
+                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                    return Ok("Market closed, no new predictions");
+
+                List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
+                List<StockPrediction> batchPredictions = new();
+                DateTime currDate = GetEasternTime();
+                foreach (string ticker in tickers)
+                {
+                    float[] predictions = Predict(ticker, 90);
+                    if (predictions != null)
+                    {
+                        int order = 1;
+                        foreach (float prediction in predictions)
+                        {
+                            batchPredictions.Add(new StockPrediction
+                            {
+                                Ticker = ticker,
+                                PredictedPrice = prediction,
+                                PredictedOrder = order,
+                                CreatedAt = currDate,
+                            });
+                            order++;
+                        }
+                    }
+                }
+                _GetDataTools.AddPredictions(batchPredictions);
+
+                return Ok("Predictions added successfully.");
             }
             catch (Exception ex)
             {
@@ -555,6 +605,26 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
+
+        [HttpGet("/Home/GetPredictions/{ticker}/{date}")]
+        public IActionResult GetPredictions(string ticker, DateTime date)
+        {
+            try
+            {
+                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker, date).ToList();
+                return Json(predictions);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Error getting stocks.");
+            }
+        }
+
         #endregion
     }
 }

@@ -86,7 +86,7 @@ const StockGraph = (props : StockGraphProps) => {
         const fetchPredictions = async () => {
         
             try {
-                const response = await fetch(endpoints.predict(props.symbol, 30));
+                const response = await fetch(endpoints.getPredictions(props.symbol, new Date()));
                 const jsonData = await response.json();
                 setPredictions(jsonData);
                 console.log(jsonData);

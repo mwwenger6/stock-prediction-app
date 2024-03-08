@@ -105,3 +105,6 @@ $RECYCLE.BIN/
 /API/obj/Debug/net7.0/apphost.exe
 /API/obj/Debug/net7.0/Stock-Prediction-API.csproj.CoreCompileInputs.cache
 /API/.vs/Stock-Prediction-API/DesignTimeBuild/.dtbcache.v2
+/API/.vs/ProjectEvaluation/stock-prediction-api.metadata.v7.bin
+/API/.vs/ProjectEvaluation/stock-prediction-api.projects.v7.bin
+/API/.vs/Stock-Prediction-API/v17/.futdcache.v2

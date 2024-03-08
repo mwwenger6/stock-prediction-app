@@ -178,8 +178,10 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 DateTime dateTime = GetEasternTime();
-                if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                bool? isOpen = _FinnhubDataTools.GetIsMarketOpen().Result;
+                if (isOpen == null)
+                    throw new Exception("Unable to retrieve market status");
+                else if (!(bool)isOpen)
                     return Ok("Market closed, no prices updated");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
@@ -333,6 +335,30 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpGet("/Home/GetOpenMarketDays/{numDays}")]
+        public IActionResult GetOpenMarketDays(int numDays)
+        {
+            if (numDays < 0 || numDays > 365) throw new ArgumentOutOfRangeException("Number of requested days out of valid range");
+
+            List<DateTime> tradingDays = new List<DateTime>();
+            List<DateTime> holidays = _GetDataTools.GetMarketHolidays().Select(holiday => holiday.Day).ToList(); ;
+            DateTime currentDate = DateTime.Now.Date;
+
+            for (int i = 0; i < numDays; i++)
+            {
+                // Moves currentDate to the next open market day if current day is a weekend or holiday
+                // Note that the holidays are stored in ascending by present to future, so I can just check the first element of the list and pop when they match
+                while (currentDate.DayOfWeek == DayOfWeek.Saturday || currentDate.DayOfWeek == DayOfWeek.Sunday || holidays.Contains(currentDate))
+                {
+                    currentDate = currentDate.AddDays(1);
+                }
+                tradingDays.Add(currentDate);
+                currentDate = currentDate.AddDays(1); // Move to the next day
+            }
+
+            return Json(tradingDays);
+        }
+
         #endregion
 
         #region WatchList
@@ -463,6 +489,25 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpPost("/Home/AddMarketHolidays")]
+        public IActionResult AddMarketHolidays()
+        {
+            try
+            {
+                List<MarketHolidays> holidays = _FinnhubDataTools.GetMarketHolidays().Result;
+                _GetDataTools.AddMarketHolidays(holidays);
+                return Ok(holidays.Count() + " stock market holidays added successfully");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+        }
 
         #endregion
 
@@ -517,8 +562,6 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-
-        [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
         public float[] Predict(string ticker, int prediction_range)
         {
             try
@@ -540,6 +583,11 @@ namespace Stock_Prediction_API.Controllers
                 string errors = process.StandardError.ReadToEnd();
                 if (!string.IsNullOrEmpty(errors))
                 {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = errors,
+                        CreatedAt = GetEasternTime(),
+                    });
                     return null;
                 }
                 string result = reader.ReadToEnd();
@@ -564,14 +612,14 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                DateTime dateTime = GetEasternTime();
-                if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
-                    return Ok("Market closed, no new predictions");
+                //DateTime dateTime = GetEasternTime();
+                //if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
+                //   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                //    return Ok("Market closed, no new predictions");
 
+                _GetDataTools.ClearStockPredictions();
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
                 List<StockPrediction> batchPredictions = new();
-                DateTime currDate = GetEasternTime();
                 foreach (string ticker in tickers)
                 {
                     float[] predictions = Predict(ticker, 90);
@@ -584,8 +632,7 @@ namespace Stock_Prediction_API.Controllers
                             {
                                 Ticker = ticker,
                                 PredictedPrice = prediction,
-                                PredictedOrder = order,
-                                CreatedAt = currDate,
+                                PredictionOrder = order,
                             });
                             order++;
                         }
@@ -611,7 +658,7 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker, date).ToList();
+                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker).ToList();
                 return Json(predictions);
             }
             catch (Exception ex)

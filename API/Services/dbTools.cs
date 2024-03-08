@@ -35,6 +35,7 @@ namespace Stock_Prediction_API.Services
         public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
         public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
+        public IQueryable<MarketHolidays> GetMarketHolidays() => dbContext.MarketHolidays;
         public IQueryable<StockPrediction> GetStockPredictions() => dbContext.StockPredictions;
 
         public Stock GetStock(string ticker)
@@ -188,6 +189,12 @@ namespace Stock_Prediction_API.Services
             {
                 tempContext.StockPredictions.Add(prediction);
             }
+            tempContext.SaveChanges();
+        }
+        public void AddMarketHolidays(List<MarketHolidays> days)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.MarketHolidays.AddRange(days);
             tempContext.SaveChanges();
         }
 

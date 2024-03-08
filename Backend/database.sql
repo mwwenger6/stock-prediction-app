@@ -110,3 +110,22 @@ CREATE TABLE StockPredictions (
     CONSTRAINT PK_StockPredictions PRIMARY KEY (Ticker, PredictedPrice, PredictionOrder),
     CONSTRAINT FK_StockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
 );
+
+CREATE TABLE MarketHolidays (
+    Day DATE PRIMARY KEY
+);
+
+CREATE TABLE StockPrices_5Min (
+    Ticker nvarchar(10) NOT NULL,
+    Price DECIMAL(12,5) NOT NULL,
+    Time datetime(3) NOT NULL, -- datetime(3) for millisecond precision, important for 5-minute intervals
+    CONSTRAINT PK_StockPrices_5Min PRIMARY KEY CLUSTERED (Ticker, Time)
+);
+ALTER TABLE StockPrices_5Min ADD CONSTRAINT FK_StockPrices_5Min_Ticker_Stocks_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker);
+
+CREATE TABLE SupportedStocks (
+    Ticker nvarchar(10) PRIMARY KEY,
+    Name nvarchar(100) NOT NULL,
+    LastUpdated datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    IsActive BOOLEAN DEFAULT TRUE
+);

@@ -1,4 +1,5 @@
 const API_BASE_URL = 'https://stockrequests.azurewebsites.net';
+const API_PRED_URL = 'https://stockgenieapi.azurewebsites.net';
 
 const endpoints = {
     authUser: (email : string , password : string) => `${API_BASE_URL}/Home/AuthenticateUser/${email}/${password}`,
@@ -7,8 +8,9 @@ const endpoints = {
     getStockData:(ticker : string) => `${API_BASE_URL}/Home/GetStock/${ticker}`,
     getErrorLogs: `${API_BASE_URL}/Home/GetErrorLogs`,
     getHistStockData: (ticker : string) => `${API_BASE_URL}/Home/GetHistoricalStockData/${ticker}`,
-    trainModel: (ticker: string) => `${API_BASE_URL}/Home/TrainModel/${ticker}`,
-    predict: (ticker : string, range : number) => `${API_BASE_URL}/Home/Predict/${ticker}/${range}`,
+    trainModel: (ticker: string) => `${API_PRED_URL}/Home/TrainModel/${ticker}`,
+    getPredictions: (ticker : string, date : Date) => `${API_BASE_URL}/Home/GetPredictions/${ticker}/${date}`,
+    predict: () => `${API_PRED_URL}/Home/AddPredictions`,
     getUsers: `${API_BASE_URL}/Home/GetUsers`, // Added endpoint for fetching users
     // Add more endpoints as needed
 };

@@ -110,3 +110,7 @@ CREATE TABLE StockPredictions (
     CONSTRAINT PK_StockPredictions PRIMARY KEY (Ticker, PredictedPrice, PredictionOrder),
     CONSTRAINT FK_StockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
 );
+
+CREATE TABLE MarketHolidays (
+    Day DATE PRIMARY KEY
+);

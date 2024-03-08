@@ -517,8 +517,6 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-
-        [HttpGet("/Home/Predict/{ticker}/{prediction_range}")]
         public float[] Predict(string ticker, int prediction_range)
         {
             try
@@ -564,10 +562,10 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                DateTime dateTime = GetEasternTime();
-                if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
-                   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
-                    return Ok("Market closed, no new predictions");
+                //DateTime dateTime = GetEasternTime();
+                //if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
+                //   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+                //    return Ok("Market closed, no new predictions");
 
                 List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
                 List<StockPrediction> batchPredictions = new();

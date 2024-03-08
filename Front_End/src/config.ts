@@ -11,6 +11,7 @@ const endpoints = {
     trainModel: (ticker: string) => `${API_PRED_URL}/Home/TrainModel/${ticker}`,
     getPredictions: (ticker : string, date : Date) => `${API_BASE_URL}/Home/GetPredictions/${ticker}/${date}`,
     predict: () => `${API_PRED_URL}/Home/AddPredictions`,
+    getUsers: `${API_BASE_URL}/Home/GetUsers`, // Added endpoint for fetching users
     // Add more endpoints as needed
 };
 

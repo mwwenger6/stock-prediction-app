@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
+<<<<<<< HEAD
   <parameter name="IIS Web Application Name" description="" value="stockrequests" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Jacob\ Bianco\\Source\\Repos\\stock-prediction-app\\API\\obj\\Release\\net7\.0\\PubTmp\\Out\\$" />
+=======
+  <parameter name="IIS Web Application Name" description="" value="stockgenieapi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\pcdiz\\Source\\Repos\\stock-prediction-app\\API\\obj\\Release\\net7\.0\\PubTmp\\Out\\$" />
+>>>>>>> 89e861c8c917e7acd7acaf42c1a4362fb5061232
   </parameter>
 </parameters>

@@ -2,7 +2,11 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>http</ActiveDebugProfile>
+<<<<<<< HEAD
     <NameOfLastUsedPublishProfile>C:\Users\Jacob Bianco\Source\Repos\stock-prediction-app\API\Properties\PublishProfiles\stockrequests - Web Deploy1.pubxml</NameOfLastUsedPublishProfile>
+=======
+    <NameOfLastUsedPublishProfile>C:\Users\pcdiz\Source\Repos\stock-prediction-app\API\Properties\PublishProfiles\stockgenieapi - Web Deploy10.pubxml</NameOfLastUsedPublishProfile>
+>>>>>>> 89e861c8c917e7acd7acaf42c1a4362fb5061232
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

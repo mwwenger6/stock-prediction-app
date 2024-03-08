@@ -63,11 +63,11 @@ namespace Stock_Prediction_API.Services
                 .Where(u => u.Email == email).Single();
         }
 
-        public IQueryable<StockPrediction> GetStockPredictions(string ticker, DateTime date)
+        public IQueryable<StockPrediction> GetStockPredictions(string ticker)
         {
             return dbContext.StockPredictions
-                .Where(spred => spred.Ticker == ticker && spred.CreatedAt == date)
-                .OrderByDescending(spred => spred.PredictedOrder);
+                .Where(spred => spred.Ticker == ticker)
+                .OrderByDescending(spred => spred.PredictionOrder);
         }
 
         #endregion
@@ -198,12 +198,25 @@ namespace Stock_Prediction_API.Services
         public void AddPredictions(List<StockPrediction> predictions)
         {
             using var tempContext = GetNewDBContext();
-            foreach (StockPrediction prediction in predictions)
-            {
-                tempContext.StockPredictions.Add(prediction);
-            }
+            //foreach (StockPrediction prediction in predictions)
+            //{
+            //    tempContext.StockPredictions.Add(prediction);
+            //}
+            tempContext.AddRange(predictions);
             tempContext.SaveChanges();
         }
+
+        public void ClearStockPredictions()
+        {
+            using var tempContext = GetNewDBContext();
+            List<string> tickers = GetStocks().Select(s => s.Ticker).ToList();
+            foreach (string ticker in tickers)
+            {
+                tempContext.StockPredictions.Where(spred => spred.Ticker == ticker).ExecuteDelete();
+            }
+            tempContext.SaveChanges(); 
+        }
+
         public void AddMarketHolidays(List<MarketHolidays> days)
         {
             using var tempContext = GetNewDBContext();

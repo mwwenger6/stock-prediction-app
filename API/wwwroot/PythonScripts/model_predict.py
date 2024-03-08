@@ -128,4 +128,4 @@ predictions = dc(dummies[:, 0])
 predictions = predictions.tolist()
 
 for prediction in predictions:
-    print(prediction + " ", end="")
+    print(str(prediction) + " ", end="")

@@ -75,7 +75,7 @@ namespace Stock_Prediction_API.Services
         {
             return dbContext.StockPredictions
                 .Where(spred => spred.Ticker == ticker && spred.CreatedAt == date)
-                .OrderByDescending(spred => spred.PredictedOrder);
+                .OrderByDescending(spred => spred.PredictionOrder);
         }
 
         #endregion

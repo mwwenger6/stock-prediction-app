@@ -583,6 +583,11 @@ namespace Stock_Prediction_API.Controllers
                 string errors = process.StandardError.ReadToEnd();
                 if (!string.IsNullOrEmpty(errors))
                 {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = errors,
+                        CreatedAt = GetEasternTime(),
+                    });
                     return null;
                 }
                 string result = reader.ReadToEnd();
@@ -627,7 +632,7 @@ namespace Stock_Prediction_API.Controllers
                             {
                                 Ticker = ticker,
                                 PredictedPrice = prediction,
-                                PredictedOrder = order,
+                                PredictionOrder = order,
                                 CreatedAt = currDate,
                             });
                             order++;

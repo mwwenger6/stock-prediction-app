@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Stock_Prediction_API.Entities
 {
     [Table("StockPredictions", Schema = "dbo")]
-    [PrimaryKey(nameof(Ticker), nameof(PredictedOrder), nameof(CreatedAt))]
+    [PrimaryKey(nameof(Ticker), nameof(PredictedPrice), nameof(PredictionOrder))]
     public class StockPrediction
     {
 #nullable disable
@@ -12,8 +12,8 @@ namespace Stock_Prediction_API.Entities
         public string Ticker { get; set; }
         [Column("PredictedPrice")]
         public float PredictedPrice { get; set; }
-        [Column("PredictedOrder")]
-        public int PredictedOrder {  get; set; }
+        [Column("PredictionOrder")]
+        public int PredictionOrder {  get; set; }
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
     }

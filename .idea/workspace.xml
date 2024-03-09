@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Some changes made to the way stock graph works.">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Services/GetWatchListStocks.ts" afterDir="false" />
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="project calls correct api now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/Spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/Spinner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -126,7 +118,7 @@
       <workItem from="1709516928659" duration="597000" />
       <workItem from="1709681884724" duration="374000" />
       <workItem from="1709864089908" duration="839000" />
-      <workItem from="1709902626464" duration="17809000" />
+      <workItem from="1709902626464" duration="6538000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -280,15 +272,7 @@
       <option name="project" value="LOCAL" />
       <updated>1709682010391</updated>
     </task>
-    <task id="LOCAL-00020" summary="Some changes made to the way stock graph works.">
-      <option name="closed" value="true" />
-      <created>1709916332598</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1709916332598</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +309,6 @@
     <MESSAGE value="Started some work for admin/client accounts" />
     <MESSAGE value="stock graph doesn't reload on interval change" />
     <MESSAGE value="project calls correct api now" />
-    <MESSAGE value="Some changes made to the way stock graph works." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes made to the way stock graph works." />
+    <option name="LAST_COMMIT_MESSAGE" value="project calls correct api now" />
   </component>
 </project>

@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
 import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
-import TimeSeriesData from "../Interfaces/TimeSeriesData";
 import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
+import config from "../config";
+
 
 interface StockGraphProps {
   symbol: string;
   isFeatured: boolean;
-  user: User | null,
+  user: User | null;
+  isWatchlist: boolean;
+  reloadWatchlist: () => Promise<void>;
 }
 
 const StockGraph = (props : StockGraphProps) => {
@@ -33,32 +36,22 @@ const StockGraph = (props : StockGraphProps) => {
     const [color, setColor] = useState('grey')
     const [showPrediction, setShowPrediction] = useState(false)
     const [predictions, setPredictions] = useState([]);
+    const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
 
     function stockMarketClosed() {
-        // Get the current time in the specified time zone
         const timeZone = 'America/New_York';
         const now = new Date (new Date().toLocaleString('en-US', { timeZone }));
 
-        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const dayOfWeek = now.getDay();
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
 
         // Check if it's a weekend (Saturday or Sunday)
         if (dayOfWeek === 0 || dayOfWeek === 6) return true;
-
         // Check if it's before 9:30 AM or after 4:00 PM ET
         if (currentHour < 9 || (currentHour === 9 && currentMinute < 30) || currentHour >= 16) return true;
-
         // The stock market is open
         return false;
-    }
-
-    function shuffle(array: []) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
     }
 
     function getFormattedDate(datetime: string | Date){
@@ -85,17 +78,17 @@ const StockGraph = (props : StockGraphProps) => {
         // to the console  
         const fetchPredictions = async () => {
         
-            try {
-                const response = await fetch(endpoints.getPredictions(props.symbol, new Date()));
-                const jsonData = await response.json();
-                setPredictions(jsonData);
-                console.log(jsonData);
-
-            }
-            catch (error) {
-                console.error('Error fetching predictions:', error);
-                setShowError(true);
-            }
+            // try {
+            //     const response = await fetch(endpoints.predict(props.symbol, 30));
+            //     const jsonData = await response.json();
+            //     setPredictions(jsonData);
+            //     console.log(jsonData);
+            //
+            // }
+            // catch (error) {
+            //     console.error('Error fetching predictions:', error);
+            //     setShowError(true);
+            // }
         };
 
 
@@ -114,53 +107,50 @@ const StockGraph = (props : StockGraphProps) => {
             try {
                 setMarketClosed(stockMarketClosed())
 
-                if (showPrediction) {
-                    setCurrInterval(intervals[3]);
-                }
+                const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed);
 
-                const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed)
                 if (timeSeriesData.status == 'error')
                     throw "Unable to get data";
 
                 setShowError(false);
 
+                //Get time series values
                 const timeSeries =  timeSeriesData.values;
-                const values = timeSeries.map((item : timeSeriesData) => ({
-                    date: getFormattedDate(item.datetime),
-                    value: parseFloat(item.open)
-                })).reverse();
 
-                // Calculate min and max for Y-axis
-                var prices = values.map((item: { value: number, date: any}) => item.value);
-                var minValue = Math.floor(Math.min(...prices));
-                var maxValue = Math.ceil(Math.max(...prices));
+                //Get the prices and dates
+                var initPrices = timeSeries.map((item : timeSeriesData) => (parseFloat(item.open))).reverse()
+                var initDates = timeSeries.map((item : timeSeriesData) => (getFormattedDate(item.datetime))).reverse()
 
-                // If showing a prediction, add the new values to the graph
-                // and set the interval to the last month
-                const newValues = [];
+                var newPrices : number [] = []
+                var newDates : Date[] = []
+                var placeholders : string[] = []
+
+                // If showing a prediction, add the new values to the graph, and set the interval to the last month
                 if (showPrediction) {
-                    let lastDate = new Date(values[values.length-1].date)
-                    const newPrices = [187.21963297489884, 188.58384940643663, 187.93998478984298, 189.11436896160262, 188.84965260994042, 187.36609984619832, 185.77344074321073, 186.98540281739267, 184.24540856785242, 188.29042658050895, 191.04728061924155, 181.56758224364995, 192.50320017491174, 191.0724684106699, 192.97252997139736, 193.0672898663342, 193.69445772151175, 192.57864127836467, 190.71306009231097, 188.21145320857093, 182.39096761317484, 184.29850128031308, 186.16351186914994, 185.53661572693278, 186.27703354400185, 185.10228255974567, 185.7324936000796, 180.93893355283825, 182.59532293068588, 184.68495862387908];
-                    for (let i = 0; i < newPrices.length; i++) {
-                        const date = new Date();
-                        date.setDate(lastDate.getDate() + i);
-                        const newValue = {
-                            date: getFormattedDate(date),
-                            value: newPrices[i]
-                        };
-                        newValues.push(newValue);
+                    //Get the predicted prices and update the prices array
+                    newPrices = [187.21963297489884, 188.58384940643663, 187.93998478984298, 189.11436896160262, 188.84965260994042, 187.36609984619832, 185.77344074321073, 186.98540281739267, 184.24540856785242, 188.29042658050895, 191.04728061924155, 181.56758224364995, 192.50320017491174, 191.0724684106699, 192.97252997139736, 193.0672898663342, 193.69445772151175, 192.57864127836467, 190.71306009231097, 188.21145320857093, 182.39096761317484, 184.29850128031308, 186.16351186914994, 185.53661572693278, 186.27703354400185, 185.10228255974567, 185.7324936000796, 180.93893355283825, 182.59532293068588, 184.68495862387908];
+
+                    //Get the next newPrice.length open market days and update dates array
+                    const json = await fetch(endpoints.getOpenMarketDays(newPrices.length)).then(response => response.json());
+                    newDates = json.map((date: string ) => getFormattedDate(date));
+
+                    //Get placeholders for prediction line
+                    for (let i = 0; i < initPrices.length - 1; i++) {
+                        placeholders.push('-');
                     }
-                    // calculate min and max for Y-axis
-                    prices = [...prices, ...newPrices];
-                    minValue = Math.floor(Math.min(...prices));
-                    maxValue = Math.ceil(Math.max(...prices));
                 }
 
+                var combinedPrices = [...initPrices, ...newPrices];
+                var combinedDates = [...initDates, ...newDates];
+
+                // calculate min and max for Y-axis
+                var minValue = Math.floor(Math.min(...combinedPrices));
+                var maxValue = Math.ceil(Math.max(...combinedPrices));
 
                 //Calculate ROI/profits
                 let lineColor = 'grey'
-                let firstPrice = prices[0]
-                let lastPrice = prices[prices.length-1]
+                let firstPrice = combinedPrices[0]
+                let lastPrice = combinedPrices[combinedPrices.length-1]
 
                 if (firstPrice < lastPrice)
                     lineColor = 'green'
@@ -174,44 +164,33 @@ const StockGraph = (props : StockGraphProps) => {
                 setTicker(props.symbol)
                 setColor(lineColor)
 
-                //if showing a prediction, show different x axis data and show two different lines
-                let graphData;
-                let xAxisData;
+                let graphData, xAxisData;
                 if(showPrediction){
-                    // Add the last price point from values to the beginning of newValues
-                    newValues.unshift({
-                        date: values[values.length - 1].date,
-                        value: values[values.length - 1].value
-                    });
-
-                    let placeholders = []
-                    for (let i = 0; i < values.length - 1; i++) {
-                        placeholders.push('-');
-                    }
-
+                    //prepend the last price to the new prices
+                    newPrices = [initPrices[initPrices.length - 1] , ...newPrices]
                     graphData =
                     [{
-                        data: values.map((item: { date: Date; value: any; }) => item.value),
+                        data: initPrices,
                         type: 'line',
                         color: lineColor
                     },
                     {
-                        data: [...placeholders, ...newValues.map((item) => item.value)],
+                        data: [...placeholders, ...newPrices],
                         type: 'line',
                         color: 'blue'
                     }]
-                    xAxisData = [
-                        ...values.map((item: { date: Date }) => item.date),
-                        ...newValues.slice(1, newValues.length).map((item) => item.date)
-                    ];
+                    xAxisData = combinedDates;
                 }
                 else{
                     graphData = [{
-                        data: values.map((item: { date: Date; value: any; }) => item.value),
+                        data: initPrices,
                         type: 'line',
                         color: lineColor
+                    },
+                    {
+                        data: []
                     }]
-                    xAxisData = values.map((item: { date: Date; value: any; }) => item.date);
+                    xAxisData = initDates;
                 }
                 const newOptions = {
                   xAxis: {
@@ -235,9 +214,33 @@ const StockGraph = (props : StockGraphProps) => {
                 setShowError(true);
             }
           };
-      
+
       fetchData();
-    }, [currInterval, props.symbol, showPrediction]);
+    }, [currInterval, props.symbol, showPrediction])
+
+    function handleWatchlistClick() {
+        const makeRequest = async () => {
+            setPendingWatchlistRequest(true)
+
+            var response
+            var url = props.isWatchlist ? endpoints.removeUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+                                                    : endpoints.addUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+            response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.status == 200) {
+                console.log('success')
+                props.reloadWatchlist()
+            } else {
+                console.error('Error sending request:', response.statusText);
+            }
+            setPendingWatchlistRequest(false)
+        }
+        makeRequest();
+    }
 
   //limited to 8 api calls per minute
   return (
@@ -258,15 +261,14 @@ const StockGraph = (props : StockGraphProps) => {
           {intervals.map((interval, i) => (
             <div className='col-auto' key={i}>
                 <Button
-                    className={`btn ${currInterval === intervals[i] ? 'btn-secondary text-light' : 'btn-outline-secondary'} ${showPrediction ? 'disabled' : ''}`}
+                    className={`btn ${currInterval !== intervals[i] || showPrediction? 'btn-outline-secondary ' : 'btn-secondary text-light'}`}
                     variant=''
                     onClick={() => {
-                        if (!showPrediction && currInterval !== intervals[i]) {
+                        if (currInterval !== intervals[i] || showPrediction) {
                             setShowPrediction(false);
                             setCurrInterval(intervals[i]);
                         }
                     }}
-                    disabled={showPrediction}
                 >
                     {intervalLabels[i]}
                 </Button>
@@ -274,12 +276,15 @@ const StockGraph = (props : StockGraphProps) => {
           ))}
           <div className='col-auto'>
               <Button
-                  className={`btn btn-outline-secondary`}
+                  className={`btn ${showPrediction ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
                   variant=''
                   onClick={() => {
-                      setShowPrediction(!showPrediction)
+                      if(!showPrediction) {
+                          setShowPrediction(true)
+                          setCurrInterval(intervals[3]);
+                      }
                   }}>
-                  {showPrediction ? "Hide" : "Show"} Prediction
+                  Show Prediction
               </Button>
           </div>
       </div>
@@ -292,12 +297,15 @@ const StockGraph = (props : StockGraphProps) => {
                 Download CSV
             </CsvDownload>
         </div>
-        <div className='col-auto'>
-            <Button className={"btn btn-outline-success"}
-                    variant=''>
-                Add To Watchlist
-            </Button>
-        </div>
+          {props.user != null && props.isFeatured &&
+            <div className='col-auto'>
+                <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
+                        variant=''
+                        onClick ={() => handleWatchlistClick()}>
+                        {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
+                </Button>
+            </div>
+          }
       </div>
     </>
     )

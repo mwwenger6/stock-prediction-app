@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stock-Prediction-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b337cbaa871917398c9e579e2e81d339ea86182c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stock-Prediction-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stock-Prediction-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

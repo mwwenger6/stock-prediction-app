@@ -22,7 +22,7 @@ namespace Stock_Prediction_API.Services.API_Tools
 
         public class FinnhubMarketStatus
         {
-            public bool IsOpen { get; set; }
+            public bool isOpen { get; set; }
         }
         public class FinnhubMarketHolidays
         {
@@ -58,7 +58,7 @@ namespace Stock_Prediction_API.Services.API_Tools
         {
             string jsonData = await GetJSONData(_statusURL);
             var status = JsonSerializer.Deserialize<FinnhubMarketStatus>(jsonData);
-            return status?.IsOpen;
+            return status?.isOpen;
         }
 
         public async Task<List<MarketHolidays>> GetMarketHolidays()

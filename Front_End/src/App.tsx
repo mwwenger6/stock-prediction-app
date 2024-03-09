@@ -9,8 +9,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from "./Interfaces/User"
 import Stock from "./Interfaces/Stock";
 import TickerScroller from "./Components/TickerScroller";
-import GetFeaturedStocks from "./Services/GetFeaturedStocks";
 import ErrorLogsView from './Views/ErrorLogsView';
+import GetFeaturedStocks from "./Services/GetFeaturedStocks";
+import GetWatchListStocks from "./Services/GetWatchListStocks";
 
 
 //set initial featured stocks list
@@ -33,27 +34,55 @@ const initFeaturedStocks: Stock[] = [
   { name: 'Home Depot', ticker: 'HD', price: -1, up: undefined },
 ];
 
+const initWatchListStocks: Stock[] = [];
+
 function App() {
 
   const getFeaturedStocks = GetFeaturedStocks;
+  const getWatchListStocks = GetWatchListStocks;
 
   const [user, setUser] = useState<User | null>(null);
   const [featuredStocks, setFeaturedStocks] = useState(initFeaturedStocks)
+  const [watchListStocks, setWatchListStocks] = useState(initWatchListStocks)
+  const [homeViewStocks, setHomeViewStocks] = useState(initWatchListStocks)
 
-  //Fetch featured stocks price data on load
+  //Fetch featured stocks price data on initial load
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFeatured = async () => {
       try {
         const stocks: Stock[] | null = await getFeaturedStocks();
         if (stocks !== null) {
           setFeaturedStocks(stocks);
+          setHomeViewStocks(stocks);
         }
       } catch (error) {
         console.error('Error fetching prices:', error);
       }
     };
-    fetchData();
+    fetchFeatured();
   }, []);
+
+  //Fetch user watchlist stocks on user change
+  useEffect(() => {
+    fetchUserWatchList();
+  }, [user]);
+
+  const fetchUserWatchList = async () => {
+    try {
+      if(user === null) {
+        setHomeViewStocks(featuredStocks)
+        setWatchListStocks(initWatchListStocks)
+        return;
+      }
+      const stocks: Stock[] | null = await getWatchListStocks(user.id);
+      if (stocks !== null) {
+        setWatchListStocks(stocks);
+        setHomeViewStocks(stocks);
+      }
+    } catch (error) {
+      console.error('Error fetching prices:', error);
+    }
+  };
 
   return (
     <div className="App">
@@ -61,11 +90,11 @@ function App() {
       <BrowserRouter>
         <AppNavbar user={user} setUser={setUser}/>
         <Routes>
-          <Route index element={<HomeView user={user} featuredStocks={featuredStocks}/>} />
+          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
           <Route path="News" element = { <NewsView /> } />
           <Route path="Login" element = { <LoginView/> } />
           <Route path="Admin/ErrorLogs" element={<ErrorLogsView />} />
-          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} /> } />
+          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchUserWatchList() }/> } />
         </Routes>
       </BrowserRouter>
     </div>

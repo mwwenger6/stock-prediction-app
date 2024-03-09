@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
 import CsvDownload from "react-json-to-csv";
@@ -7,11 +7,15 @@ import Spinner from "./Spinner";
 import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
+import config from "../config";
+
 
 interface StockGraphProps {
   symbol: string;
   isFeatured: boolean;
-  user: User | null,
+  user: User | null;
+  isWatchlist: boolean;
+  reloadWatchlist: () => Promise<void>;
 }
 
 const StockGraph = (props : StockGraphProps) => {
@@ -32,22 +36,20 @@ const StockGraph = (props : StockGraphProps) => {
     const [color, setColor] = useState('grey')
     const [showPrediction, setShowPrediction] = useState(false)
     const [predictions, setPredictions] = useState([]);
+    const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
 
     function stockMarketClosed() {
-        // Get the current time in the specified time zone
         const timeZone = 'America/New_York';
         const now = new Date (new Date().toLocaleString('en-US', { timeZone }));
 
-        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const dayOfWeek = now.getDay();
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
 
         // Check if it's a weekend (Saturday or Sunday)
         if (dayOfWeek === 0 || dayOfWeek === 6) return true;
-
         // Check if it's before 9:30 AM or after 4:00 PM ET
         if (currentHour < 9 || (currentHour === 9 && currentMinute < 30) || currentHour >= 16) return true;
-
         // The stock market is open
         return false;
     }
@@ -76,17 +78,17 @@ const StockGraph = (props : StockGraphProps) => {
         // to the console  
         const fetchPredictions = async () => {
         
-            try {
-                const response = await fetch(endpoints.getPredictions(props.symbol, new Date()));
-                const jsonData = await response.json();
-                setPredictions(jsonData);
-                console.log(jsonData);
-
-            }
-            catch (error) {
-                console.error('Error fetching predictions:', error);
-                setShowError(true);
-            }
+            // try {
+            //     const response = await fetch(endpoints.predict(props.symbol, 30));
+            //     const jsonData = await response.json();
+            //     setPredictions(jsonData);
+            //     console.log(jsonData);
+            //
+            // }
+            // catch (error) {
+            //     console.error('Error fetching predictions:', error);
+            //     setShowError(true);
+            // }
         };
 
 
@@ -216,6 +218,30 @@ const StockGraph = (props : StockGraphProps) => {
       fetchData();
     }, [currInterval, props.symbol, showPrediction])
 
+    function handleWatchlistClick() {
+        const makeRequest = async () => {
+            setPendingWatchlistRequest(true)
+
+            var response
+            var url = props.isWatchlist ? endpoints.removeUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+                                                    : endpoints.addUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+            response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.status == 200) {
+                console.log('success')
+                props.reloadWatchlist()
+            } else {
+                console.error('Error sending request:', response.statusText);
+            }
+            setPendingWatchlistRequest(false)
+        }
+        makeRequest();
+    }
+
   //limited to 8 api calls per minute
   return (
     <>
@@ -271,12 +297,15 @@ const StockGraph = (props : StockGraphProps) => {
                 Download CSV
             </CsvDownload>
         </div>
-        <div className='col-auto'>
-            <Button className={"btn btn-outline-success"}
-                    variant=''>
-                Add To Watchlist
-            </Button>
-        </div>
+          {props.user != null && props.isFeatured &&
+            <div className='col-auto'>
+                <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
+                        variant=''
+                        onClick ={() => handleWatchlistClick()}>
+                        {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
+                </Button>
+            </div>
+          }
       </div>
     </>
     )

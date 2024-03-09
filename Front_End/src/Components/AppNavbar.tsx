@@ -16,7 +16,6 @@ interface AppNavbarProps {
 }
 
 const AppNavbar = (props: AppNavbarProps) => {
-    console.log(props.user); // to debug the user state
     const loggedIn = props.user != null;
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

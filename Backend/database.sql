@@ -129,3 +129,8 @@ CREATE TABLE SupportedStocks (
     LastUpdated datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     IsActive BOOLEAN DEFAULT TRUE
 );
+
+alter table StockPredictions drop column CreatedAt;
+ALTER TABLE Users ADD UserVerified BIT NOT NULL DEFAULT 0;
+ALTER TABLE Users ADD VerificationCode NVARCHAR(12);
+

@@ -3261,11 +3261,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+      "projectUniqueName": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
       "projectName": "Stock-Prediction-API",
-      "projectPath": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+      "projectPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
       "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-      "outputPath": "/Users/thomsontoms/stock-prediction-app/API/obj/",
+      "outputPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
@@ -3348,5 +3348,13 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/thomsontoms/Projects/stock-prediction-app/API/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

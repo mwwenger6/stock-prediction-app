@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj": {}
+    "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj": {}
   },
   "projects": {
-    "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj": {
+    "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+        "projectUniqueName": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
         "projectName": "Stock-Prediction-API",
-        "projectPath": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+        "projectPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
         "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-        "outputPath": "/Users/thomsontoms/stock-prediction-app/API/obj/",
+        "outputPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"

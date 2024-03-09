@@ -1,12 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "hR8PoLoyxQXKgKvOcLmEWySQk95DPmJ3giW83FQyKKC2Ta7rCcf7fzl4aiGZt62UnfcT3AR88TiCWWIb/ciuhA==",
-=======
   "dgSpecHash": "6XiipTlqo7iiokawM1UW3oc2o1E9UsKa+m2hpopoJmPv46Twqyje+y5IdbpAjZMh1BUGVrMhk2xsrIdtIOyCVg==",
->>>>>>> 83c609a (incorrect syntax for BCrypt, hopefuylly this works)
   "success": true,
-  "projectFilePath": "/Users/thomsontoms/stock-prediction-app/API/Stock-Prediction-API.csproj",
+  "projectFilePath": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
   "expectedPackageFiles": [
     "/Users/thomsontoms/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/thomsontoms/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
@@ -75,5 +71,12 @@
     "/Users/thomsontoms/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/thomsontoms/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/thomsontoms/Projects/stock-prediction-app/API/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

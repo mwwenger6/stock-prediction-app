@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{4FBFE40F-38ED-4BB4-9DE2-8742914C65A6}|https">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/dbTools.cs">
     <Files>
       <File FileName="Controllers/ControllerHelper.cs" Line="18" Column="58" />
-      <File FileName="Controllers/HomeController.cs" Line="58" Column="108" />
-      <File FileName="Services/dbTools.cs" Line="7" Column="1" />
-      <File FileName="Entities/User.cs" Line="23" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="138" Column="18" />
+      <File FileName="Services/dbTools.cs" Line="175" Column="39" />
+      <File FileName="Entities/User.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Prediction-API">
-            <Node name="Stock-Prediction-API" expanded="True">
+            <Node name="Stock-Prediction-API">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="API_Tools" expanded="True" />
+                <Node name="dbTools.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -23,8 +23,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Stock-Prediction-API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

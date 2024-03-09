@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Primitives;
 using Pomelo.EntityFrameworkCore.MySql;
 using Stock_Prediction_API.Entities;
+using BCrypt.Net;
 
 namespace Stock_Prediction_API.Services
 {
@@ -174,6 +175,7 @@ namespace Stock_Prediction_API.Services
         public void AddUser(User user)
         {
             using var tempContext = GetNewDBContext();
+            user.Password = BCrypt.HashPassword(user.Password); // Hash password before saving
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
         }

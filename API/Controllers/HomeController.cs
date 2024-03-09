@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Text.Json;
 //using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
+using BCrypt.Net;
 
 
 namespace Stock_Prediction_API.Controllers
@@ -74,8 +75,10 @@ namespace Stock_Prediction_API.Controllers
             {
                 User user = _GetDataTools.GetUser(email);
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
-                if (user.Password != password)
+
+                if (!BCrypt.Verify(password, user.Password)) // Use BCrypt.Verify to check the password
                     throw new InvalidDataException("Could not authenticate");
+
                 return Json(user);
             }
             catch (InvalidDataException ex)

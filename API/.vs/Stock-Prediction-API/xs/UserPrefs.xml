@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{4FBFE40F-38ED-4BB4-9DE2-8742914C65A6}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="readMe.txt">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
     <Files>
-      <File FileName="readMe.txt" Line="1" Column="1" />
+      <File FileName="Controllers/ControllerHelper.cs" Line="18" Column="58" />
+      <File FileName="Controllers/HomeController.cs" Line="58" Column="108" />
+      <File FileName="Services/dbTools.cs" Line="7" Column="1" />
+      <File FileName="Entities/User.cs" Line="23" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Prediction-API">
-            <Node name="Stock-Prediction-API">
-              <Node name="Dependencies" expanded="True">
-                <Node name="FrameworkReferences" expanded="True">
-                  <Node name="Microsoft.AspNetCore.App" selected="True" />
-                </Node>
-              </Node>
-              <Node name="Controllers" expanded="True" />
+            <Node name="Stock-Prediction-API" expanded="True">
               <Node name="Services" expanded="True">
                 <Node name="API_Tools" expanded="True" />
               </Node>
-              <Node name="ViewModel" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -27,9 +24,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Stock-Prediction-API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

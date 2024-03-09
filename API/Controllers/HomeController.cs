@@ -76,8 +76,11 @@ namespace Stock_Prediction_API.Controllers
                 User user = _GetDataTools.GetUser(email);
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
 
-                if (!BCrypt.Verify(password, user.Password)) // Use BCrypt.Verify to check the password
+                // Use BCrypt.Verify to check the password against the hashed password stored in the database
+                if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+                {
                     throw new InvalidDataException("Could not authenticate");
+                }
 
                 return Json(user);
             }

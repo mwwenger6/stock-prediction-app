@@ -175,7 +175,7 @@ namespace Stock_Prediction_API.Services
         public void AddUser(User user)
         {
             using var tempContext = GetNewDBContext();
-            user.Password = BCrypt.HashPassword(user.Password); // Hash password before saving
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password); // Hash password before saving
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
         }

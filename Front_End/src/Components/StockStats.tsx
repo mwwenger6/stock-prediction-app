@@ -18,6 +18,7 @@ const StockStats = ({ symbol } : StockGraphProps) => {
         "t": 0
     };
 
+    const fw :  string = '400';
     const [data, setData] = useState(defaultData)
 
     useEffect(() => {
@@ -40,38 +41,34 @@ const StockStats = ({ symbol } : StockGraphProps) => {
         fetchData();
     }, [symbol]);
     return (<>
-        <h1 style={{ fontWeight: 300, lineHeight: 1.2 }}> Today's Statistics </h1>
-        {/* Set width to 75% on large screens */}
-        <hr className="w-75 d-none d-lg-block mx-auto" />
+        <h2 style={{ fontWeight: 400, lineHeight: 1.2 }}> Today's Statistics </h2>
+        <hr className="mx-auto" />
         <Container>
-            <div className={"row mb-3"}>
-                <div className={"col-2"}> </div>
-                <div className={"col-lg-4 col-12"}>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Current Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.c}</span>
+            <div className={"row"}>
+                <div className={"col-12"}>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}>  Current Price: </h3>
+                        <h3 style={{fontWeight: fw}}>  {data.c}</h3>
                     </div>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> High Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.h}</span>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}> High Price: </h3>
+                        <h3 style={{fontWeight: fw}}> {data.h}</h3>
                     </div>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Low Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.l}</span>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}> Low Price: </h3>
+                        <h3 style={{fontWeight: fw}}> {data.l}</h3>
                     </div>
-                </div>
-                <div className={"col-lg-4 col-12"}>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Prev. Close Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.pc}</span>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}>  Open Price: </h3>
+                        <h3 style={{fontWeight: fw}}> {data.c}</h3>
                     </div>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> Open Price: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.c}</span>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}>  Prev. Close Price: </h3>
+                        <h3 style={{fontWeight: fw}}> {data.pc}</h3>
                     </div>
-                    <div className={"d-flex justify-content-between"}>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> % Change Today: </span>
-                        <span className={"display-6"} style={{fontSize: 2 + 'em'}}> {data.dp.toFixed(2)}%</span>
+                    <div className={"d-flex justify-content-between my-1"}>
+                        <h3 style={{fontWeight: fw}}>  % Change Today: </h3>
+                        <h3 style={{fontWeight: fw}}>  {data.dp.toFixed(2)}%</h3>
                     </div>
                 </div>
             </div>

@@ -16,20 +16,19 @@ interface StockGraphProps {
   user: User | null;
   isWatchlist: boolean;
   reloadWatchlist: () => Promise<void>;
+  marketClosed: boolean;
 }
 
 const StockGraph = (props : StockGraphProps) => {
 
     const getData = GetTimeSeriesData;
-    const intervals =      ['5min',   '30min', '4h',     '1day',    '1month']
-    const intervalLabels = ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
+    const intervals =      ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
 
     const [options, setOptions] = useState({});
     const [timeSeriesData, setTimeSeriesData] = useState({});
     //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
     const [currInterval, setCurrInterval] = useState(intervals[2]);
     const [showError, setShowError] = useState(false)
-    const [marketClosed, setMarketClosed] = useState(false)
     const [graphLoading , setGraphLoading] = useState(true)
     const [ticker, setTicker] = useState('')
     const [percentChange, setPercentChange] = useState('')
@@ -38,27 +37,11 @@ const StockGraph = (props : StockGraphProps) => {
     const [predictions, setPredictions] = useState([]);
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
 
-    function stockMarketClosed() {
-        const timeZone = 'America/New_York';
-        const now = new Date (new Date().toLocaleString('en-US', { timeZone }));
-
-        const dayOfWeek = now.getDay();
-        const currentHour = now.getHours();
-        const currentMinute = now.getMinutes();
-
-        // Check if it's a weekend (Saturday or Sunday)
-        if (dayOfWeek === 0 || dayOfWeek === 6) return true;
-        // Check if it's before 9:30 AM or after 4:00 PM ET
-        if (currentHour < 9 || (currentHour === 9 && currentMinute < 30) || currentHour >= 16) return true;
-        // The stock market is open
-        return false;
-    }
-
     function getFormattedDate(datetime: string | Date){
         let year : any = 'numeric';
         let hour : any = undefined;
         let minute : any = undefined;
-        if(currInterval == '5min' || currInterval == '30min'){
+        if(currInterval == '1 Hour' || currInterval == '1 Day'){
             hour = minute = '2-digit'
             year = undefined
         }
@@ -105,9 +88,7 @@ const StockGraph = (props : StockGraphProps) => {
         //Fetch price data on load
         const fetchData = async () => {
             try {
-                setMarketClosed(stockMarketClosed())
-
-                const timeSeriesData  = await getData(props.symbol, currInterval, marketClosed);
+                const timeSeriesData  = await getData(props.symbol, currInterval, props.marketClosed);
 
                 if (timeSeriesData.status == 'error')
                     throw "Unable to get data";
@@ -172,12 +153,14 @@ const StockGraph = (props : StockGraphProps) => {
                     [{
                         data: initPrices,
                         type: 'line',
-                        color: lineColor
+                        color: lineColor,
+                        symbol: 'none'
                     },
                     {
                         data: [...placeholders, ...newPrices],
                         type: 'line',
-                        color: 'blue'
+                        color: 'blue',
+                        symbol: 'none'
                     }]
                     xAxisData = combinedDates;
                 }
@@ -185,7 +168,8 @@ const StockGraph = (props : StockGraphProps) => {
                     graphData = [{
                         data: initPrices,
                         type: 'line',
-                        color: lineColor
+                        color: lineColor,
+                        symbol: 'none'
                     },
                     {
                         data: []
@@ -202,10 +186,9 @@ const StockGraph = (props : StockGraphProps) => {
                     min: minValue,
                     max: maxValue
                   },
-                  series: graphData
+                  series: graphData,
                 };
 
-                setTimeSeriesData(timeSeries)
                 setOptions(newOptions);
                 setGraphLoading(false)
             }
@@ -256,7 +239,6 @@ const StockGraph = (props : StockGraphProps) => {
                  <ReactECharts option={options} />
                  </div>)
         )}
-      <p className={marketClosed && (currInterval == intervals[0] || currInterval == intervals[1]) ? "text-danger" : "text-white"}> * Graph prices reflect the last time the stock market was open </p>
         <div className='d-flex row justify-content-center'>
           {intervals.map((interval, i) => (
             <div className='col-auto' key={i}>
@@ -270,7 +252,7 @@ const StockGraph = (props : StockGraphProps) => {
                         }
                     }}
                 >
-                    {intervalLabels[i]}
+                    {intervals[i]}
                 </Button>
             </div>
           ))}
@@ -288,7 +270,7 @@ const StockGraph = (props : StockGraphProps) => {
               </Button>
           </div>
       </div>
-      <div className='row mt-3 justify-content-center'>
+      <div className='row mt-3 justify-content-center mb-2'>
         <div className='col-auto'>
             <CsvDownload
                 className={`btn btn-outline-success ${showError ? 'disabled' : ''}`}

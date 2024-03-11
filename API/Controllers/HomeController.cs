@@ -149,6 +149,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+
         #endregion
 
         #region Stocks
@@ -665,8 +666,15 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpPost("/Home/AddPredictions")]
-        public IActionResult AddPredictions()
+        [HttpPost("/Home/ClearPredictions")]
+        public IActionResult ClearPredictions()
+        {
+            _GetDataTools.ClearStockPredictions();
+            return Ok("Predictions removed successfully.");
+        }
+
+        [HttpPost("/Home/AddPredictions/{ticker}")]
+        public IActionResult AddPrediction(string ticker)
         {
             try
             {
@@ -676,29 +684,25 @@ namespace Stock_Prediction_API.Controllers
                 //    return Ok("Market closed, no new predictions");
 
                 _GetDataTools.ClearStockPredictions();
-                List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
                 List<StockPrediction> batchPredictions = new();
-                foreach (string ticker in tickers)
+                float[] predictions = Predict(ticker, 90);
+                if (predictions != null)
                 {
-                    float[] predictions = Predict(ticker, 90);
-                    if (predictions != null)
+                    int order = 1;
+                    foreach (float prediction in predictions)
                     {
-                        int order = 1;
-                        foreach (float prediction in predictions)
+                        batchPredictions.Add(new StockPrediction
                         {
-                            batchPredictions.Add(new StockPrediction
-                            {
-                                Ticker = ticker,
-                                PredictedPrice = prediction,
-                                PredictionOrder = order,
-                            });
-                            order++;
-                        }
+                            Ticker = ticker,
+                            PredictedPrice = prediction,
+                            PredictionOrder = order,
+                        });
+                        order++;
                     }
                 }
                 _GetDataTools.AddPredictions(batchPredictions);
 
-                return Ok("Predictions added successfully.");
+                return Ok($"Prediction for {ticker} added successfully.");
             }
             catch (Exception ex)
             {
@@ -707,9 +711,55 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Internal server error for adding prediction for ticker: {ticker}. {ex.Message}");
             }
         }
+
+        //[HttpPost("/Home/AddPredictions")]
+        //public IActionResult AddPredictions()
+        //{
+        //    try
+        //    {
+        //        //DateTime dateTime = GetEasternTime();
+        //        //if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
+        //        //   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
+        //        //    return Ok("Market closed, no new predictions");
+
+        //        _GetDataTools.ClearStockPredictions();
+        //        List<string> tickers = _GetDataTools.GetStocks().Select(s => s.Ticker).ToList();
+        //        List<StockPrediction> batchPredictions = new();
+        //        foreach (string ticker in tickers)
+        //        {
+        //            float[] predictions = Predict(ticker, 90);
+        //            if (predictions != null)
+        //            {
+        //                int order = 1;
+        //                foreach (float prediction in predictions)
+        //                {
+        //                    batchPredictions.Add(new StockPrediction
+        //                    {
+        //                        Ticker = ticker,
+        //                        PredictedPrice = prediction,
+        //                        PredictionOrder = order,
+        //                    });
+        //                    order++;
+        //                }
+        //            }
+        //        }
+        //        _GetDataTools.AddPredictions(batchPredictions);
+
+        //        return Ok("Predictions added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _GetDataTools.LogError(new()
+        //        {
+        //            Message = ex.Message,
+        //            CreatedAt = GetEasternTime(),
+        //        });
+        //        return StatusCode(500, $"Internal server error. {ex.Message}");
+        //    }
+        //}
 
         [HttpGet("/Home/GetPredictions/{ticker}/{date}")]
         public IActionResult GetPredictions(string ticker, DateTime date)

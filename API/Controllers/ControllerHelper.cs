@@ -17,7 +17,7 @@ namespace Stock_Prediction_API.Controllers
         protected dbTools _GetDataTools;
         public readonly TwelveDataTools _TwelveDataTools;
         public readonly FinnhubAPITools _FinnhubDataTools;
-
+        public readonly EmailTools _EmailTools;
         public ControllerHelper(AppDBContext context, IConfiguration config) : base()
         {
             _dbContext = context;
@@ -29,6 +29,7 @@ namespace Stock_Prediction_API.Controllers
             _GetDataTools = new dbTools(context, _dbContextOptions);
             _FinnhubDataTools = new(config);
             _TwelveDataTools = new(config);
+            _EmailTools = new(config);
         }
     }
 }

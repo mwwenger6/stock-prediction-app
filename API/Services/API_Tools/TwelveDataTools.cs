@@ -21,7 +21,7 @@ namespace Stock_Prediction_API.Services.API_Tools
         public class StockValue
         {
             [JsonPropertyName("datetime")]
-            public DateTime Datetime { get; set; }
+            public string Datetime { get; set; }
 
             [JsonPropertyName("open")]
             public string Open { get; set; }
@@ -58,12 +58,11 @@ namespace Stock_Prediction_API.Services.API_Tools
             List<StockPrice> prices = new List<StockPrice>();
             foreach(StockValue data in stockData.Values)
             {
-                prices.Add(new StockPrice() {
+                prices.Add(new () {
                     Ticker = ticker,
                     Price = float.Parse(data.Close),
-                    Time= data.Datetime,
+                    Time= DateTime.Parse(data.Datetime),
                 });
-
             }
             return prices;
         }

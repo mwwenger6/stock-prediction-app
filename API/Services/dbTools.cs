@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Primitives;
 using Pomelo.EntityFrameworkCore.MySql;
 using Stock_Prediction_API.Entities;
+using BCrypt.Net;
 
 namespace Stock_Prediction_API.Services
 {
@@ -32,22 +33,16 @@ namespace Stock_Prediction_API.Services
 
         public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
 
-        public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
+        public IQueryable<EODStockPrice> GetStockPrices() => dbContext.EODStockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
         public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
+        public IQueryable<MarketHolidays> GetMarketHolidays() => dbContext.MarketHolidays;
+        public IQueryable<StockPrediction> GetStockPredictions() => dbContext.StockPredictions;
 
         public Stock GetStock(string ticker)
         {
             return dbContext.Stocks
                 .Where(s => s.Ticker == ticker).Single();
-        }
-
-        public StockPrice GetRecentStockPrice(string ticker)
-        {
-            return dbContext.StockPrices
-                .Where(sp => sp.Ticker == ticker)
-                .OrderByDescending(sp => sp.Time)
-                .FirstOrDefault();
         }
 
         public List<UserWatchlistStocks> GetUserWatchlistStocks(int userId)
@@ -56,17 +51,34 @@ namespace Stock_Prediction_API.Services
                 .Where(s => s.UserId == userId).ToList();
         }
 
-        public IQueryable<StockPrice> GetStockPrices(string ticker)
+        public IQueryable<StockPrice> GetStockPrices(string ticker, bool getHistoricalData)
         {
-            //var dateThreshold = DateTime.UtcNow.AddDays(-daysInterval);
-            return dbContext.StockPrices
-                .Where(sp => sp.Ticker == ticker) //&& sp.Time >= dateThreshold)
-                .OrderByDescending(sp => sp.Time);
+            if(getHistoricalData)
+                return dbContext.EODStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+            else
+                return dbContext.FMStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
         }
         public User GetUser(string email)
         {
             return dbContext.Users
                 .Where(u => u.Email == email).Single();
+        }
+
+        public IQueryable<float> GetStockPredictions(string ticker)
+        {
+            return dbContext.StockPredictions
+                .Where(spred => spred.Ticker == ticker)
+                .OrderBy(spred => spred.PredictionOrder)
+                .Select(spred => spred.PredictedPrice);
+        }
+
+        public bool UserWithVerificationCode(string code)
+        {
+            return dbContext.Users.Any(u => u.VerificationCode == code);
+        }
+        public User GetUserByVerificationCode(string code)
+        {
+            return dbContext.Users.Where(u => u.VerificationCode == code).FirstOrDefault();
         }
 
         #endregion
@@ -122,20 +134,47 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == ticker)
                     .ExecuteDelete();
         }
-
-        public void AddStockPrices(List<StockPrice> stockPrices)
+        public void AddFMStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
             foreach (StockPrice stockPrice in stockPrices)
             {
-                tempContext.StockPrices.Add(stockPrice);
+                //var existingStockPrice = tempContext.FMStockPrices
+                //    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
+
+                tempContext.FMStockPrices.Add(new()
+                {
+                    Price = stockPrice.Price,
+                    Time = stockPrice.Time,
+                    Ticker = stockPrice.Ticker
+                });
+
+            }
+            tempContext.SaveChanges();
+        }
+        public void AddEODStockPrices(List<StockPrice> stockPrices)
+        {
+            using var tempContext = GetNewDBContext();
+            foreach (StockPrice stockPrice in stockPrices)
+            {
+                var existingStockPrice = tempContext.EODStockPrices
+                    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
+                if (existingStockPrice == null)
+                {
+                    tempContext.EODStockPrices.Add(new()
+                    {
+                        Price = stockPrice.Price,
+                        Time = stockPrice.Time,
+                        Ticker = stockPrice.Ticker
+                    });
+                }
             }
             tempContext.SaveChanges();
         }
         public void DeleteStockPrices (string ticker)
         {
             using var tempContext = GetNewDBContext();
-            tempContext.StockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
+            tempContext.EODStockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
         }
         public void UpdateUserPrivileges(string email, int newUserTypeId)
         {
@@ -146,8 +185,20 @@ namespace Stock_Prediction_API.Services
         public void AddUser(User user)
         {
             using var tempContext = GetNewDBContext();
-            tempContext.Users.Add(user);
-            tempContext.SaveChanges();
+            user.Password = Base64Converter.ToBase64(user.Password);
+            if (tempContext.Users.Any(u => u.Id == user.Id))
+            {
+                tempContext.Users.Where(u => u.Id == user.Id)
+                    .ExecuteUpdate(u => u
+                        .SetProperty(u => u.IsVerified, user.IsVerified)
+                        .SetProperty(u => u.VerificationCode, user.VerificationCode)
+                    );
+            }
+            else
+            {
+                tempContext.Users.Add(user);
+                tempContext.SaveChanges();
+            }
         }
         public void AddUserWatchlistStock(UserWatchlistStocks stock)
         {
@@ -167,6 +218,34 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges();
         }
 
+        public void AddPredictions(List<StockPrediction> predictions)
+        {
+            using var tempContext = GetNewDBContext();
+            //foreach (StockPrediction prediction in predictions)
+            //{
+            //    tempContext.StockPredictions.Add(prediction);
+            //}
+            tempContext.AddRange(predictions);
+            tempContext.SaveChanges();
+        }
+
+        public void ClearStockPredictions()
+        {
+            using var tempContext = GetNewDBContext();
+            List<string> tickers = GetStocks().Select(s => s.Ticker).ToList();
+            foreach (string ticker in tickers)
+            {
+                tempContext.StockPredictions.Where(spred => spred.Ticker == ticker).ExecuteDelete();
+            }
+            tempContext.SaveChanges(); 
+        }
+
+        public void AddMarketHolidays(List<MarketHolidays> days)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.MarketHolidays.AddRange(days);
+            tempContext.SaveChanges();
+        }
 
         #endregion
     }

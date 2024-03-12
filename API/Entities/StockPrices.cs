@@ -1,26 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 
 namespace Stock_Prediction_API.Entities
 {
-    [Table("StockPrices", Schema = "dbo")]
     [PrimaryKey(nameof(Ticker), nameof(Time))]
     public class StockPrice
     {
-#nullable disable
-        [Column("Ticker")]
-        public string Ticker { get; set; }
-        [Column("Price")]
-        public float Price { get; set; }
-        [Column("Time")]
-        public DateTime Time { get; set; }
+        #nullable disable
+            [Column("Ticker")]
+            public string Ticker { get; set; }
+            [Column("Price")]
+            public float Price { get; set; }
+            [Column("Time")]
+            public DateTime Time { get; set; }
+    }
+
+    [Table("StockPrices", Schema = "dbo")]
+    public class EODStockPrice : StockPrice
+    {
+    }
+
+    [Table("StockPrices_5Min", Schema = "dbo")]
+    public class FMStockPrice : StockPrice
+    {
     }
 }

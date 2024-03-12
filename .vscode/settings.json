@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1fae93d5-e474-45bc-9290-d72f95752d50/resourceGroups/stockPrediction/providers/Microsoft.Web/sites/stockgenieweb",
+    "appService.deploySubpath": "Front_End/build"
+}

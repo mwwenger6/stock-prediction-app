@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'WebAPI' " />
   <ItemGroup>
     <None Remove="C:\Users\mwwen\.nuget\packages\quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__init__.py" />
     <None Remove="C:\Users\mwwen\.nuget\packages\quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\find_libpython\__main__.py" />
@@ -26,6 +26,7 @@
     <None Remove="C:\Users\mwwen\.nuget\packages\quantconnect.pythonnet\2.0.26\contentFiles\any\any\pythonnet\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />

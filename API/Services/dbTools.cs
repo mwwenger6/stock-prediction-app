@@ -185,8 +185,8 @@ namespace Stock_Prediction_API.Services
         public void AddUser(User user)
         {
             using var tempContext = GetNewDBContext();
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password); // Hash password before saving
-            if(tempContext.Users.Any(u => u.Id == user.Id))
+            user.Password = Base64Converter.ToBase64(user.Password);
+            if (tempContext.Users.Any(u => u.Id == user.Id))
             {
                 tempContext.Users.Where(u => u.Id == user.Id)
                     .ExecuteUpdate(u => u

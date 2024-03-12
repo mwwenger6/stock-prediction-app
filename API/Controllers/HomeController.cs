@@ -682,8 +682,6 @@ namespace Stock_Prediction_API.Controllers
                 //if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
                 //   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                 //    return Ok("Market closed, no new predictions");
-
-                _GetDataTools.ClearStockPredictions();
                 List<StockPrediction> batchPredictions = new();
                 float[] predictions = Predict(ticker, 90);
                 if (predictions != null)

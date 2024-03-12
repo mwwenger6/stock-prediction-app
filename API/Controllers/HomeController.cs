@@ -75,13 +75,14 @@ namespace Stock_Prediction_API.Controllers
             {
                 User user = _GetDataTools.GetUser(email);
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
-        
-                // Use BCrypt.Verify to check the password against the hashed password stored in the database
-                if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+
+                // Decode the stored password from Base64 and check it against the provided password
+                string storedPassword = Base64Converter.FromBase64(user.Password);
+                if (storedPassword != password)
                 {
                     throw new InvalidDataException("Could not authenticate");
                 }
-        
+
                 return Json(user);
             }
             catch (InvalidDataException ex)
@@ -103,6 +104,7 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
+
 
 
         //Add user by sending url /Home/AddUser/?email={email}&password={password}

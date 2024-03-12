@@ -176,10 +176,12 @@ namespace Stock_Prediction_API.Services
         public void AddUser(User user)
         {
             using var tempContext = GetNewDBContext();
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password); // Hash password before saving
+            // Encode password with Base64 before saving
+            user.Password = Base64Converter.ToBase64(user.Password);
             tempContext.Users.Add(user);
             tempContext.SaveChanges();
         }
+
         public void AddUserWatchlistStock(UserWatchlistStocks stock)
         {
             using var tempContext = GetNewDBContext();

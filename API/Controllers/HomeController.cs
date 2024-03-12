@@ -759,12 +759,12 @@ namespace Stock_Prediction_API.Controllers
         //    }
         //}
 
-        [HttpGet("/Home/GetPredictions/{ticker}/{date}")]
-        public IActionResult GetPredictions(string ticker, DateTime date)
+        [HttpGet("/Home/GetPredictions/{ticker}")]
+        public IActionResult GetPredictions(string ticker)
         {
             try
             {
-                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker).ToList();
+                List<float> predictions = _GetDataTools.GetStockPredictions(ticker).ToList();
                 return Json(predictions);
             }
             catch (Exception ex)

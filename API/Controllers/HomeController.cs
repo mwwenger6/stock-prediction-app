@@ -682,8 +682,6 @@ namespace Stock_Prediction_API.Controllers
                 //if (!(dateTime.DayOfWeek >= DayOfWeek.Monday && dateTime.DayOfWeek <= DayOfWeek.Friday &&
                 //   dateTime.Hour >= 9 && dateTime.Hour <= 15 && (dateTime.Hour != 9 || dateTime.Minute >= 30)))
                 //    return Ok("Market closed, no new predictions");
-
-                _GetDataTools.ClearStockPredictions();
                 List<StockPrediction> batchPredictions = new();
                 float[] predictions = Predict(ticker, 90);
                 if (predictions != null)
@@ -761,12 +759,12 @@ namespace Stock_Prediction_API.Controllers
         //    }
         //}
 
-        [HttpGet("/Home/GetPredictions/{ticker}/{date}")]
-        public IActionResult GetPredictions(string ticker, DateTime date)
+        [HttpGet("/Home/GetPredictions/{ticker}")]
+        public IActionResult GetPredictions(string ticker)
         {
             try
             {
-                List<StockPrediction> predictions = _GetDataTools.GetStockPredictions(ticker).ToList();
+                List<float> predictions = _GetDataTools.GetStockPredictions(ticker).ToList();
                 return Json(predictions);
             }
             catch (Exception ex)

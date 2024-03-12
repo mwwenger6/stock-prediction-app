@@ -64,11 +64,12 @@ namespace Stock_Prediction_API.Services
                 .Where(u => u.Email == email).Single();
         }
 
-        public IQueryable<StockPrediction> GetStockPredictions(string ticker)
+        public IQueryable<float> GetStockPredictions(string ticker)
         {
             return dbContext.StockPredictions
                 .Where(spred => spred.Ticker == ticker)
-                .OrderByDescending(spred => spred.PredictionOrder);
+                .OrderBy(spred => spred.PredictionOrder)
+                .Select(spred => spred.PredictedPrice);
         }
 
         #endregion

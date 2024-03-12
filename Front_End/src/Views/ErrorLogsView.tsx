@@ -9,14 +9,20 @@ const ErrorLogsView: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const logs = await getErrorLogs();
+      let logs = await getErrorLogs();
+  
+      // Sort logs by createdAt in descending order
+      logs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  
       setErrorLogs(logs);
+  
       const users = await getUsers(); // Fetch users
       setUsers(users);
     };
-
+  
     fetchData();
   }, []);
+  
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}> {/* Adjust layout as needed */}

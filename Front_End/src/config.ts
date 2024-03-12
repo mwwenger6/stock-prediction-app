@@ -7,6 +7,7 @@ const endpoints = {
     authUser: (email : string , password : string) => `${API_BASE_URL}/Home/AuthenticateUser/${email}/${password}`,
     addUser: `${API_BASE_URL}/Home/AddUser`,
     getUsers: `${API_BASE_URL}/Home/GetUsers`,
+    verifyUser: (code : string) => `${API_BASE_URL}/Home/VerifyUser/${code}`,
     addUserWatchlistStock: (id : number, ticker : string) => `${API_BASE_URL}/Home/AddUserWatchlistStock/${id}/${ticker}`,
     removeUserWatchlistStock: (id : number, ticker : string) => `${API_BASE_URL}/Home/RemoveUserWatchlistStock/${id}/${ticker}`,
     getUserWatchlistStocks: (id : number) => `${API_BASE_URL}/Home/GetUserWatchlistStocks/${id}`,

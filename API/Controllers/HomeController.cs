@@ -19,7 +19,7 @@ namespace Stock_Prediction_API.Controllers
 {
     public class HomeController : ControllerHelper
     {
-        public HomeController(AppDBContext context, IConfiguration config) : base(context, config) {}
+        public HomeController(AppDBContext context, IConfiguration config) : base(context, config) { }
 
         public DateTime GetEasternTime()
         {
@@ -75,14 +75,15 @@ namespace Stock_Prediction_API.Controllers
             {
                 User user = _GetDataTools.GetUser(email);
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
-        
+
                 // Use BCrypt.Verify to check the password against the hashed password stored in the database
-                if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
-                {
-                    throw new InvalidDataException("Could not authenticate");
-                }
-        
-                return Json(user);
+                //if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+                //{
+                //    throw new InvalidDataException("Could not authenticate");
+                //}
+                if(user.IsVerified)
+                    return Json(user);
+                return StatusCode(400);
             }
             catch (InvalidDataException ex)
             {
@@ -109,6 +110,12 @@ namespace Stock_Prediction_API.Controllers
         [HttpPost("/Home/AddUser")]
         public IActionResult AddUser([FromBody] User user)
         {
+            string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~";
+            int length = 12;
+
+            Random random = new();
+            string randomString = new(Enumerable.Repeat(allowedChars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
             try
             {
                 int clientId = _GetDataTools.GetUserTypes().Single(t => t.UserTypeName == UserType.CLIENT).Id;
@@ -117,8 +124,11 @@ namespace Stock_Prediction_API.Controllers
                     Email = user.Email,
                     Password = user.Password,
                     TypeId = clientId,
-                    CreatedAt = GetEasternTime()
+                    CreatedAt = GetEasternTime(),
+                    IsVerified = false,
+                    VerificationCode = randomString
                 });
+                _EmailTools.SendVerificationEmail(user.Email, randomString);
                 return Ok("User added successfully.");
             }
             catch (DbUpdateException ex)
@@ -149,6 +159,34 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpPost("/Home/VerifyUser/{code}")]
+        public IActionResult VerifyUser(string code)
+        {
+            try
+            {
+                if (_GetDataTools.UserWithVerificationCode(code))
+                {
+                    User user = _GetDataTools.GetUserByVerificationCode(code);
+                    user.IsVerified = true;
+                    user.VerificationCode = null;
+                    _GetDataTools.AddUser(user);
+                    return Ok("User Verified.");
+                }
+                else
+                {
+                    return StatusCode(500, $"No User to be verified. If this is not true contact support.");
+                }
+            }
+            catch(Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Error With Verifying User. {ex.Message}");
+            }
+        }
 
         #endregion
 

@@ -72,6 +72,15 @@ namespace Stock_Prediction_API.Services
                 .Select(spred => spred.PredictedPrice);
         }
 
+        public bool UserWithVerificationCode(string code)
+        {
+            return dbContext.Users.Any(u => u.VerificationCode == code);
+        }
+        public User GetUserByVerificationCode(string code)
+        {
+            return dbContext.Users.Where(u => u.VerificationCode == code).FirstOrDefault();
+        }
+
         #endregion
 
         //Modifiers
@@ -177,8 +186,19 @@ namespace Stock_Prediction_API.Services
         {
             using var tempContext = GetNewDBContext();
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password); // Hash password before saving
-            tempContext.Users.Add(user);
-            tempContext.SaveChanges();
+            if(tempContext.Users.Any(u => u.Id == user.Id))
+            {
+                tempContext.Users.Where(u => u.Id == user.Id)
+                    .ExecuteUpdate(u => u
+                        .SetProperty(u => u.IsVerified, user.IsVerified)
+                        .SetProperty(u => u.VerificationCode, user.VerificationCode)
+                    );
+            }
+            else
+            {
+                tempContext.Users.Add(user);
+                tempContext.SaveChanges();
+            }
         }
         public void AddUserWatchlistStock(UserWatchlistStocks stock)
         {

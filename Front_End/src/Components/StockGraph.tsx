@@ -109,7 +109,7 @@ const StockGraph = (props : StockGraphProps) => {
                 // If showing a prediction, add the new values to the graph, and set the interval to the last month
                 if (showPrediction) {
                     //Get the predicted prices and update the prices array
-                    newPrices = [187.21963297489884, 188.58384940643663, 187.93998478984298, 189.11436896160262, 188.84965260994042, 187.36609984619832, 185.77344074321073, 186.98540281739267, 184.24540856785242, 188.29042658050895, 191.04728061924155, 181.56758224364995, 192.50320017491174, 191.0724684106699, 192.97252997139736, 193.0672898663342, 193.69445772151175, 192.57864127836467, 190.71306009231097, 188.21145320857093, 182.39096761317484, 184.29850128031308, 186.16351186914994, 185.53661572693278, 186.27703354400185, 185.10228255974567, 185.7324936000796, 180.93893355283825, 182.59532293068588, 184.68495862387908];
+                    newPrices = await fetch(endpoints.getPredictions(props.symbol)).then(response => response.json());
 
                     //Get the next newPrice.length open market days and update dates array
                     const json = await fetch(endpoints.getOpenMarketDays(newPrices.length)).then(response => response.json());

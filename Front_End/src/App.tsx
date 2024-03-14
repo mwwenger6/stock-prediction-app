@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
+import VerificationView from "./Views/EmailVerifiedView";
 import NewsView from './Views/NewsView';
 import LoginView from './Views/LoginView';
 import StockGraphView from './Views/StockGraphView';
@@ -9,7 +10,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from "./Interfaces/User"
 import Stock from "./Interfaces/Stock";
 import TickerScroller from "./Components/TickerScroller";
-import ErrorLogsView from './Views/ErrorLogsView';
+import AccountView from './Views/AccountView';
+import AdminView from './Views/AdminView';
 import GetFeaturedStocks from "./Services/GetFeaturedStocks";
 import GetWatchListStocks from "./Services/GetWatchListStocks";
 
@@ -88,12 +90,14 @@ function App() {
     <div className="App">
       <TickerScroller featuredStocks={featuredStocks}/>
       <BrowserRouter>
-        <AppNavbar user={user} setUser={setUser}/>
+        <AppNavbar user={ user } setUser={setUser}/>
         <Routes>
           <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
+          <Route path="Verification/:code" element= {<VerificationView/> } />
           <Route path="News" element = { <NewsView /> } />
           <Route path="Login" element = { <LoginView/> } />
-          <Route path="Admin/ErrorLogs" element={<ErrorLogsView />} />
+          <Route path="Settings/Account" element={<AccountView user={user} />} />
+          <Route path="Settings/Admin" element={<AdminView />} />
           <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchUserWatchList() }/> } />
         </Routes>
       </BrowserRouter>

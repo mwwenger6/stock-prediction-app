@@ -74,12 +74,6 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                _GetDataTools.LogError(new()
-                {
-                    Message = $"Attempting to authenticate user: {email}",
-                    CreatedAt = GetEasternTime(),
-                });
-        
                 User user = _GetDataTools.GetUser(email);
                 
                 if (user == null)
@@ -93,7 +87,7 @@ namespace Stock_Prediction_API.Controllers
                 }
         
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
-        
+
                 if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
                 {
                     _GetDataTools.LogError(new()
@@ -103,7 +97,7 @@ namespace Stock_Prediction_API.Controllers
                     });
                     return StatusCode(401, "Invalid credentials.");
                 }
-                
+
                 if (!user.IsVerified)
                 {
                     _GetDataTools.LogError(new()

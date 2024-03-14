@@ -74,23 +74,53 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
+                _GetDataTools.LogError(new()
+                {
+                    Message = $"Attempting to authenticate user: {email}",
+                    CreatedAt = GetEasternTime(),
+                });
+        
                 User user = _GetDataTools.GetUser(email);
+                
+                if (user == null)
+                {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = $"User not found: {email}",
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(404, "User not found.");
+                }
+        
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
-
-                // Use BCrypt.Net.BCrypt.Verify to check the password against the hashed password stored in the database
+        
                 if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
                 {
-                    throw new InvalidDataException("Could not authenticate");
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = $"Invalid password attempt for user: {email}",
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(401, "Invalid credentials.");
                 }
-                if (user.IsVerified)
-                    return Json(user);
-                return StatusCode(400);
+                
+                if (!user.IsVerified)
+                {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = $"User not verified: {email}",
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(403, "User not verified.");
+                }
+        
+                return Json(user);
             }
             catch (InvalidDataException ex)
             {
                 _GetDataTools.LogError(new()
                 {
-                    Message = ex.Message,
+                    Message = $"Authentication error for {email}: {ex.Message}",
                     CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(401, ex.Message);
@@ -99,12 +129,13 @@ namespace Stock_Prediction_API.Controllers
             {
                 _GetDataTools.LogError(new()
                 {
-                    Message = ex.Message,
+                    Message = $"Unexpected error during authentication for {email}: {ex.Message}",
                     CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
+
 
 
 

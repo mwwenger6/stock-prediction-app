@@ -20,6 +20,14 @@
   background-color: #4d4d4d;
 }
 
+.eyeIcon {
+  cursor: pointer;
+}
+
+.eyeIcon:hover {
+  color: darkgrey; /* Change color on hover if desired */
+}
+
 @media (min-width: 992px) {
   .border-lg-end {
     border-right: 1px solid #222222 !important;

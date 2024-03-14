@@ -18,7 +18,7 @@ namespace Stock_Prediction_API.Controllers
         public readonly TwelveDataTools _TwelveDataTools;
         public readonly FinnhubAPITools _FinnhubDataTools;
         public readonly EmailTools _EmailTools;
-        public ControllerHelper(AppDBContext context, IConfiguration config) : base()
+        public ControllerHelper(AppDBContext context, IConfiguration config, IWebHostEnvironment web) : base()
         {
             _dbContext = context;
             string activeConnectionString = config.GetValue<string>("ConnectionStrings:ActiveDBString");
@@ -29,7 +29,7 @@ namespace Stock_Prediction_API.Controllers
             _GetDataTools = new dbTools(context, _dbContextOptions);
             _FinnhubDataTools = new(config);
             _TwelveDataTools = new(config);
-            _EmailTools = new(config);
+            _EmailTools = new(config, web);
         }
     }
 }

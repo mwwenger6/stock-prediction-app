@@ -19,7 +19,7 @@ namespace Stock_Prediction_API.Controllers
 {
     public class HomeController : ControllerHelper
     {
-        public HomeController(AppDBContext context, IConfiguration config) : base(context, config) { }
+        public HomeController(AppDBContext context, IConfiguration config, IWebHostEnvironment web) : base(context, config, web) { }
 
         public DateTime GetEasternTime()
         {
@@ -108,7 +108,24 @@ namespace Stock_Prediction_API.Controllers
 
 
 
-
+        [HttpPost("/Home/DeleteUser/{email}")]
+        public IActionResult DeleteUser(string email)
+        {
+            try
+            {
+                _GetDataTools.DeleteUser(email);
+                return Ok("User is deleted");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not delete user. {ex.Message}");
+            }
+        }
 
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
         [HttpPost("/Home/AddUser")]
@@ -132,8 +149,6 @@ namespace Stock_Prediction_API.Controllers
                     IsVerified = false,
                     VerificationCode = randomString
                 });
-                _EmailTools.SendVerificationEmail(user.Email, randomString);
-                return Ok("User added successfully.");
             }
             catch (DbUpdateException ex)
             {
@@ -160,6 +175,20 @@ namespace Stock_Prediction_API.Controllers
                     CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Internal server error. {ex.Message}");
+            }
+            try
+            {
+                _EmailTools.SendVerificationEmail(user.Email, randomString);
+                return Ok("User added successfully.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Error Sending Email. {ex.Message}");
             }
         }
 

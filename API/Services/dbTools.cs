@@ -85,6 +85,17 @@ namespace Stock_Prediction_API.Services
 
         //Modifiers
         #region Modifiers
+        public void DeleteUser(string email)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.Users.Any(s => s.Email == email))
+            {
+                tempContext.Users
+                    .Where(s => s.Email == email)
+                    .ExecuteDelete();
+                return;
+            }
+        }
         public void AddStock(Stock stock)
         {
             using var tempContext = GetNewDBContext();

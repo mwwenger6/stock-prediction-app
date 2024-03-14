@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
+import VerificationView from "./Views/EmailVerifiedView";
 import NewsView from './Views/NewsView';
 import LoginView from './Views/LoginView';
 import StockGraphView from './Views/StockGraphView';
@@ -92,6 +93,7 @@ function App() {
         <AppNavbar user={ user } setUser={setUser}/>
         <Routes>
           <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
+          <Route path="Verification/:code" element= {<VerificationView/> } />
           <Route path="News" element = { <NewsView /> } />
           <Route path="Login" element = { <LoginView/> } />
           <Route path="Settings/Account" element={<AccountView user={user} />} />

@@ -12,7 +12,6 @@ using System.Diagnostics;
 using System.Text.Json;
 //using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
-using BCrypt.Net;
 
 
 namespace Stock_Prediction_API.Controllers

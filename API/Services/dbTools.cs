@@ -188,7 +188,9 @@ namespace Stock_Prediction_API.Services
         {
         using var tempContext = GetNewDBContext();
             // Hash password with BCrypt before saving
+            Console.WriteLine("Before hashing: " + user.Password);
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            Console.WriteLine("After hashing: " + user.Password);
             if (tempContext.Users.Any(u => u.Id == user.Id))
         {
             tempContext.Users.Where(u => u.Id == user.Id)

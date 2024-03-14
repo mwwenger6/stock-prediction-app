@@ -32,7 +32,7 @@ namespace Stock_Prediction_API.Services
         public void SendVerificationEmail(string toEmail, string code)
         {
             string emailBody = File.ReadAllText(emailVerificationFilePath);
-            string verificationLink = "https://stockgenie.net/" + code;
+            string verificationLink = "https://stockgenie.net/Verification/" + code;
             emailBody = emailBody.Replace("{viewingLink}", verificationLink);
 
             MailMessage mailMessage = new()
@@ -43,16 +43,7 @@ namespace Stock_Prediction_API.Services
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(toEmail);
-
-            try
-            {
-                client.Send(mailMessage);
-                Console.WriteLine("Verification email sent successfully");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to send verification email. Exception: {ex.Message}");
-            }
+            client.Send(mailMessage);
         }
     }
 }

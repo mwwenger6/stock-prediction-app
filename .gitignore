@@ -145,3 +145,9 @@ $RECYCLE.BIN/
 /API/obj/Release/net7.0/Stock-Prediction-API.csproj.FileListAbsolute.txt
 /API/Properties/PublishProfiles/stockgenieapi - FTP.pubxml.user
 /API/Stock-Prediction-API.csproj.user
+/API/bin/Release/net7.0/appsettings.json
+/API/obj/Release/net7.0/PubTmp/Out/appsettings.json
+/API/obj/Release/net7.0/PubTmp/Stock-Prediction-API.SourceManifest.xml
+/API/obj/Release/net7.0/PubTmp/Stock-Prediction-API.Parameters.xml
+*.pubxml
+*.json

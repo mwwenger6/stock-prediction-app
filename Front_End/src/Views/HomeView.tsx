@@ -16,31 +16,29 @@ function HomeView (props : HomeViewProps) {
     const loggedIn = props.user != null;
 
     return(
-        <div className="m-2">
-            <div className="row m-3">
-                <div className="col-lg-12"> {/* full width for Featured Stocks */}
-                    <div className="floatingDiv"> 
-                        <h3> {loggedIn ? "Watchlist Stocks" : "Featured Stocks" }</h3>
-                        <hr className={"my-1"}/>
-                        <div className="featured-stocks-container">
-                            {props.homeviewStocks.length === 0 ?
-                                <h4 className={"my-3"}> <FaTimes className={"text-danger"}/> Currently No Stocks In Your Watchlist</h4>
-                                :
-                                <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto featuredStockBg">
-                                    <div className="d-flex flex-nowrap">
-                                        {props.homeviewStocks.map((stock, index) => (
-                                            <FeaturedStock key={index} stock={stock} />
-                                        ))}
-                                    </div>
+        <div className="row m-md-2 m-1">
+            <div className="col-lg-12"> {/* full width for Featured Stocks */}
+                <div className="floatingDiv">
+                    <h3> {loggedIn ? "Watchlist Stocks" : "Featured Stocks" }</h3>
+                    <hr className={"my-1"}/>
+                    <div className="featured-stocks-container">
+                        {props.homeviewStocks.length === 0 ?
+                            <h4 className={"my-3"}> <FaTimes className={"text-danger"}/> Currently No Stocks In Your Watchlist</h4>
+                            :
+                            <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto featuredStockBg">
+                                <div className="d-flex flex-nowrap">
+                                    {props.homeviewStocks.map((stock, index) => (
+                                        <FeaturedStock key={index} stock={stock} />
+                                    ))}
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
             {loggedIn ?
-                <div className="row m-2"> {/* new row for Personal Stocks and Your Stocks */}
-                    <div className="col-lg-2 col-sm-12">
+                <div className="row"> {/* new row for Personal Stocks and Your Stocks */}
+                    <div className="col-lg-2 col-sm-12 mt-2">
                         <div className="floatingDiv" style={{maxHeight: '500px'}}>
                             <h3>Personal Stocks</h3>
                             <hr/>
@@ -54,13 +52,13 @@ function HomeView (props : HomeViewProps) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-10 col-sm-12">
+                    <div className="col-lg-10 col-sm-12 mt-2">
                         <PersonalGraph/>
                     </div>
                 </div>
                 :
-                <div className="row m-4">
-                    <div className="floatingDiv">
+                <div className="col">
+                    <div className="floatingDiv my-2">
                         <h3 className="text-center m-3"> Log in/Sign up to access account features</h3>
                     </div>
                 </div>

@@ -5,14 +5,46 @@
   width:100%;
 }
 
-.nav-link-blue-bg {
-  background-color: #234099 !important; /* changed from pruple */
+.nav-link-custom {
   color: white !important; /* text color*/
-  padding: 3px 10px !important; /* padding for better appearance */
-  border-radius: 6px !important; /* rounded corners for a button-like appearance */
-  margin: 0 4px; /* added horizontal margin */
+  padding: 3px 15px !important; /* padding for better appearance */
+  margin: 0 0 !important; /* added horizontal margin */
+  text-decoration: none;
+  display: flex; /* use flexbox */
+  align-items: center; /* vertically center content */
+  justify-content: center; /* horizontally center content */
+  height: 50px; /* set height */
+  transition: background-color 0.3s ease;
+}
+.nav-link-custom:hover{
+  background-color: #4d4d4d;
 }
 
+.eyeIcon {
+  cursor: pointer;
+}
+
+.eyeIcon:hover {
+  color: darkgrey; /* Change color on hover if desired */
+}
+
+@media (min-width: 992px) {
+  .border-lg-end {
+    border-right: 1px solid #222222 !important;
+  }
+  .border-lg-start {
+    border-left: 1px solid #222222  !important;
+  }
+}
+/* For larger screens (remove left border) */
+@media (max-width: 992px) {
+  .border-lg-end {
+    border-right: none !important;
+  }
+  .border-lg-start {
+    border-left: none !important;
+  }
+}
 
 .App-logo {
   height: 40vmin;
@@ -138,4 +170,14 @@
 }
 .hoverable:hover{
   background-color: lightgray;
+}
+
+.navbar {
+  --bs-navbar-padding-x: 0 !important;
+  --bs-navbar-padding-y: 0 !important;
+}
+
+.scrollable-content {
+  overflow: auto; /* This will add scrollbars when needed */
+  max-height: 70vh; /* You can adjust the maximum height as needed */
 }

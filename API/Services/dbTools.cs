@@ -193,25 +193,29 @@ namespace Stock_Prediction_API.Services
             tempContext.Users.Where(u => u.Email == email)
                     .ExecuteUpdate(i => i.SetProperty(u => u.TypeId, newUserTypeId));
         }
+   
+
         public void AddUser(User user)
         {
-            using var tempContext = GetNewDBContext();
-            user.Password = Base64Converter.ToBase64(user.Password);
+        using var tempContext = GetNewDBContext();
+            // Hash password with BCrypt before saving
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             if (tempContext.Users.Any(u => u.Id == user.Id))
-            {
-                tempContext.Users.Where(u => u.Id == user.Id)
-                    .ExecuteUpdate(u => u
-                        .SetProperty(u => u.IsVerified, user.IsVerified)
-                        .SetProperty(u => u.VerificationCode, user.VerificationCode)
-                    );
-            }
-            else
-            {
-                tempContext.Users.Add(user);
-                tempContext.SaveChanges();
-            }
+        {
+            tempContext.Users.Where(u => u.Id == user.Id)
+                .ExecuteUpdate(u => u
+                    .SetProperty(u => u.IsVerified, user.IsVerified)
+                    .SetProperty(u => u.VerificationCode, user.VerificationCode)
+                );
         }
-        public void AddUserWatchlistStock(UserWatchlistStocks stock)
+        else
+        {
+            tempContext.Users.Add(user);
+            tempContext.SaveChanges();
+        }
+        }
+
+    public void AddUserWatchlistStock(UserWatchlistStocks stock)
         {
             using var tempContext = GetNewDBContext();
             tempContext.UserWatchlistStocks.Add(stock);

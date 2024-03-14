@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Merge and try to fix config file">
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Changes made to stock graph and stock graph view UI">
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Views/AccountView.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front_End/src/Views/AdminView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockStats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Services/GetTimeSeriesData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Services/GetTimeSeriesData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/StockGraphView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/ErrorLogsView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/HomeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,31 +63,36 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2ZHZ6mLqIQ3rGtdmxmA3nAo3upg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jacob Bianco\\WebstormProjects\\stock-prediction-app\\Front_End\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "C:\\Users\\Jacob Bianco\\WebstormProjects\\stock-prediction-app\\Front_End\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jacob Bianco\WebstormProjects\stock-prediction-app\Front_End\src\Views" />
       <recent name="C:\Users\Jacob Bianco\WebstormProjects\stock-prediction-app\Front_End\src\Views\Modals" />
     </key>
   </component>
@@ -122,7 +134,9 @@
       <workItem from="1709681884724" duration="374000" />
       <workItem from="1709864089908" duration="839000" />
       <workItem from="1709902626464" duration="6538000" />
-      <workItem from="1710084308751" duration="3883000" />
+      <workItem from="1710084308751" duration="4262000" />
+      <workItem from="1710210244446" duration="5905000" />
+      <workItem from="1710371234989" duration="8430000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -284,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709962328894</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Changes made to stock graph and stock graph view UI">
+      <option name="closed" value="true" />
+      <created>1710088573759</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1710088573759</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +324,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call." />
     <MESSAGE value="Added download csv button to stock graph screen" />
     <MESSAGE value="Made tweaks to graph view screen" />
@@ -322,6 +345,19 @@
     <MESSAGE value="stock graph doesn't reload on interval change" />
     <MESSAGE value="project calls correct api now" />
     <MESSAGE value="Merge and try to fix config file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge and try to fix config file" />
+    <MESSAGE value="Changes made to stock graph and stock graph view UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes made to stock graph and stock graph view UI" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Front_End/src/Interfaces/ErrorLog.ts</url>
+          <line>3</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

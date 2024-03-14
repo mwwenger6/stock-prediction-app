@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Net;
 using System.IO;
+using System.Net;
 using System.Net.Mail;
 using Microsoft.Extensions.Configuration;
 
@@ -12,28 +12,27 @@ namespace Stock_Prediction_API.Services
         private readonly string senderEmail, senderPassword, emailVerificationFilePath;
         private readonly SmtpClient client;
 
-        public EmailTools(IConfiguration config)
+        public EmailTools(IConfiguration config, IWebHostEnvironment env)
         {
             _config = config;
             senderEmail = _config.GetValue<string>("GoogleEmail:Email");
             senderPassword = _config.GetValue<string>("GoogleEmail:Password");
-            emailVerificationFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Emails", "EmailVerification.html");
+            emailVerificationFilePath = Path.Combine(env.WebRootPath, "Emails", "EmailVerification.html");
 
-            // Update SMTP settings for Gmail
             client = new SmtpClient
             {
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(senderEmail, senderPassword),
-                Host = "smtp.gmail.com", // Gmail SMTP server
+                Host = "smtp.gmail.com",
                 EnableSsl = true,
-                Port = 587 // Use 587 for TLS
+                Port = 587
             };
         }
 
         public void SendVerificationEmail(string toEmail, string code)
         {
             string emailBody = File.ReadAllText(emailVerificationFilePath);
-            string verificationLink = "https://stockgenie.net/EmailVerification/" + code;
+            string verificationLink = "https://stockgenie.net/" + code;
             emailBody = emailBody.Replace("{viewingLink}", verificationLink);
 
             MailMessage mailMessage = new()
@@ -44,7 +43,16 @@ namespace Stock_Prediction_API.Services
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(toEmail);
-            client.Send(mailMessage);
+
+            try
+            {
+                client.Send(mailMessage);
+                Console.WriteLine("Verification email sent successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send verification email. Exception: {ex.Message}");
+            }
         }
     }
 }

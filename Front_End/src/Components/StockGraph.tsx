@@ -8,6 +8,7 @@ import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
 import config from "../config";
+import ReactSlider from 'react-slider';
 
 
 interface StockGraphProps {
@@ -36,6 +37,7 @@ const StockGraph = (props : StockGraphProps) => {
     const [showPrediction, setShowPrediction] = useState(false)
     const [predictions, setPredictions] = useState([]);
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
+    const [predictionRange, setPredictionRange] = useState(90)
 
     function getFormattedDate(datetime: string | Date){
         let year : any = 'numeric';
@@ -55,31 +57,15 @@ const StockGraph = (props : StockGraphProps) => {
     }
 
     useEffect(() => {
-        if(props.symbol === undefined) return
+        setPredictionRange(predictionRange);
+    }, [predictionRange]);
 
-        // tests predictions from our API. Simply logs the json response
-        // to the console  
-        const fetchPredictions = async () => {
-        
-            // try {
-            //     const response = await fetch(endpoints.predict(props.symbol, 30));
-            //     const jsonData = await response.json();
-            //     setPredictions(jsonData);
-            //     console.log(jsonData);
-            //
-            // }
-            // catch (error) {
-            //     console.error('Error fetching predictions:', error);
-            //     setShowError(true);
-            // }
-        };
-
-
-        if(props.isFeatured){
-            console.log("Fetching predictions for " + props.symbol);
-            fetchPredictions();
+    const handleSliderChange = (newValue: number, onChange: (value: number) => void) => {
+        setPredictionRange(newValue);
+        if (onChange) {
+            onChange(newValue);
         }
-    },[])
+    };
 
     useEffect(() => {
 
@@ -119,6 +105,10 @@ const StockGraph = (props : StockGraphProps) => {
                     for (let i = 0; i < initPrices.length - 1; i++) {
                         placeholders.push('-');
                     }
+
+                    // store only the amount determined by prediction range
+                    newPrices = newPrices.slice(0, predictionRange);
+                    newDates = newDates.slice(0, predictionRange);
                 }
 
                 var combinedPrices = [...initPrices, ...newPrices];
@@ -269,6 +259,17 @@ const StockGraph = (props : StockGraphProps) => {
                   Show Prediction
               </Button>
           </div>
+          <div className='col-auto'>
+            <input
+                type="range"
+                min={1}
+                max={90}
+                step={1}
+                value={predictionRange}
+                onChange={(event) => handleSliderChange(Number(event.target.value), setPredictionRange)}
+            />
+            <div className="slider-value">Prediction Range: {predictionRange}</div>
+        </div>
       </div>
       <div className='row mt-3 justify-content-center mb-2'>
         <div className='col-auto'>

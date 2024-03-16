@@ -56,6 +56,11 @@ const AdminView: React.FC = () => {
             sortable: false,
         },
         {
+          name: 'Is Verified',
+          selector: (row: User) => row.isVerified,
+          sortable: false,
+        },
+        {
             name: 'Account Type Id',
             selector: (row: User) => row.typeId,
             sortable: true,

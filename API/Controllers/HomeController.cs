@@ -65,7 +65,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error Getting User. {ex.Message}");
             }
         }
 
@@ -78,11 +78,11 @@ namespace Stock_Prediction_API.Controllers
                 
                 if (user == null)
                 {
-                    _GetDataTools.LogError(new()
-                    {
-                        Message = $"User not found: {email}",
-                        CreatedAt = GetEasternTime(),
-                    });
+                    //_GetDataTools.LogError(new()
+                    //{
+                    //    Message = $"User not found: {email}",
+                    //    CreatedAt = GetEasternTime(),
+                    //});
                     return StatusCode(404, "User not found.");
                 }
         
@@ -90,21 +90,21 @@ namespace Stock_Prediction_API.Controllers
 
                 if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
                 {
-                    _GetDataTools.LogError(new()
-                    {
-                        Message = $"Invalid password attempt for user: {email}",
-                        CreatedAt = GetEasternTime(),
-                    });
+                    //_GetDataTools.LogError(new()
+                    //{
+                    //    Message = $"Invalid password attempt for user: {email}",
+                    //    CreatedAt = GetEasternTime(),
+                    //});
                     return StatusCode(401, "Invalid credentials.");
                 }
 
                 if (!user.IsVerified)
                 {
-                    _GetDataTools.LogError(new()
-                    {
-                        Message = $"User not verified: {email}",
-                        CreatedAt = GetEasternTime(),
-                    });
+                    //_GetDataTools.LogError(new()
+                    //{
+                    //    Message = $"User not verified: {email}",
+                    //    CreatedAt = GetEasternTime(),
+                    //});
                     return StatusCode(403, "User not verified.");
                 }
         
@@ -126,7 +126,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = $"Unexpected error during authentication for {email}: {ex.Message}",
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error authenticating user. {ex.Message}");
             }
         }
 
@@ -199,7 +199,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error Adding User to DB. {ex.Message}");
             }
             try
             {
@@ -271,7 +271,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting historical stock prices from DB. {ex.Message}");
             }
         }
 
@@ -295,7 +295,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
             }
         }
 
@@ -353,7 +353,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error when adding recent stock prices to DB. {ex.Message}");
             }
         }
         [HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
@@ -396,7 +396,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem adding historical data to DB. {ex.Message}");
             }
         }
 
@@ -418,7 +418,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Error getting stocks.");
+                return StatusCode(500, $"Problem getting Stocks from DB.");
             }                  
         }
 
@@ -442,7 +442,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting stock {ticker}. {ex.Message}");
             }
         }
 
@@ -468,7 +468,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = dateTime,
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add stock {ticker}. {ex.Message}");
             }
         }
         [HttpPost("/Home/RemoveStock/{ticker}")]
@@ -486,7 +486,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not remove stock {ticker}. {ex.Message}");
             }
         }
 
@@ -541,7 +541,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add stock to watch list; stock: {ticker}, user: {userId}. {ex.Message}");
             }
         }
 
@@ -561,7 +561,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem removing {ticker} from user's watch list; User: {userId}. {ex.Message}");
             }
         }
 
@@ -587,7 +587,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting user's watchlist stocks; User: {userId}. {ex.Message}");
             }
         }
 
@@ -611,7 +611,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Error getting error logs.");
+                return StatusCode(500, $"Problem getting error logs.");
             }
         }
 
@@ -640,7 +640,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not change user type. {ex.Message}");
             }
         }
 
@@ -660,7 +660,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add market holiday. {ex.Message}");
             }
         }
 
@@ -713,7 +713,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem training model for {ticker}. {ex.Message}");
             }
         }
 

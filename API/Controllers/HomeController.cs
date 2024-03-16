@@ -514,6 +514,18 @@ namespace Stock_Prediction_API.Controllers
             return Json(tradingDays);
         }
 
+        private void StockEmailHelper(string email, string ticker, bool isIncreasing)
+        {
+            StockEmailViewModel vm = new()
+            {
+                Email = email,
+                Ticker = ticker,
+                Indication = isIncreasing ? "RISE" : "DECLINE",
+                StockName = _GetDataTools.GetStock(ticker).Name,
+            };
+            _EmailTools.SendStockEmail(vm);
+        }
+
         #endregion
 
         #region WatchList

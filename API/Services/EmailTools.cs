@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using Microsoft.Extensions.Configuration;
+using Stock_Prediction_API.ViewModel;
 
 namespace Stock_Prediction_API.Services
 {
@@ -43,6 +44,26 @@ namespace Stock_Prediction_API.Services
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(toEmail);
+            client.Send(mailMessage);
+        }
+
+        public void SendStockEmail(StockEmailViewModel model)
+        {
+            string emailBody = File.ReadAllText(emailVerificationFilePath);
+            string stockLink = "https://stockgenie.net/Stock/" + model.Ticker;
+            emailBody = emailBody.Replace("{viewingLink}", stockLink)
+                .Replace("{stockName}", model.StockName)
+                .Replace("{ticker}", model.Ticker)
+                .Replace("{indication}", model.Indication);
+
+            MailMessage mailMessage = new()
+            {
+                From = new MailAddress(senderEmail),
+                Subject = $"{model.Ticker} IS ON THE MOVE",
+                Body = emailBody,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(model.Email);
             client.Send(mailMessage);
         }
     }

@@ -58,6 +58,14 @@ namespace Stock_Prediction_API.Services
             else
                 return dbContext.FMStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
         }
+
+        public IQueryable<StockPrice> GetStockPrices(string ticker, DateTime date)
+        {
+            return dbContext.EODStockPrices
+                .Where(sp => sp.Ticker == ticker && sp.Time >= date)
+                .OrderByDescending(sp => sp.Time);
+        }
+
         public User GetUser(string email)
         {
             return dbContext.Users
@@ -81,6 +89,10 @@ namespace Stock_Prediction_API.Services
             return dbContext.Users.Where(u => u.VerificationCode == code).FirstOrDefault();
         }
 
+        public IQueryable<UserStock> GetUserStocks(int userId)
+        {
+            return dbContext.UserStocks.Where(u => u.UserId == userId);
+        }
         #endregion
 
         //Modifiers
@@ -112,6 +124,42 @@ namespace Stock_Prediction_API.Services
             tempContext.Stocks.Add(stock);
             tempContext.SaveChanges();
         }
+
+        public void AddUserStock(UserStock stock)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.UserStocks.Any(s => s.Ticker == stock.Ticker))
+            {
+                if (stock.Quantity < 0) return;
+                if (stock.Quantity == 0)
+                {
+                    tempContext.UserStocks
+                        .Where(s => s.Ticker == stock.Ticker)
+                        .ExecuteDelete();
+                    return;
+                }
+                tempContext.UserStocks
+                    .Where(s => s.Ticker == stock.Ticker)
+                    .ExecuteUpdate(i => i
+                        .SetProperty(t => t.Quantity, stock.Quantity)
+                    );
+                return;
+            }
+            if (stock.Quantity <= 0) return;
+            tempContext.UserStocks.Add(stock);
+            tempContext.SaveChanges();
+        }
+        public void RemoveUserStock(UserStock stock)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.UserStocks.Any(s => s.Ticker == stock.Ticker))
+                tempContext.UserStocks
+                    .Where(s => s.Ticker == stock.Ticker)
+                    .ExecuteDelete();
+            else
+                throw new Exception("User does not have any shares of that stock.");
+        }
+
         public void UpdateStockPrice(Stock stock)
         {
             using var tempContext = GetNewDBContext();

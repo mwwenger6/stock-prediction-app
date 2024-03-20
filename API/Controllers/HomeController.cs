@@ -13,6 +13,7 @@ using System.Text.Json;
 //using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 using BCrypt.Net;
+using System.Globalization;
 
 
 namespace Stock_Prediction_API.Controllers
@@ -78,11 +79,6 @@ namespace Stock_Prediction_API.Controllers
                 
                 if (user == null)
                 {
-                    //_GetDataTools.LogError(new()
-                    //{
-                    //    Message = $"User not found: {email}",
-                    //    CreatedAt = GetEasternTime(),
-                    //});
                     return StatusCode(404, "User not found.");
                 }
         
@@ -90,21 +86,11 @@ namespace Stock_Prediction_API.Controllers
 
                 if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
                 {
-                    //_GetDataTools.LogError(new()
-                    //{
-                    //    Message = $"Invalid password attempt for user: {email}",
-                    //    CreatedAt = GetEasternTime(),
-                    //});
                     return StatusCode(401, "Invalid credentials.");
                 }
 
                 if (!user.IsVerified)
                 {
-                    //_GetDataTools.LogError(new()
-                    //{
-                    //    Message = $"User not verified: {email}",
-                    //    CreatedAt = GetEasternTime(),
-                    //});
                     return StatusCode(403, "User not verified.");
                 }
         
@@ -298,6 +284,45 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
             }
         }
+
+        //Ticker must be featured stock, startDate must be in form mmddyyy, interval must be 5min or 1day
+        [HttpGet("/Home/GetStockGraphData/{ticker}/{startDate}/{interval}")]
+        public IActionResult GetStockGraphData(string ticker, string startDate, string interval)
+        {
+            try
+            {
+                if (interval != "5min" && interval != "1day")
+                    return StatusCode(500, $"Invalid interval");
+
+                bool getHistoricalData = interval == "1day";
+
+                // Parse the startDate string to a DateTime object
+                DateTime parsedStartDate;
+                if (!DateTime.TryParseExact(startDate, "MMddyyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedStartDate))
+                    return StatusCode(500, $"Invalid startDate format");
+
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, getHistoricalData)
+                    .Where(s => s.Time >= parsedStartDate)
+                    .ToList();
+
+                if (stockPrices == null || !stockPrices.Any())
+                {
+                    return NotFound("Stock prices not found");
+                }
+
+                return Json(stockPrices);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
+            }
+        }
+
 
         //Called by the background service every 5 mins
         [HttpPost("/Home/AddRecentStockPrices")]

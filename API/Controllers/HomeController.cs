@@ -117,8 +117,6 @@ namespace Stock_Prediction_API.Controllers
         }
 
 
-
-
         [HttpPost("/Home/DeleteUser/{email}")]
         public IActionResult DeleteUser(string email)
         {
@@ -626,6 +624,123 @@ namespace Stock_Prediction_API.Controllers
                 });
                 return StatusCode(500, $"Problem getting user's watchlist stocks; User: {userId}. {ex.Message}");
             }
+        }
+
+
+        #endregion
+
+        #region User Stocks
+
+        [HttpGet("/Home/GetUserStocks/{userId}")]
+        public IActionResult GetUserStocks(int userId)
+        {
+            try
+            {
+                return Json(_GetDataTools.GetUserStocks(userId).ToList());
+            }
+            catch(Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not get user stocks: {userId}. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Home/GetUserStockData/{userId}")]
+        public IActionResult GetUserStockData(int userId)
+        {
+            List<UserStock> userStocks = new();
+            float[]? userStockPrices = null;
+            try
+            {
+                userStocks = _GetDataTools.GetUserStocks(userId).ToList();
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not get user stocks: {userId}. {ex.Message}");
+            }
+            foreach(UserStock userStock in userStocks)
+            {
+
+                List<StockPrice> prices = new();
+                try
+                {
+                    prices = _GetDataTools.GetStockPrices(userStock.Ticker, DateTime.Now.Date).ToList();
+                }
+                catch (Exception ex)
+                {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = ex.Message,
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(500, $"Could not get stock prices for stock: {userStock.Ticker}. {ex.Message}");
+                }
+                int count = 0;
+                userStockPrices ??= new float[prices.Count];
+                foreach(StockPrice stockPrice in prices)
+                {
+                    userStockPrices[count] = stockPrice.Price * userStock.Quantity;
+                    count++;
+                }
+            }
+            return Json(userStockPrices);
+        }
+
+        [HttpPost("/Home/AddUserStock/{userId}/{ticker}/{quantity}")]
+        public IActionResult AddUserStock(int userId, string ticker, float quantity)
+        {
+            try
+            {
+                _GetDataTools.AddUserStock(new UserStock
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                    Quantity = quantity,
+                    CreatedAt = DateTime.Now
+                });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not add Stock to User: {userId}. {ex.Message}");
+            }
+            return Ok("Stock Added Successfully.");
+        }
+
+        [HttpPost("/Home/AddUserStock/{userId}/{ticker}")]
+        public IActionResult RemoveUserStock(int userId, string ticker)
+        {
+            try
+            {
+                _GetDataTools.RemoveUserStock(new UserStock
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not remove Stock for User: {userId}. {ex.Message}");
+            }
+            return Ok("Stock Removed Successfully.");
         }
 
 

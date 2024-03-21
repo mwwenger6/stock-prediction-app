@@ -1,28 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import ErrorLog from "../Interfaces/ErrorLog";
-import User from "../Interfaces/User"; // Import the User interface
-import { getErrorLogs, getUsers } from "../Services/ErrorLogService"; // Ensure getUsers is imported
+import User from "../Interfaces/User";
+import { getErrorLogs, getUsers } from "../Services/ErrorLogService";
 import DataTable from 'react-data-table-component';
 
 const AdminView: React.FC = () => {
   const [errorLogs, setErrorLogs] = useState<ErrorLog[]>([]);
-  const [users, setUsers] = useState<User[]>([]); // Add state for users
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       let logs = await getErrorLogs();
-  
-      // Sort logs by createdAt in descending order
       logs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  
       setErrorLogs(logs);
-  
-      const users = await getUsers(); // Fetch users
+      const users = await getUsers();
       setUsers(users);
     };
-  
     fetchData();
   }, []);
+
+  const removeErrorLog = async (id: number) => {
+    try {
+      const response = await fetch(`/Home/DeleteErrorLog/${id}`, { method: 'DELETE' });
+      if (!response.ok) {
+        throw new Error('Failed to delete the error log.');
+      }
+      // If deletion was successful, update the state to remove the log from the table
+      setErrorLogs(prevLogs => prevLogs.filter(log => log.id !== id));
+    } catch (error) {
+      console.error('Error deleting error log:', error);
+      // Optionally, display an error message to the user
+    }
+  };
+  
+  
+
 
   const errorHeaders = [
       {
@@ -30,6 +42,13 @@ const AdminView: React.FC = () => {
         selector: (row: ErrorLog) => row.id,
         sortable: true,
         width: "100px",
+      },
+      {
+        name: 'Actions',
+        button: true,
+        cell: (row: ErrorLog) => <button onClick={() => removeErrorLog(row.id)}>Remove</button>,
+        ignoreRowClick: true,
+        allowOverflow: true,
       },
       {
         name: 'Message',

@@ -134,3 +134,11 @@ alter table StockPredictions drop column CreatedAt;
 ALTER TABLE Users ADD UserVerified BIT NOT NULL DEFAULT 0;
 ALTER TABLE Users ADD VerificationCode NVARCHAR(12);
 
+CREATE TABLE HistoricalStockPredictions (
+    PredictionId INT AUTO_INCREMENT PRIMARY KEY,
+    Ticker NVARCHAR(10) NOT NULL,
+    PredictedPrice DECIMAL(12,2) NOT NULL,
+    PredictionDate DATE NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_HistoricalStockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
+);

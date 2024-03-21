@@ -283,6 +283,14 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges();
         }
 
+        public void DeleteErrorLog(ErrorLog log)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.ErrorLogs.Remove(log);
+            tempContext.SaveChanges();
+        }
+
+
         public void AddPredictions(List<StockPrediction> predictions)
         {
             using var tempContext = GetNewDBContext();

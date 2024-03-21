@@ -19,9 +19,10 @@ const AdminView: React.FC = () => {
     fetchData();
   }, []);
 
-  const removeErrorLog = async (id: number) => {
+  const removeErrorLog = async (id:number) => {
     try {
-      const response = await fetch(`/Home/DeleteErrorLog/${id}`, { method: 'DELETE' });
+      // Note the change to method: 'POST'
+      const response = await fetch(`/Home/DeleteErrorLog/${id}`, { method: 'POST' });
       if (!response.ok) {
         throw new Error('Failed to delete the error log.');
       }
@@ -31,7 +32,8 @@ const AdminView: React.FC = () => {
       console.error('Error deleting error log:', error);
       // Optionally, display an error message to the user
     }
-  };
+};
+
   
   
 
@@ -45,10 +47,8 @@ const AdminView: React.FC = () => {
       },
       {
         name: 'Actions',
-        button: true,
         cell: (row: ErrorLog) => <button onClick={() => removeErrorLog(row.id)}>Remove</button>,
         ignoreRowClick: true,
-        allowOverflow: true,
       },
       {
         name: 'Message',

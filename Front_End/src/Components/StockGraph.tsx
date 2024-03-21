@@ -261,10 +261,10 @@ const StockGraph = (props : StockGraphProps) => {
                     </div>
                 ) : (<div>
                     <span className={"float-start display-6 mb-2"}> {props.symbol}(<span className={roiColor}>{percentChange}%</span>)</span>
-                    <ReactECharts option={options} />
+                    <ReactECharts option={options} style={{ height: '500px' }} />
                 </div>)
             )}
-            <div className='d-flex row justify-content-center'>
+            <div className='d-flex row justify-content-center' >
                 {intervals.map((interval, i) => (
                     <div className='col-auto' key={i}>
                         <Button

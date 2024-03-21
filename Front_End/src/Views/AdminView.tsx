@@ -22,7 +22,7 @@ const AdminView: React.FC = () => {
   const removeErrorLog = async (id:number) => {
     try {
       // Note the change to method: 'POST'
-      const response = await fetch(`/Home/DeleteErrorLog/${id}`, { method: 'POST' });
+      const response = await fetch(`https://stockrequests.azurewebsites.net/Home/DeleteErrorLog/${id}`, { method: 'POST' });
       if (!response.ok) {
         throw new Error('Failed to delete the error log.');
       }

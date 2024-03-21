@@ -18,5 +18,6 @@ namespace Stock_Prediction_API.Services
         public DbSet<UserWatchlistStocks> UserWatchlistStocks { get; set; }
         public DbSet<StockPrediction> StockPredictions { get; set; }
         public DbSet<MarketHolidays> MarketHolidays { get; set; }
+        public DbSet<SupportedStocks> SupportedStocks { get; set; }
     }
 }

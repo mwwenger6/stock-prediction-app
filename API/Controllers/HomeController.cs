@@ -425,6 +425,46 @@ namespace Stock_Prediction_API.Controllers
 
         #endregion
 
+        [HttpGet("/Home/GetSupportedStocks")]
+        public IActionResult GetSupportedStocks()
+        {
+            try
+            {
+                List<SupportedStocks> stocks = _GetDataTools.GetSupportedStocks();
+                return Json(stocks);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem getting Supported Stocks from DB.");
+            }
+        }
+
+        [HttpGet("/Home/UpdateSupportedStocks")]
+        public IActionResult UpdateSupportedStocks()
+        {
+            try
+            {
+                List<SupportedStocks> stocks = _TwelveDataTools.GetSupportedStockData().Result;
+                int addedCount = stocks.Count();
+                int removedCount = _GetDataTools.RemoveSupportedStocks();
+                _GetDataTools.AddSupportedStocks(stocks);
+                return Json(removedCount + " stocks removed and " + addedCount + " stocks added.");
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem updating Supported Stocks.");
+            }
+        }
 
         [HttpGet("/Home/GetStocks")]
         public IActionResult GetStocks()
@@ -790,6 +830,7 @@ namespace Stock_Prediction_API.Controllers
                 });
                 return StatusCode(500, "Problem deleting the error log.");
             }
+
         }
 
 

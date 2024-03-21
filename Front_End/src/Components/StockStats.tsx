@@ -26,7 +26,7 @@ const StockStats = ({ symbol } : StockGraphProps) => {
         //Fetch price data on load
         const fetchData = async () => {
             try {
-                if(symbol == undefined)
+                if(symbol === undefined)
                     console.error('Invalid stock symbol')
                 else{
                     const stockData = await getPrice(symbol);
@@ -68,7 +68,7 @@ const StockStats = ({ symbol } : StockGraphProps) => {
                     </div>
                     <div className={"d-flex justify-content-between my-1"}>
                         <h3 style={{fontWeight: fw}}>  % Change Today: </h3>
-                        <h3 style={{fontWeight: fw}}>  {data.dp.toFixed(2)}%</h3>
+                        <h3 style={{fontWeight: fw}}>  {data.dp?.toFixed(2)}%</h3>
                     </div>
                 </div>
             </div>

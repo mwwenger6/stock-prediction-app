@@ -8,7 +8,7 @@ CREATE TABLE Users (
     UserId int AUTO_INCREMENT PRIMARY KEY,
     Email nvarchar(63) NOT NULL UNIQUE,
     Password nvarchar(63) NOT NULL,
-    UserTypeId int,  
+    UserTypeId int,     
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -142,3 +142,6 @@ CREATE TABLE HistoricalStockPredictions (
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FK_HistoricalStockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
 );
+
+ALTER TABLE SupportedStocks
+MODIFY COLUMN Name NVARCHAR(200) NOT NULL;

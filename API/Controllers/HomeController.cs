@@ -760,7 +760,7 @@ namespace Stock_Prediction_API.Controllers
             return Ok("Stock Added Successfully.");
         }
 
-        [HttpPost("/Home/AddUserStock/{userId}/{ticker}")]
+        [HttpPost("/Home/RemoveUserStock/{userId}/{ticker}")]
         public IActionResult RemoveUserStock(int userId, string ticker)
         {
             try

@@ -11,6 +11,10 @@ const endpoints = {
     addUserWatchlistStock: (id : number, ticker : string) => `${API_BASE_URL}/Home/AddUserWatchlistStock/${id}/${ticker}`,
     removeUserWatchlistStock: (id : number, ticker : string) => `${API_BASE_URL}/Home/RemoveUserWatchlistStock/${id}/${ticker}`,
     getUserWatchlistStocks: (id : number) => `${API_BASE_URL}/Home/GetUserWatchlistStocks/${id}`,
+    addUserPersonalStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/Home/AddUserStock/${userId}/${ticker}/${quantity}`,
+    getUserStocks: (userId : number) => `${API_BASE_URL}/Home/GetUserStocks/${userId}`,
+    getUserStockData: (userId : number) => `${API_BASE_URL}/Home/GetUserStockData/${userId}`,
+
 
     //Stock Endpoints
     getStocks: `${API_BASE_URL}/Home/GetStocks`,

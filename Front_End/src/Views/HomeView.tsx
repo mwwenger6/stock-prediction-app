@@ -7,7 +7,8 @@ import {FaTimes} from "react-icons/fa";
 
 interface HomeViewProps {
     user: User | null,
-    homeviewStocks: Stock[]
+    homeviewStocks: Stock[],
+    personalStocks: Stock[]
 }
 
 

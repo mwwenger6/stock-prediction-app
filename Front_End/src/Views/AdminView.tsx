@@ -124,7 +124,7 @@ const AdminView: React.FC = () => {
       {/*    </tbody>*/}
       {/*  </table>*/}
       {/*</div>*/}
-        <div className="floatingDiv col-md-9 col-12">
+        <div className="floatingDiv col-md-13 col-12">
           <h3> Error Logs </h3>
           <hr/>
           <DataTable
@@ -135,7 +135,7 @@ const AdminView: React.FC = () => {
           />
         </div>
         <div className="col-md-3 col-12"></div>
-        <div className="floatingDiv col-md-6 col-12 mt-3">
+        <div className="floatingDiv col-md-13 col-12 mt-3">
             <h3> Users </h3>
             <hr/>
             <DataTable

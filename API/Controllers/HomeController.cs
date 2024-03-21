@@ -767,7 +767,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpDelete("/Home/DeleteErrorLog/{id}")]
+        [HttpPost("/Home/DeleteErrorLog/{id}")]
         public IActionResult DeleteErrorLog(int id)
         {
             try
@@ -778,7 +778,7 @@ namespace Stock_Prediction_API.Controllers
                     return NotFound($"Error log with ID {id} not found.");
                 }
 
-                _GetDataTools.DeleteErrorLog(log); // Implement this method in your data tools
+                _GetDataTools.DeleteErrorLog(log); // Assume this method deletes the log
                 return Ok();
             }
             catch (Exception ex)
@@ -786,7 +786,7 @@ namespace Stock_Prediction_API.Controllers
                 _GetDataTools.LogError(new ErrorLog
                 {
                     Message = ex.Message,
-                    CreatedAt = DateTime.UtcNow // Or your GetEasternTime(), depending on your needs
+                    CreatedAt = DateTime.UtcNow // Adjust as needed
                 });
                 return StatusCode(500, "Problem deleting the error log.");
             }

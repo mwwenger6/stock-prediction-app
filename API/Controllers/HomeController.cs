@@ -13,6 +13,7 @@ using System.Text.Json;
 //using Python.Runtime;
 using static Stock_Prediction_API.Services.API_Tools.TwelveDataTools;
 using BCrypt.Net;
+using System.Globalization;
 
 
 namespace Stock_Prediction_API.Controllers
@@ -65,7 +66,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error Getting User. {ex.Message}");
             }
         }
 
@@ -75,22 +76,31 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 User user = _GetDataTools.GetUser(email);
+                
+                if (user == null)
+                {
+                    return StatusCode(404, "User not found.");
+                }
+        
                 user.TypeName = _GetDataTools.GetUserTypes().Single(t => t.Id == user.TypeId).UserTypeName;
 
-                // Use BCrypt.Net.BCrypt.Verify to check the password against the hashed password stored in the database
                 if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
                 {
-                    throw new InvalidDataException("Could not authenticate");
+                    return StatusCode(401, "Invalid credentials.");
                 }
-                if (user.IsVerified)
-                    return Json(user);
-                return StatusCode(400);
+
+                if (!user.IsVerified)
+                {
+                    return StatusCode(403, "User not verified.");
+                }
+        
+                return Json(user);
             }
             catch (InvalidDataException ex)
             {
                 _GetDataTools.LogError(new()
                 {
-                    Message = ex.Message,
+                    Message = $"Authentication error for {email}: {ex.Message}",
                     CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(401, ex.Message);
@@ -99,13 +109,12 @@ namespace Stock_Prediction_API.Controllers
             {
                 _GetDataTools.LogError(new()
                 {
-                    Message = ex.Message,
+                    Message = $"Unexpected error during authentication for {email}: {ex.Message}",
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error authenticating user. {ex.Message}");
             }
         }
-
 
 
         [HttpPost("/Home/DeleteUser/{email}")]
@@ -174,7 +183,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error Adding User to DB. {ex.Message}");
             }
             try
             {
@@ -246,7 +255,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting historical stock prices from DB. {ex.Message}");
             }
         }
 
@@ -270,9 +279,48 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
             }
         }
+
+        //Ticker must be featured stock, startDate must be in form mmddyyy, interval must be 5min or 1day
+        [HttpGet("/Home/GetStockGraphData/{ticker}/{startDate}/{interval}")]
+        public IActionResult GetStockGraphData(string ticker, string startDate, string interval)
+        {
+            try
+            {
+                if (interval != "5min" && interval != "1day")
+                    return StatusCode(500, $"Invalid interval");
+
+                bool getHistoricalData = interval == "1day";
+
+                // Parse the startDate string to a DateTime object
+                DateTime parsedStartDate;
+                if (!DateTime.TryParseExact(startDate, "MMddyyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedStartDate))
+                    return StatusCode(500, $"Invalid startDate format");
+
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, getHistoricalData)
+                    .Where(s => s.Time >= parsedStartDate)
+                    .ToList();
+
+                if (stockPrices == null || !stockPrices.Any())
+                {
+                    return NotFound("Stock prices not found");
+                }
+
+                return Json(stockPrices);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
+            }
+        }
+
 
         //Called by the background service every 5 mins
         [HttpPost("/Home/AddRecentStockPrices")]
@@ -328,7 +376,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Error when adding recent stock prices to DB. {ex.Message}");
             }
         }
         [HttpPost("/Home/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
@@ -371,7 +419,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem adding historical data to DB. {ex.Message}");
             }
         }
 
@@ -393,7 +441,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Error getting stocks.");
+                return StatusCode(500, $"Problem getting Stocks from DB.");
             }                  
         }
 
@@ -417,7 +465,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting stock {ticker}. {ex.Message}");
             }
         }
 
@@ -443,7 +491,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = dateTime,
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add stock {ticker}. {ex.Message}");
             }
         }
         [HttpPost("/Home/RemoveStock/{ticker}")]
@@ -461,7 +509,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not remove stock {ticker}. {ex.Message}");
             }
         }
 
@@ -487,6 +535,18 @@ namespace Stock_Prediction_API.Controllers
             }
 
             return Json(tradingDays);
+        }
+
+        private void StockEmailHelper(string email, string ticker, bool isIncreasing)
+        {
+            StockEmailViewModel vm = new()
+            {
+                Email = email,
+                Ticker = ticker,
+                Indication = isIncreasing ? "RISE" : "DECLINE",
+                StockName = _GetDataTools.GetStock(ticker).Name,
+            };
+            _EmailTools.SendStockEmail(vm);
         }
 
         #endregion
@@ -516,7 +576,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add stock to watch list; stock: {ticker}, user: {userId}. {ex.Message}");
             }
         }
 
@@ -536,7 +596,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem removing {ticker} from user's watch list; User: {userId}. {ex.Message}");
             }
         }
 
@@ -562,8 +622,125 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem getting user's watchlist stocks; User: {userId}. {ex.Message}");
             }
+        }
+
+
+        #endregion
+
+        #region User Stocks
+
+        [HttpGet("/Home/GetUserStocks/{userId}")]
+        public IActionResult GetUserStocks(int userId)
+        {
+            try
+            {
+                return Json(_GetDataTools.GetUserStocks(userId).ToList());
+            }
+            catch(Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not get user stocks: {userId}. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Home/GetUserStockData/{userId}")]
+        public IActionResult GetUserStockData(int userId)
+        {
+            List<UserStock> userStocks = new();
+            float[]? userStockPrices = null;
+            try
+            {
+                userStocks = _GetDataTools.GetUserStocks(userId).ToList();
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not get user stocks: {userId}. {ex.Message}");
+            }
+            foreach(UserStock userStock in userStocks)
+            {
+
+                List<StockPrice> prices = new();
+                try
+                {
+                    prices = _GetDataTools.GetStockPrices(userStock.Ticker, DateTime.Now.Date).ToList();
+                }
+                catch (Exception ex)
+                {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = ex.Message,
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(500, $"Could not get stock prices for stock: {userStock.Ticker}. {ex.Message}");
+                }
+                int count = 0;
+                userStockPrices ??= new float[prices.Count];
+                foreach(StockPrice stockPrice in prices)
+                {
+                    userStockPrices[count] = stockPrice.Price * userStock.Quantity;
+                    count++;
+                }
+            }
+            return Json(userStockPrices);
+        }
+
+        [HttpPost("/Home/AddUserStock/{userId}/{ticker}/{quantity}")]
+        public IActionResult AddUserStock(int userId, string ticker, float quantity)
+        {
+            try
+            {
+                _GetDataTools.AddUserStock(new UserStock
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                    Quantity = quantity,
+                    CreatedAt = DateTime.Now
+                });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not add Stock to User: {userId}. {ex.Message}");
+            }
+            return Ok("Stock Added Successfully.");
+        }
+
+        [HttpPost("/Home/AddUserStock/{userId}/{ticker}")]
+        public IActionResult RemoveUserStock(int userId, string ticker)
+        {
+            try
+            {
+                _GetDataTools.RemoveUserStock(new UserStock
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not remove Stock for User: {userId}. {ex.Message}");
+            }
+            return Ok("Stock Removed Successfully.");
         }
 
 
@@ -586,7 +763,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Error getting error logs.");
+                return StatusCode(500, $"Problem getting error logs.");
             }
         }
 
@@ -615,7 +792,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not change user type. {ex.Message}");
             }
         }
 
@@ -635,7 +812,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Could not add market holiday. {ex.Message}");
             }
         }
 
@@ -688,7 +865,7 @@ namespace Stock_Prediction_API.Controllers
                     Message = ex.Message,
                     CreatedAt = GetEasternTime(),
                 });
-                return StatusCode(500, $"Internal server error. {ex.Message}");
+                return StatusCode(500, $"Problem training model for {ticker}. {ex.Message}");
             }
         }
 

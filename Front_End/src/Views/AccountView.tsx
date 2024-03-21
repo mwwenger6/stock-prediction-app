@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 import User from "../Interfaces/User";
 
 interface AccountViewProps {
@@ -7,11 +8,6 @@ interface AccountViewProps {
 }
 
 const AccountView = (props: AccountViewProps) => {
-    const [showPassword, setShowPassword] = useState(false);
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
 
     return (
         <>
@@ -28,12 +24,10 @@ const AccountView = (props: AccountViewProps) => {
                                     <h4 className="fw-light ms-3">{props.user.email}</h4>
                                 </div>
                                 <div className="d-flex align-items-center">
-                                    <h3>Password:</h3>
-                                    <h4 className="fw-light ms-3">
-                                        {showPassword ? props.user.password : '********'}
-                                    </h4>
-                                    {showPassword ? <FaEyeSlash className='ms-2 eyeIcon' onClick={togglePasswordVisibility}/> : 
-                                                    <FaEye className=' ms-2 eyeIcon' onClick={togglePasswordVisibility}/>} {/* Toggle eye icon */}
+                                    <h3>Account Verified:</h3>
+                                    {props.user.verificationCode == null ?
+                                        <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px', fontSize: '24px', color: 'green' }}/> :
+                                        <FontAwesomeIcon icon={faTimes} style={{ marginLeft: '10px', fontSize: '24px', color: 'red' }}/>}
                                 </div>
                             </div>
                             <div className="col-lg-6 col-12">

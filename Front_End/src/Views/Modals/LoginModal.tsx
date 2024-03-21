@@ -17,6 +17,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%])[A-Za-z\d!@#$%]{8
 const SUCCESS: string = "Log In Successful"
 const FAILURE: string = "Log In Failed"
 const INCORRECT_PASSWORD = "Incorrect Password"
+const UNVERIFIED_ACCOUNT = "Verify Your Email Address"
 
 const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const [email, setEmail] = useState('');
@@ -60,6 +61,10 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
 
         if (response.status == 401) {
             setResponse(INCORRECT_PASSWORD);
+            console.error('Error logging in:', response.statusText);
+        }
+        else if(response.status == 403) {
+            setResponse(UNVERIFIED_ACCOUNT);
             console.error('Error logging in:', response.statusText);
         }
         else if (response.status == 200) {

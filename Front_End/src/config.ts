@@ -15,11 +15,11 @@ const endpoints = {
     //Stock Endpoints
     getStocks: `${API_BASE_URL}/Home/GetStocks`,
     getStockData:(ticker : string) => `${API_BASE_URL}/Home/GetStock/${ticker}`,
-    getHistStockData: (ticker : string) => `${API_BASE_URL}/Home/GetHistoricalStockData/${ticker}`,
+    getStockGraphData: (ticker : string, startDate : string, interval : string) => `${API_BASE_URL}/Home/GetStockGraphData/${ticker}/${startDate}/${interval}`,
     trainModel: (ticker: string) => `${API_PRED_URL}/Home/TrainModel/${ticker}`,
     getPredictions: (ticker : string) => `${API_BASE_URL}/Home/GetPredictions/${ticker}`,
-    predict: (ticker : string, range : number) => `${API_PRED_URL}/Home/AddPrediction/${ticker}`,
-    clearPredictions: () => `${API_BASE_URL}/Home/ClearStockPredictions`,
+    predict: (ticker : string, range : number) => `${API_PRED_URL}/Home/AddPredictions/${ticker}`,
+    clearPredictions: () => `${API_BASE_URL}/Home/ClearPredictions`,
     getOpenMarketDays: (num : number) => `${API_BASE_URL}/Home/GetOpenMarketDays/${num}`,
 
     //Admin Endpoints

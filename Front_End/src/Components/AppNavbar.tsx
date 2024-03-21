@@ -1,13 +1,11 @@
 import {Container, Nav, Navbar, Form, Dropdown } from "react-bootstrap";
-import React, {Dispatch, SetStateAction, useState} from 'react';
-import Tickers from '../Data/tickers.json';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import LoginModal from "../Views/Modals/LoginModal";
 import SignUpModal from "../Views/Modals/SignUpModal";
 import Ticker from "../Interfaces/Ticker";
 import User from "../Interfaces/User";
-import HomeView from "../Views/HomeView";
-import App from "../App";
+import endpoints from "../config";
 
 
 interface AppNavbarProps {
@@ -22,8 +20,17 @@ const AppNavbar = (props: AppNavbarProps) => {
     const [showLoginModal , setShowLoginModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [initSuggestions, setInitSuggestions] = useState<Ticker[]>([]);
     const [suggestions, setSuggestions] = useState<Ticker[]>([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchSupportedStocks = async() => {
+            let stocks : Ticker[] = await fetch(endpoints.getSupportedStocks()).then(response => response.json())
+            setInitSuggestions(stocks)
+        }
+        fetchSupportedStocks()
+    }, []);
 
     const toggleLogInModal = () => {
         setShowLoginModal(!showLoginModal);
@@ -36,18 +43,24 @@ const AppNavbar = (props: AppNavbarProps) => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchTerm(value);
+
         if (value.length > 0) {
-            const filteredSuggestions = Tickers.filter(
-                ticker => ticker.ticker.toLowerCase().includes(value.toLowerCase()) ||
-                          ticker.name.toLowerCase().includes(value.toLowerCase())
+            // Construct regex pattern to match value (case-insensitive)
+            const regexPattern = new RegExp(value.toLowerCase(), 'i');
+
+            // Filter suggestions based on regex pattern
+            const filteredSuggestions = initSuggestions.filter(
+                ticker => regexPattern.test(ticker.ticker.toLowerCase()) || regexPattern.test(ticker.name.toLowerCase())
             ).slice(0, 5); // Limiting to 5 suggestions
+
             setSuggestions(filteredSuggestions);
-        } else
+        } else {
             setSuggestions([]);
+        }
     };
     const handleInputSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        setSearchTerm(value); 
+        setSearchTerm(value);
         const selectedTicker = suggestions.find(suggestion => suggestion.ticker.toLowerCase() === value.toLowerCase());
         if (selectedTicker) {
             navigate(`/Stock/${selectedTicker.ticker}`, {replace: true})
@@ -69,6 +82,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                         aria-label="Search"
                         value={searchTerm}
                         onChange={handleInputChange}
+                        onClick={() => setSuggestions([])}
                         onInput={handleInputSelect} // Added to handle option selection
                         list="tickers-list"
                         style={{ width: '300px'}} // adjust the width as needed

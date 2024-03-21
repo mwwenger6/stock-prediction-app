@@ -350,6 +350,12 @@ namespace Stock_Prediction_API.Services
             tempContext.ErrorLogs.Add(error);
             tempContext.SaveChanges();
         }
+        public void DeleteErrorLog(ErrorLog log)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.ErrorLogs.Remove(log);
+            tempContext.SaveChanges();
+        }
         #endregion
 
         #endregion

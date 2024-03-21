@@ -311,6 +311,7 @@ namespace Stock_Prediction_API.Services
 
         #region Predictions
 
+
         public void AddPredictions(List<StockPrediction> predictions)
         {
             using var tempContext = GetNewDBContext();

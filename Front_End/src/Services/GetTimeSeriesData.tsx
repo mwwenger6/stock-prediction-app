@@ -1,4 +1,5 @@
-async function GetTimeSeriesData(stockSymbol : string , interval : string, marketClosed: boolean) {
+import config from "../config";
+async function GetTimeSeriesData(stockSymbol : string , interval : string, marketClosed: boolean, isFeatured: boolean) {
 
     const apiKey = '446a11fe72f149bd881f0753ad465055';
     let startDateStr : string = '';
@@ -10,6 +11,9 @@ async function GetTimeSeriesData(stockSymbol : string , interval : string, marke
 
         let lastTradingDay = new Date(currentDate);
 
+        if(lastTradingDay.getHours() < 9 || (lastTradingDay.getHours() === 9 && lastTradingDay.getMinutes() < 30))
+            lastTradingDay.setDate(lastTradingDay.getDate() - 1);
+
         while (lastTradingDay.getDay() === 0 || lastTradingDay.getDay() === 6) {
             lastTradingDay.setDate(lastTradingDay.getDate() - 1);
         }
@@ -20,39 +24,52 @@ async function GetTimeSeriesData(stockSymbol : string , interval : string, marke
     }
 
     try{
-        let priceInterval: string = '';
-
+        //get start date for time series data
         if(marketClosed)
             startDate = getLastOpenTradingDay();
 
-        if(interval === '1 Hour'){
-            priceInterval = '1min';
+        if(interval === '1min')
             startDate.setHours(startDate.getHours() - 1);
-        }
-        else if(interval === '1 Day'){
-            priceInterval = '5min';
-            startDate.setHours(startDate.getHours() - 24);
-        }
-        else if(interval === '1 Week'){
-            priceInterval = '5min';
+
+        else if(interval === '5min')
             startDate.setHours(startDate.getHours() - 24*7);
-        }
-        else if(interval === '1 Month'){
-            priceInterval = '1day';
-            startDate.setMonth(startDate.getMonth() - 1);
-        }
-        else if(interval === '1 Year'){
-            priceInterval = '1day';
+
+        else
             startDate.setFullYear(startDate.getFullYear() - 1);
+
+
+        //get data from our API if it is '5min' or '1day' data and it is a featured stock, get data from 12 data otherwise
+        let url : string = ''
+        let response : Response = new Response();
+        let stockData : any = [];
+        if(interval === '1min' || !isFeatured){
+            startDateStr = startDate.toLocaleDateString() + ' ' + startDate.toLocaleTimeString();
+            url = `https://api.twelvedata.com/time_series?symbol=${stockSymbol}&start_date=${startDateStr}&interval=${interval}&apikey=${apiKey}`;
+            response = await fetch(url)
+            stockData = await response.json();
+            return stockData.values;
         }
-
-        startDateStr = startDate.toLocaleDateString() + ' ' + startDate.toLocaleTimeString();
-
-        let url : string = `https://api.twelvedata.com/time_series?symbol=${stockSymbol}&start_date=${startDateStr}&interval=${priceInterval}&apikey=${apiKey}`;
-        const response = await fetch(url)
-        const stockData = await response.json();
-        console.log(stockData);
-        return stockData;
+        else{
+            let month : any = startDate.getMonth() + 1; // Months are 0-indexed
+            let day : any = startDate.getDate();
+            let year : any = startDate.getFullYear();
+            month = month < 10 ? '0' + month : month;
+            day = day < 10 ? '0' + day : day;
+            startDateStr = month + day + year;
+            url = config.getStockGraphData(stockSymbol, startDateStr, interval);
+            response = await fetch(url)
+            stockData = await response.json();
+            stockData = stockData.map((item : any) => {
+                return {
+                    datetime: item.time,
+                    high: undefined,
+                    open: item.price,
+                    close: undefined,
+                    volume: undefined
+                }
+            });
+            return stockData;
+        }
     }
     catch (error) {
         console.error('Error:', error);

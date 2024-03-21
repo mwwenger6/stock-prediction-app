@@ -19,12 +19,25 @@ device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 ticker = 'AAPL'
 
 # read data in from json
-with open('Machine_Learning/Training_Data/' + ticker + '.json') as f:
-    data = json.load(f)
-data = pd.json_normalize(data)
-data = data[['time', 'price']]
-data['time'] = pd.to_datetime(data['time'])
-data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
+# with open('Machine_Learning/Training_Data/' + ticker + '.json') as f:
+#     data = json.load(f)
+# data = pd.json_normalize(data)
+# data = data[['time', 'price']]
+# data['time'] = pd.to_datetime(data['time'])
+# data = data.rename(columns={ 'time' : 'Date', 'price' : 'Close' })
+
+def process_json_data(json_data):
+    data = pd.json_normalize(json_data)
+    data = data[['time', 'price']]
+    data['time'] = pd.to_datetime(data['time'])
+    data = data.rename(columns={'time': 'Date', 'price': 'Close'})
+    return data
+
+api_endpoint = 'https://stockgenieapi.azurewebsites.net/Home/GetHistoricalStockData/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+data = process_json_data(json_data)
 
 def prepare_dataframe_for_lstm(df, n_steps):
   df = dc(df) # make a deepcopy

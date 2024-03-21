@@ -807,6 +807,32 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpDelete("/Home/DeleteErrorLog/{id}")]
+        public IActionResult DeleteErrorLog(int id)
+        {
+            try
+            {
+                var log = _GetDataTools.GetErrorLogs().FirstOrDefault(e => e.Id == id);
+                if (log == null)
+                {
+                    return NotFound($"Error log with ID {id} not found.");
+                }
+
+                _GetDataTools.DeleteErrorLog(log); // Implement this method in your data tools
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new ErrorLog
+                {
+                    Message = ex.Message,
+                    CreatedAt = DateTime.UtcNow // Or your GetEasternTime(), depending on your needs
+                });
+                return StatusCode(500, "Problem deleting the error log.");
+            }
+        }
+
+
         [HttpPost("/Home/ChangeUserType/{email}/{userTypeName}")]
         public IActionResult ChangeUserType(string email, string userTypeName)
         {

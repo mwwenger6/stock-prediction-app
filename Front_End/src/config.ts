@@ -21,6 +21,7 @@ const endpoints = {
     predict: (ticker : string, range : number) => `${API_PRED_URL}/Home/AddPredictions/${ticker}`,
     clearPredictions: () => `${API_BASE_URL}/Home/ClearPredictions`,
     getOpenMarketDays: (num : number) => `${API_BASE_URL}/Home/GetOpenMarketDays/${num}`,
+    getSupportedStocks: () => `${API_BASE_URL}/Home/GetSupportedStocks`,
 
     //Admin Endpoints
     getErrorLogs: `${API_BASE_URL}/Home/GetErrorLogs`,

@@ -16,27 +16,6 @@ import GetWatchListStocks from "./Services/GetWatchListStocks";
 import GetPersonalStocks from "./Services/GetPersonalStocks";
 import config from "./config";
 
-
-//set initial featured stocks list
-// [
-  //   { name: 'Apple', ticker: 'AAPL', price: -1, up: undefined},
-  //   { name: 'Google', ticker: 'GOOGL', price: -1, up: undefined},
-  //   { name: 'Amazon', ticker: 'AMZN', price: -1, up: undefined },
-  //   { name: 'Microsoft', ticker: 'MSFT', price: -1, up: undefined },
-  //   { name: 'Meta Platforms', ticker: 'META', price: -1, up: undefined },
-  //   { name: 'Tesla', ticker: 'TSLA', price: -1, up: undefined },
-//   { name: 'Netflix', ticker: 'NFLX', price: -1, up: undefined },
-//   { name: 'Alphabet', ticker: 'GOOG', price: -1, up: undefined },
-//   { name: 'Visa', ticker: 'V', price: -1, up: undefined },
-//   { name: 'Procter & Gamble', ticker: 'PG', price: -1, up: undefined },
-//   { name: 'Cisco Systems', ticker: 'CSCO', price: -1, up: undefined },
-//   { name: 'JPMorgan Chase', ticker: 'JPM', price: -1, up: undefined },
-//   { name: 'Coca-Cola', ticker: 'KO', price: -1, up: undefined },
-//   { name: 'Adobe', ticker: 'ADBE', price: -1, up: undefined },
-//   { name: 'PayPal', ticker: 'PYPL', price: -1, up: undefined },
-//   { name: 'Home Depot', ticker: 'HD', price: -1, up: undefined },
-// ];
-
 const initFeaturedStocks: Stock[] = [];
 const initWatchListStocks: Stock[] = [];
 const initPersonalStocks: Stock[] = [];

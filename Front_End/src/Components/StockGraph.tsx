@@ -1,7 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
-import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
 import endpoints from '../config';
@@ -21,7 +20,7 @@ interface StockGraphProps {
 const StockGraph = (props : StockGraphProps) => {
 
     const getData = GetTimeSeriesData;
-    const intervals =      ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
+    const intervals =      props.marketClosed ? ['1 Day', '1 Week', '1 Month', '1 Year'] : ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
     const initialInterval = intervals[2]
 
     //State variables for view
@@ -105,7 +104,9 @@ const StockGraph = (props : StockGraphProps) => {
         let dailyTimeSeriesData = await getData(props.symbol, '1day', props.marketClosed, props.isFeatured);
 
         if(props.isFeatured){
-            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error' || fiveMinTimeSeriesData.length === 0 || dailyTimeSeriesData.length === 0){
+            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error')
+                oneMinTimeSeriesData = [];
+            else if(fiveMinTimeSeriesData.length === 0 || dailyTimeSeriesData.length === 0){
                 setShowError(true)
                 return;
             }
@@ -256,7 +257,7 @@ const StockGraph = (props : StockGraphProps) => {
             {graphLoading ? (
                 <Spinner size={'large'} height={'300px'}/>
             ) : (showError ? (
-                    <div style={{ height: '300px' }} className='align-items-center d-flex'>
+                    <div style={{ height: '500px' }} className='align-items-center d-flex'>
                         <h3 className="m-auto"> Unable to get time series data at this time </h3>
                     </div>
                 ) : (<div>
@@ -316,14 +317,6 @@ const StockGraph = (props : StockGraphProps) => {
             </div>
 
             <div className='row mt-3 justify-content-center mb-2'>
-                <div className='col-auto'>
-                    <CsvDownload
-                        className={`btn btn-outline-success ${showError ? 'disabled' : ''}`}
-                        data={dailyTimeSeriesData}
-                        filename="stock_data.csv">
-                        Download CSV
-                    </CsvDownload>
-                </div>
                 {props.user != null && props.isFeatured &&
                     <div className='col-auto'>
                         <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}

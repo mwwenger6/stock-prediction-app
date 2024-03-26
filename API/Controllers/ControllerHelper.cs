@@ -31,5 +31,11 @@ namespace Stock_Prediction_API.Controllers
             _TwelveDataTools = new(config);
             _EmailTools = new(config, web);
         }
+        public DateTime GetEasternTime()
+        {
+            DateTime currentTime = DateTime.UtcNow;
+            return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Utc.Id, "Eastern Standard Time");
+        }
+
     }
 }

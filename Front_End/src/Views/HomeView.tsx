@@ -3,11 +3,13 @@ import PersonalGraph from "../Components/PersonalGraph";
 import User from "../Interfaces/User"
 import Stock from "../Interfaces/Stock";
 import {FaTimes} from "react-icons/fa";
+import Spinner from '../Components/Spinner';
 
 
 interface HomeViewProps {
     user: User | null,
-    homeviewStocks: Stock[]
+    homeviewStocks: Stock[],
+    personalStocks: Stock[]
 }
 
 
@@ -22,14 +24,13 @@ function HomeView (props : HomeViewProps) {
                     <h3> {loggedIn ? "Watchlist Stocks" : "Featured Stocks" }</h3>
                     <hr className={"my-1"}/>
                     <div className="featured-stocks-container">
-                        {props.homeviewStocks.length === 0 ?
+                        {props.homeviewStocks.length === 0 && loggedIn ?
                             <h4 className={"my-3"}> <FaTimes className={"text-danger"}/> Currently No Stocks In Your Watchlist</h4>
                             :
                             <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto featuredStockBg">
-                                <div className="d-flex flex-nowrap">
-                                    {props.homeviewStocks.map((stock, index) => (
-                                        <FeaturedStock key={index} stock={stock} />
-                                    ))}
+                                <div className={props.homeviewStocks.length === 0 ? "d-flex flex-nowrap mx-auto" : "d-flex flex-nowrap"}>
+                                {props.homeviewStocks.length === 0 ? (<div className=""><Spinner size={'large'} height={'120px'} /></div>) : 
+                                (props.homeviewStocks.map((stock, index) => (<FeaturedStock key={index} stock={stock} />)))}
                                 </div>
                             </div>
                         }

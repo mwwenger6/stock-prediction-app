@@ -10,7 +10,7 @@ const VerifyUser = () => {
       if (!code) return; // Guard clause to ensure code is not undefined or empty
 
       try {
-        const response = await fetch("https://stockrequests.azurewebsites.net/Home/VerifyUser/" + code, {
+        const response = await fetch("https://stockrequests.azurewebsites.net/User/VerifyUser/" + code, {
           method: "POST",
         });
 

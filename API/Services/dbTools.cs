@@ -33,11 +33,18 @@ namespace Stock_Prediction_API.Services
 
         public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
 
-        public IQueryable<EODStockPrice> GetStockPrices() => dbContext.EODStockPrices;
+        public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
         public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
         public IQueryable<MarketHolidays> GetMarketHolidays() => dbContext.MarketHolidays;
         public IQueryable<StockPrediction> GetStockPredictions() => dbContext.StockPredictions;
+
+        #region Stocks
+
+        public List<SupportedStocks> GetSupportedStocks()
+        {
+            return dbContext.SupportedStocks.ToList();
+        }
 
         public Stock GetStock(string ticker)
         {
@@ -51,25 +58,40 @@ namespace Stock_Prediction_API.Services
                 .Where(s => s.UserId == userId).ToList();
         }
 
-        public IQueryable<StockPrice> GetStockPrices(string ticker, bool getHistoricalData)
+        public IQueryable<StockPrice> GetStockPrices(string ticker, bool getHistoricalData, DateTime? startDate = null)
         {
+            IQueryable<StockPrice> prices;
             if(getHistoricalData)
-                return dbContext.EODStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+                prices = dbContext.StockPrices.Where(sp => sp.Ticker == ticker && sp.IsClosePrice == true).OrderByDescending(sp => sp.Time);
             else
-                return dbContext.FMStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+                prices = dbContext.StockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+
+            if (startDate != null)
+                prices = prices.Where(s => s.Time >= startDate);
+
+            return prices;
         }
+
+        public IQueryable<StockPrice> GetStockPrices(string ticker, DateTime date)
+        {
+            return dbContext.StockPrices
+                .Where(sp => sp.Ticker == ticker && sp.Time >= date)
+                .OrderByDescending(sp => sp.Time);
+        }
+
+
+        public IQueryable<UserStock> GetUserStocks(int userId)
+        {
+            return dbContext.UserStocks.Where(u => u.UserId == userId);
+        }
+        #endregion
+
+        #region User
+
         public User GetUser(string email)
         {
             return dbContext.Users
                 .Where(u => u.Email == email).Single();
-        }
-
-        public IQueryable<float> GetStockPredictions(string ticker)
-        {
-            return dbContext.StockPredictions
-                .Where(spred => spred.Ticker == ticker)
-                .OrderBy(spred => spred.PredictionOrder)
-                .Select(spred => spred.PredictedPrice);
         }
 
         public bool UserWithVerificationCode(string code)
@@ -80,22 +102,40 @@ namespace Stock_Prediction_API.Services
         {
             return dbContext.Users.Where(u => u.VerificationCode == code).FirstOrDefault();
         }
+        #endregion
+
+        #region Predictions
+        public IQueryable<float> GetStockPredictions(string ticker)
+        {
+            return dbContext.StockPredictions
+                .Where(spred => spred.Ticker == ticker)
+                .OrderBy(spred => spred.PredictionOrder)
+                .Select(spred => spred.PredictedPrice);
+        }
+        #endregion
 
         #endregion
 
         //Modifiers
         #region Modifiers
-        public void DeleteUser(string email)
+
+        #region Stocks
+        public void AddSupportedStocks(List<SupportedStocks> supportedStocks)
         {
             using var tempContext = GetNewDBContext();
-            if (tempContext.Users.Any(s => s.Email == email))
-            {
-                tempContext.Users
-                    .Where(s => s.Email == email)
-                    .ExecuteDelete();
-                return;
-            }
+            tempContext.SupportedStocks.AddRange(supportedStocks);
+            tempContext.SaveChanges();
         }
+
+        public int RemoveSupportedStocks()
+        {
+            using var tempContext = GetNewDBContext();
+            IQueryable<SupportedStocks> stocks = tempContext.SupportedStocks.Where(s => s.Ticker != null);
+            int count = stocks.Count();
+            stocks.ExecuteDelete();
+            return count;
+        }
+
         public void AddStock(Stock stock)
         {
             using var tempContext = GetNewDBContext();
@@ -112,6 +152,42 @@ namespace Stock_Prediction_API.Services
             tempContext.Stocks.Add(stock);
             tempContext.SaveChanges();
         }
+
+        public void AddUserStock(UserStock stock)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.UserStocks.Any(s => s.Ticker == stock.Ticker))
+            {
+                if (stock.Quantity < 0) return;
+                if (stock.Quantity == 0)
+                {
+                    tempContext.UserStocks
+                        .Where(s => s.Ticker == stock.Ticker)
+                        .ExecuteDelete();
+                    return;
+                }
+                tempContext.UserStocks
+                    .Where(s => s.Ticker == stock.Ticker)
+                    .ExecuteUpdate(i => i
+                        .SetProperty(t => t.Quantity, stock.Quantity)
+                    );
+                return;
+            }
+            if (stock.Quantity <= 0) return;
+            tempContext.UserStocks.Add(stock);
+            tempContext.SaveChanges();
+        }
+        public void RemoveUserStock(UserStock stock)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.UserStocks.Any(s => s.Ticker == stock.Ticker))
+                tempContext.UserStocks
+                    .Where(s => s.Ticker == stock.Ticker)
+                    .ExecuteDelete();
+            else
+                throw new Exception("User does not have any shares of that stock.");
+        }
+
         public void UpdateStockPrice(Stock stock)
         {
             using var tempContext = GetNewDBContext();
@@ -145,47 +221,49 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == ticker)
                     .ExecuteDelete();
         }
-        public void AddFMStockPrices(List<StockPrice> stockPrices)
+        public void AddStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
-            foreach (StockPrice stockPrice in stockPrices)
-            {
-                //var existingStockPrice = tempContext.FMStockPrices
-                //    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
-
-                tempContext.FMStockPrices.Add(new()
-                {
-                    Price = stockPrice.Price,
-                    Time = stockPrice.Time,
-                    Ticker = stockPrice.Ticker
-                });
-
-            }
-            tempContext.SaveChanges();
-        }
-        public void AddEODStockPrices(List<StockPrice> stockPrices)
-        {
-            using var tempContext = GetNewDBContext();
-            foreach (StockPrice stockPrice in stockPrices)
-            {
-                var existingStockPrice = tempContext.EODStockPrices
-                    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
-                if (existingStockPrice == null)
-                {
-                    tempContext.EODStockPrices.Add(new()
-                    {
-                        Price = stockPrice.Price,
-                        Time = stockPrice.Time,
-                        Ticker = stockPrice.Ticker
-                    });
-                }
-            }
+            tempContext.StockPrices.AddRange(stockPrices);
             tempContext.SaveChanges();
         }
         public void DeleteStockPrices (string ticker)
         {
             using var tempContext = GetNewDBContext();
-            tempContext.EODStockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
+            tempContext.StockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
+        }
+        #endregion
+
+        #region User
+        public void AddUser(User user)
+        {
+            using var tempContext = GetNewDBContext();
+                // Hash password with BCrypt before saving
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                if (tempContext.Users.Any(u => u.Id == user.Id))
+            {
+                tempContext.Users.Where(u => u.Id == user.Id)
+                    .ExecuteUpdate(u => u
+                        .SetProperty(u => u.IsVerified, user.IsVerified)
+                        .SetProperty(u => u.VerificationCode, user.VerificationCode)
+                    );
+            }
+            else
+            {
+                tempContext.Users.Add(user);
+                tempContext.SaveChanges();
+            }
+        }
+        public void DeleteUser(string email)
+        {
+            using var tempContext = GetNewDBContext();
+            if (tempContext.Users.Any(s => s.Email == email))
+            {
+                tempContext.Users
+                    .Where(s => s.Email == email)
+                    .ExecuteDelete();
+                return;
+            }
         }
         public void UpdateUserPrivileges(string email, int newUserTypeId)
         {
@@ -193,29 +271,7 @@ namespace Stock_Prediction_API.Services
             tempContext.Users.Where(u => u.Email == email)
                     .ExecuteUpdate(i => i.SetProperty(u => u.TypeId, newUserTypeId));
         }
-   
-
-        public void AddUser(User user)
-        {
-        using var tempContext = GetNewDBContext();
-            // Hash password with BCrypt before saving
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            if (tempContext.Users.Any(u => u.Id == user.Id))
-        {
-            tempContext.Users.Where(u => u.Id == user.Id)
-                .ExecuteUpdate(u => u
-                    .SetProperty(u => u.IsVerified, user.IsVerified)
-                    .SetProperty(u => u.VerificationCode, user.VerificationCode)
-                );
-        }
-        else
-        {
-            tempContext.Users.Add(user);
-            tempContext.SaveChanges();
-        }
-        }
-
-    public void AddUserWatchlistStock(UserWatchlistStocks stock)
+        public void AddUserWatchlistStock(UserWatchlistStocks stock)
         {
             using var tempContext = GetNewDBContext();
             tempContext.UserWatchlistStocks.Add(stock);
@@ -226,12 +282,10 @@ namespace Stock_Prediction_API.Services
             using var tempContext = GetNewDBContext();
             tempContext.UserWatchlistStocks.Where(s => s.UserId == userId && s.Ticker == ticker).ExecuteDelete();
         }
-        public void LogError(ErrorLog error)
-        {
-            using var tempContext = GetNewDBContext();
-            tempContext.ErrorLogs.Add(error);
-            tempContext.SaveChanges();
-        }
+        #endregion
+
+        #region Predictions
+
 
         public void AddPredictions(List<StockPrediction> predictions)
         {
@@ -255,12 +309,29 @@ namespace Stock_Prediction_API.Services
             tempContext.SaveChanges(); 
         }
 
+        #endregion
+
+        #region Other
+
         public void AddMarketHolidays(List<MarketHolidays> days)
         {
             using var tempContext = GetNewDBContext();
             tempContext.MarketHolidays.AddRange(days);
             tempContext.SaveChanges();
         }
+        public void LogError(ErrorLog error)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.ErrorLogs.Add(error);
+            tempContext.SaveChanges();
+        }
+        public void DeleteErrorLog(ErrorLog log)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.ErrorLogs.Remove(log);
+            tempContext.SaveChanges();
+        }
+        #endregion
 
         #endregion
     }

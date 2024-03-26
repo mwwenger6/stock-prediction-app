@@ -1,47 +1,89 @@
 import React, {useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
-import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
 import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
-import config from "../config";
 
 
 interface StockGraphProps {
-  symbol: string;
-  isFeatured: boolean;
-  user: User | null;
-  isWatchlist: boolean;
-  reloadWatchlist: () => Promise<void>;
-  marketClosed: boolean;
+    symbol: string;
+    isFeatured: boolean;
+    user: User | null;
+    isWatchlist: boolean;
+    reloadWatchlist: () => Promise<void>;
+    marketClosed: boolean;
 }
 
 const StockGraph = (props : StockGraphProps) => {
 
     const getData = GetTimeSeriesData;
-    const intervals =      ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
+    const intervals =      props.marketClosed ? ['1 Day', '1 Week', '1 Month', '1 Year'] : ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
+    const initialInterval = intervals[2]
 
+    //State variables for view
     const [options, setOptions] = useState({});
-    const [timeSeriesData, setTimeSeriesData] = useState({});
-    //Supported intervals: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month
     const [currInterval, setCurrInterval] = useState(intervals[2]);
     const [showError, setShowError] = useState(false)
     const [graphLoading , setGraphLoading] = useState(true)
     const [ticker, setTicker] = useState('')
     const [percentChange, setPercentChange] = useState('')
-    const [color, setColor] = useState('grey')
+    const [roiColor, setRoiColor] = useState('text-primary')
     const [showPrediction, setShowPrediction] = useState(false)
-    const [predictions, setPredictions] = useState([]);
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
+    const [predictionRange, setPredictionRange] = useState(60)
 
-    function getFormattedDate(datetime: string | Date){
+    //Data retrieved
+    const [oneMinTimeSeriesData, setOneMinTimeSeriesData] = useState([])
+    const [fiveMinTimeSeriesData, setFiveMinTimeSeriesData] = useState([])
+    const [dailyTimeSeriesData, setDailyTimeSeriesData] = useState([])
+    const [predictions, setPredictions] = useState([])
+
+    //Fetch the time series data for the stock on symbol change
+    useEffect(() => {
+        const fetchData = async () => {
+            if (props.symbol === undefined) return;
+            fetchPrices().then((res) => {
+                renderGraph(initialInterval, 0, res);
+            });
+        };
+        fetchData();
+    }, [props.symbol]);
+
+    //Add or remove stock from user watchlist on click
+    function handleWatchlistClick() {
+        const makeRequest = async () => {
+            setPendingWatchlistRequest(true)
+
+            var response
+            var url = props.isWatchlist ? endpoints.removeUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+                : endpoints.addUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
+
+            response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.status == 200) {
+                props.reloadWatchlist()
+            } else {
+                console.error('Error sending request:', response.statusText);
+            }
+            setPendingWatchlistRequest(false)
+        }
+        makeRequest();
+    }
+
+    //Format the date for the graph, based on interval
+    function getFormattedDate(datetime: string | Date, interval: string){
         let year : any = 'numeric';
         let hour : any = undefined;
         let minute : any = undefined;
-        if(currInterval == '1 Hour' || currInterval == '1 Day'){
+
+        if(interval === '1 Hour' || interval === '1 Day'){
             hour = minute = '2-digit'
             year = undefined
         }
@@ -54,242 +96,238 @@ const StockGraph = (props : StockGraphProps) => {
         }).format(new Date(datetime))
     }
 
-    useEffect(() => {
-        if(props.symbol === undefined) return
 
-        // tests predictions from our API. Simply logs the json response
-        // to the console  
-        const fetchPredictions = async () => {
-        
-            // try {
-            //     const response = await fetch(endpoints.predict(props.symbol, 30));
-            //     const jsonData = await response.json();
-            //     setPredictions(jsonData);
-            //     console.log(jsonData);
-            //
-            // }
-            // catch (error) {
-            //     console.error('Error fetching predictions:', error);
-            //     setShowError(true);
-            // }
-        };
-
+    //Fetch time series data
+    const fetchPrices = async() => {
+        let oneMinTimeSeriesData = await getData(props.symbol, '1min', props.marketClosed, false);
+        let fiveMinTimeSeriesData = await getData(props.symbol, '5min', props.marketClosed, props.isFeatured);
+        let dailyTimeSeriesData = await getData(props.symbol, '1day', props.marketClosed, props.isFeatured);
 
         if(props.isFeatured){
-            console.log("Fetching predictions for " + props.symbol);
-            fetchPredictions();
+            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error')
+                oneMinTimeSeriesData = [];
+            else if(fiveMinTimeSeriesData.length === 0 || dailyTimeSeriesData.length === 0){
+                setShowError(true)
+                return;
+            }
+            setShowError(false);
+            setPredictions(await fetch(endpoints.getPredictions(props.symbol)).then(response => response.json()))
         }
-    },[])
-
-    useEffect(() => {
-
-        if(props.symbol === undefined) return
-
-        //Fetch price data on load
-        const fetchData = async () => {
-            try {
-                const timeSeriesData  = await getData(props.symbol, currInterval, props.marketClosed);
-
-                if (timeSeriesData.status == 'error')
-                    throw "Unable to get data";
-
-                setShowError(false);
-
-                //Get time series values
-                const timeSeries =  timeSeriesData.values;
-
-                //Get the prices and dates
-                var initPrices = timeSeries.map((item : timeSeriesData) => (parseFloat(item.open))).reverse()
-                var initDates = timeSeries.map((item : timeSeriesData) => (getFormattedDate(item.datetime))).reverse()
-
-                var newPrices : number [] = []
-                var newDates : Date[] = []
-                var placeholders : string[] = []
-
-                // If showing a prediction, add the new values to the graph, and set the interval to the last month
-                if (showPrediction) {
-                    //Get the predicted prices and update the prices array
-                    newPrices = await fetch(endpoints.getPredictions(props.symbol)).then(response => response.json());
-
-                    //Get the next newPrice.length open market days and update dates array
-                    const json = await fetch(endpoints.getOpenMarketDays(newPrices.length)).then(response => response.json());
-                    newDates = json.map((date: string ) => getFormattedDate(date));
-
-                    //Get placeholders for prediction line
-                    for (let i = 0; i < initPrices.length - 1; i++) {
-                        placeholders.push('-');
-                    }
-                }
-
-                var combinedPrices = [...initPrices, ...newPrices];
-                var combinedDates = [...initDates, ...newDates];
-
-                // calculate min and max for Y-axis
-                var minValue = Math.floor(Math.min(...combinedPrices));
-                var maxValue = Math.ceil(Math.max(...combinedPrices));
-
-                //Calculate ROI/profits
-                let lineColor = 'grey'
-                let firstPrice = combinedPrices[0]
-                let lastPrice = combinedPrices[combinedPrices.length-1]
-
-                if (firstPrice < lastPrice)
-                    lineColor = 'green'
-                else if (firstPrice > lastPrice)
-                    lineColor = 'red'
-
-                let change : string = (((lastPrice/firstPrice) - 1) * 100).toFixed(2)
-                if(change.substring(0,1) != '-') change = "+" + change
-
-                setPercentChange(change)
-                setTicker(props.symbol)
-                setColor(lineColor)
-
-                let graphData, xAxisData;
-                if(showPrediction){
-                    //prepend the last price to the new prices
-                    newPrices = [initPrices[initPrices.length - 1] , ...newPrices]
-                    graphData =
-                    [{
-                        data: initPrices,
-                        type: 'line',
-                        color: lineColor,
-                        symbol: 'none'
-                    },
-                    {
-                        data: [...placeholders, ...newPrices],
-                        type: 'line',
-                        color: 'blue',
-                        symbol: 'none'
-                    }]
-                    xAxisData = combinedDates;
-                }
-                else{
-                    graphData = [{
-                        data: initPrices,
-                        type: 'line',
-                        color: lineColor,
-                        symbol: 'none'
-                    },
-                    {
-                        data: []
-                    }]
-                    xAxisData = initDates;
-                }
-                const newOptions = {
-                  xAxis: {
-                    type: 'category',
-                    data: xAxisData
-                  },
-                  yAxis: {
-                    type: 'value',
-                    min: minValue,
-                    max: maxValue
-                  },
-                  series: graphData,
-                };
-
-                setOptions(newOptions);
-                setGraphLoading(false)
+        else{
+            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error' ||
+                fiveMinTimeSeriesData === undefined || fiveMinTimeSeriesData.status === 'error' ||
+                dailyTimeSeriesData === undefined || dailyTimeSeriesData.status === 'error'){
+                setShowError(true)
+                return;
             }
-            catch (error) {
-                console.error('Error fetching prices:', error);
-                setShowError(true);
+            setShowError(false);
+        }
+
+        setOneMinTimeSeriesData(oneMinTimeSeriesData.reverse());
+        setFiveMinTimeSeriesData(fiveMinTimeSeriesData.reverse());
+        setDailyTimeSeriesData(dailyTimeSeriesData.reverse());
+        return fiveMinTimeSeriesData;
+    };
+
+    //Re-render the graph based on the interval and prediction range. init data is passed on initial load to avoid race condition
+    const renderGraph = async(interval: string, predictionRange : number, initData : timeSeriesData[] = []) => {
+        let showingPrediction = predictionRange > 0;
+
+        //First, get correct amount of data based on interval
+        var data : timeSeriesData[] = []
+
+        if(initData.length > 0)
+            data = initData
+
+        else if(interval === '1 Hour')
+            data = oneMinTimeSeriesData;
+
+        else if(interval === '1 Day')
+            data = fiveMinTimeSeriesData.slice(fiveMinTimeSeriesData.length - 78, fiveMinTimeSeriesData.length);
+
+        else if(interval === '1 Week')
+            data = fiveMinTimeSeriesData;
+
+        else if(interval === '1 Month')
+            data = dailyTimeSeriesData.slice(dailyTimeSeriesData.length - 21, dailyTimeSeriesData.length);
+
+        else if(interval === '1 Year')
+            data = dailyTimeSeriesData;
+
+        //Set the prices and dates
+        var initPrices = data.map((item : timeSeriesData) => (parseFloat(item.open)));
+        var initDates = data.map((item : timeSeriesData) => (getFormattedDate(item.datetime, interval)));
+
+        //Set predicted prices and new dates if showing a prediction
+        var newPrices : number [] = []
+        var newDates : Date[] = []
+        var placeholders : string[] = []
+
+        if (showingPrediction) {
+            //Get placeholders for prediction line
+            for (let i = 0; i < initPrices.length - 1; i++) {
+                placeholders.push('-');
             }
-          };
+            // store only the amount determined by prediction range
+            newPrices = predictions.slice(0, predictionRange);
+            const json = await fetch(endpoints.getOpenMarketDays(predictionRange)).then(response => response.json());
+            newDates = json.map((date: string ) => getFormattedDate(date, interval));
+        }
 
-      fetchData();
-    }, [currInterval, props.symbol, showPrediction])
+        //Get the combined prices and dates and calculate graph values/ROI for them
+        var combinedPrices = [...initPrices, ...newPrices];
+        var combinedDates = [...initDates, ...newDates];
 
-    function handleWatchlistClick() {
-        const makeRequest = async () => {
-            setPendingWatchlistRequest(true)
+        var minValue : number = Math.min(...combinedPrices)
+        var maxValue : number = Math.max(...combinedPrices)
 
-            var response
-            var url = props.isWatchlist ? endpoints.removeUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
-                                                    : endpoints.addUserWatchlistStock(props.user != null ? props.user.id : -1, ticker)
-            response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+        minValue = parseFloat(minValue.toFixed(2))
+        maxValue =  parseFloat(maxValue.toFixed(2))
+
+        //Percent change is predicted end value/last real value if prediction is shown,
+        let index : number = showingPrediction ?  initPrices.length-1 : 0;
+        let firstPrice = combinedPrices[index]
+        let lastPrice = combinedPrices[combinedPrices.length-1]
+
+        let lineColor = firstPrice <= lastPrice ? 'green' : 'red';
+        let change : string = (((lastPrice/firstPrice) - 1) * 100).toFixed(2)
+        if(change.substring(0,1) != '-') change = "+" + change
+
+        setPercentChange(change)
+        setTicker(props.symbol)
+
+        if(showingPrediction){
+            setRoiColor('text-primary')
+        }
+        else{
+            lineColor === 'green' ? setRoiColor('text-success') : setRoiColor('text-danger')
+        }
+
+        let graphData, xAxisData;
+        if(predictionRange > 0){
+            //prepend the last price to the new prices
+            newPrices = [initPrices[initPrices.length - 1] , ...newPrices]
+            graphData =
+                [{
+                    data: initPrices,
+                    type: 'line',
+                    color: lineColor,
+                    symbol: 'none'
                 },
-            });
-            if (response.status == 200) {
-                console.log('success')
-                props.reloadWatchlist()
-            } else {
-                console.error('Error sending request:', response.statusText);
-            }
-            setPendingWatchlistRequest(false)
+                {
+                    data: [...placeholders, ...newPrices],
+                    type: 'line',
+                    color: '#0d6efd',
+                    symbol: 'none'
+                }]
+            xAxisData = combinedDates;
         }
-        makeRequest();
+        else{
+            graphData = [{
+                data: initPrices,
+                type: 'line',
+                color: lineColor,
+                symbol: 'none'
+            },
+                {
+                    data: []
+                }]
+            xAxisData = initDates;
+        }
+        const newOptions = {
+            xAxis: {
+                type: 'category',
+                data: xAxisData
+            },
+            yAxis: {
+                type: 'value',
+                min: minValue,
+                max: maxValue
+            },
+            series: graphData,
+        };
+
+        setOptions(newOptions);
+        setGraphLoading(false);
     }
 
-  //limited to 8 api calls per minute
-  return (
-    <>
-        {graphLoading ? (
-            <Spinner size={'large'} height={'300px'}/>
-        ) : (showError ? (
-                <div style={{ height: '300px' }} className='align-items-center d-flex'>
-                    <h3 className="m-auto"> Unable to get time series data at this time </h3>
-                </div>
-            ) : (<div>
-                 <span className={"float-start display-6 mb-2"}> {props.symbol}(<span className={color == 'red' ? "text-danger" : (color == 'green'? "text-success" : "text-gray")}>{percentChange}%</span>)</span>
-                 <ReactECharts option={options} />
-                 </div>)
-        )}
-        <div className='d-flex row justify-content-center'>
-          {intervals.map((interval, i) => (
-            <div className='col-auto' key={i}>
-                <Button
-                    className={`btn ${currInterval !== intervals[i] || showPrediction? 'btn-outline-secondary ' : 'btn-secondary text-light'}`}
-                    variant=''
-                    onClick={() => {
-                        if (currInterval !== intervals[i] || showPrediction) {
-                            setShowPrediction(false);
-                            setCurrInterval(intervals[i]);
-                        }
-                    }}
-                >
-                    {intervals[i]}
-                </Button>
+
+    return (
+        <>
+            {graphLoading ? (
+                <Spinner size={'large'} height={'300px'}/>
+            ) : (showError ? (
+                    <div style={{ height: '500px' }} className='align-items-center d-flex'>
+                        <h3 className="m-auto"> Unable to get time series data at this time </h3>
+                    </div>
+                ) : (<div>
+                    <span className={"float-start display-6 mb-2"}> {props.symbol}(<span className={roiColor}>{percentChange}%</span>)</span>
+                    <ReactECharts option={options} style={{ height: '500px' }} />
+                </div>)
+            )}
+            <div className='d-flex row justify-content-center' >
+                {intervals.map((interval, i) => (
+                    <div className='col-auto' key={i}>
+                        <Button
+                            className={`btn ${currInterval !== intervals[i] || showPrediction? 'btn-outline-secondary ' : 'btn-secondary text-light'}`}
+                            variant=''
+                            onClick={() => {
+                                if (currInterval !== intervals[i] || showPrediction) {
+                                    setShowPrediction(false);
+                                    setCurrInterval(intervals[i]);
+                                    renderGraph(intervals[i], 0);
+                                }
+                            }}
+                        >
+                            {intervals[i]}
+                        </Button>
+                    </div>
+                ))}
+
+                {props.isFeatured &&
+                    <>
+                        <div className='col-auto'>
+                            <Button
+                                className={`btn ${showPrediction ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
+                                variant=''
+                                onClick={() => {
+                                    setShowPrediction(true)
+                                    renderGraph(intervals[3], predictionRange);
+                                }}>
+                                Show Prediction
+                            </Button>
+                        </div>
+                        <div className='col-auto'>
+                            <input
+                                type="range"
+                                min={1}
+                                max={60}
+                                step={1}
+                                value={predictionRange}
+                                onChange={(event) => {
+                                    setShowPrediction(false)
+                                    setCurrInterval('')
+                                    setPredictionRange(Number(event.target.value))
+                                }}
+                            />
+                            <div className="slider-value">Prediction Range: {predictionRange}</div>
+                        </div>
+                    </>
+                }
             </div>
-          ))}
-          <div className='col-auto'>
-              <Button
-                  className={`btn ${showPrediction ? 'btn-secondary text-light' : 'btn-outline-secondary'}`}
-                  variant=''
-                  onClick={() => {
-                      if(!showPrediction) {
-                          setShowPrediction(true)
-                          setCurrInterval(intervals[3]);
-                      }
-                  }}>
-                  Show Prediction
-              </Button>
-          </div>
-      </div>
-      <div className='row mt-3 justify-content-center mb-2'>
-        <div className='col-auto'>
-            <CsvDownload
-                className={`btn btn-outline-success ${showError ? 'disabled' : ''}`}
-                data={timeSeriesData}
-                filename="stock_data.csv">
-                Download CSV
-            </CsvDownload>
-        </div>
-          {props.user != null && props.isFeatured &&
-            <div className='col-auto'>
-                <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
-                        variant=''
-                        onClick ={() => handleWatchlistClick()}>
-                        {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
-                </Button>
+
+            <div className='row mt-3 justify-content-center mb-2'>
+                {props.user != null && props.isFeatured &&
+                    <div className='col-auto'>
+                        <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
+                                variant=''
+                                onClick ={() => handleWatchlistClick()}>
+                            {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
+                        </Button>
+                    </div>
+                }
             </div>
-          }
-      </div>
-    </>
+        </>
     )
 };
 

@@ -67,7 +67,7 @@ const StockGraph = () => {
     <div className='floatingDiv'>
         <h3>Performance Graph</h3>
         <hr/>
-        <ReactECharts option={options} />
+        <ReactECharts option={options} style={{ height: '400px' }}/>
     </div>
   )
 };

@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
 import VerificationView from "./Views/EmailVerifiedView";
 import NewsView from './Views/NewsView';
-import LoginView from './Views/LoginView';
 import StockGraphView from './Views/StockGraphView';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from "./Interfaces/User"
 import Stock from "./Interfaces/Stock";
 import TickerScroller from "./Components/TickerScroller";
@@ -14,39 +13,24 @@ import AccountView from './Views/AccountView';
 import AdminView from './Views/AdminView';
 import GetFeaturedStocks from "./Services/GetFeaturedStocks";
 import GetWatchListStocks from "./Services/GetWatchListStocks";
+import GetPersonalStocks from "./Services/GetPersonalStocks";
+import config from "./config";
 
-
-//set initial featured stocks list
-const initFeaturedStocks: Stock[] = [
-  { name: 'Apple', ticker: 'AAPL', price: -1, up: undefined},
-  { name: 'Google', ticker: 'GOOGL', price: -1, up: undefined},
-  { name: 'Amazon', ticker: 'AMZN', price: -1, up: undefined },
-  { name: 'Microsoft', ticker: 'MSFT', price: -1, up: undefined },
-  { name: 'Meta Platforms', ticker: 'META', price: -1, up: undefined },
-  { name: 'Tesla', ticker: 'TSLA', price: -1, up: undefined },
-  { name: 'Netflix', ticker: 'NFLX', price: -1, up: undefined },
-  { name: 'Alphabet', ticker: 'GOOG', price: -1, up: undefined },
-  { name: 'Visa', ticker: 'V', price: -1, up: undefined },
-  { name: 'Procter & Gamble', ticker: 'PG', price: -1, up: undefined },
-  { name: 'Cisco Systems', ticker: 'CSCO', price: -1, up: undefined },
-  { name: 'JPMorgan Chase', ticker: 'JPM', price: -1, up: undefined },
-  { name: 'Coca-Cola', ticker: 'KO', price: -1, up: undefined },
-  { name: 'Adobe', ticker: 'ADBE', price: -1, up: undefined },
-  { name: 'PayPal', ticker: 'PYPL', price: -1, up: undefined },
-  { name: 'Home Depot', ticker: 'HD', price: -1, up: undefined },
-];
-
+const initFeaturedStocks: Stock[] = [];
 const initWatchListStocks: Stock[] = [];
+const initPersonalStocks: Stock[] = [];
 
 function App() {
 
   const getFeaturedStocks = GetFeaturedStocks;
   const getWatchListStocks = GetWatchListStocks;
+  const getPersonalStocks = GetPersonalStocks;
 
   const [user, setUser] = useState<User | null>(null);
   const [featuredStocks, setFeaturedStocks] = useState(initFeaturedStocks)
   const [watchListStocks, setWatchListStocks] = useState(initWatchListStocks)
   const [homeViewStocks, setHomeViewStocks] = useState(initWatchListStocks)
+  const [personalStocks, setPersonalStocks] = useState(initPersonalStocks)
 
   //Fetch featured stocks price data on initial load
   useEffect(() => {
@@ -66,20 +50,25 @@ function App() {
 
   //Fetch user watchlist stocks on user change
   useEffect(() => {
-    fetchUserWatchList();
+    fetchStocks();
   }, [user]);
 
-  const fetchUserWatchList = async () => {
+  const fetchStocks = async () => {
     try {
       if(user === null) {
         setHomeViewStocks(featuredStocks)
         setWatchListStocks(initWatchListStocks)
+        setPersonalStocks(initPersonalStocks)
         return;
       }
       const stocks: Stock[] | null = await getWatchListStocks(user.id);
+      const personalStockList: Stock[] | null = await getPersonalStocks(user.id);
       if (stocks !== null) {
         setWatchListStocks(stocks);
         setHomeViewStocks(stocks);
+      }
+      if (personalStockList !== null) {
+        setPersonalStocks(personalStockList)
       }
     } catch (error) {
       console.error('Error fetching prices:', error);
@@ -92,13 +81,12 @@ function App() {
       <BrowserRouter>
         <AppNavbar user={ user } setUser={setUser}/>
         <Routes>
-          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
+          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks} personalStocks={personalStocks}/>} />
           <Route path="Verification/:code" element= {<VerificationView/> } />
           <Route path="News" element = { <NewsView /> } />
-          <Route path="Login" element = { <LoginView/> } />
           <Route path="Settings/Account" element={<AccountView user={user} />} />
           <Route path="Settings/Admin" element={<AdminView />} />
-          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchUserWatchList() }/> } />
+          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
         </Routes>
       </BrowserRouter>
     </div>

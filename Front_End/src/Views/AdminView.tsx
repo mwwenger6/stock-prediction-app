@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import ErrorLog from "../Interfaces/ErrorLog";
-import User from "../Interfaces/User"; // Import the User interface
-import { getErrorLogs, getUsers } from "../Services/ErrorLogService"; // Ensure getUsers is imported
+import User from "../Interfaces/User";
+import { getErrorLogs, getUsers } from "../Services/ErrorLogService";
 import DataTable from 'react-data-table-component';
+import config from "../config";
 
 const AdminView: React.FC = () => {
   const [errorLogs, setErrorLogs] = useState<ErrorLog[]>([]);
-  const [users, setUsers] = useState<User[]>([]); // Add state for users
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       let logs = await getErrorLogs();
-  
-      // Sort logs by createdAt in descending order
       logs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  
       setErrorLogs(logs);
-  
-      const users = await getUsers(); // Fetch users
+      const users = await getUsers();
       setUsers(users);
     };
-  
     fetchData();
   }, []);
+
+  const removeErrorLog = async (id:number) => {
+    try {
+      // Note the change to method: 'POST'
+      const response = await fetch(`https://stockrequests.azurewebsites.net/Admin/DeleteErrorLog/${id}`, { method: 'POST' });
+      if (!response.ok) {
+        throw new Error('Failed to delete the error log.');
+      }
+      // If deletion was successful, update the state to remove the log from the table
+      setErrorLogs(prevLogs => prevLogs.filter(log => log.id !== id));
+    } catch (error) {
+      console.error('Error deleting error log:', error);
+      // Optionally, display an error message to the user
+    }
+};
+
+  
+  
+
 
   const errorHeaders = [
       {
@@ -30,6 +45,11 @@ const AdminView: React.FC = () => {
         selector: (row: ErrorLog) => row.id,
         sortable: true,
         width: "100px",
+      },
+      {
+        name: 'Actions',
+        cell: (row: ErrorLog) => <button onClick={() => removeErrorLog(row.id)}>Remove</button>,
+        ignoreRowClick: true,
       },
       {
         name: 'Message',
@@ -54,6 +74,11 @@ const AdminView: React.FC = () => {
             name: 'Email',
             selector: (row: User) => row.email,
             sortable: false,
+        },
+        {
+          name: 'Is Verified',
+          selector: (row: User) => row.isVerified,
+          sortable: false,
         },
         {
             name: 'Account Type Id',
@@ -100,7 +125,7 @@ const AdminView: React.FC = () => {
       {/*    </tbody>*/}
       {/*  </table>*/}
       {/*</div>*/}
-        <div className="floatingDiv col-md-9 col-12">
+        <div className="floatingDiv col-md-13 col-12">
           <h3> Error Logs </h3>
           <hr/>
           <DataTable
@@ -111,7 +136,7 @@ const AdminView: React.FC = () => {
           />
         </div>
         <div className="col-md-3 col-12"></div>
-        <div className="floatingDiv col-md-6 col-12 mt-3">
+        <div className="floatingDiv col-md-13 col-12 mt-3">
             <h3> Users </h3>
             <hr/>
             <DataTable

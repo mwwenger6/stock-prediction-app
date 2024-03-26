@@ -8,7 +8,7 @@ CREATE TABLE Users (
     UserId int AUTO_INCREMENT PRIMARY KEY,
     Email nvarchar(63) NOT NULL UNIQUE,
     Password nvarchar(63) NOT NULL,
-    UserTypeId int,  
+    UserTypeId int,     
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -134,3 +134,14 @@ alter table StockPredictions drop column CreatedAt;
 ALTER TABLE Users ADD UserVerified BIT NOT NULL DEFAULT 0;
 ALTER TABLE Users ADD VerificationCode NVARCHAR(12);
 
+CREATE TABLE HistoricalStockPredictions (
+    PredictionId INT AUTO_INCREMENT PRIMARY KEY,
+    Ticker NVARCHAR(10) NOT NULL,
+    PredictedPrice DECIMAL(12,2) NOT NULL,
+    PredictionDate DATE NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_HistoricalStockPredictions_Ticker FOREIGN KEY (Ticker) REFERENCES Stocks (Ticker)
+);
+
+ALTER TABLE SupportedStocks
+MODIFY COLUMN Name NVARCHAR(200) NOT NULL;

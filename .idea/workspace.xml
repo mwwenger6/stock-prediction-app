@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="removed password from account view">
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Efficiency improvements and functionality improvements made to stock graph screen. Featured stocks now pull 5min and daily stock price data for stock graph.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockGraph.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Services/GetTimeSeriesData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Services/GetTimeSeriesData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/AdminView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/AdminView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Views/EmailVerifiedView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Views/EmailVerifiedView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +133,8 @@
       <workItem from="1710210244446" duration="5905000" />
       <workItem from="1710371234989" duration="10383000" />
       <workItem from="1710445486897" duration="1956000" />
-      <workItem from="1710868728646" duration="19184000" />
+      <workItem from="1710868728646" duration="19278000" />
+      <workItem from="1710986142193" duration="2257000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -325,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710447457304</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Efficiency improvements and functionality improvements made to stock graph screen. Featured stocks now pull 5min and daily stock price data for stock graph.">
+      <option name="closed" value="true" />
+      <created>1710912038223</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710912038223</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +379,8 @@
     <MESSAGE value="Changes made to error logs screen and navbar" />
     <MESSAGE value="Changed icon" />
     <MESSAGE value="removed password from account view" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed password from account view" />
+    <MESSAGE value="Efficiency improvements and functionality improvements made to stock graph screen. Featured stocks now pull 5min and daily stock price data for stock graph." />
+    <option name="LAST_COMMIT_MESSAGE" value="Efficiency improvements and functionality improvements made to stock graph screen. Featured stocks now pull 5min and daily stock price data for stock graph." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

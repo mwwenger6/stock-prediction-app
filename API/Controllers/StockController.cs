@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using Stock_Prediction_API.Entities;
 using Stock_Prediction_API.Services;
 using Stock_Prediction_API.ViewModel;
@@ -182,6 +183,113 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        class TechnicalStockInfo
+        {
+            public string Ticker { get; set; }
+            public string Name { get; set; }
+            public float MeanPercentReturn { get; set; }
+            public float PercentVolatility { get; set; }
+            public List<float> PricePoints { get; set; }
+        }
+        [HttpGet("/Stock/GetTechnicalStockInfo/{numDaysLookback}/{useClosePrices}/")]
+        public IActionResult GetTechnicalStockInfo(int numDaysLookback, bool useClosePrices)
+        {
+
+            try
+            {
+                List<TechnicalStockInfo> technicalInfo = new();
+                _GetDataTools.GetStocks().ToList().ForEach(stock =>
+                {
+                    //Get prices
+                    DateTime oneWeekAgo = DateTime.Now.Subtract(TimeSpan.FromDays(numDaysLookback));
+                    List<StockPrice> currStockPrices = _GetDataTools.GetStockPrices(stock.Ticker, useClosePrices, oneWeekAgo).ToList();
+                    List<float> prices = currStockPrices.Select(x => x.Price).ToList();
+
+                    //Calculate returns
+                    List<float> returns = new();
+                    for (int i = 0; i < prices.Count - 1; i++)
+                    {
+                        float ret = (prices[i] - prices[i + 1]) / prices[i + 1];
+                        ret = (float)Math.Round(ret, 5);
+                        returns.Add(ret);
+                    }
+
+                    //Calculate volatility
+                    float meanReturn = returns.Average();
+                    float sumSquaredDifferences = (float)returns.Sum(ret => Math.Pow(ret - meanReturn, 2));
+                    float variance = sumSquaredDifferences / returns.Count;
+                    float volatility = (float)Math.Sqrt(variance);
+                    technicalInfo.Add(new()
+                    {
+                        Name = stock.Name,
+                        Ticker = stock.Ticker,
+                        MeanPercentReturn = meanReturn * 100,
+                        PercentVolatility = volatility * 100,
+                        PricePoints = prices
+                    });
+                });
+                technicalInfo = technicalInfo.OrderByDescending(x => x.MeanPercentReturn).ToList();
+
+                return Json(technicalInfo);
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem getting technical stock info. {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Stock/GetTechnicalStockInfoForStock/{numDaysLookback}/{useClosePrices}/{ticker}")]
+        public IActionResult GetTechnicalStockInfoForStock(int numDaysLookback, bool useClosePrices, string ticker)
+        {
+
+            try
+            {
+                    //Make sure stock exists
+                    Stock featuredStock = _GetDataTools.GetStock(ticker);
+                    //Get prices
+                    DateTime oneWeekAgo = DateTime.Now.Subtract(TimeSpan.FromDays(numDaysLookback));
+                    List<StockPrice> currStockPrices = _GetDataTools.GetStockPrices(ticker, useClosePrices, oneWeekAgo).ToList();
+                    List<float> prices = currStockPrices.Select(x => x.Price).ToList();
+
+                    //Calculate returns
+                    List<float> returns = new();
+                    for (int i = 0; i < prices.Count - 1; i++)
+                    {
+                        float ret = (prices[i] - prices[i + 1]) / prices[i + 1];
+                        ret = (float)Math.Round(ret, 5);
+                        returns.Add(ret);
+                    }
+
+                    //Calculate volatility
+                    float meanReturn = returns.Average();
+                    float sumSquaredDifferences = (float)returns.Sum(ret => Math.Pow(ret - meanReturn, 2));
+                    float variance = sumSquaredDifferences / returns.Count;
+                    float volatility = (float)Math.Sqrt(variance);
+                    return Json(new TechnicalStockInfo
+                    {
+                        Name = featuredStock.Name,
+                        Ticker = featuredStock.Ticker,
+                        MeanPercentReturn = meanReturn * 100,
+                        PercentVolatility = volatility * 100,
+                        PricePoints = prices
+                    });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Problem getting technical stock info. {ex.Message}");
+            }
+        }
+
         [HttpGet("/Stock/GetOpenMarketDays/{numDays}")]
         public IActionResult GetOpenMarketDays(int numDays)
         {
@@ -291,6 +399,8 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        //Can add time series data: either 5min or 1day. 5min data does not add the close prices because we do not want
+        //extra prices. Thus if adding a new stock, first add ~ 2500 1day prices and ~5000 5min prices
         [HttpPost("/Stock/AddHistoricStockData/{ticker}/{interval}/{outputSize}")]
         public async Task<IActionResult> AddHistoricStockData(string ticker, string interval, string outputSize)
         {
@@ -315,8 +425,12 @@ namespace Stock_Prediction_API.Controllers
                 List<Stock> list = _GetDataTools.GetStocks().ToList();
 
                 List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
+                if(interval == "5min")
+                {
+                    stockPrices.RemoveAll(price => price.Time.TimeOfDay == new TimeSpan(15, 55, 0));
+                }
 
-                if(interval == "1day")
+                if (interval == "1day")
                 {
                     foreach(StockPrice price in stockPrices)
                     {
@@ -418,5 +532,7 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, $"Problem removing {ticker} from user's watch list; User: {userId}. {ex.Message}");
             }
         }
+
+
     }
 }

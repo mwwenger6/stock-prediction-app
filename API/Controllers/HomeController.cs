@@ -37,6 +37,13 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 List<User> users = _GetDataTools.GetUsers().ToList();
+                foreach (User user in users)
+                {
+                    if (user.TypeId == 1)
+                        user.TypeName = "Admin";
+                    else
+                        user.TypeName = "Client";
+                }
                 return Json(users);
             }
             catch (Exception ex)
@@ -259,7 +266,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/Home/Get5MinStockData/{ticker}")]
+/*        [HttpGet("/Home/Get5MinStockData/{ticker}")]
         public IActionResult Get5MinStockData(string ticker)
         {
             try
@@ -281,7 +288,7 @@ namespace Stock_Prediction_API.Controllers
                 });
                 return StatusCode(500, $"Problem getting 5 minute data for {ticker}. {ex.Message}");
             }
-        }
+        }*/
 
         //Ticker must be featured stock, startDate must be in form mmddyyy, interval must be 5min or 1day
         [HttpGet("/Home/GetStockGraphData/{ticker}/{startDate}/{interval}")]
@@ -299,9 +306,7 @@ namespace Stock_Prediction_API.Controllers
                 if (!DateTime.TryParseExact(startDate, "MMddyyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedStartDate))
                     return StatusCode(500, $"Invalid startDate format");
 
-                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, getHistoricalData)
-                    .Where(s => s.Time >= parsedStartDate)
-                    .ToList();
+                List<StockPrice> stockPrices = _GetDataTools.GetStockPrices(ticker, getHistoricalData, parsedStartDate).ToList();
 
                 if (stockPrices == null || !stockPrices.Any())
                 {
@@ -341,6 +346,10 @@ namespace Stock_Prediction_API.Controllers
                 foreach (string ticker in tickers)
                 {
                     Stock stock = await _FinnhubDataTools.GetRecentPrice(ticker);
+                    bool closePrices = false;
+                    if (dateTime.Hour == 15 && dateTime.Minute >= 55)
+                        closePrices = true;
+
                     if (stock != null)
                     {
                         //Add to the list of stock prices
@@ -349,7 +358,7 @@ namespace Stock_Prediction_API.Controllers
                             Ticker = ticker,
                             Price = (float)stock.CurrentPrice,
                             Time = dateTime,
-
+                            IsClosePrice = closePrices
                         });
                         //Update in stock table
                         _GetDataTools.UpdateStockPrice(new()
@@ -361,11 +370,8 @@ namespace Stock_Prediction_API.Controllers
                         });
                     }
                 }
-                //Update in 5 min interval table
-                _GetDataTools.AddFMStockPrices(stockList);
-                //Add closing price to table if market is about to close
-                if (dateTime.Hour == 15 && dateTime.Minute >= 55)
-                    _GetDataTools.AddEODStockPrices(stockList);
+                    
+                _GetDataTools.AddStockPrices(stockList);
 
                 return Ok("Stock prices added successfully.");
             }
@@ -405,9 +411,13 @@ namespace Stock_Prediction_API.Controllers
                 List<StockPrice> stockPrices = await _TwelveDataTools.GetTimeSeriesData(ticker, interval, outputSize);
 
                 if(interval == "1day")
-                    _GetDataTools.AddEODStockPrices(stockPrices);
-                else
-                    _GetDataTools.AddFMStockPrices(stockPrices);
+                {
+                    foreach(StockPrice price in stockPrices)
+                    {
+                        price.IsClosePrice = true;
+                    }
+                }
+                _GetDataTools.AddStockPrices(stockPrices);
 
                 
                 return Ok($"{outputSize} {ticker} stock prices added successfully for at {interval} intervals.");

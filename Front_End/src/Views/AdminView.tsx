@@ -48,7 +48,7 @@ const AdminView: React.FC = () => {
       },
       {
         name: 'Actions',
-        cell: (row: ErrorLog) => <button onClick={() => removeErrorLog(row.id)}>Remove</button>,
+        cell: (row: ErrorLog) => <button className='btn btn-sm btn-danger' onClick={() => removeErrorLog(row.id)}>Remove</button>,
         ignoreRowClick: true,
       },
       {

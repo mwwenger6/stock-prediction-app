@@ -122,10 +122,20 @@ model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 
 pred_range = 5
 
+# get stock volatility for the past month worth of prices (21 market days)
+api_endpoint = 'https://stockrequests.azurewebsites.net/Stock/GetTechnicalStockInfoForStock/90/true/' + ticker
+
+response = requests.get(api_endpoint)
+json_data = response.json()
+percent_volatility = json_data['percentVolatility']
+percent_volatility = percent_volatility * .01
+percent_volatility
+
 # to introduce random noise into predictions
-def noise():
-    random_number = random.uniform(-2, 2)
-    return random_number
+def noise(price, percent_volatility):
+    fluctuation_range = price * percent_volatility
+    noise = random.uniform(-fluctuation_range, fluctuation_range)
+    return noise
 
 with torch.no_grad():
   predictions = []
@@ -134,7 +144,7 @@ with torch.no_grad():
     prediction = model(x).to('cpu').numpy().flatten()
     prediction = prediction.reshape(-1, 1)
     scaled_prediction = scaler.inverse_transform(prediction)
-    scaled_prediction = scaled_prediction + noise();
+    scaled_prediction = scaled_prediction + noise(price, percent_volatility)
     predictions.append(scaled_prediction[0][0])
     noisyPred = scaler.transform(scaled_prediction)
     x = torch.cat((x[:, 1:, :], torch.tensor(noisyPred).reshape(1, 1, 1)), dim=1)

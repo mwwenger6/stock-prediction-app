@@ -17,12 +17,11 @@ const FeaturedStock: React.FC<{ stock: Stock }> = ({ stock }) => {
 
     return (
         <Container className = "featuredStockBg">
-            <div className="floatingDiv my-1 hoverable" style={{width: '200px'}} onClick={handleClick}>
+            <div className="floatingDiv my-1 hoverable d-flex flex-column justify-content-between align-items-center" style={{width: '200px', minHeight: '120px'}} onClick={handleClick}>
                 {
                     stock.price === -1 ? (<Spinner size={'small'} height={'120px'}/>) : ( <>
-                    <p>Name: {stock.name}</p>
-                    <p>Ticker: {stock.ticker}</p>
-                    <p>Price: {stock.price.toFixed(2)} <img className="arrow" src={imageSrc}/></p> </>)
+                    <h5 className={"mb-2"}>{stock.name} ({stock.ticker}) </h5>
+                    <h5 className={"mb-2 fw-normal"}>{stock.price.toFixed(2)} <img className="arrow" src={imageSrc} style={{width: '200px'}}/></h5> </>)
                 }
             </div>
         </Container>

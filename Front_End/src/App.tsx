@@ -4,7 +4,7 @@ import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
 import VerificationView from "./Views/EmailVerifiedView";
-import NewsView from './Views/NewsView';
+import DiscoveryView from './Views/DiscoveryView';
 import StockGraphView from './Views/StockGraphView';
 import User from "./Interfaces/User"
 import Stock from "./Interfaces/Stock";
@@ -83,7 +83,7 @@ function App() {
         <Routes>
           <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks} personalStocks={personalStocks}/>} />
           <Route path="Verification/:code" element= {<VerificationView/> } />
-          <Route path="News" element = { <NewsView /> } />
+          <Route path="Discovery" element = { <DiscoveryView /> } />
           <Route path="Settings/Account" element={<AccountView user={user} />} />
           <Route path="Settings/Admin" element={<AdminView />} />
           <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />

@@ -96,7 +96,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Link to="/" className={linkClasses + " border-lg-start" } onClick={() => setSearchTerm('')}>Home</Link>
-                        <Link to="/News" className={linkClasses} onClick={() => setSearchTerm('')}>News</Link>
+                        <Link to="/Discovery" className={linkClasses} onClick={() => setSearchTerm('')}>Discovery</Link>
                         {loggedIn ?
                         <>
                             <div className={"d-block"}>

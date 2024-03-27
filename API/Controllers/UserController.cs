@@ -121,6 +121,25 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        [HttpGet("/User/GetUserStocks/{userId}/{ticker}")]
+        public IActionResult GetUserStock(int userId, string ticker)
+        {
+            try
+            {
+                return Json(_GetDataTools.GetUserStock(userId, ticker));
+            }
+            catch (Exception ex)
+            {
+                //_GetDataTools.LogError(new()
+                //{
+                //    Message = ex.Message,
+                //    CreatedAt = GetEasternTime(),
+                //});
+                //return StatusCode(500, $"Could not get user stock: {userId}. {ex.Message}");
+                return Json(null);
+            }
+        }
+
         [HttpGet("/User/GetUserStockData/{userId}")]
         public IActionResult GetUserStockData(int userId)
         {

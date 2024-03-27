@@ -17,21 +17,15 @@ interface BuyStockModalProps {
 const BuyStockModal: React.FC<BuyStockModalProps> = (props: BuyStockModalProps) => {
     const [userId, setUserId] = useState(props.user.id);
     const [ticker, setTicker] = useState(props.ticker);
-    let [quantity, setQuantity] = useState(0.0);
-
-    if(props.userStock != undefined){
-        [quantity, setQuantity] = useState(props.userStock.quantity);
-    }
-
-    const clearState = () => {
-        setQuantity(0.0)
-    }
+    const  [quantity, setQuantity] = useState(0.0);
 
     useEffect(() => {
-        if (!props.showModal) {
-            clearState()
+        if (props.userStock !== null) {
+            setQuantity(props.userStock.quantity);
+        } else {
+            setQuantity(0.0);
         }
-    }, [props.showModal]);
+    }, [props.userStock]);
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
@@ -43,22 +37,20 @@ const BuyStockModal: React.FC<BuyStockModalProps> = (props: BuyStockModalProps) 
             },
         });
 
-        if (response.status == 401) {
+        if (response.status === 401) {
             console.error('Error logging in:', response.statusText);
-        }
-        else if (response.status == 200) {
+        } else if (response.status === 200) {
             const user: User = await response.json();
-            console.log('User logged in: ', user)
-
-            clearState()
+            console.log('User logged in: ', user);
+            setQuantity(0.0);
             const timer = setTimeout(() => {
-                props.toggleModal()
+                props.toggleModal();
             }, 500);
-        }
-        else {
+        } else {
             console.error('Error logging in:', response.statusText);
         }
     }
+
 
     return (
         <div>

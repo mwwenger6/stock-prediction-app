@@ -6,13 +6,14 @@ import Spinner from "./Spinner";
 import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
-
+import BuyStockModal from '../Views/Modals/BuyStockModal';
 
 interface StockGraphProps {
     symbol: string;
     isFeatured: boolean;
     user: User | null;
     isWatchlist: boolean;
+    isOwnedStock: boolean;
     reloadWatchlist: () => Promise<void>;
     marketClosed: boolean;
 }
@@ -22,7 +23,8 @@ const StockGraph = (props : StockGraphProps) => {
     const getData = GetTimeSeriesData;
     const intervals =      props.marketClosed ? ['1 Day', '1 Week', '1 Month', '1 Year'] : ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
     const initialInterval = intervals[2]
-
+    const [userStock, setUserStock] = useState(null);
+    const [isOwnedStock, setIsOwnedStock] = useState(false);
     //State variables for view
     const [options, setOptions] = useState({});
     const [currInterval, setCurrInterval] = useState(intervals[2]);
@@ -34,13 +36,14 @@ const StockGraph = (props : StockGraphProps) => {
     const [showPrediction, setShowPrediction] = useState(false)
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
     const [predictionRange, setPredictionRange] = useState(60)
+    const [showBuyModal, setShowBuyModal] = useState(false);
 
     //Data retrieved
     const [oneMinTimeSeriesData, setOneMinTimeSeriesData] = useState([])
     const [fiveMinTimeSeriesData, setFiveMinTimeSeriesData] = useState([])
     const [dailyTimeSeriesData, setDailyTimeSeriesData] = useState([])
     const [predictions, setPredictions] = useState([])
-
+    
     //Fetch the time series data for the stock on symbol change
     useEffect(() => {
         const fetchData = async () => {
@@ -48,9 +51,14 @@ const StockGraph = (props : StockGraphProps) => {
             fetchPrices().then((res) => {
                 renderGraph(initialInterval, 0, res);
             });
+            fetchUserStock();
         };
         fetchData();
     }, [props.symbol]);
+
+    const toggleBuyModal = () => {
+        setShowBuyModal(!showBuyModal);
+    };
 
     //Add or remove stock from user watchlist on click
     function handleWatchlistClick() {
@@ -94,6 +102,15 @@ const StockGraph = (props : StockGraphProps) => {
             hour: hour,
             minute: minute
         }).format(new Date(datetime))
+    }
+
+    const fetchUserStock = async() => {
+        if(props.user != null)
+            setUserStock(await fetch(endpoints.getUserStock(props.user.id, props.symbol)).then(response => response.json()))
+        if(userStock != null )
+            setIsOwnedStock(true)
+        else 
+            setIsOwnedStock(false)
     }
 
 
@@ -318,15 +335,27 @@ const StockGraph = (props : StockGraphProps) => {
 
             <div className='row mt-3 justify-content-center mb-2'>
                 {props.user != null && props.isFeatured &&
-                    <div className='col-auto'>
-                        <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
-                                variant=''
-                                onClick ={() => handleWatchlistClick()}>
-                            {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
-                        </Button>
+                    <div>
+                        <div className='col-auto'>
+                            <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
+                                    variant=''
+                                    onClick ={() => handleWatchlistClick()}>
+                                {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
+                            </Button>
+                        </div>
+                        <div className='col-auto'>
+                            <Button className={`btn ${props.isOwnedStock ? "btn-outline-danger" : "btn-outline-success"}`}
+                                    variant=''
+                                    onClick ={() => toggleBuyModal()}>
+                                {props.isOwnedStock ? "Sell Shares" : "Add To User Stocks" }
+                            </Button>
+                        </div>
                     </div>
                 }
             </div>
+            {props.user != null && (
+                <BuyStockModal showModal={showBuyModal} toggleModal={toggleBuyModal} user={props.user} ticker={ticker} userStock={userStock}/>
+            )}
         </>
     )
 };

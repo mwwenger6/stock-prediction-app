@@ -79,7 +79,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 List<UserWatchlistStocks> watchlistStocks = _GetDataTools.GetUserWatchlistStocks(userId);
-                List<Stock> stocks = new List<Stock>();
+                List<Stock> stocks = new();
 
                 foreach (UserWatchlistStocks userStock in watchlistStocks)
                 {
@@ -98,6 +98,7 @@ namespace Stock_Prediction_API.Controllers
                 return StatusCode(500, $"Problem getting user's watchlist stocks; User: {userId}. {ex.Message}");
             }
         }
+
 
         [HttpGet("/Stock/GetSupportedStocks")]
         public IActionResult GetSupportedStocks()

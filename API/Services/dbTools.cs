@@ -80,10 +80,6 @@ namespace Stock_Prediction_API.Services
         }
 
 
-        public IQueryable<UserStock> GetUserStocks(int userId)
-        {
-            return dbContext.UserStocks.Where(u => u.UserId == userId);
-        }
         #endregion
 
         #region User
@@ -93,7 +89,15 @@ namespace Stock_Prediction_API.Services
             return dbContext.Users
                 .Where(u => u.Email == email).Single();
         }
-
+        public IQueryable<UserStock> GetUserStocks(int userId)
+        {
+            return dbContext.UserStocks.Where(u => u.UserId == userId);
+        }
+        public UserStock GetUserStock(int userId, string ticker)
+        {
+            return dbContext.UserStocks
+                .Single(u => u.UserId == userId && u.Ticker == ticker);
+        }
         public bool UserWithVerificationCode(string code)
         {
             return dbContext.Users.Any(u => u.VerificationCode == code);

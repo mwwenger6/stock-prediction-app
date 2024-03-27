@@ -9,8 +9,10 @@ const endpoints = {
     getUsers: `${API_BASE_URL}/User/GetUsers`,
     verifyUser: (code : string) => `${API_BASE_URL}/User/VerifyUser/${code}`,
     addUserPersonalStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/User/AddUserStock/${userId}/${ticker}/${quantity}`,
-    getUserStocks: (userId : number) => `${API_BASE_URL}/User/GetUserStocks/${userId}`,
     getUserStockData: (userId : number) => `${API_BASE_URL}/User/GetUserStockData/${userId}`,
+    addUserStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/User/AddUserStock/${userId}/${ticker}/${quantity}`,
+    getUserStock: (userId : number, ticker : string) => `${API_BASE_URL}/User/GetUserStock/${userId}/${ticker}`,
+    getUserStocks: (userId : number) => `${API_BASE_URL}/User/GetUserStocks/${userId}/`,
 
     //Stock Endpoints
     getStocks: `${API_BASE_URL}/Stock/GetStocks`,

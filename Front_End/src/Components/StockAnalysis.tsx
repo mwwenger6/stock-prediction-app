@@ -91,7 +91,7 @@ const StockAnalysis = () => {
                     {row.meanPercentReturn.toString()[0] !== '-' ? '+' + row.meanPercentReturn.toFixed(2) : row.meanPercentReturn.toFixed(2) }%
                 </h5>
             ),
-            sortable: true,
+            sortable: false,
         },
         {
             name: 'Volatility',
@@ -99,12 +99,11 @@ const StockAnalysis = () => {
                 <h5 className={'text-center'}>
                     {row.percentVolatility.toFixed(2)}%
                 </h5>,
-            sortable: true,
+            sortable: false,
         },
         {
             name: 'Graph',
             cell: (row: TechnicalData) => <div style={{ height: '200px', width: '100%' }}> <ReactECharts option={createGraph(row.pricePoints)} style={{ height: '100%', width: '100%' }} /></div> ,
-            ignoreRowClick: true,
             width: '350px'
         },
     ];

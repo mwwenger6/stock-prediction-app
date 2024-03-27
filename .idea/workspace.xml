@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Changed some endpoints to reflect API changes">
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Components/StockAnalysis.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front_End/src/Views/DiscoveryView.tsx" afterDir="false" />
+    <list default="true" id="6957c8cd-1e23-4c9c-855a-12f1dcf7ddc1" name="Changes" comment="Discovery page created, stock analysis component created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/AppNavbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/FeaturedStock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_End/src/Components/StockAnalysis.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/Components/StockAnalysis.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_End/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front_End/src/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +132,7 @@
       <workItem from="1710445486897" duration="1956000" />
       <workItem from="1710868728646" duration="19278000" />
       <workItem from="1710986142193" duration="2257000" />
-      <workItem from="1711477269082" duration="7665000" />
+      <workItem from="1711477269082" duration="8041000" />
     </task>
     <task id="LOCAL-00001" summary="Added x axis values to stock chart display. Sharpened up some code in the stock graph and api call.">
       <option name="closed" value="true" />
@@ -346,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711429950716</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Discovery page created, stock analysis component created">
+      <option name="closed" value="true" />
+      <created>1711519870846</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1711519870846</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +369,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added download csv button to stock graph screen" />
     <MESSAGE value="Made tweaks to graph view screen" />
     <MESSAGE value="Added some styles to the news page" />
     <MESSAGE value="Added time frames to stock graph. Added some checks to see if the market is closed." />
@@ -390,7 +393,8 @@
     <MESSAGE value="removed password from account view" />
     <MESSAGE value="Efficiency improvements and functionality improvements made to stock graph screen. Featured stocks now pull 5min and daily stock price data for stock graph." />
     <MESSAGE value="Changed some endpoints to reflect API changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed some endpoints to reflect API changes" />
+    <MESSAGE value="Discovery page created, stock analysis component created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discovery page created, stock analysis component created" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

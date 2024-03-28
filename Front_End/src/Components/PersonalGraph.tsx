@@ -1,75 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
-import PersonalData from '../Data/personalGraphData.json';
+import User from '../Interfaces/User';
+import endpoints from '../config';
 
-interface TimeSeriesData {
-  "Meta Data": {},
-  "Time Series (5min)": {
-    [key: string]: {
-      "1. open": string;
-      "4. close": string;
-    }
-  }
+interface PersonalGraphProps {
+    user: User;
 }
 
-const StockGraph = () => {
-  const [options, setOptions] = useState({});
+const PersonalGraph: React.FC<PersonalGraphProps> = (props) => {
+    const [options, setOptions] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(endpoints.getUserStockData(props.user.id));
+            const data = await response.json();
+            const stockData = data.reverse();
+            const categories = stockData.map((_: any, index: number) => `Point ${index + 1}`);
+            
+            // Decide color based on first and last data points
+            let color = 'grey';
+            if (stockData[0] < stockData[stockData.length - 1]) {
+                color = 'green';
+            } else if (stockData[0] > stockData[stockData.length - 1]) {
+                color = 'red';
+            }
+            
+            const minValue = Math.min(...stockData);
+            const maxValue = Math.max(...stockData);
+            const mostCurrentPrice = stockData[stockData.length - 1];
+            const formattedCurrentPrice = mostCurrentPrice.toLocaleString(); // Format with commas
+            
+            const newOptions = {
+                title: {
+                    text: `Current Price: $${formattedCurrentPrice}`,
+                    textStyle: {
+                        color: color
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: categories
+                },
+                yAxis: {
+                    type: 'value',
+                    min: minValue,
+                    max: maxValue
+                },
+                series: [
+                    {
+                        data: stockData,
+                        type: 'line',
+                        color: color,
+                    }
+                ]
+            };
+            
+            setOptions(newOptions);
+        };
 
-  useEffect(() => {
-    const timeSeries = PersonalData["Time Series (5min)"] as TimeSeriesData["Time Series (5min)"];
-    const categories = Object.keys(timeSeries).sort();
-    const openValues = categories.map(time => parseFloat(timeSeries[time]["1. open"]));
-    const closeValues = categories.map(time => parseFloat(timeSeries[time]["4. close"]));
+        fetchData();
+    }, [props.user.id]);
 
-    let color = 'grey';
-    if (closeValues[0] > closeValues[closeValues.length - 1]) {
-      color = 'red';
-    } else if (closeValues[0] < closeValues[closeValues.length - 1]) {
-      color = 'green';
-    }
-
-    const allValues = openValues.concat(closeValues);
-    const minValue = Math.min(...allValues);
-    const maxValue = Math.max(...allValues);
-
-    const mostCurrentPrice = closeValues[closeValues.length - 1];
-    const formattedCurrentPrice = mostCurrentPrice.toLocaleString(); // Format with commas
-
-    const newOptions = {
-      title: {
-        text: `Current Price: $${formattedCurrentPrice}`,
-        textStyle: {
-          color: color
-        }
-      },
-      xAxis: {
-        type: 'category',
-        data: categories
-      },
-      yAxis: {
-        type: 'value',
-        min: minValue,
-        max: maxValue
-      },
-      series: [
-        {
-          data: openValues,
-          type: 'line',
-          color: color,
-        }
-      ]
-    };
-
-    setOptions(newOptions);
-  }, []);
-
-  return (
-    <div className='floatingDiv'>
-        <h3>Performance Graph</h3>
-        <hr/>
-        <ReactECharts option={options} style={{ height: '400px' }}/>
-    </div>
-  )
+    return (
+        <div className='floatingDiv'>
+            <h3>Performance Graph</h3>
+            <hr />
+            <ReactECharts option={options} style={{ height: '400px' }} />
+        </div>
+    );
 };
 
-export default StockGraph;
+export default PersonalGraph;

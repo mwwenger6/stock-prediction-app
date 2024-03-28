@@ -13,7 +13,6 @@ import AccountView from './Views/AccountView';
 import AdminView from './Views/AdminView';
 import GetFeaturedStocks from "./Services/GetFeaturedStocks";
 import GetWatchListStocks from "./Services/GetWatchListStocks";
-import GetPersonalStocks from "./Services/GetPersonalStocks";
 import config from "./config";
 
 const initFeaturedStocks: Stock[] = [];
@@ -24,13 +23,11 @@ function App() {
 
   const getFeaturedStocks = GetFeaturedStocks;
   const getWatchListStocks = GetWatchListStocks;
-  const getPersonalStocks = GetPersonalStocks;
 
   const [user, setUser] = useState<User | null>(null);
   const [featuredStocks, setFeaturedStocks] = useState(initFeaturedStocks)
   const [watchListStocks, setWatchListStocks] = useState(initWatchListStocks)
   const [homeViewStocks, setHomeViewStocks] = useState(initWatchListStocks)
-  const [personalStocks, setPersonalStocks] = useState(initPersonalStocks)
 
   //Fetch featured stocks price data on initial load
   useEffect(() => {
@@ -58,17 +55,12 @@ function App() {
       if(user === null) {
         setHomeViewStocks(featuredStocks)
         setWatchListStocks(initWatchListStocks)
-        setPersonalStocks(initPersonalStocks)
         return;
       }
       const stocks: Stock[] | null = await getWatchListStocks(user.id);
-      const personalStockList: Stock[] | null = await getPersonalStocks(user.id);
       if (stocks !== null) {
         setWatchListStocks(stocks);
         setHomeViewStocks(stocks);
-      }
-      if (personalStockList !== null) {
-        setPersonalStocks(personalStockList)
       }
     } catch (error) {
       console.error('Error fetching prices:', error);
@@ -81,7 +73,7 @@ function App() {
       <BrowserRouter>
         <AppNavbar user={ user } setUser={setUser}/>
         <Routes>
-          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks} personalStocks={personalStocks}/>} />
+          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
           <Route path="Verification/:code" element= {<VerificationView/> } />
           <Route path="Discovery" element = { <DiscoveryView /> } />
           <Route path="Settings/Account" element={<AccountView user={user} />} />

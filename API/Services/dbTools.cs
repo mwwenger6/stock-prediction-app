@@ -98,6 +98,11 @@ namespace Stock_Prediction_API.Services
             return dbContext.UserStocks
                 .Single(u => u.UserId == userId && u.Ticker == ticker);
         }
+        public UserStock? GetUserStockNullable(int userId, string ticker)
+        {
+            return dbContext.UserStocks
+                .FirstOrDefault(u => u.UserId == userId && u.Ticker == ticker);
+        }
         public bool UserWithVerificationCode(string code)
         {
             return dbContext.Users.Any(u => u.VerificationCode == code);
@@ -174,6 +179,7 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == stock.Ticker)
                     .ExecuteUpdate(i => i
                         .SetProperty(t => t.Quantity, stock.Quantity)
+                        .SetProperty(t => t.Price, stock.Price)
                     );
                 return;
             }

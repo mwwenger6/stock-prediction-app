@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import HomeView from "./Views/HomeView";
 import AppNavbar from "./Components/AppNavbar";
@@ -74,19 +74,21 @@ function App() {
             <Routes>
               <Route path="Verification/:code" element= {<VerificationView/> } />
               <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
-              <Route path="Discovery" element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
+              <Route path="/" element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
               <Route path="Home" index element={<HomeView user={user} watchlistStocks={watchListStocks}/>} />
               <Route path="Settings/Account" element={<AccountView user={user} />} />
               <Route path="Settings/Admin" element={<AdminView />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
         ) :
+          <>
             <Routes>
               <Route path="Verification/:code" element= {<VerificationView/> } />
               <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
-              <Route path="Discovery" index element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
+              <Route path="/" index element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
+          </>
         }
       </BrowserRouter>
     </div>

@@ -69,7 +69,7 @@ const AppNavbar = (props: AppNavbarProps) => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary-custom-bg" style={{backgroundColor : '#333333', marginTop : '0 !important'}}>
             <Container>
-                <Link to="/Discovery" className="navbar-brand">
+                <Link to="/" className="navbar-brand">
                     <span className="brand-name">stock</span>
                     <span className="brand-name-secondary">Genie</span>
                 </Link>
@@ -95,7 +95,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Link to="/Discovery" className={linkClasses + " border-lg-start" } onClick={() => setSearchTerm('')}>Discovery</Link>
+                        <Link to="/" className={linkClasses + " border-lg-start" } onClick={() => setSearchTerm('')}>Discovery</Link>
                         {loggedIn ?
                         <>
                             <Link to="/Home" className={linkClasses} onClick={() => setSearchTerm('')}>Home</Link>
@@ -117,7 +117,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
-                            <Link to="/Discovery" onClick={() => {props.setUser(null); }} className={linkClasses} >Log Out</Link>
+                            <Link to="/" onClick={() => {props.setUser(null); }} className={linkClasses} >Log Out</Link>
                         </>
                         : <Link to="/" onClick={(e) =>{
                             e.preventDefault(); //prevents page navigation

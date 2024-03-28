@@ -88,7 +88,7 @@ namespace Stock_Prediction_API.Controllers
             try
             {
                 // Pass the JSON data to the Python script
-                string pythonScriptPath = "wwwroot\\PythonScripts\\model_predict.py";
+                string pythonScriptPath = "wwwroot\\PythonScripts\\noisy_model_predict.py";
                 ProcessStartInfo start = new()
                 {
                     FileName = "python",

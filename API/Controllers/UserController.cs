@@ -121,7 +121,7 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpGet("/User/GetUserStocks/{userId}/{ticker}")]
+        [HttpGet("/User/GetUserStock/{userId}/{ticker}")]
         public IActionResult GetUserStock(int userId, string ticker)
         {
             try
@@ -164,7 +164,7 @@ namespace Stock_Prediction_API.Controllers
                 List<StockPrice> prices = new();
                 try
                 {
-                    prices = _GetDataTools.GetStockPrices(userStock.Ticker, DateTime.Now.Date).ToList();
+                    prices = _GetDataTools.GetStockPrices(userStock.Ticker, GetEasternTime().Date).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -179,7 +179,7 @@ namespace Stock_Prediction_API.Controllers
                 userStockPrices ??= new float[prices.Count];
                 foreach (StockPrice stockPrice in prices)
                 {
-                    userStockPrices[count] = stockPrice.Price * userStock.Quantity;
+                    userStockPrices[count] = userStockPrices[count] + (stockPrice.Price * userStock.Quantity);
                     count++;
                 }
             }
@@ -299,16 +299,23 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
-        [HttpPost("/User/AddUserStock/{userId}/{ticker}/{quantity}")]
-        public IActionResult AddUserStock(int userId, string ticker, float quantity)
+        [HttpPost("/User/AddUserStock/{userId}/{ticker}/{quantity}/{price}")]
+        public IActionResult AddUserStock(int userId, string ticker, float quantity, float price)
         {
             try
             {
+                UserStock? userStock = _GetDataTools.GetUserStockNullable(userId, ticker);
+                if (userStock != null)
+                {
+                    price = ((userStock.Price * userStock.Quantity) + (price * quantity))/(userStock.Quantity + quantity) ;
+                    quantity = userStock.Quantity + quantity;
+                }
                 _GetDataTools.AddUserStock(new UserStock
                 {
                     UserId = userId,
                     Ticker = ticker,
                     Quantity = quantity,
+                    Price = price,
                     CreatedAt = DateTime.Now
                 });
             }
@@ -320,6 +327,35 @@ namespace Stock_Prediction_API.Controllers
                     CreatedAt = GetEasternTime(),
                 });
                 return StatusCode(500, $"Could not add Stock to User: {userId}. {ex.Message}");
+            }
+            return Ok("Stock Added Successfully.");
+        }
+
+        [HttpPost("/User/SubtractUserStock/{userId}/{ticker}/{quantity}")]
+        public IActionResult SubtractUserStock(int userId, string ticker, float quantity)
+        {
+            try
+            {
+                UserStock? userStock = _GetDataTools.GetUserStockNullable(userId, ticker) ?? throw new Exception("No UserStock found");
+                float newQuantity = userStock.Quantity - quantity;
+                if (newQuantity < 0)
+                    throw new Exception("Cannot sell more shares than you own");
+                _GetDataTools.AddUserStock(new UserStock
+                {
+                    UserId = userId,
+                    Ticker = ticker,
+                    Quantity = newQuantity,
+                    Price = userStock.Price
+                });
+            }
+            catch (Exception ex)
+            {
+                _GetDataTools.LogError(new()
+                {
+                    Message = ex.Message,
+                    CreatedAt = GetEasternTime(),
+                });
+                return StatusCode(500, $"Could not subtract Stock for User: {userId}. {ex.Message}");
             }
             return Ok("Stock Added Successfully.");
         }

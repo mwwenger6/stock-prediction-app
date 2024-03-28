@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import StockStats from "../Components/StockStats";
 import User from "../Interfaces/User";
 import Stock from "../Interfaces/Stock";
-import React, {Dispatch, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
+import endpoints from "../config";
 
 interface StockGraphViewProps {
     user: User | null,
@@ -18,6 +19,7 @@ const StockGraphView = (props : StockGraphViewProps) => {
     const isFeatured = props.featuredStocks.some(stock => stock.ticker === symbol);
     const isWatchlist = props.watchlistStocks.some(stock => stock.ticker === symbol);
     const closed = stockMarketClosed();
+    const [userStock, setUserStock] = useState(null);
 
     function stockMarketClosed() {
         const timeZone = 'America/New_York';
@@ -35,13 +37,26 @@ const StockGraphView = (props : StockGraphViewProps) => {
         return false;
     }
 
+    useEffect(() => {
+        const fetchUserStock = async () => {
+            if (props.user != null && symbol != undefined) {
+                setUserStock(await fetch(endpoints.getUserStock(props.user.id, symbol)).then(response => response.json()));
+                console.log(userStock);
+            } else {
+                setUserStock(null);
+            }
+        };
+
+        fetchUserStock();
+    }, []);
+
     return (
         <div className={"m-md-4 m-1"}>
             {symbol != undefined &&
                 <div className="row">
                     <div className="col-lg-9 col-12">
                         <div className="floatingDiv mx-2">
-                            <StockGraph symbol={ symbol } isFeatured={ isFeatured } user = { props.user } isOwnedStock = {false} isWatchlist={ isWatchlist } reloadWatchlist = { props.reloadWatchlist } marketClosed={closed} />
+                            <StockGraph symbol={ symbol } isFeatured={ isFeatured } user = { props.user } userStock = {userStock} isWatchlist={ isWatchlist } reloadWatchlist = { props.reloadWatchlist } marketClosed={closed} />
                         </div>
                     </div>
                     <div className="col-lg-3 col-12">

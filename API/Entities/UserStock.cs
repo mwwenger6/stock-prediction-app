@@ -21,6 +21,8 @@ namespace Stock_Prediction_API.Entities
         public string Ticker { get; set; }
         [Column("Quantity")]
         public float Quantity { get; set; }
+        [Column("Price")]
+        public float Price { get; set; }
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
     }

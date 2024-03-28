@@ -47,7 +47,8 @@ namespace Stock_Prediction_API.Controllers
         {
             try
             {
-                return Json(_GetDataTools.GetVolatileStocks(false));
+                List<VolatileStock> stocks = _GetDataTools.GetVolatileStocks(false).ToList();
+                return Json(stocks);
             }
             catch (Exception ex)
             {
@@ -68,8 +69,23 @@ namespace Stock_Prediction_API.Controllers
         [HttpPost("/Discovery/AddVolatileStocks")]
         public IActionResult AddVolatileStocks([FromBody] List<VolatileStock> stocks)
         {
-            return Ok("ok");
-
+            if(stocks != null)
+            {
+                try
+                {
+                    _GetDataTools.AddVolatileStocks(stocks);
+                }
+                catch(Exception ex)
+                {
+                    _GetDataTools.LogError(new()
+                    {
+                        Message = ex.Message,
+                        CreatedAt = GetEasternTime(),
+                    });
+                    return StatusCode(500, $"Could not add VolatileStocks. {ex.Message}");
+                }
+            }
+            return Ok("Volatile Stocks Added");
         }
 
     }

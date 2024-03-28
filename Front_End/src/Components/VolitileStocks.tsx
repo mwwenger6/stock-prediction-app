@@ -11,20 +11,20 @@ interface VolitileStocksProps {
 const VolitileStocks: React.FC<VolitileStocksProps> = (props) => {
     const [biggestGainers, setBiggestGainers] = useState<VolatileStock[]>([]); 
     const [biggestLosers, setBiggestLosers] = useState<VolatileStock[]>([]); 
-    // useEffect(() => {
-    //     const fetchGainers = async () => {
-    //         const response = await fetch(endpoints.getBiggestGainers());
-    //         const data = await response.json();
-    //         setBiggestGainers(data);
-    //     };
-    //     const fetchLosers = async () => {
-    //         const response = await fetch(endpoints.getBiggestLosers());
-    //         const data = await response.json();
-    //         setBiggestLosers(data);
-    //     };
-    //     fetchGainers();
-    //     fetchLosers();
-    // });
+    useEffect(() => {
+        const fetchGainers = async () => {
+            const response = await fetch(endpoints.getBiggestGainers());
+            const data = await response.json();
+            setBiggestGainers(data);
+        };
+        const fetchLosers = async () => {
+            const response = await fetch(endpoints.getBiggestLosers());
+            const data = await response.json();
+            setBiggestLosers(data);
+        };
+        fetchGainers();
+        fetchLosers();
+    });
 
     return (
         <div className="floatingDiv" style={{maxHeight: '500px'}}>
@@ -33,12 +33,13 @@ const VolitileStocks: React.FC<VolitileStocksProps> = (props) => {
                     <h3>Today's Biggest Gainers</h3>
                     <hr/>
                     <div className="overflow-auto" style={{ maxHeight: '400px' }}>
-                        {/* {userStocks.map((stock, index) => (
+                        {biggestGainers.map((stock, index) => (
                             <div key={index} className="floatingDiv m-auto my-2" style={{ minWidth: '200px', width: '200px' }}>
                                 <p>{stock.ticker}</p>
                                 <p>${stock?.price?.toFixed(2)}</p>
+                                <p style={{ color: 'green' }}>{stock.percentChange}%</p>
                             </div>
-                        ))} */}
+                        ))}
                     </div>
                 </>
             ) : (
@@ -46,12 +47,13 @@ const VolitileStocks: React.FC<VolitileStocksProps> = (props) => {
                     <h3>Today's Biggest Losers</h3>
                     <hr/>
                     <div className="overflow-auto" style={{ maxHeight: '400px' }}>
-                        {/* {userStocks.map((stock, index) => (
+                        {biggestLosers.map((stock, index) => (
                             <div key={index} className="floatingDiv m-auto my-2" style={{ minWidth: '200px', width: '200px' }}>
                                 <p>{stock.ticker}</p>
                                 <p>${stock?.price?.toFixed(2)}</p>
+                                <p style={{ color: 'red' }}>{stock.percentChange}%</p>
                             </div>
-                        ))} */}
+                        ))}
                     </div>
                 </>
             )}

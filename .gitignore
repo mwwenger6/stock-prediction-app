@@ -151,3 +151,14 @@ $RECYCLE.BIN/
 /API/obj/Release/net7.0/PubTmp/Stock-Prediction-API.Parameters.xml
 *.pubxml
 *.json
+/UserControllerTests/obj/Debug/net7.0/UserControllerTests.AssemblyInfoInputs.cache
+/UserControllerTests/obj/Debug/net7.0/UserControllerTests.assets.cache
+/UserControllerTests/obj/Debug/net7.0/UserControllerTests.csproj.AssemblyReference.cache
+/UserControllerTests/obj/project.assets.json
+/UserControllerTests/obj/Debug/net7.0/UserControllerTests.GeneratedMSBuildEditorConfig.editorconfig
+/UserControllerTests/obj/UserControllerTests.csproj.nuget.dgspec.json
+/UserControllerTests/obj/project.nuget.cache
+/UserControllerTests/obj/UserControllerTests.csproj.nuget.g.props
+/UserControllerTests/bin/Debug/net7.0/CoverletSourceRootsMapping
+/UserControllerTests/obj/Debug/net7.0/UserControllerTests.AssemblyInfo.cs
+/API/.config/dotnet-tools.json

@@ -126,10 +126,19 @@ namespace Stock_Prediction_API.Services
         #region Discovery
 
         public IQueryable<VolatileStock> GetVolatileStocks(bool isPositive)
-        {
-            return dbContext.VolatileStocks
-                .Where(s => s.IsPositive == isPositive);
+{
+            var query = dbContext.VolatileStocks
+                .Where(s => s.IsPositive == isPositive)
+                .OrderBy(s => s.PercentChange);
+
+            if (isPositive)
+            {
+                query = query.OrderByDescending(s => s.PercentChange);
+            }
+
+            return query;
         }
+
         #endregion
 
         #endregion
@@ -326,6 +335,17 @@ namespace Stock_Prediction_API.Services
                 tempContext.StockPredictions.Where(spred => spred.Ticker == ticker).ExecuteDelete();
             }
             tempContext.SaveChanges(); 
+        }
+
+        #endregion
+
+        #region Discovery
+
+        public void AddVolatileStocks(List<VolatileStock> stocks)
+        {
+            using var tempContext = GetNewDBContext();
+            tempContext.AddRange(stocks);
+            tempContext.SaveChanges();
         }
 
         #endregion

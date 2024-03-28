@@ -41,7 +41,7 @@ const StockGraphView = (props : StockGraphViewProps) => {
                 <div className="row">
                     <div className="col-lg-9 col-12">
                         <div className="floatingDiv mx-2">
-                            <StockGraph symbol={ symbol } isFeatured={ isFeatured } user = { props.user } isWatchlist={ isWatchlist } reloadWatchlist = { props.reloadWatchlist } marketClosed={closed} />
+                            <StockGraph symbol={ symbol } isFeatured={ isFeatured } user = { props.user } isOwnedStock = {false} isWatchlist={ isWatchlist } reloadWatchlist = { props.reloadWatchlist } marketClosed={closed} />
                         </div>
                     </div>
                     <div className="col-lg-3 col-12">

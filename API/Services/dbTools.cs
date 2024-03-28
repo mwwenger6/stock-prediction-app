@@ -33,7 +33,7 @@ namespace Stock_Prediction_API.Services
 
         public IQueryable<QuickStock> GetQuickStocks() => dbContext.QuickStocks;
 
-        public IQueryable<EODStockPrice> GetStockPrices() => dbContext.EODStockPrices;
+        public IQueryable<StockPrice> GetStockPrices() => dbContext.StockPrices;
         public IQueryable<ErrorLog> GetErrorLogs() => dbContext.ErrorLogs;
         public IQueryable<UserType> GetUserTypes() => dbContext.UserTypes;
         public IQueryable<MarketHolidays> GetMarketHolidays() => dbContext.MarketHolidays;
@@ -58,26 +58,28 @@ namespace Stock_Prediction_API.Services
                 .Where(s => s.UserId == userId).ToList();
         }
 
-        public IQueryable<StockPrice> GetStockPrices(string ticker, bool getHistoricalData)
+        public IQueryable<StockPrice> GetStockPrices(string ticker, bool getHistoricalData, DateTime? startDate = null)
         {
+            IQueryable<StockPrice> prices;
             if(getHistoricalData)
-                return dbContext.EODStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+                prices = dbContext.StockPrices.Where(sp => sp.Ticker == ticker && sp.IsClosePrice == true).OrderByDescending(sp => sp.Time);
             else
-                return dbContext.FMStockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+                prices = dbContext.StockPrices.Where(sp => sp.Ticker == ticker).OrderByDescending(sp => sp.Time);
+
+            if (startDate != null)
+                prices = prices.Where(s => s.Time >= startDate);
+
+            return prices;
         }
 
         public IQueryable<StockPrice> GetStockPrices(string ticker, DateTime date)
         {
-            return dbContext.EODStockPrices
+            return dbContext.StockPrices
                 .Where(sp => sp.Ticker == ticker && sp.Time >= date)
                 .OrderByDescending(sp => sp.Time);
         }
 
 
-        public IQueryable<UserStock> GetUserStocks(int userId)
-        {
-            return dbContext.UserStocks.Where(u => u.UserId == userId);
-        }
         #endregion
 
         #region User
@@ -87,7 +89,15 @@ namespace Stock_Prediction_API.Services
             return dbContext.Users
                 .Where(u => u.Email == email).Single();
         }
-
+        public IQueryable<UserStock> GetUserStocks(int userId)
+        {
+            return dbContext.UserStocks.Where(u => u.UserId == userId);
+        }
+        public UserStock GetUserStock(int userId, string ticker)
+        {
+            return dbContext.UserStocks
+                .Single(u => u.UserId == userId && u.Ticker == ticker);
+        }
         public bool UserWithVerificationCode(string code)
         {
             return dbContext.Users.Any(u => u.VerificationCode == code);
@@ -215,47 +225,16 @@ namespace Stock_Prediction_API.Services
                     .Where(s => s.Ticker == ticker)
                     .ExecuteDelete();
         }
-        public void AddFMStockPrices(List<StockPrice> stockPrices)
+        public void AddStockPrices(List<StockPrice> stockPrices)
         {
             using var tempContext = GetNewDBContext();
-            foreach (StockPrice stockPrice in stockPrices)
-            {
-                //var existingStockPrice = tempContext.FMStockPrices
-                //    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
-
-                tempContext.FMStockPrices.Add(new()
-                {
-                    Price = stockPrice.Price,
-                    Time = stockPrice.Time,
-                    Ticker = stockPrice.Ticker
-                });
-
-            }
-            tempContext.SaveChanges();
-        }
-        public void AddEODStockPrices(List<StockPrice> stockPrices)
-        {
-            using var tempContext = GetNewDBContext();
-            foreach (StockPrice stockPrice in stockPrices)
-            {
-                var existingStockPrice = tempContext.EODStockPrices
-                    .FirstOrDefault(sp => sp.Ticker == stockPrice.Ticker && sp.Time == stockPrice.Time);
-                if (existingStockPrice == null)
-                {
-                    tempContext.EODStockPrices.Add(new()
-                    {
-                        Price = stockPrice.Price,
-                        Time = stockPrice.Time,
-                        Ticker = stockPrice.Ticker
-                    });
-                }
-            }
+            tempContext.StockPrices.AddRange(stockPrices);
             tempContext.SaveChanges();
         }
         public void DeleteStockPrices (string ticker)
         {
             using var tempContext = GetNewDBContext();
-            tempContext.EODStockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
+            tempContext.StockPrices.Where(s => s.Ticker == ticker).ExecuteDelete();
         }
         #endregion
 

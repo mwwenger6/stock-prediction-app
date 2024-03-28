@@ -3,6 +3,7 @@ import ErrorLog from "../Interfaces/ErrorLog";
 import User from "../Interfaces/User";
 import { getErrorLogs, getUsers } from "../Services/ErrorLogService";
 import DataTable from 'react-data-table-component';
+import config from "../config";
 
 const AdminView: React.FC = () => {
   const [errorLogs, setErrorLogs] = useState<ErrorLog[]>([]);
@@ -22,7 +23,7 @@ const AdminView: React.FC = () => {
   const removeErrorLog = async (id:number) => {
     try {
       // Note the change to method: 'POST'
-      const response = await fetch(`https://stockrequests.azurewebsites.net/Home/DeleteErrorLog/${id}`, { method: 'POST' });
+      const response = await fetch(`https://stockrequests.azurewebsites.net/Admin/DeleteErrorLog/${id}`, { method: 'POST' });
       if (!response.ok) {
         throw new Error('Failed to delete the error log.');
       }
@@ -47,7 +48,7 @@ const AdminView: React.FC = () => {
       },
       {
         name: 'Actions',
-        cell: (row: ErrorLog) => <button onClick={() => removeErrorLog(row.id)}>Remove</button>,
+        cell: (row: ErrorLog) => <button className='btn btn-sm btn-danger' onClick={() => removeErrorLog(row.id)}>Remove</button>,
         ignoreRowClick: true,
       },
       {

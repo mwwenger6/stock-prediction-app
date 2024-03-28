@@ -1,19 +1,19 @@
 import React, {useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import GetTimeSeriesData from "../Services/GetTimeSeriesData";
-import CsvDownload from "react-json-to-csv";
 import { Button } from 'react-bootstrap';
 import Spinner from "./Spinner";
 import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
-
+import BuyStockModal from '../Views/Modals/BuyStockModal';
 
 interface StockGraphProps {
     symbol: string;
     isFeatured: boolean;
     user: User | null;
     isWatchlist: boolean;
+    isOwnedStock: boolean;
     reloadWatchlist: () => Promise<void>;
     marketClosed: boolean;
 }
@@ -21,9 +21,10 @@ interface StockGraphProps {
 const StockGraph = (props : StockGraphProps) => {
 
     const getData = GetTimeSeriesData;
-    const intervals =      ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
+    const intervals =      props.marketClosed ? ['1 Day', '1 Week', '1 Month', '1 Year'] : ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
     const initialInterval = intervals[2]
-
+    const [userStock, setUserStock] = useState(null);
+    const [isOwnedStock, setIsOwnedStock] = useState(false);
     //State variables for view
     const [options, setOptions] = useState({});
     const [currInterval, setCurrInterval] = useState(intervals[2]);
@@ -35,13 +36,14 @@ const StockGraph = (props : StockGraphProps) => {
     const [showPrediction, setShowPrediction] = useState(false)
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
     const [predictionRange, setPredictionRange] = useState(60)
+    const [showBuyModal, setShowBuyModal] = useState(false);
 
     //Data retrieved
     const [oneMinTimeSeriesData, setOneMinTimeSeriesData] = useState([])
     const [fiveMinTimeSeriesData, setFiveMinTimeSeriesData] = useState([])
     const [dailyTimeSeriesData, setDailyTimeSeriesData] = useState([])
     const [predictions, setPredictions] = useState([])
-
+    
     //Fetch the time series data for the stock on symbol change
     useEffect(() => {
         const fetchData = async () => {
@@ -49,9 +51,14 @@ const StockGraph = (props : StockGraphProps) => {
             fetchPrices().then((res) => {
                 renderGraph(initialInterval, 0, res);
             });
+            fetchUserStock();
         };
         fetchData();
     }, [props.symbol]);
+
+    const toggleBuyModal = () => {
+        setShowBuyModal(!showBuyModal);
+    };
 
     //Add or remove stock from user watchlist on click
     function handleWatchlistClick() {
@@ -97,6 +104,15 @@ const StockGraph = (props : StockGraphProps) => {
         }).format(new Date(datetime))
     }
 
+    const fetchUserStock = async() => {
+        if(props.user != null)
+            setUserStock(await fetch(endpoints.getUserStock(props.user.id, props.symbol)).then(response => response.json()))
+        if(userStock != null )
+            setIsOwnedStock(true)
+        else 
+            setIsOwnedStock(false)
+    }
+
 
     //Fetch time series data
     const fetchPrices = async() => {
@@ -105,7 +121,9 @@ const StockGraph = (props : StockGraphProps) => {
         let dailyTimeSeriesData = await getData(props.symbol, '1day', props.marketClosed, props.isFeatured);
 
         if(props.isFeatured){
-            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error' || fiveMinTimeSeriesData.length === 0 || dailyTimeSeriesData.length === 0){
+            if (oneMinTimeSeriesData === undefined || oneMinTimeSeriesData.status === 'error')
+                oneMinTimeSeriesData = [];
+            else if(fiveMinTimeSeriesData.length === 0 || dailyTimeSeriesData.length === 0){
                 setShowError(true)
                 return;
             }
@@ -256,15 +274,15 @@ const StockGraph = (props : StockGraphProps) => {
             {graphLoading ? (
                 <Spinner size={'large'} height={'300px'}/>
             ) : (showError ? (
-                    <div style={{ height: '300px' }} className='align-items-center d-flex'>
+                    <div style={{ height: '500px' }} className='align-items-center d-flex'>
                         <h3 className="m-auto"> Unable to get time series data at this time </h3>
                     </div>
                 ) : (<div>
                     <span className={"float-start display-6 mb-2"}> {props.symbol}(<span className={roiColor}>{percentChange}%</span>)</span>
-                    <ReactECharts option={options} />
+                    <ReactECharts option={options} style={{ height: '500px' }} />
                 </div>)
             )}
-            <div className='d-flex row justify-content-center'>
+            <div className='d-flex row justify-content-center' >
                 {intervals.map((interval, i) => (
                     <div className='col-auto' key={i}>
                         <Button
@@ -316,24 +334,28 @@ const StockGraph = (props : StockGraphProps) => {
             </div>
 
             <div className='row mt-3 justify-content-center mb-2'>
-                <div className='col-auto'>
-                    <CsvDownload
-                        className={`btn btn-outline-success ${showError ? 'disabled' : ''}`}
-                        data={dailyTimeSeriesData}
-                        filename="stock_data.csv">
-                        Download CSV
-                    </CsvDownload>
-                </div>
                 {props.user != null && props.isFeatured &&
-                    <div className='col-auto'>
-                        <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
-                                variant=''
-                                onClick ={() => handleWatchlistClick()}>
-                            {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
-                        </Button>
+                    <div>
+                        <div className='col-auto'>
+                            <Button className={`btn ${pendingWatchlistRequest ? "disabled" : ""} ${props.isWatchlist ? "btn-outline-danger" : "btn-outline-success"}`}
+                                    variant=''
+                                    onClick ={() => handleWatchlistClick()}>
+                                {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
+                            </Button>
+                        </div>
+                        <div className='col-auto'>
+                            <Button className={`btn ${props.isOwnedStock ? "btn-outline-danger" : "btn-outline-success"}`}
+                                    variant=''
+                                    onClick ={() => toggleBuyModal()}>
+                                {props.isOwnedStock ? "Sell Shares" : "Add To User Stocks" }
+                            </Button>
+                        </div>
                     </div>
                 }
             </div>
+            {props.user != null && (
+                <BuyStockModal showModal={showBuyModal} toggleModal={toggleBuyModal} user={props.user} ticker={ticker} userStock={userStock}/>
+            )}
         </>
     )
 };

@@ -8,9 +8,20 @@ using System.Runtime.CompilerServices;
 #nullable disable
 namespace Stock_Prediction_API.Controllers
 {
+    /// <summary>
+    /// Serves as a base controller class providing shared resources and functionality
+    /// for other controllers in the Stock Prediction API.
+    /// </summary>
     public class ControllerHelper : Controller
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControllerHelper"/> class.
+        /// </summary>
+        /// <param name="context">The database context for accessing the database.</param>
+        /// <param name="config">The configuration properties, used to access configuration settings like connection strings.</param>
+        /// <param name="web">The web host environment, providing information about the web hosting environment an application is running in.</param>
+        
         protected readonly AppDBContext _dbContext;
         protected DbContextOptions<AppDBContext> _dbContextOptions;
         protected IConfiguration _configuration;
@@ -27,10 +38,16 @@ namespace Stock_Prediction_API.Controllers
                 .Options;
             _configuration = config;
             _GetDataTools = new dbTools(context, _dbContextOptions);
-            _FinnhubDataTools = new(config);
+            _FinnhubDataTools = new(config);        
             _TwelveDataTools = new(config);
             _EmailTools = new(config, web);
         }
+
+        /// <summary>
+        /// Gets the current time in Eastern Standard Time (EST).
+        /// </summary>
+        /// <returns>The current time converted to Eastern Standard Time.</returns>
+
         public DateTime GetEasternTime()
         {
             DateTime currentTime = DateTime.UtcNow;

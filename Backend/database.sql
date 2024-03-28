@@ -145,3 +145,46 @@ CREATE TABLE HistoricalStockPredictions (
 
 ALTER TABLE SupportedStocks
 MODIFY COLUMN Name NVARCHAR(200) NOT NULL;
+
+ALTER TABLE StockPrices
+ADD COLUMN IsClosePrice BIT NOT NULL DEFAULT 0;
+
+UPDATE StockPrices
+SET IsClosePrice = 1;
+
+SELECT MIN(Time) AS OldestTime FROM StockPrices_5Min;
+
+DELETE FROM StockPrices WHERE Time >= '2024-03-01 09:30:00';
+
+INSERT INTO StockPrices (Ticker, Price, Time, IsClosePrice)
+SELECT Ticker, Price, Time, 0 -- Initially mark all as not close prices
+FROM StockPrices_5Min;
+
+UPDATE StockPrices
+SET IsClosePrice = 1
+WHERE TIME(Time) BETWEEN '15:55:00' AND '15:59:59';
+
+ALTER TABLE News
+ADD COLUMN PhotoUrl NVARCHAR(255),
+ADD COLUMN ArticleUrl NVARCHAR(255),
+ADD COLUMN Category NVARCHAR(50),
+ADD COLUMN Summary TEXT;
+
+
+ALTER TABLE News
+ADD COLUMN RelatedStockTicker NVARCHAR(10);
+
+
+ALTER TABLE News
+ADD CONSTRAINT FK_News_RelatedStockTicker_Stocks_Ticker
+FOREIGN KEY (RelatedStockTicker) REFERENCES Stocks (Ticker);
+
+UPDATE Stocks
+SET Name = 'Advanced Micro Devices'
+WHERE Ticker = 'AMD';
+
+DROP TABLE StockPrices_5Min;
+
+
+ALTER TABLE UserStocks
+ADD COLUMN Price DECIMAL(12, 2) NOT NULL DEFAULT 0.00;

@@ -4,13 +4,21 @@ using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Stock_Prediction_API.Entities;
 
-
+/// <summary>
+/// Controller responsible for managing user-related operations such as fetching user data,
+/// authenticating users, and managing user stock information.
+/// Inherits from ControllerHelper to utilize shared functionalities and services.
+/// </summary>
 namespace Stock_Prediction_API.Controllers
 {
     public class UserController : ControllerHelper
     {
         public UserController(AppDBContext context, IConfiguration config, IWebHostEnvironment web) : base(context, config, web) { }
 
+        /// <summary>
+        /// Retrieves all users from the database.
+        /// </summary>
+        /// <returns>A JSON list of all users, including their type names (Admin or Client).</returns>
         [HttpGet("/User/GetUsers")]
         public IActionResult GetUsers()
         {
@@ -37,6 +45,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves a single user by their email.
+        /// </summary>
+        /// <param name="email">The email of the user to retrieve.</param>
+        /// <returns>A JSON representation of the user, if found; otherwise, an error message.</returns>
         [HttpGet("/User/GetUser/{email}")]
         public IActionResult GetUser(string email)
         {
@@ -57,6 +70,12 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Authenticates a user based on their email and password.
+        /// </summary>
+        /// <param name="email">The email of the user attempting to authenticate.</param>
+        /// <param name="password">The password of the user attempting to authenticate.</param>
+        /// <returns>A JSON representation of the user if authentication is successful; otherwise, an appropriate error message.</returns>
         [HttpGet("/User/AuthenticateUser/{email}/{password}")]
         public IActionResult AuthenticateUser(string email, string password)
         {
@@ -103,6 +122,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves all stock holdings for a specific user.
+        /// </summary>
+        /// <param name="userId">The user ID for whom to retrieve stock holdings.</param>
+        /// <returns>A JSON list of the user's stock holdings.</returns>    
         [HttpGet("/User/GetUserStocks/{userId}")]
         public IActionResult GetUserStocks(int userId)
         {
@@ -121,6 +145,12 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves specific stock holdings for a user based on stock ticker.
+        /// </summary>
+        /// <param name="userId">The user ID for whom to retrieve the stock holding.</param>
+        /// <param name="ticker">The ticker symbol of the stock to retrieve.</param>
+        /// <returns>A JSON representation of the user's stock holding for the specified ticker.</returns>
         [HttpGet("/User/GetUserStock/{userId}/{ticker}")]
         public IActionResult GetUserStock(int userId, string ticker)
         {
@@ -140,6 +170,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves stock data including price and quantity for a specific user.
+        /// </summary>
+        /// <param name="userId">The ID of the user for whom to retrieve stock data.</param>
+        /// <returns>A JSON array of stock prices multiplied by quantities held.</returns>
         [HttpGet("/User/GetUserStockData/{userId}")]
         public IActionResult GetUserStockData(int userId)
         {
@@ -186,6 +221,11 @@ namespace Stock_Prediction_API.Controllers
             return Json(userStockPrices);
         }
 
+        /// <summary>
+        /// Deletes a user identified by their email.
+        /// </summary>
+        /// <param name="email">Email of the user to delete.</param>
+        /// <returns>A success message if the user is deleted; otherwise, an error message.</returns>
         [HttpPost("/User/DeleteUser/{email}")]
         public IActionResult DeleteUser(string email)
         {
@@ -205,6 +245,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a new user to the system.
+        /// </summary>
+        /// <param name="user">User object containing new user details.</param>
+        /// <returns>A success message if the user is added and verification email is sent; otherwise, an error message.</returns>
         //Add user by sending url /Home/AddUser/?email={email}&password={password}
         [HttpPost("/User/AddUser")]
         public IActionResult AddUser([FromBody] User user)
@@ -270,6 +315,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Verifies a user using a provided verification code.
+        /// </summary>
+        /// <param name="code">The verification code sent to the user's email.</param>
+        /// <returns>A success message if the user is verified; otherwise, an error message.</returns>
         [HttpPost("/User/VerifyUser/{code}")]
         public IActionResult VerifyUser(string code)
         {
@@ -299,6 +349,13 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a stock to a user's portfolio.
+        /// </summary>
+        /// <param name="userId">The ID of the user to whom the stock will be added.</param>
+        /// <param name="ticker">The ticker symbol of the stock to add.</param>
+        /// <param name="quantity">The quantity of the stock to add.</param>
+        /// <returns>A success message if the stock is added; otherwise, an error message.</returns>
         [HttpPost("/User/AddUserStock/{userId}/{ticker}/{quantity}/{price}")]
         public IActionResult AddUserStock(int userId, string ticker, float quantity, float price)
         {
@@ -360,6 +417,12 @@ namespace Stock_Prediction_API.Controllers
             return Ok("Stock Added Successfully.");
         }
 
+        /// <summary>
+        /// Removes a stock from a user's portfolio.
+        /// </summary>
+        /// <param name="userId">The ID of the user from whose portfolio the stock will be removed.</param>
+        /// <param name="ticker">The ticker symbol of the stock to remove.</param>
+        /// <returns>A success message if the stock is removed; otherwise, an error message.</returns>
         [HttpPost("/User/RemoveUserStock/{userId}/{ticker}")]
         public IActionResult RemoveUserStock(int userId, string ticker)
         {

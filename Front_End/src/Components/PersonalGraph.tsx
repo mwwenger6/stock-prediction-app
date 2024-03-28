@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import User from '../Interfaces/User';
 import endpoints from '../config';
+import Spinner from "./Spinner";
 
 interface PersonalGraphProps {
     user: User;
@@ -9,10 +10,15 @@ interface PersonalGraphProps {
 
 const PersonalGraph: React.FC<PersonalGraphProps> = (props) => {
     const [options, setOptions] = useState({});
+    const [noPersonalStocks, setNoPersonalStocks] = useState<boolean | undefined>(undefined);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(endpoints.getUserStockData(props.user.id));
             const data = await response.json();
+            if(data == null) {
+                setNoPersonalStocks(true)
+                return
+            }
             const stockData = data.reverse();
             const categories = stockData.map((_: any, index: number) => `Point ${index + 1}`);
             
@@ -38,22 +44,27 @@ const PersonalGraph: React.FC<PersonalGraphProps> = (props) => {
                 },
                 xAxis: {
                     type: 'category',
-                    data: categories
+                    data: categories,
+                    axisLabel: {
+                        show: false // Hide x-axis labels
+                    }
                 },
                 yAxis: {
                     type: 'value',
                     min: minValue,
-                    max: maxValue
+                    max: maxValue,
                 },
                 series: [
                     {
                         data: stockData,
                         type: 'line',
                         color: color,
+                        symbol: 'none'
                     }
                 ]
             };
-            
+
+            setNoPersonalStocks(false)
             setOptions(newOptions);
         };
 
@@ -64,7 +75,11 @@ const PersonalGraph: React.FC<PersonalGraphProps> = (props) => {
         <div className='floatingDiv'>
             <h3>Performance Graph</h3>
             <hr />
-            <ReactECharts option={options} style={{ height: '400px' }} />
+            {noPersonalStocks === undefined ? (
+                <Spinner size={'large'} /> )
+                : ( noPersonalStocks ? ( <h5>No personal stocks found</h5>)
+                    : ( <ReactECharts option={options} style={{ height: '400px' }} /> )
+            )}
         </div>
     );
 };

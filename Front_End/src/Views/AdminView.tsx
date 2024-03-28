@@ -139,35 +139,6 @@ const AdminView: React.FC = () => {
 
   return (
     <div className={"m-md-4 m-2"}> {/* Adjust layout as needed */}
-      {/*<div>*/}
-      {/*  {errorLogs.map(log => (*/}
-      {/*    <div key={log.id}>*/}
-      {/*      <p><strong>Timestamp:</strong> {log.createdAt ? new Date(log.createdAt).toLocaleString() : 'N/A'}</p>*/}
-      {/*      <p><strong>Message:</strong> {log.message || 'No message'}</p>*/}
-      {/*      <hr />*/}
-      {/*    </div>*/}
-      {/*  ))}*/}
-      {/*</div>*/}
-      {/*<div> /!* New table for users *!/*/}
-      {/*  <table>*/}
-      {/*    <thead>*/}
-      {/*      <tr>*/}
-      {/*        <th>UserId</th>*/}
-      {/*        <th>Email</th>*/}
-      {/*        <th>UserTypeId</th> /!* Adjust according to how you want to display user types *!/*/}
-      {/*      </tr>*/}
-      {/*    </thead>*/}
-      {/*    <tbody>*/}
-      {/*      {users.map((user) => (*/}
-      {/*        <tr key={user.id}>*/}
-      {/*          <td>{user.id}</td>*/}
-      {/*          <td>{user.email}</td>*/}
-      {/*          <td>{user.typeId}</td> /!* Assuming typeId is available, adjust as needed *!/*/}
-      {/*        </tr>*/}
-      {/*      ))}*/}
-      {/*    </tbody>*/}
-      {/*  </table>*/}
-      {/*</div>*/}
         <div className="floatingDiv col-md-13 col-12">
           <h3> Error Logs </h3>
           <hr/>

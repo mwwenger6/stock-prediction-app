@@ -3,6 +3,8 @@ import config from '../config';
 import Spinner from "./Spinner";
 import ReactECharts from "echarts-for-react";
 import DataTable from "react-data-table-component";
+import { Tooltip } from 'react-bootstrap';
+import InformationWidget from "./InformationWidget";
 
 interface TechnicalData {
     meanPercentReturn: number;
@@ -13,47 +15,61 @@ interface TechnicalData {
 }
 
 const StockAnalysis = () => {
-    const daysLookBack = 30;
     const useClosePrices = true;
+    const ONEMONTH = 30;
+    const SIXMONTHS = 182;
+    const ONEYEAR = 365;
+
     const [technicalData, setTechnicalData] = useState<TechnicalData[]>([]);
-    const [selectedOption, setSelectedOption] = useState<string>('1 Week');
+    const [selectedOption, setSelectedOption] = useState<number>(30);
+
+    const fetchTechnicalData = async (numDaysLookback : number) => {
+        try {
+            const response = await fetch(config.getTechnicalAnalysis(numDaysLookback, useClosePrices));
+            if (!response.ok) {
+                throw new Error('Failed to fetch technical data');
+            }
+            const data = await response.json();
+            data.forEach((stock: TechnicalData) => {
+                stock.pricePoints.reverse();
+            });
+            setTechnicalData(data);
+        } catch (error) {
+            console.error('Error fetching technical data:', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchTechnicalData = async () => {
-            try {
-                const response = await fetch(config.getTechnicalAnalysis(daysLookBack, useClosePrices));
-                if (!response.ok) {
-                    throw new Error('Failed to fetch technical data');
-                }
-                const data = await response.json();
-                data.forEach((stock: TechnicalData) => {
-                    stock.pricePoints.reverse();
-                });
-                setTechnicalData(data);
-            } catch (error) {
-                console.error('Error fetching technical data:', error);
-            }
-        };
-
-        fetchTechnicalData();
+        fetchTechnicalData(selectedOption);
     }, []);
 
     const handleDropdownChange = (event: any) => {
         const selectedValue = event.target.value;
-        setSelectedOption(selectedValue);
-      };
+        if((selectedValue == ONEMONTH || selectedValue == SIXMONTHS || selectedValue == ONEYEAR) && selectedValue != selectedOption){
+            setSelectedOption(selectedValue);
+            setTechnicalData([])
+            fetchTechnicalData(selectedValue);
+        }
+    }
 
     const tableCustomStyles = {
+        rows: {
+            style: {
+                maxHeight: '130px',
+            },
+        },
         headCells: {
             style: {
                 fontSize: '1.5em',
                 fontWeight: 'semi-bold',
                 justifyContent: 'center',
+                padding:0,
             },
         },
         cells: {
             style: {
                 justifyContent: 'center',
+                padding:0,
             },
         },
     }
@@ -107,38 +123,38 @@ const StockAnalysis = () => {
             sortable: false,
         },
         {
-            name: 'Graph',
+            name: 'Closing Price Graph',
             cell: (row: TechnicalData) => <div style={{ height: '200px', width: '100%' }}> <ReactECharts option={createGraph(row.pricePoints)} style={{ height: '100%', width: '100%' }} /></div> ,
-            width: '350px'
+            width: '325px'
         },
     ];
 
     return (
         <div className={"row m-md-2 m-1 border rounded border-gray"}>
-            <div className={'d-flex justify-content-between my-3'}> 
-            <div style={{width: '150px'}}> </div>
-                <h3> Technical Indicators For Featured Stocks </h3>
+            <div className={'d-flex justify-content-between my-3'}>
+            <div style={{width: '150px'}} className={'d-flex align-items-center ms-2'}> <InformationWidget tooltipText={'Stats are based on day to day price changes'} iconColor={'info'} iconSize={'medium'}/> </div>
+                <h3> Featured Stocks Statistics</h3>
                 <div style={{width: '150px'}}>
-                    <select value={selectedOption} onChange={handleDropdownChange}>
-                        <option value="">Select an option</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
+                    <select className={'form-select form-select-sm mt-1'} value={selectedOption} onChange={handleDropdownChange}>
+                        <option value={ONEMONTH}>One Month</option>
+                        <option value={SIXMONTHS}>Six Months</option>
+                        <option value={ONEYEAR}>One Year</option>
                     </select>   
             </div>
       </div>
-            <hr/>
+            <hr className={'mb-0'}/>
             {technicalData.length > 0 ? (
                 <div className={'overflow-auto'} style={{maxHeight: '70vh'}}>
                     <DataTable
                         pagination
+                        paginationRowsPerPageOptions={[10, 20]}
                         columns={technicalDataHeaders}
                         data={technicalData}
                         customStyles={tableCustomStyles}
                     />
                 </div>
             ) : (
-                <div style={{height: '300px'}}>
+                <div style={{height: '70vh'}}>
                     <Spinner/>
                 </div>
             )}

@@ -13,6 +13,7 @@ import AccountView from './Views/AccountView';
 import AdminView from './Views/AdminView';
 import GetFeaturedStocks from "./Services/GetFeaturedStocks";
 import GetWatchListStocks from "./Services/GetWatchListStocks";
+import NotFoundPage from './Views/NotFoundPage';
 import config from "./config";
 
 const initFeaturedStocks: Stock[] = [];
@@ -27,7 +28,7 @@ function App() {
   const [user, setUser] = useState<User | null>(null);
   const [featuredStocks, setFeaturedStocks] = useState(initFeaturedStocks)
   const [watchListStocks, setWatchListStocks] = useState(initWatchListStocks)
-  const [homeViewStocks, setHomeViewStocks] = useState(initWatchListStocks)
+  const isLoggedIn = user != null;
 
   //Fetch featured stocks price data on initial load
   useEffect(() => {
@@ -36,7 +37,6 @@ function App() {
         const stocks: Stock[] | null = await getFeaturedStocks();
         if (stocks !== null) {
           setFeaturedStocks(stocks);
-          setHomeViewStocks(stocks);
         }
       } catch (error) {
         console.error('Error fetching prices:', error);
@@ -53,14 +53,12 @@ function App() {
   const fetchStocks = async () => {
     try {
       if(user === null) {
-        setHomeViewStocks(featuredStocks)
         setWatchListStocks(initWatchListStocks)
         return;
       }
       const stocks: Stock[] | null = await getWatchListStocks(user.id);
       if (stocks !== null) {
         setWatchListStocks(stocks);
-        setHomeViewStocks(stocks);
       }
     } catch (error) {
       console.error('Error fetching prices:', error);
@@ -72,14 +70,24 @@ function App() {
       <TickerScroller featuredStocks={featuredStocks}/>
       <BrowserRouter>
         <AppNavbar user={ user } setUser={setUser}/>
-        <Routes>
-          <Route index element={<HomeView user={user} homeviewStocks={homeViewStocks}/>} />
-          <Route path="Verification/:code" element= {<VerificationView/> } />
-          <Route path="Discovery" element = { <DiscoveryView /> } />
-          <Route path="Settings/Account" element={<AccountView user={user} />} />
-          <Route path="Settings/Admin" element={<AdminView />} />
-          <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
-        </Routes>
+        {isLoggedIn ? (
+            <Routes>
+              <Route path="Verification/:code" element= {<VerificationView/> } />
+              <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
+              <Route path="Discovery" element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
+              <Route path="Home" index element={<HomeView user={user} watchlistStocks={watchListStocks}/>} />
+              <Route path="Settings/Account" element={<AccountView user={user} />} />
+              <Route path="Settings/Admin" element={<AdminView />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        ) :
+            <Routes>
+              <Route path="Verification/:code" element= {<VerificationView/> } />
+              <Route path="Stock/:symbol" element = { <StockGraphView user={user} featuredStocks={featuredStocks} watchlistStocks={watchListStocks} reloadWatchlist = { () => fetchStocks() }/> } />
+              <Route path="Discovery" index element = { <DiscoveryView featuredStocks={featuredStocks} /> } />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        }
       </BrowserRouter>
     </div>
   );

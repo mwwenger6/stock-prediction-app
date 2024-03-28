@@ -4,6 +4,7 @@ import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import EmailAndPWForm from "../../Components/EmailAndPWForm";
 import User from "../../Interfaces/User"
 import endpoints from '../../config';
+import {useNavigate} from "react-router-dom";
 
 interface LoginModalProps {
     showModal: boolean;
@@ -26,6 +27,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
     const [validPassword, setValidPassword] = useState(true)
     const [response, setResponse] = useState('');
     const [pendingRequest, setPendingRequest] = useState(false)
+    const navigate = useNavigate();
 
     const clearState = () => {
         setEmail('')
@@ -76,6 +78,7 @@ const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) => {
             clearState()
             const timer = setTimeout(() => {
                 props.toggleModal()
+                navigate('/Home')
             }, 500);
         }
         else {

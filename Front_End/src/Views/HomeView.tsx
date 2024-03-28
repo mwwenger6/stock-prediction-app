@@ -10,7 +10,7 @@ import endpoints from '../config';
 
 interface HomeViewProps {
     user: User | null,
-    homeviewStocks: Stock[],
+    watchlistStocks: Stock[],
 }
 
 
@@ -32,16 +32,15 @@ function HomeView (props : HomeViewProps) {
         <div className="row m-md-2 m-1">
             <div className="col-lg-12"> {/* full width for Featured Stocks */}
                 <div className="floatingDiv">
-                    <h3> {loggedIn ? "Watchlist Stocks" : "Featured Stocks" }</h3>
+                    <h3> Watchlist Stocks </h3>
                     <hr className={"my-1"}/>
                     <div className="featured-stocks-container">
-                        {props.homeviewStocks.length === 0 && loggedIn ?
+                        {props.watchlistStocks.length === 0 ?
                             <h4 className={"my-3"}> <FaTimes className={"text-danger"}/> Currently No Stocks In Your Watchlist</h4>
                             :
                             <div id="featured-stocks" className="d-flex flex-nowrap overflow-auto featuredStockBg">
-                                <div className={props.homeviewStocks.length === 0 ? "d-flex flex-nowrap mx-auto" : "d-flex flex-nowrap"}>
-                                {props.homeviewStocks.length === 0 ? (<div className=""><Spinner size={'large'} height={'120px'} /></div>) : 
-                                (props.homeviewStocks.map((stock, index) => (<FeaturedStock key={index} stock={stock} />)))}
+                                <div className={props.watchlistStocks.length === 0 ? "d-flex flex-nowrap mx-auto" : "d-flex flex-nowrap"}>
+                                    {props.watchlistStocks.map((stock, index) => (<FeaturedStock key={index} stock={stock} />))}
                                 </div>
                             </div>
                         }

@@ -188,3 +188,11 @@ DROP TABLE StockPrices_5Min;
 
 ALTER TABLE UserStocks
 ADD COLUMN Price DECIMAL(12, 2) NOT NULL DEFAULT 0.00;
+
+CREATE TABLE VolatileStocks (
+    Ticker NVARCHAR(10) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Price DECIMAL(12, 5) NOT NULL,
+    PercentChange DECIMAL(5, 2) NOT NULL,
+    IsPositive BIT NOT NULL
+);

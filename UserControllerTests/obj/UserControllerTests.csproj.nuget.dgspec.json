@@ -1,26 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/UserControllerTests.csproj": {}
+    "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\UserControllerTests\\UserControllerTests.csproj": {}
   },
   "projects": {
-    "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj": {
+    "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\Stock-Prediction-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
+        "projectUniqueName": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\Stock-Prediction-API.csproj",
         "projectName": "Stock-Prediction-API",
-        "projectPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj",
-        "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-        "outputPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/obj/",
+        "projectPath": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\Stock-Prediction-API.csproj",
+        "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.314/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -91,34 +93,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/UserControllerTests.csproj": {
+    "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\UserControllerTests\\UserControllerTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/UserControllerTests.csproj",
+        "projectUniqueName": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\UserControllerTests\\UserControllerTests.csproj",
         "projectName": "UserControllerTests",
-        "projectPath": "/Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/UserControllerTests.csproj",
-        "packagesPath": "/Users/thomsontoms/.nuget/packages/",
-        "outputPath": "/Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/obj/",
+        "projectPath": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\UserControllerTests\\UserControllerTests.csproj",
+        "packagesPath": "C:\\Users\\mwwen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\UserControllerTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thomsontoms/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mwwen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj": {
-                "projectPath": "/Users/thomsontoms/Projects/stock-prediction-app/API/Stock-Prediction-API.csproj"
+              "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\Stock-Prediction-API.csproj": {
+                "projectPath": "C:\\Users\\mwwen\\source\\repos\\stock-prediction-api\\API\\Stock-Prediction-API.csproj"
               }
             }
           }
@@ -178,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

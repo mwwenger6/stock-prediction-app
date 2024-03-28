@@ -10,7 +10,8 @@ const endpoints = {
     verifyUser: (code : string) => `${API_BASE_URL}/User/VerifyUser/${code}`,
     addUserPersonalStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/User/AddUserStock/${userId}/${ticker}/${quantity}`,
     getUserStockData: (userId : number) => `${API_BASE_URL}/User/GetUserStockData/${userId}`,
-    addUserStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/User/AddUserStock/${userId}/${ticker}/${quantity}`,
+    addUserStock: (userId : number, ticker : string, quantity : number, price : number) => `${API_BASE_URL}/User/AddUserStock/${userId}/${ticker}/${quantity}/${price}`,
+    subtractUserStock: (userId : number, ticker : string, quantity : number) => `${API_BASE_URL}/User/SubtractUserStock/${userId}/${ticker}/${quantity}`,
     getUserStock: (userId : number, ticker : string) => `${API_BASE_URL}/User/GetUserStock/${userId}/${ticker}`,
     getUserStocks: (userId : number) => `${API_BASE_URL}/User/GetUserStocks/${userId}/`,
 
@@ -33,6 +34,11 @@ const endpoints = {
 
     //Admin Endpoints
     getErrorLogs: `${API_BASE_URL}/Admin/GetErrorLogs`,
+
+    //Discover Endpoints
+    getBiggestGainers: () => `${API_BASE_URL}/Discovery/GetBiggestGainers`,
+    getBiggestLosers: () => `${API_BASE_URL}/Discovery/GetBiggestLosers`,
+
 
     // Add more endpoints as needed
 };

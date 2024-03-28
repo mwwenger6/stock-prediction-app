@@ -12,25 +12,33 @@ interface BuyStockModalProps {
     user: User;
     ticker: string;
     userStock: UserStock | null;
+    sellModal: boolean;
 }
 
 const BuyStockModal: React.FC<BuyStockModalProps> = (props: BuyStockModalProps) => {
     const [userId, setUserId] = useState(props.user.id);
     const [ticker, setTicker] = useState(props.ticker);
     const  [quantity, setQuantity] = useState(0.0);
+    const [paidPrice, setPaidPrice] = useState(0.00);
 
     useEffect(() => {
         if (props.userStock !== null) {
             setQuantity(props.userStock.quantity);
+            setPaidPrice(props.userStock.price);
         } else {
             setQuantity(0.0);
+            setPaidPrice(0.00);
         }
     }, [props.userStock]);
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-
-        const response = await fetch(endpoints.addUserStock(props.user.id, props.ticker, quantity), {
+        console.log(props)
+        let url = endpoints.addUserStock(props.user.id, props.ticker, quantity, paidPrice);
+        if(props.sellModal)
+            url = endpoints.subtractUserStock(props.user.id, props.ticker, quantity);
+        console.log(url)
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,16 +46,15 @@ const BuyStockModal: React.FC<BuyStockModalProps> = (props: BuyStockModalProps) 
         });
 
         if (response.status === 401) {
-            console.error('Error logging in:', response.statusText);
+            console.error('Error buying/selling:', response.statusText);
         } else if (response.status === 200) {
-            const user: User = await response.json();
-            console.log('User logged in: ', user);
+            console.log('Transaction successful');
             setQuantity(0.0);
             const timer = setTimeout(() => {
                 props.toggleModal();
             }, 500);
         } else {
-            console.error('Error logging in:', response.statusText);
+            console.error('Error buying/selling:', response.statusText);
         }
     }
 
@@ -60,11 +67,12 @@ const BuyStockModal: React.FC<BuyStockModalProps> = (props: BuyStockModalProps) 
                 </Modal.Header>
                 <Modal.Body>
                     <div className="w-100 text-center">
-                        <BuyStockForm user={props.user} setQuantity={setQuantity} ticker={props.ticker} userStock={props.userStock}/>
+                        <h3>Change {props.ticker} Shares Owned</h3>
+                        <BuyStockForm user={props.user} setQuantity={setQuantity} sellStock={props.sellModal} ticker={props.ticker} userStock={props.userStock} setPrice={setPaidPrice}/>
                     </div>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center d-flex">
-                    <Button className="btn bg-success border-0 mx-2 " onClick={handleSubmit}>
+                    <Button className={`btn ${props.sellModal ? "bg-danger" : "bg-success"} border-0 mx-2 `} onClick={handleSubmit}>
                         Submit
                     </Button>
                 </Modal.Footer>

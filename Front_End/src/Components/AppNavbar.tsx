@@ -69,10 +69,10 @@ const AppNavbar = (props: AppNavbarProps) => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary-custom-bg" style={{backgroundColor : '#333333', marginTop : '0 !important'}}>
             <Container>
-                <Navbar.Brand>
+                <Link to="/" className="navbar-brand">
                     <span className="brand-name">stock</span>
                     <span className="brand-name-secondary">Genie</span>
-                </Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Form className="d-flex" onSubmit={(event) => event.preventDefault()}>
                     <Form.Control
@@ -95,10 +95,10 @@ const AppNavbar = (props: AppNavbarProps) => {
                 </Form>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Link to="/" className={linkClasses + " border-lg-start" } onClick={() => setSearchTerm('')}>Home</Link>
-                        <Link to="/Discovery" className={linkClasses} onClick={() => setSearchTerm('')}>Discovery</Link>
+                        <Link to="/" className={linkClasses + " border-lg-start" } onClick={() => setSearchTerm('')}>Discovery</Link>
                         {loggedIn ?
                         <>
+                            <Link to="/Home" className={linkClasses} onClick={() => setSearchTerm('')}>Home</Link>
                             <div className={"d-block"}>
                                 <Link to="/" onClick={(e) =>{
                                     e.preventDefault(); //prevents page navigation
@@ -117,7 +117,7 @@ const AppNavbar = (props: AppNavbarProps) => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
-                            <Link to="/" onClick={() => props.setUser(null)} className={linkClasses} >Log Out</Link>
+                            <Link to="/" onClick={() => {props.setUser(null); }} className={linkClasses} >Log Out</Link>
                         </>
                         : <Link to="/" onClick={(e) =>{
                             e.preventDefault(); //prevents page navigation

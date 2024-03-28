@@ -31,10 +31,35 @@ const AdminView: React.FC = () => {
       setErrorLogs(prevLogs => prevLogs.filter(log => log.id !== id));
     } catch (error) {
       console.error('Error deleting error log:', error);
-      // Optionally, display an error message to the user
+
     }
 };
 
+    const userTypeMapping: { [key: string]: number } = {
+      "Admin": 1,
+      "Client": 2,
+    };
+
+
+    const changeUserType = async (email:string, userTypeName:string) => {
+      try {
+        const newTypeId = userTypeMapping[userTypeName]; // Convert from TypeName to TypeId
+        console.log(email);
+        console.log(newTypeId);
+        const response = await fetch(`https://stockrequests.azurewebsites.net/Admin/ChangeUserType/${email}/${newTypeId}`, {method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to change user type.');
+        }
+        alert(`User type changed successfully.`);
+      } catch (error) {
+        console.error('Error changing user type:', error);
+        alert('Error changing user type.');
+      }
+    };
   
   
 
@@ -74,6 +99,7 @@ const AdminView: React.FC = () => {
             name: 'Email',
             selector: (row: User) => row.email,
             sortable: false,
+            width: "40%",
         },
         {
           name: 'Is Verified',
@@ -81,50 +107,38 @@ const AdminView: React.FC = () => {
           sortable: false,
         },
         {
-            name: 'Account Type Id',
+            name: 'Account Type Id',  
             selector: (row: User) => row.typeId,
             sortable: true,
-            width: "150px",
+            width: "10%",
         },
+        {
+          name: 'Change Type',
+          cell: (row: any) => (
+            <select
+              className="form-select form-select-sm"
+              onChange={(e) => changeUserType(row.email, e.target.value)} // Directly use e.target.value
+              defaultValue={row.typeId.toString()} // Ensuring the default value matches the expected string type
+              style={{ width: "50%" }} 
+            >
+              <option value="Admin">Admin</option> // Assuming these values should match the UserType names
+              <option value="Client">Client</option>
+            </select>
+          ),
+          ignoreRowClick: true,
+          allowOverflow: true,
+        },
+        
         {
             name: 'Creation Date',
             selector: (row: User) => row.createdAt,
             sortable: true,
-            width: "200px",
+            width: "11%", // Use percentage widths
         },
     ];
 
   return (
     <div className={"m-md-4 m-2"}> {/* Adjust layout as needed */}
-      {/*<div>*/}
-      {/*  {errorLogs.map(log => (*/}
-      {/*    <div key={log.id}>*/}
-      {/*      <p><strong>Timestamp:</strong> {log.createdAt ? new Date(log.createdAt).toLocaleString() : 'N/A'}</p>*/}
-      {/*      <p><strong>Message:</strong> {log.message || 'No message'}</p>*/}
-      {/*      <hr />*/}
-      {/*    </div>*/}
-      {/*  ))}*/}
-      {/*</div>*/}
-      {/*<div> /!* New table for users *!/*/}
-      {/*  <table>*/}
-      {/*    <thead>*/}
-      {/*      <tr>*/}
-      {/*        <th>UserId</th>*/}
-      {/*        <th>Email</th>*/}
-      {/*        <th>UserTypeId</th> /!* Adjust according to how you want to display user types *!/*/}
-      {/*      </tr>*/}
-      {/*    </thead>*/}
-      {/*    <tbody>*/}
-      {/*      {users.map((user) => (*/}
-      {/*        <tr key={user.id}>*/}
-      {/*          <td>{user.id}</td>*/}
-      {/*          <td>{user.email}</td>*/}
-      {/*          <td>{user.typeId}</td> /!* Assuming typeId is available, adjust as needed *!/*/}
-      {/*        </tr>*/}
-      {/*      ))}*/}
-      {/*    </tbody>*/}
-      {/*  </table>*/}
-      {/*</div>*/}
         <div className="floatingDiv col-md-13 col-12">
           <h3> Error Logs </h3>
           <hr/>

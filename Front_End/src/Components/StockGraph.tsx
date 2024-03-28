@@ -7,13 +7,14 @@ import endpoints from '../config';
 import User from "../Interfaces/User";
 import timeSeriesData from "../Interfaces/TimeSeriesData";
 import BuyStockModal from '../Views/Modals/BuyStockModal';
+import UserStock from '../Interfaces/UserStock';
 
 interface StockGraphProps {
     symbol: string;
     isFeatured: boolean;
     user: User | null;
     isWatchlist: boolean;
-    isOwnedStock: boolean;
+    userStock: UserStock | null;
     reloadWatchlist: () => Promise<void>;
     marketClosed: boolean;
 }
@@ -23,8 +24,6 @@ const StockGraph = (props : StockGraphProps) => {
     const getData = GetTimeSeriesData;
     const intervals =      props.marketClosed ? ['1 Day', '1 Week', '1 Month', '1 Year'] : ['1 Hour', '1 Day', '1 Week', '1 Month', '1 Year']
     const initialInterval = intervals[2]
-    const [userStock, setUserStock] = useState(null);
-    const [isOwnedStock, setIsOwnedStock] = useState(false);
     //State variables for view
     const [options, setOptions] = useState({});
     const [currInterval, setCurrInterval] = useState(intervals[2]);
@@ -37,7 +36,7 @@ const StockGraph = (props : StockGraphProps) => {
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
     const [predictionRange, setPredictionRange] = useState(21)
     const [showBuyModal, setShowBuyModal] = useState(false);
-
+    const [showSellModal, setShowSellModal] = useState(false);
     //Data retrieved
     const [oneMinTimeSeriesData, setOneMinTimeSeriesData] = useState([])
     const [fiveMinTimeSeriesData, setFiveMinTimeSeriesData] = useState([])
@@ -51,12 +50,18 @@ const StockGraph = (props : StockGraphProps) => {
             fetchPrices().then((res) => {
                 renderGraph(initialInterval, 0, res);
             });
-            fetchUserStock();
         };
+        console.log(props.userStock)
         fetchData();
     }, [props.symbol]);
 
     const toggleBuyModal = () => {
+        setShowSellModal(false);
+        setShowBuyModal(!showBuyModal);
+    };
+
+    const toggleSellModal = () => {
+        setShowSellModal(true);
         setShowBuyModal(!showBuyModal);
     };
 
@@ -103,16 +108,6 @@ const StockGraph = (props : StockGraphProps) => {
             minute: minute
         }).format(new Date(datetime))
     }
-
-    const fetchUserStock = async() => {
-        if(props.user != null)
-            setUserStock(await fetch(endpoints.getUserStock(props.user.id, props.symbol)).then(response => response.json()))
-        if(userStock != null )
-            setIsOwnedStock(true)
-        else 
-            setIsOwnedStock(false)
-    }
-
 
     //Fetch time series data
     const fetchPrices = async() => {
@@ -342,19 +337,26 @@ const StockGraph = (props : StockGraphProps) => {
                                     onClick ={() => handleWatchlistClick()}>
                                 {props.isWatchlist ? "Remove From Watchlist" : "Add To Watchlist" }
                             </Button>
-                        </div>
-                        <div className='col-auto'>
-                            <Button className={`btn ${props.isOwnedStock ? "btn-outline-danger" : "btn-outline-success"}`}
+                            <Button className={`m-2 btn btn-outline-success`}
                                     variant=''
                                     onClick ={() => toggleBuyModal()}>
-                                {props.isOwnedStock ? "Sell Shares" : "Add To User Stocks" }
+                                Add To User Stocks
                             </Button>
+                            {props.userStock != null && (
+                                <Button
+                                    className="m-2 btn btn-outline-danger"
+                                    variant=""
+                                    onClick={() => toggleSellModal()}
+                                >
+                                    Sell Shares
+                                </Button>
+                            )}
                         </div>
                     </div>
                 }
             </div>
             {props.user != null && (
-                <BuyStockModal showModal={showBuyModal} toggleModal={toggleBuyModal} user={props.user} ticker={ticker} userStock={userStock}/>
+                <BuyStockModal showModal={showBuyModal} toggleModal={toggleBuyModal} user={props.user} ticker={ticker} userStock={props.userStock} sellModal={showSellModal}/>
             )}
         </>
     )

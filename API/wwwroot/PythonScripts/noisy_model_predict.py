@@ -81,7 +81,7 @@ json_data = response.json()
 data = process_json_data(json_data)
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load("Scalers/" + ticker + 'scaler.pkl')
+scaler = joblib.load('wwwroot/Scalers/' + ticker + 'scaler.pkl')
 
 # scale the data values
 scaler_input = data['Close'].to_numpy().reshape(-1, 1)
@@ -114,7 +114,7 @@ batch_size = 1
 pred_loader = DataLoader(pred_dataset, batch_size=batch_size, shuffle=False)
 
 # load model for predictions
-PATH = "Models/" + ticker + "model.pth"
+PATH = "wwwroot/Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 

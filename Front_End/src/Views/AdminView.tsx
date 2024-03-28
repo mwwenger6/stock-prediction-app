@@ -31,7 +31,7 @@ const AdminView: React.FC = () => {
       setErrorLogs(prevLogs => prevLogs.filter(log => log.id !== id));
     } catch (error) {
       console.error('Error deleting error log:', error);
-      // Optionally, display an error message to the user
+
     }
 };
 
@@ -55,7 +55,6 @@ const AdminView: React.FC = () => {
           throw new Error('Failed to change user type.');
         }
         alert(`User type changed successfully.`);
-        // Optionally, refresh the users list to reflect the change
       } catch (error) {
         console.error('Error changing user type:', error);
         alert('Error changing user type.');
@@ -120,7 +119,7 @@ const AdminView: React.FC = () => {
               className="form-select form-select-sm"
               onChange={(e) => changeUserType(row.email, e.target.value)} // Directly use e.target.value
               defaultValue={row.typeId.toString()} // Ensuring the default value matches the expected string type
-              style={{ width: "50%" }} // Adjust the width as needed
+              style={{ width: "50%" }} 
             >
               <option value="Admin">Admin</option> // Assuming these values should match the UserType names
               <option value="Client">Client</option>

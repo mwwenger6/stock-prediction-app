@@ -35,6 +35,32 @@ const AdminView: React.FC = () => {
     }
 };
 
+    const userTypeMapping: { [key: string]: number } = {
+      "Admin": 1,
+      "Client": 2,
+    };
+
+
+    const changeUserType = async (email:string, userTypeName:string) => {
+      try {
+        const newTypeId = userTypeMapping[userTypeName]; // Convert from TypeName to TypeId
+        console.log(email);
+        console.log(newTypeId);
+        const response = await fetch(`https://stockrequests.azurewebsites.net/Admin/ChangeUserType/${email}/${newTypeId}`, {method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to change user type.');
+        }
+        alert(`User type changed successfully.`);
+        // Optionally, refresh the users list to reflect the change
+      } catch (error) {
+        console.error('Error changing user type:', error);
+        alert('Error changing user type.');
+      }
+    };
   
   
 
@@ -74,6 +100,7 @@ const AdminView: React.FC = () => {
             name: 'Email',
             selector: (row: User) => row.email,
             sortable: false,
+            width: "40%",
         },
         {
           name: 'Is Verified',
@@ -81,16 +108,33 @@ const AdminView: React.FC = () => {
           sortable: false,
         },
         {
-            name: 'Account Type Id',
+            name: 'Account Type Id',  
             selector: (row: User) => row.typeId,
             sortable: true,
-            width: "150px",
+            width: "10%",
         },
+        {
+          name: 'Change Type',
+          cell: (row: any) => (
+            <select
+              className="form-select form-select-sm"
+              onChange={(e) => changeUserType(row.email, e.target.value)} // Directly use e.target.value
+              defaultValue={row.typeId.toString()} // Ensuring the default value matches the expected string type
+              style={{ width: "50%" }} // Adjust the width as needed
+            >
+              <option value="Admin">Admin</option> // Assuming these values should match the UserType names
+              <option value="Client">Client</option>
+            </select>
+          ),
+          ignoreRowClick: true,
+          allowOverflow: true,
+        },
+        
         {
             name: 'Creation Date',
             selector: (row: User) => row.createdAt,
             sortable: true,
-            width: "200px",
+            width: "11%", // Use percentage widths
         },
     ];
 

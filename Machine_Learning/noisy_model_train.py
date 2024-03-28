@@ -73,7 +73,7 @@ class LSTM(nn.Module):
 
 def train_one_epoch():
   model.train(True)
-  print(f'Epoch: {epoch + 1}')
+  # print(f'Epoch: {epoch + 1}')
   running_loss = 0.0
 
   for batch_index, batch in enumerate(train_loader):
@@ -88,69 +88,77 @@ def train_one_epoch():
 
     if batch_index % 100 == 99: # print every 100 batches
       avg_loss_across_batches = running_loss / 100
-      print('Batch {0}, Loss: {1:.3f}'.format(batch_index + 1, avg_loss_across_batches))
+      # print('Batch {0}, Loss: {1:.3f}'.format(batch_index + 1, avg_loss_across_batches))
       running_loss = 0.0
 
   model.train(False)
 
-  print('***************************************************')
-  print()
+  # print('***************************************************')
+  # print()
 
-api_endpoint = 'https://stockgenieapi.azurewebsites.net/Stock/GetHistoricalStockData/' + ticker
+ticker_api_endpoint = 'https://stockrequests.azurewebsites.net/Stock/GetStocks'
+ticker_response = requests.get(ticker_api_endpoint)
+ticker_json_data = ticker_response.json()
+tickers = [item['ticker'] for item in ticker_json_data]
 
-response = requests.get(api_endpoint)
-json_data = response.json()
-data = process_json_data(json_data)
+for ticker in tickers:
+  api_endpoint = 'https://stockgenieapi.azurewebsites.net/Stock/GetHistoricalStockData/' + ticker
 
-scaler = StandardScaler()
-scaler_input = data['Close'].to_numpy().reshape(-1, 1)
-scaler.fit(scaler_input)
-joblib.dump(scaler, 'Scalers/' + ticker + 'scaler.pkl')
+  response = requests.get(api_endpoint)
+  json_data = response.json()
+  data = process_json_data(json_data)
 
-scaled_prices = scaler.transform(scaler_input)
-data['Close'] = scaled_prices
+  scaler = StandardScaler()
+  scaler_input = data['Close'].to_numpy().reshape(-1, 1)
+  scaler.fit(scaler_input)
+  joblib.dump(scaler, 'Machine_Learning/Scalers/' + ticker + 'scaler.pkl')
 
-data = data[::-1]
+  scaled_prices = scaler.transform(scaler_input)
+  data['Close'] = scaled_prices
 
-lookback = 100
-shifted_df = prepare_dataframe_for_lstm(data, lookback)
+  data = data[::-1]
 
-shifted_df_as_np = shifted_df.to_numpy()
+  lookback = 50
+  shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
-X_train = shifted_df_as_np[:, 1:]
-y_train = shifted_df_as_np[:, 0]
+  shifted_df_as_np = shifted_df.to_numpy()
 
-X_train = dc(np.flip(X_train, axis=1))
+  X_train = shifted_df_as_np[:, 1:]
+  y_train = shifted_df_as_np[:, 0]
 
-X_train = X_train.reshape((-1, lookback, 1))
-y_train = y_train.reshape((-1, 1))
+  X_train = dc(np.flip(X_train, axis=1))
 
-# makes sets into tensors
-X_train = torch.tensor(X_train).float()
-y_train = torch.tensor(y_train.copy()).float()
+  X_train = X_train.reshape((-1, lookback, 1))
+  y_train = y_train.reshape((-1, 1))
 
-train_dataset = TimeSeriesDataset(X_train, y_train)
+  # makes sets into tensors
+  X_train = torch.tensor(X_train).float()
+  y_train = torch.tensor(y_train.copy()).float()
 
-train_dataset = TimeSeriesDataset(X_train, y_train)
+  train_dataset = TimeSeriesDataset(X_train, y_train)
 
-# this is what will be used to iterate over, get batches, and make updates to our model
-batch_size = 16
-train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-for _, batch in enumerate(train_loader):
-  x_batch, y_batch = batch[0].to(device), batch[1].to(device)
-  break
+  train_dataset = TimeSeriesDataset(X_train, y_train)
 
-model = LSTM(1, 4, 1)
-model.to(device)
+  # this is what will be used to iterate over, get batches, and make updates to our model
+  batch_size = 16
+  train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+  for _, batch in enumerate(train_loader):
+    x_batch, y_batch = batch[0].to(device), batch[1].to(device)
+    break
 
-learning_rate = 0.1
-num_epochs = 10
-loss_function = nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+  model = LSTM(1, 4, 1)
+  model.to(device)
 
-for epoch in range(num_epochs):
-  train_one_epoch()
+  learning_rate = 0.1
+  num_epochs = 10
+  loss_function = nn.MSELoss()
+  optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
-# save the model parameters for future use with predicting
-PATH = "Models/" + ticker + "model.pth"
-torch.save(model.state_dict(), PATH)
+  for epoch in range(num_epochs):
+    train_one_epoch()
+
+  # save the model parameters for future use with predicting
+  PATH = "Machine_Learning/Models/" + ticker + "model.pth"
+  torch.save(model.state_dict(), PATH)
+
+  print(f'{ticker} model trained and saved')

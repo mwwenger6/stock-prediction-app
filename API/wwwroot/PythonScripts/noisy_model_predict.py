@@ -91,7 +91,7 @@ data['Close'] = scaled_prices
 # reverse order of data
 data = data[::-1]
 
-lookback = 100
+lookback = 50
 shifted_df = prepare_dataframe_for_lstm(data, lookback)
 
 input_data = shifted_df.tail(1)

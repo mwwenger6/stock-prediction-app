@@ -155,3 +155,12 @@
 /Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/obj/Debug/net7.0/UserControllerTests.genruntimeconfig.cache
 /Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/obj/Debug/net7.0/ref/UserControllerTests.dll
 /Users/thomsontoms/Projects/stock-prediction-app/UserControllerTests/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.csproj.AssemblyReference.cache
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.AssemblyInfoInputs.cache
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.AssemblyInfo.cs
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.csproj.CoreCompileInputs.cache
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.dll
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\refint\UserControllerTests.dll
+C:\Users\mwwen\source\repos\stock-prediction-api\UserControllerTests\obj\Debug\net7.0\UserControllerTests.pdb

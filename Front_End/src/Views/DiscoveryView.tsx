@@ -1,4 +1,5 @@
 import StockAnalysis from "../Components/StockAnalysis";
+import VolitileStocks from "../Components/VolitileStocks";
 
 const DiscoveryView = () => {
 
@@ -8,6 +9,12 @@ const DiscoveryView = () => {
             <hr/>
             <div className={"col-12 col-lg-6"}>
                 <StockAnalysis/>
+            </div>
+            <div className={"col-6 col-lg-3"}>
+                <VolitileStocks isGainers={true}/>
+            </div>
+            <div className={"col-6 col-lg-3"}>
+                <VolitileStocks isGainers={false}/>
             </div>
         </div>
     );

@@ -35,6 +35,11 @@ const endpoints = {
     //Admin Endpoints
     getErrorLogs: `${API_BASE_URL}/Admin/GetErrorLogs`,
 
+    //Discover Endpoints
+    getBiggestGainers: () => `${API_BASE_URL}/Discovery/GetBiggestGainers`,
+    getBiggestLosers: () => `${API_BASE_URL}/Discovery/GetBiggestLosers`,
+
+
     // Add more endpoints as needed
 };
 

@@ -123,6 +123,15 @@ namespace Stock_Prediction_API.Services
         }
         #endregion
 
+        #region Discovery
+
+        public IQueryable<VolatileStock> GetVolatileStocks(bool isPositive)
+        {
+            return dbContext.VolatileStocks
+                .Where(s => s.IsPositive == isPositive);
+        }
+        #endregion
+
         #endregion
 
         //Modifiers

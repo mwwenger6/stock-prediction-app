@@ -304,7 +304,8 @@ const StockGraph = (props : StockGraphProps) => {
                                 variant=''
                                 onClick={() => {
                                     setShowPrediction(true)
-                                    renderGraph(intervals[3], predictionRange);
+                                    let interval : string = props.marketClosed ? intervals[2] : intervals[3];
+                                    renderGraph(interval, predictionRange);
                                 }}>
                                 Show Prediction
                             </Button>

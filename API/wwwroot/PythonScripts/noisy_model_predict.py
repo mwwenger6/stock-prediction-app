@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from copy import deepcopy as dc
 
 import torch
@@ -10,15 +9,11 @@ from torch.utils.data import DataLoader
 
 from sklearn.preprocessing import StandardScaler
 
+import argparse
 import joblib
 import json
 import requests
 import random
-
-device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-
-# ticker name
-ticker = 'AMZN'
 
 def process_json_data(json_data):
     data = pd.json_normalize(json_data)
@@ -73,8 +68,11 @@ class LSTM(nn.Module):
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-# ticker name
-ticker = 'AMZN'
+parser = argparse.ArgumentParser(description='Ticker and pred range')
+parser.add_argument('--ticker', type=str, help='ticker name')
+parser.add_argument('--range', type=int, help='number of predicted days into the future')
+args = parser.parse_args()
+ticker = args.ticker
 
 api_endpoint = 'https://stockgenieapi.azurewebsites.net/Stock/GetHistoricalStockData/' + ticker
 
@@ -83,7 +81,7 @@ json_data = response.json()
 data = process_json_data(json_data)
 
 # load the scaler we used when training (to scale the data back)
-scaler = joblib.load("Scalers/" + ticker + 'scaler.pkl')
+scaler = joblib.load('wwwroot/Scalers/' + ticker + 'scaler.pkl')
 
 # scale the data values
 scaler_input = data['Close'].to_numpy().reshape(-1, 1)
@@ -116,11 +114,11 @@ batch_size = 1
 pred_loader = DataLoader(pred_dataset, batch_size=batch_size, shuffle=False)
 
 # load model for predictions
-PATH = "Models/" + ticker + "model.pth"
+PATH = "wwwroot/Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 
-pred_range = 5
+pred_range = 21
 
 # get stock volatility for the past month worth of prices (21 market days)
 api_endpoint = 'https://stockrequests.azurewebsites.net/Stock/GetTechnicalStockInfoForStock/90/true/' + ticker
@@ -129,7 +127,6 @@ response = requests.get(api_endpoint)
 json_data = response.json()
 percent_volatility = json_data['percentVolatility']
 percent_volatility = percent_volatility * .01
-percent_volatility
 
 # to introduce random noise into predictions
 def noise(price, percent_volatility):
@@ -144,7 +141,7 @@ with torch.no_grad():
     prediction = model(x).to('cpu').numpy().flatten()
     prediction = prediction.reshape(-1, 1)
     scaled_prediction = scaler.inverse_transform(prediction)
-    scaled_prediction = scaled_prediction + noise(price, percent_volatility)
+    scaled_prediction = scaled_prediction + noise(scaled_prediction, percent_volatility)
     predictions.append(scaled_prediction[0][0])
     noisyPred = scaler.transform(scaled_prediction)
     x = torch.cat((x[:, 1:, :], torch.tensor(noisyPred).reshape(1, 1, 1)), dim=1)

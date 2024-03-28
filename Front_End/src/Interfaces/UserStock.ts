@@ -3,5 +3,6 @@ interface UserStock {
     ticker: string;
     quantity: number;
     createdAt: string;
+    price: number;
 }
 export default UserStock;

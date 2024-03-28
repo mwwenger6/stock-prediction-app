@@ -12,13 +12,21 @@ using BCrypt.Net;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 
-
+/// <summary>
+/// Controller responsible for handling stock prediction-related operations, including training models, making predictions, and managing prediction data.
+/// Inherits from ControllerHelper to utilize shared functionalities and services.
+/// </summary>  
 namespace Stock_Prediction_API.Controllers
 {
     public class PredictionController : ControllerHelper
     {
         public PredictionController(AppDBContext context, IConfiguration config, IWebHostEnvironment web) : base(context, config, web) { }
 
+        /// <summary>
+        /// Initiates training of a prediction model for a specific stock ticker.
+        /// </summary>
+        /// <param name="ticker">The stock ticker symbol for which to train the model.</param>
+        /// <returns>A result message indicating the training outcome.</returns>
         [HttpGet("/Prediction/TrainModel/{ticker}")]
         public IActionResult TrainModel(string ticker)
         {
@@ -69,12 +77,18 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Generates predictions for a given stock ticker and prediction range.
+        /// </summary>
+        /// <param name="ticker">The stock ticker symbol for which to generate predictions.</param>
+        /// <param name="prediction_range">The range in days for the prediction.</param>
+        /// <returns>An array of predicted values.</returns>
         public float[] Predict(string ticker, int prediction_range)
         {
             try
             {
                 // Pass the JSON data to the Python script
-                string pythonScriptPath = "wwwroot\\PythonScripts\\model_predict.py";
+                string pythonScriptPath = "wwwroot\\PythonScripts\\noisy_model_predict.py";
                 ProcessStartInfo start = new()
                 {
                     FileName = "python",
@@ -114,6 +128,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves stored predictions for a given stock ticker.
+        /// </summary>
+        /// <param name="ticker">The stock ticker symbol for which to retrieve predictions.</param>
+        /// <returns>A JSON result containing the predictions.</returns>
         [HttpGet("/Prediction/GetPredictions/{ticker}")]
         public IActionResult GetPredictions(string ticker)
         {
@@ -133,6 +152,10 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Clears all stored predictions from the database.
+        /// </summary>
+        /// <returns>A success message upon removing predictions.</returns>
         [HttpPost("/Prediction/ClearPredictions")]
         public IActionResult ClearPredictions()
         {
@@ -140,6 +163,11 @@ namespace Stock_Prediction_API.Controllers
             return Ok("Predictions removed successfully.");
         }
 
+        /// <summary>
+        /// Adds a new set of predictions for a specific stock ticker to the database.
+        /// </summary>
+        /// <param name="ticker">The stock ticker symbol for which to add predictions.</param>
+        /// <returns>A result message indicating the outcome of the addition.</returns>
         [HttpPost("/Prediction/AddPredictions/{ticker}")]
         public IActionResult AddPrediction(string ticker)
         {

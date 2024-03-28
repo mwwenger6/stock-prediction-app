@@ -4,12 +4,29 @@ using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Stock_Prediction_API.Entities;
 
+/// <summary>
+/// Handles administrative actions such as managing error logs, user types, and market holidays.
+/// Inherits from ControllerHelper to utilize shared functionality.
+/// </summary>  
 
 namespace Stock_Prediction_API.Controllers
 {
     public class AdminController : ControllerHelper
+
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdminController"/> class.
+        /// </summary>
+        /// <param name="context">The database context for accessing the database.</param>
+        /// <param name="config">The configuration properties, used to access configuration settings like connection strings.</param>
+        /// <param name="web">The web host environment, providing information about the web hosting environment an application is running in.</param>
+      
         public AdminController(AppDBContext context, IConfiguration config, IWebHostEnvironment web) : base(context, config, web) { }
+
+        /// <summary>
+        /// Retrieves all error logs from the database.
+        /// </summary>
+        /// <returns>A JSON representation of all error logs.</returns>
 
         [HttpGet("/Admin/GetErrorLogs")]
         public IActionResult GetErrorLogs()
@@ -30,6 +47,11 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a specific error log identified by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the error log to delete.</param>
+        /// <returns>A status indicating success or failure of the deletion.</returns>
         [HttpPost("/Admin/DeleteErrorLog/{id}")]
         public IActionResult DeleteErrorLog(int id)
         {
@@ -56,7 +78,12 @@ namespace Stock_Prediction_API.Controllers
 
         }
 
-
+        /// <summary>
+        /// Changes the type of a user based on their email address.
+        /// </summary>
+        /// <param name="email">The email of the user to update.</param>
+        /// <param name="userTypeName">The new user type name to assign.</param>
+        /// <returns>A status message indicating the result of the operation.</returns>
         [HttpPost("/Admin/ChangeUserType/{email}/{userTypeName}")]
         public IActionResult ChangeUserType(string email, string userTypeName)
         {
@@ -86,6 +113,10 @@ namespace Stock_Prediction_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds market holidays retrieved from an external service to the database.
+        /// </summary>
+        /// <returns>A status message indicating the number of holidays added or an error message.</returns>
         [HttpPost("/Admin/AddMarketHolidays")]
         public IActionResult AddMarketHolidays()
         {

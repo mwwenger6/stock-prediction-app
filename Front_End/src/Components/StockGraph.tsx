@@ -35,7 +35,7 @@ const StockGraph = (props : StockGraphProps) => {
     const [roiColor, setRoiColor] = useState('text-primary')
     const [showPrediction, setShowPrediction] = useState(false)
     const [pendingWatchlistRequest, setPendingWatchlistRequest] = useState(false)
-    const [predictionRange, setPredictionRange] = useState(60)
+    const [predictionRange, setPredictionRange] = useState(21)
     const [showBuyModal, setShowBuyModal] = useState(false);
 
     //Data retrieved
@@ -318,7 +318,7 @@ const StockGraph = (props : StockGraphProps) => {
                             <input
                                 type="range"
                                 min={1}
-                                max={60}
+                                max={21}
                                 step={1}
                                 value={predictionRange}
                                 onChange={(event) => {

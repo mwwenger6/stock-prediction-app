@@ -73,8 +73,12 @@ class LSTM(nn.Module):
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-# ticker name
-ticker = 'AMZN'
+parser = argparse.ArgumentParser(description='Ticker and pred range')
+parser.add_argument('--ticker', type=str, help='ticker name')
+parser.add_argument('--range', type=int, help='number of predicted days into the future')
+args = parser.parse_args()
+ticker = args.ticker
+
 
 api_endpoint = 'https://stockgenieapi.azurewebsites.net/Stock/GetHistoricalStockData/' + ticker
 
@@ -120,7 +124,7 @@ PATH = "Models/" + ticker + "model.pth"
 model = LSTM(1,4,1)
 model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
 
-pred_range = 5
+pred_range = 21
 
 # get stock volatility for the past month worth of prices (21 market days)
 api_endpoint = 'https://stockrequests.azurewebsites.net/Stock/GetTechnicalStockInfoForStock/90/true/' + ticker
@@ -129,7 +133,6 @@ response = requests.get(api_endpoint)
 json_data = response.json()
 percent_volatility = json_data['percentVolatility']
 percent_volatility = percent_volatility * .01
-percent_volatility
 
 # to introduce random noise into predictions
 def noise(price, percent_volatility):

@@ -141,7 +141,7 @@ with torch.no_grad():
     prediction = model(x).to('cpu').numpy().flatten()
     prediction = prediction.reshape(-1, 1)
     scaled_prediction = scaler.inverse_transform(prediction)
-    scaled_prediction = scaled_prediction + noise(price, percent_volatility)
+    scaled_prediction = scaled_prediction + noise(scaled_prediction, percent_volatility)
     predictions.append(scaled_prediction[0][0])
     noisyPred = scaler.transform(scaled_prediction)
     x = torch.cat((x[:, 1:, :], torch.tensor(noisyPred).reshape(1, 1, 1)), dim=1)

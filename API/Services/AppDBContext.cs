@@ -67,5 +67,7 @@ namespace Stock_Prediction_API.Services
         /// Gets or sets the set of SupportedStocks, listing stocks that are tracked and supported by the application.
         /// </summary>
         public DbSet<SupportedStocks> SupportedStocks { get; set; }
+
+        public DbSet<VolatileStock> VolatileStocks { get; set; }
     }
 }
